@@ -10,7 +10,7 @@ export const Navbar = () => {
         </div>
 
         <div className="title">
-        <h1>WANNA<span class="logo-color">SURF</span></h1>
+        <h1>WANNA<span className="logo-color">SURF</span></h1>
         </div>
             
         <div className="bruger-menu">

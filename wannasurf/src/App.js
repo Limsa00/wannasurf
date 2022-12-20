@@ -1,5 +1,5 @@
-import './App.css';
 import './reset.css';
+import './App.css';
 import { Navbar } from './components/NavBar';
 import { Footer } from './components/Footer';
 
@@ -11,7 +11,7 @@ export const App = () => {
 
       <main>
         <div className="intro">
-
+          <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde</p>
         </div>
 
         <div className="shearch-bar-section">
