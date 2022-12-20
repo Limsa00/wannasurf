@@ -1,5 +1,6 @@
 import "./navBar.css"
 import logoWannaSurf from "../images/logoWannaSurf.png"
+import hamburgerMenu from "../images/hamburger-menu.png"
 
 export const Navbar = () => {
     return (
@@ -9,12 +10,12 @@ export const Navbar = () => {
         </div>
 
         <div className="title">
-        <h1>WANNASURF</h1>
+        <h1>WANNA<span class="logo-color">SURF</span></h1>
         </div>
-
+            
         <div className="bruger-menu">
-
-</div>
+                <img src={hamburgerMenu} alt="hamburger-button" className="hamburger-style" />
+        </div>
       </nav>
     )
 }

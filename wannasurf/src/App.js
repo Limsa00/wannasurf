@@ -6,9 +6,8 @@ import { Footer } from './components/Footer';
 export const App = () => {
   return (
     <div className="App">
-      <header>
-        <Navbar />
-      </header>
+
+      <Navbar />
 
       <main>
         <div className="intro">
@@ -39,9 +38,7 @@ export const App = () => {
         </div>
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

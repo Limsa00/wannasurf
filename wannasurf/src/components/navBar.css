@@ -1,16 +1,16 @@
 h1 {
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
 }
   
 .nav-bar-bloc {
-    background-color: blue;
+    background-color: #0008C1;
     width: 100%;
-    height: 40px; 
+    height: 50px; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: center ;
     padding: 20px 0 20px 0px;
 }
   
@@ -18,4 +18,14 @@ h1 {
     width: 35px;
     height: 35px;
     margin-left: 15px;
+}
+
+.logo-color {
+    color: #E6CBA8;
+}
+
+.hamburger-style {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
 }
