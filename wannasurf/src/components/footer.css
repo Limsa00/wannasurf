@@ -1,0 +1,14 @@
+.footer-bloc {
+    width: 100%;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.decoration {
+    text-decoration: none;
+    color: initial;
+    margin: 0 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+}

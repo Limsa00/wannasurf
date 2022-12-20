@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+    font-size: 25px;
+}
+  
+.nav-bar-bloc {
+    background-color: blue;
+    width: 100%;
+    height: 40px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 20px 0px;
+}
+  
+.logo-param {
+    width: 35px;
+    height: 35px;
+    margin-left: 15px;
+}
