@@ -4,6 +4,7 @@ export const TrajectResult = () => {
     
         <div className="traject-bloc">
             <h1>TEST RESULT BLOC TRAJET</h1>
+
         </div>
         )
     }

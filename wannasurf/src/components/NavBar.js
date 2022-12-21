@@ -21,22 +21,22 @@ export const Navbar = () => {
             
         <div className="bruger-menu">
                 <ul className="navbar-links">
-                  <li className="navbar-item">
+                  <li className="navbar-item" onClick={handleShowLinks}>
                     <Link to="/wannasurf/home" className="navbar-link">
                       Home
                     </Link>
                   </li>
-                  <li className="navbar-item">
+                  <li className="navbar-item" onClick={handleShowLinks}>
                     <a href="/" className="navbar-link">
                       Mon espace
                     </a>
                   </li>
-                  <li className="navbar-item">
-                    <a href="/" className="navbar-link">
+                  <li className="navbar-item" onClick={handleShowLinks}>
+                    <Link to="/wannasurf/createTraject" className="navbar-link">
                       Publier un trajet
-                    </a>
+                    </Link>
                   </li>
-                  <li className="navbar-item">
+                  <li className="navbar-item" onClick={handleShowLinks}>
                     <a href="/" className="navbar-link">
                       Se deconnecter
                     </a>

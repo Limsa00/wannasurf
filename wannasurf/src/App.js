@@ -4,7 +4,8 @@ import { Footer } from './components/Footer';
 import { Home } from './views/Home'
 import { TrajectResult } from './views/trajectResult';
 import { SiteContact } from './views/siteContact';
-import { LegalNotice } from './views/legalNotice'
+import { LegalNotice } from './views/legalNotice';
+import { CreateTraject } from './views/CreateTraject';
 import {
   Routes,
   Route
@@ -26,6 +27,10 @@ export const App = () => {
 
         <Routes>
           <Route exact path="/wannasurf/siteContact" element= { <SiteContact /> } />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/wannasurf/createTraject" element= { <CreateTraject /> } />
         </Routes>
 
         <Routes>
