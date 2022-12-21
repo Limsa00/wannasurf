@@ -1,9 +1,9 @@
-export const LegalNotice = () => {
+export const TrajectResult = () => {
 
     return (
     
         <div className="traject-bloc">
-            <h1>TEST RESULT BLOC LegalNotice</h1>
+            <h1>TEST RESULT BLOC TRAJET</h1>
         </div>
         )
     }

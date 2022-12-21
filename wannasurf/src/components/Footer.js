@@ -1,13 +1,14 @@
 import "./footer.css"
+import { Link } from "react-router-dom"
 
 export const Footer = () => {
     return (
         <div id="footer" className="footer-bloc">
             <div className="left-footer">
-                <a href="/wannasurf/src/views/legalNotice.js" className="link-style">Informations légales</a>
+                <Link to="/legalNotice" className="link-style">Informations légales</Link>
             </div>
             <div className="right-footer">
-                <a href="/wannasurf/src/views/siteContact.js" className="link-style">Nous contacter</a>
+                <Link to="/siteContact" className="link-style">Nous contacter</Link>
             </div>
         </div>
     )

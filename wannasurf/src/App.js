@@ -1,45 +1,40 @@
 import './reset.css';
-import './App.css';
 import { Navbar } from './components/NavBar';
 import { Footer } from './components/Footer';
+import { Home } from './views/Home'
+import { TrajectResult } from './views/trajectResult';
+import { SiteContact } from './views/siteContact';
+import { LegalNotice } from './views/legalNotice'
+import {
+  Routes,
+  Route
+} from "react-router-dom";
 
 export const App = () => {
   return (
-    <div className="App">
+      <div className="app">
 
-      <Navbar />
+          <Navbar />
 
-      <main>
-        <div className="intro">
-          <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde</p>
-        </div>
+        <Routes>
+          <Route exact path="/wannasurf" element= { <Home />} />
+        </Routes>
 
-        <div className="shearch-bar-section">
+        <Routes>
+          <Route exact path="/trajectsList" element= { <TrajectResult /> } />
+        </Routes>
 
-        </div>
+        <Routes>
+          <Route exact path="/siteContact" element= { <SiteContact /> } />
+        </Routes>
 
-        <div className="bloc-info">
+        <Routes>
+          <Route exact path="/legalNotice" element= { <LegalNotice /> } />
+        </Routes>
 
-          <div id="info-bloc-1">
+        <Footer />
+      </div> 
 
-
-          </div>
-
-          <div id="info-bloc-2">
-
-            
-          </div>
-
-          <div id="info-bloc-3">
-
-            
-          </div>
-
-        </div>
-      </main>
-
-      <Footer />
-    </div>
   );
 }
 
