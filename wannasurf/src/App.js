@@ -14,7 +14,7 @@ export const App = () => {
   return (
       <div className="app">
 
-          <Navbar />
+        <Navbar />
 
         <Routes>
           <Route exact path="/wannasurf" element= { <Home />} />

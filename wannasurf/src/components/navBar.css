@@ -24,8 +24,86 @@ h1 {
     color: #E6CBA8;
 }
 
-.hamburger-style {
-    width: 35px;
-    height: 35px;
-    margin-right: 15px;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.bruger-menu .navbar-links {
+    display: flex;
+}
+
+.bruger-menu .navbar-link {
+    padding: 0.5rem;
+    color: white;
+}
+
+.navbar-burger {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    display: none;
+    margin-right: 30px;
+}
+
+@media screen and (max-width:767px) {
+    .navbar-links {
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        align-items: center;
+        right: -100vw;
+        top: 0px;
+        height: 40%;
+        background-color: black;
+        visibility: hidden;
+    }
+    .show-nav .navbar-links {
+        width: 100vw;
+        right: 0;
+        visibility: visible;
+    }
+    .navbar-link {
+        display: block;
+        margin: 10px;
+        font-size: 5vw;
+    }
+    .navbar-burger {
+        display: block;
+    }
+    .navbar-burger:hover {
+        cursor: pointer;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+    }
+    .burger-bar,
+    .burger-bar:before,
+    .burger-bar:after {
+        display: block;
+        width: 40px;
+        height: 3px;
+        position: relative;
+        border-radius: 3px;
+        background: white;
+    }
+    .burger-bar:before,
+    .burger-bar:after {
+        content:"";
+        position: absolute;
+        left:0;
+    }
+    .burger-bar:before {
+        transform: translateY(-12px);
+    }
+    
+    .burger-bar:after {
+        transform: translateY(12px);
+    }
 }

@@ -1,20 +1,50 @@
 import "./navBar.css"
 import logoWannaSurf from "../images/logoWannaSurf.png"
-import hamburgerMenu from "../images/hamburger-menu.png"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export const Navbar = () => {
+
+  const [ showLinks, setShowLinks ] = useState(false)
+
+  const handleShowLinks = () =>
+    setShowLinks(!showLinks)
     return (
-      <nav className="nav-bar-bloc">
+      <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
         <div className="logo">
             <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
         </div>
 
         <div className="title">
-        <h1>WANNA<span className="logo-color">SURF</span></h1>
+          <h1>WANNA<span className="logo-color">SURF</span></h1>
         </div>
             
         <div className="bruger-menu">
-                <img src={hamburgerMenu} alt="hamburger-button" className="hamburger-style" />
+                <ul className="navbar-links">
+                  <li className="navbar-item">
+                    <Link to="/wannasurf" className="navbar-link">
+                      Home
+                    </Link>
+                  </li>
+                  <li className="navbar-item">
+                    <a href="/" className="navbar-link">
+                      Mon espace
+                    </a>
+                  </li>
+                  <li className="navbar-item">
+                    <a href="/" className="navbar-link">
+                      Publier un trajet
+                    </a>
+                  </li>
+                  <li className="navbar-item">
+                    <a href="/" className="navbar-link">
+                      Se deconnecter
+                    </a>
+                  </li>
+                </ul>  
+                <button className="navbar-burger" onClick={handleShowLinks}>
+                  <span className="burger-bar"></span>
+                </button> 
         </div>
       </nav>
     )
