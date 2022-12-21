@@ -22,7 +22,7 @@ export const Navbar = () => {
         <div className="bruger-menu">
                 <ul className="navbar-links">
                   <li className="navbar-item">
-                    <Link to="/wannasurf" className="navbar-link">
+                    <Link to="/wannasurf/home" className="navbar-link">
                       Home
                     </Link>
                   </li>

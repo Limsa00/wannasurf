@@ -17,19 +17,19 @@ export const App = () => {
         <Navbar />
 
         <Routes>
-          <Route exact path="/wannasurf" element= { <Home />} />
+          <Route exact path="/wannasurf/home" element= { <Home />} />
         </Routes>
 
         <Routes>
-          <Route exact path="/trajectsList" element= { <TrajectResult /> } />
+          <Route exact path="/wannasurf/trajectsList" element= { <TrajectResult /> } />
         </Routes>
 
         <Routes>
-          <Route exact path="/siteContact" element= { <SiteContact /> } />
+          <Route exact path="/wannasurf/siteContact" element= { <SiteContact /> } />
         </Routes>
 
         <Routes>
-          <Route exact path="/legalNotice" element= { <LegalNotice /> } />
+          <Route exact path="/wannasurf/legalNotice" element= { <LegalNotice /> } />
         </Routes>
 
         <Footer />
