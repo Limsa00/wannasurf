@@ -13,3 +13,33 @@ body {
     font-style: italic;
     text-align: center;
 }
+
+.shearch-bar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #F2F2F2;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 90%;
+  }
+
+.flex-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.shearch-bar-section input {
+    width: 100%;
+    margin: 20px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
