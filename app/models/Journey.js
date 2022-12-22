@@ -13,8 +13,32 @@ class Journey extends CoreModel {
     }
 
     static async findAlljourneys() {
-        const journeys = await db.query (`SELECT * FROM journey;`);
-        return journeys;
+        const allJourneys = await db.query (`SELECT * FROM journey;`);
+        return allJourneys.rows;
+    }
+
+    static async findOneJourney(journeyId) {
+        const oneJourney = await db.query (`SELECT * FROM journey WHERE id=$1;`, [journeyId]);
+        return oneJourney.rows[0];
+    }
+
+    async saveOneJourney() {
+        const insertedJourney = await db.query(`
+        INSERT INTO journey ("departure_city", "destination_surfspot_or_city", "meeting_address", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING id;
+        `, [
+            this.departure_city,
+            this.destination_surfspot_or_city,
+            this.meeting_address,
+            this.departure_time,
+            this.price,
+            this.place_available,
+            this.number_of_boards_allowed,
+            this.board_size_allowed
+        ]);
+
+        return insertedJourney.rows[0];
     }
 }
 

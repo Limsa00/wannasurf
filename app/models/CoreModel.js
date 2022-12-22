@@ -18,12 +18,6 @@ class CoreModel {
         this._id = value;
     }
 
-    update(data){
-        for(const prop in data){
-            this[prop] = data[prop];
-        }
-    }
-
     async delete() {
         await db.query(`DELETE FROM ${this.constructor.tableName} WHERE id = $1 ;`, [this.id]);
     }
