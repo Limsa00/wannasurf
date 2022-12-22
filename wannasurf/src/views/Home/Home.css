@@ -6,6 +6,7 @@ body {
     width: 100%;
     height: 40px;
     margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 .home-bloc .intro p {
@@ -78,4 +79,55 @@ body {
     cursor: pointer;
     transition: 0.3s;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#wrap-carroussel{
+    max-width: 780px;
+    width: 100%;
+    display:block;
+    float:left;
+  }
+
+ .img-size {
+    width: 320px;
+    height: 280px;
+    max-width: 350px;
+    max-height: 350px;
+    border-radius: 10px;
+    margin-top: 30px;
+ }
+
+ .bloc-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 25px;
+ }
+
+ .bloc-info h2{
+    font-size: larger;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.close-footer {
+    margin-bottom: 50px;
+}
+
+#bloc-info-1,
+#bloc-info-2,
+#bloc-info-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 15px;
+}
+
+#bloc-info-1 h3,
+#bloc-info-2 h3,
+#bloc-info-3 h3 {
+    text-align: center;
 }
