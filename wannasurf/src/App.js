@@ -1,12 +1,15 @@
 import './reset.css';
-import { Navbar } from './components/NavBar';
-import { Footer } from './components/Footer';
-import { Home } from './views/Home'
-import { TrajectResult } from './views/trajectResult';
-import { SiteContact } from './views/siteContact';
-import { LegalNotice } from './views/legalNotice';
-import { CreateTraject } from './views/CreateTraject';
-import { MonEspace } from './views/MonEspace';
+import { Navbar } from './components/NavBar/NavBar';
+import { Footer } from './components/Footer/Footer';
+import { Home } from './views/Home/Home'
+import { TrajectResult } from './views/TrajectResult/TrajectResult';
+import { SiteContact } from './views/PagesFooter/SiteContact';
+import { LegalNotice } from './views/PagesFooter/legalNotice';
+import { CreateTraject } from './views/CreateTraject/CreateTraject';
+import { MonEspace } from './views/MonEspace/MonEspace';
+import { MyProfil } from './views/MyProfil/MyProfil';
+import { FuturTrajects } from './views/FuturTrajets/FuturTrajects';
+import { TrajectsHistory } from './views/TrajectsHistory/TrajectsHistory';
 import {
   Routes,
   Route
@@ -40,6 +43,18 @@ export const App = () => {
 
         <Routes>
           <Route exact path="/wannasurf/monEspace" element= { <MonEspace /> } />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/wannasurf/monProfil" element= { <MyProfil /> } />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/wannasurf/mesFutursTrajets" element= { <FuturTrajects /> } />
+        </Routes>
+
+        <Routes>
+          <Route exact path="/wannasurf/monHistorique" element= { <TrajectsHistory /> } />
         </Routes>
 
 

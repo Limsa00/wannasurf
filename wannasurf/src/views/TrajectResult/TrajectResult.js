@@ -1,9 +1,11 @@
+import "./TrajectResult.css"
+
 export const TrajectResult = () => {
 
     return (
     
         <div className="traject-bloc">
-            <h1>TEST RESULT BLOC TRAJET</h1>
+            <h1>PAS DE TRAJETS DISPONIBLES</h1>
 
         </div>
         )

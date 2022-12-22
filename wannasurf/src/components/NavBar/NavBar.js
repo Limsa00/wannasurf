@@ -1,5 +1,5 @@
 import "./navBar.css"
-import logoWannaSurf from "../images/logoWannaSurf.png"
+import logoWannaSurf from "../../images/logoWannaSurf.png"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 

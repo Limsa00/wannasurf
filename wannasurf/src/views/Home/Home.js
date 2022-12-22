@@ -1,5 +1,6 @@
 import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
+import { Link } from "react-router-dom"
 
 export const Home = () => {
 
@@ -23,7 +24,9 @@ export const Home = () => {
                         <GroupIcon fontSize='small' />
                         <input type="text" placeholder="Nombre de personne" className="input-search-style" />
                     </dev>
-                    <button type="submit" className="btn-search">Trouver un trajet</button>
+                    <Link to="/wannasurf/trajectsList">
+                        <button type="submit" className="btn-search">Trouver un trajet</button>
+                    </Link>
                 </form>
             </div>
             <hr></hr>

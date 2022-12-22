@@ -1,4 +1,4 @@
-import './siteContact.css'
+import './SiteContact.css'
 
 export const SiteContact = () => {
 
