@@ -30,9 +30,8 @@ const mainController = {
 
     AddOneJourney: async (req,res) =>{
         const newJourney = new Journey(req.body);
-        console.log(newJourney);
-        // await newJourney.saveOneJourney();
-        // res.json(newJourney);        
+        await newJourney.saveOneJourney();
+        res.json(newJourney);        
     }
 
 };

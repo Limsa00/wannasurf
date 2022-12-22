@@ -38,6 +38,7 @@ class Journey extends CoreModel {
             this.board_size_allowed
         ]);
 
+        console.log(insertedJourney.rows[0]);
         return insertedJourney.rows[0];
     }
 }

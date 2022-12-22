@@ -4,14 +4,14 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const router = require('./router');
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 // middleware pour avoir accès à req.body
-app.use(express.urlencoded({
-    extended: true,
-}));
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 
 // routeur
 app.use(router);

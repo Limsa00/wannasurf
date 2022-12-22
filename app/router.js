@@ -10,5 +10,4 @@ router.get('/journeys/:id', mainController.showOneJourney);
 
 router.post('/journeys', mainController.AddOneJourney);
 
-
 module.exports = router;
