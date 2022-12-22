@@ -1,0 +1,38 @@
+.profil-bloc {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px 30px 70px 30px;
+}
+
+.bloc-profil-1,
+.bloc-profil-2,
+.bloc-profil-3,
+.bloc-profil-4,
+.bloc-profil-5,
+.bloc-profil-6 {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+}
+
+.btn-home {
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 200px;
+    font-weight: bold;
+    border-radius: 200px;
+    background-color: #2146C7;
+    margin-top: 30px;
+  }
+  
+.btn-home:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
