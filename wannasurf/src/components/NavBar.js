@@ -27,9 +27,9 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <a href="/" className="navbar-link">
+                    <Link to="/wannasurf/monEspace" className="navbar-link">
                       Mon espace
-                    </a>
+                    </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
                     <Link to="/wannasurf/createTraject" className="navbar-link">

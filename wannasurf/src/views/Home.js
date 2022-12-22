@@ -1,4 +1,5 @@
-import './Home.css'
+import './Home.css';
+import GroupIcon from '@mui/icons-material/Group';
 
 export const Home = () => {
 
@@ -12,16 +13,17 @@ export const Home = () => {
 
             <hr></hr>
             <div className="shearch-bar-section">
-                <form class="search-form">
+                <form className="search-form">
                     <dev className="flex-mobile">
-                        <input type="text" placeholder="Lieu de depart" />
-                        <input type="text" placeholder="Lieu de destination" />
+                        <input type="text" placeholder="Lieu de depart" className="input-search-style" />
+                        <input type="text" placeholder="Lieu de destination" className="input-search-style" />
                     </dev>
                     <dev className="flex-mobile">
-                        <input type="text" placeholder="Date de depart" />
-                        <input type="text" placeholder="Nombre de personne" />
+                        <input type="text" placeholder="Date de depart" className="input-search-style" />
+                        <GroupIcon fontSize='small' />
+                        <input type="text" placeholder="Nombre de personne" className="input-search-style" />
                     </dev>
-                    <button type="submit">Trouver un trajet</button>
+                    <button type="submit" className="btn-search">Trouver un trajet</button>
                 </form>
             </div>
             <hr></hr>
