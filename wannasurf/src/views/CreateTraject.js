@@ -117,9 +117,9 @@ export const CreateTraject = (props) => {
                 </div>
 
             </div>
-            <button type="submit" className="btn btn-primary">
-                Créer mon trajet
-            </button>
+                <button type="submit" className="btn">
+                    Créer mon trajet
+                </button>
         </form>
         </div>
         )
