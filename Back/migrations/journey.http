@@ -1,0 +1,32 @@
+POST http://localhost:5000/journeys
+Content-Type : application/json
+
+{
+    "departure_city": "Casablanca", 
+    "destination_surfspot_or_city": "Ain Diab", 
+    "meeting_address": "Bd Ghandi", 
+    "departure_time": "2023-01-01 08:00:00-00", 
+    "price": "5", 
+    "place_available": "1", 
+    "number_of_boards_allowed": "1",
+    "board_size_allowed": "6"
+}
+
+####
+
+GET http://localhost:5000/journeys
+
+####
+POST http://localhost:5000/journeys
+Content-Type : multipart/form-data;
+
+{
+departure_city: "Casablancaaa"
+destination_surfspot_or_city: "Ain Diab"
+meeting_address: "Bd Ghandi"
+departure_time: "2023-01-01 08:00:00-00"
+price: "5"
+place_available: "1"
+number_of_boards_allowed: "1"
+board_size_allowed: "6"
+}
