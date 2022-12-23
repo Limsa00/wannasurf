@@ -1,0 +1,34 @@
+.title-contact {
+    font-weight: bold;
+    margin: 20px;
+}
+
+.form-contact {
+    margin: 35px 0 25px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn-contact {
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 200px;
+    background-color: #2146C7;
+    margin: 10px;
+    width: 70%;
+    margin-top: 15%;
+  }
+  
+.btn-contact:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

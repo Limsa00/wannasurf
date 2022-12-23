@@ -1,0 +1,52 @@
+.createTraject-bloc {
+    margin: 5px 15px 5px 15px;
+}
+
+.form {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.form-champs {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.form-champs label {
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.createTraject-bloc h1 {
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 25px;
+}
+
+.form-champs {
+    margin-bottom: 25px;
+}
+
+.btn {
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 15px 25%;
+    border-radius: 200px;
+    background-color: #2146C7;
+  }
+  
+.btn:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
