@@ -22,13 +22,15 @@ export const CreateTraject = (props) => {
         const newTraject = { 
             departure_city: lieuDepart,
             destination_surfspot_or_city: lieuArrive,
-            departure_time: dateDepart + heureDepart,
+            departure_time: dateDepart + " " + heureDepart,
+            price:15,
             place_available: nbPassager,
-            number_of_boards_loaded: taillePlanche
+            board_size_allowed: taillePlanche,
+            number_of_boards_allowed: 3
         };
 
         axios
-            .post()
+            .post('http://localhost:5000/journeys', newTraject)
     }
 
     return (
