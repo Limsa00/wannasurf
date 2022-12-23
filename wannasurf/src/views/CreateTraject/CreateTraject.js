@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import './CreateTraject.css'
 
 export const CreateTraject = (props) => {
@@ -7,7 +8,6 @@ export const CreateTraject = (props) => {
     const [lieuArrive, setLieuArrive] = useState ("");
     const [dateDepart, setDateDepart] = useState ("");
     const [heureDepart, setHeureDepart] = useState ("");
-    const [heureArrive, setHeureArrive] = useState ("");
     const [nbPassager, setNbPassager] = useState ("");
     const [taillePlanche, setTaillePlanche] = useState ("");
 
@@ -20,14 +20,15 @@ export const CreateTraject = (props) => {
         evt.preventDefault()
         // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
         const newTraject = { 
-            lieuDepart: lieuDepart,
-            lieuArrive: lieuArrive,
-            dateDepart: dateDepart,
-            heureDepart: heureDepart,
-            heureArrive: heureArrive,
-            nbPassager: nbPassager,
-            taillePlanche: taillePlanche
+            departure_city: lieuDepart,
+            destination_surfspot_or_city: lieuArrive,
+            departure_time: dateDepart + heureDepart,
+            place_available: nbPassager,
+            number_of_boards_loaded: taillePlanche
         };
+
+        axios
+            .post()
     }
 
     return (
@@ -80,17 +81,6 @@ export const CreateTraject = (props) => {
                     name="heureDepart" 
                     value={heureDepart}
                     onChange={e => setHeureDepart(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <label htmlFor="heureArrivee"> Heure d'arrivée </label>
-                    <input 
-                    type="hours" 
-                    id="heureArrive" 
-                    name="heureArrive" 
-                    value={heureArrive}
-                    onChange={e => setHeureArrive(e.target.value)}
                     />
                 </div>
 
