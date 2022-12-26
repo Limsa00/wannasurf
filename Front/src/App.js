@@ -23,37 +23,21 @@ export const App = () => {
 
         <Routes>
           <Route exact path="/wannasurf/home" element= { <Home />} />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/trajectsList" element= { <TrajectResult /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/siteContact" element= { <SiteContact /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/createTraject" element= { <CreateTraject /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/legalNotice" element= { <LegalNotice /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/monEspace" element= { <MonEspace /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/monProfil" element= { <MyProfil /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/mesFutursTrajets" element= { <FuturTrajects /> } />
-        </Routes>
 
-        <Routes>
           <Route exact path="/wannasurf/monHistorique" element= { <TrajectsHistory /> } />
         </Routes>
 
