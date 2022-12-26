@@ -39,7 +39,7 @@ export const Home = () => {
 
                 <div className="shearch-bar-section">
                     <form className="search-form" onSubmit={envoiFormulaire}>
-                        <dev className="flex-mobile">
+                        <div className="flex-mobile">
                             <input
                                 type="text"
                                 placeholder="Lieu de depart"
@@ -52,8 +52,8 @@ export const Home = () => {
                                 className="input-search-style" 
                                 value={lieuDestination}
                                 onChange={(e) => setLieuDestination(e.target.value)} />
-                        </dev>
-                        <dev className="flex-mobile">
+                        </div>
+                        <div className="flex-mobile">
                             <input
                                 type="text"
                                 placeholder="Date de depart"
@@ -70,7 +70,7 @@ export const Home = () => {
                                 className="input-search-style" />
                             <output>{nombrePersonne}</output>
                         
-                        </dev>
+                        </div>
                         <Link to="/wannasurf/trajectsList">
                             <button type="submit" className="btn-search">Trouver un trajet</button>
                         </Link>
