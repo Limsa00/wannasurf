@@ -2,12 +2,15 @@ import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 import ImageCarrou1 from "../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../images/surf-carrou-ex2.jpg";
 import ImageCarrou3 from "../../images/surf-carrou-ex3.jpg";
 
 export const Home = () => {
-
+    
+    const [nombrePersonne, setNombrePersonne] = useState(1)
+   
     return (
     
         <div className="home-bloc">
@@ -29,7 +32,9 @@ export const Home = () => {
                     <dev className="flex-mobile">
                         <input type="text" placeholder="Date de depart" className="input-search-style" />
                         <GroupIcon fontSize='small' />
-                        <input type="range" min="1" max="5" placeholder="Nombre de personne" className="input-search-style" />
+                                <input type="range" min="1" max="8" value={nombrePersonne} onChange={(e) => setNombrePersonne(e.target.value)}  className="input-search-style" />
+                                <output>{nombrePersonne}</output>
+                        
                     </dev>
                     <Link to="/wannasurf/trajectsList">
                         <button type="submit" className="btn-search">Trouver un trajet</button>

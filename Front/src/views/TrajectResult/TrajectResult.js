@@ -11,7 +11,7 @@ export const TrajectResult = () => {
     
     React.useEffect(() => {
         axios
-            .get("http://localhost:5000/journeys/3")
+            .get("http://localhost:5000/journeys/2")
             .then((response) => { setTraject(response.data); })
             .catch(error => { setError(error); });
     },
