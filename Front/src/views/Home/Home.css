@@ -24,6 +24,7 @@ body {
     border-radius: 10px;
     margin-left: 20px;
     width: 90%;
+    height: 20%5;
   }
 
 .flex-mobile {
@@ -101,7 +102,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 25px;
+    margin-top: 35px;
     margin-bottom: 25px;
  }
 
