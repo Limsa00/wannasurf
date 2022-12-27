@@ -10,6 +10,8 @@ import { MonEspace } from './views/MonEspace/MonEspace';
 import { MyProfil } from './views/MyProfil/MyProfil';
 import { FuturTrajects } from './views/FuturTrajets/FuturTrajects';
 import { TrajectsHistory } from './views/TrajectsHistory/TrajectsHistory';
+import { SignIn } from './views/ConnectionPages/SignIn';
+import { SignUp } from './views/ConnectionPages/SignUp';
 import {
   Routes,
   Route
@@ -21,8 +23,13 @@ export const App = () => {
 
         <Navbar />
 
-        <Routes>
-          <Route exact path="/wannasurf/home" element= { <Home />} />
+      <Routes>
+        
+        <Route exact path="/wannasurf/home" element={<Home />} />
+        
+          <Route exact path="/wannasurf/seconnecter" element= { <SignIn />} />
+
+          <Route exact path="/wannasurf/sinscrire" element= { <SignUp /> } />
 
           <Route exact path="/wannasurf/trajectsList" element= { <TrajectResult /> } />
 

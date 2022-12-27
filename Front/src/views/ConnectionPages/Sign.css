@@ -1,0 +1,39 @@
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.intro-texte {
+    font-style: italic;
+    text-align: center;
+    margin: 20px;
+}
+
+.btn-style {
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 200px;
+    background-color: #2146C7;
+    margin-top: 20px;
+}
