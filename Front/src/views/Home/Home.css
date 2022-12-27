@@ -69,6 +69,8 @@ body {
     border-radius: 200px;
     background-color: #2146C7;
     margin: 10px;
+    position: relative;
+    top: 30px;
   }
   
 .btn-search:hover {
