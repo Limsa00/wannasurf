@@ -40,11 +40,11 @@ export const CreateTraject = (props) => {
             <h1>Créer votre trajet </h1>
 
         <form onSubmit={envoiFormulaire}>
-            <div className="form">
+            <div className="form-create-trajet">
             
                 <div className="form-champs">
-                    <label htmlFor="lieuDepart"> Lieu de depart </label>
                     <input 
+                    placeholder="Lieu de depart"
                     type="texte" 
                     id="lieuDeDepart" 
                     name="lieuDepart" 
@@ -54,8 +54,8 @@ export const CreateTraject = (props) => {
                 </div>
 
                 <div className="form-champs">
-                    <label htmlFor="lieuArrive"> Lieu d'arrivé </label>
                     <input 
+                    placeholder="Lieu d'arrivé "
                     type="texte" 
                     id="lieuArrive" 
                     name="lieuArrive" 
@@ -65,9 +65,9 @@ export const CreateTraject = (props) => {
                 </div>
 
                 <div className="form-champs">
-                    <label htmlFor="dateDepart"> Date de depart </label>
                     <input 
-                    type="date" 
+                    type="date"
+                    placeholder="Date de depart"        
                     id="dateDepart" 
                     name="dateDepart" 
                     value={dateDepart}
@@ -76,9 +76,9 @@ export const CreateTraject = (props) => {
                 </div>
 
                 <div className="form-champs">
-                    <label htmlFor="heureDepart"> Heure de depart </label>
                     <input 
                     type="hours" 
+                    placeholder="Heure de depart"
                     id="heureDepart" 
                     name="heureDepart" 
                     value={heureDepart}
@@ -87,9 +87,9 @@ export const CreateTraject = (props) => {
                 </div>
 
                 <div className="form-champs">
-                    <label htmlFor="nbpassager"> Nombre de passagers </label>
                     <input 
                     type="number" 
+                    placeholder="Nombre de passagers"
                     id="nbPassager" 
                     name="nbPassager" 
                     value={nbPassager}
@@ -98,8 +98,8 @@ export const CreateTraject = (props) => {
                 </div>
 
                 <div className="form-champs">
-                    <label htmlFor="taillePlanche"> Taille de planche autorisée</label>
                     <input 
+                    placeholder="Taille de planche autorisée"
                     type="texte" 
                     id="taillePlanche" 
                     name="taillePlanche" 
@@ -108,10 +108,11 @@ export const CreateTraject = (props) => {
                     />
                 </div>
 
-            </div>
-                <button type="submit" className="btn">
+            
+                <button type="submit" className="btn-create-trajet">
                     Créer mon trajet
-                </button>
+                    </button>
+            </div>
         </form>
         </div>
         )

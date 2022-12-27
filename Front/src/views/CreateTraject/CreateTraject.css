@@ -2,14 +2,24 @@
     margin: 5px 15px 5px 15px;
 }
 
-.form {
+.form-create-trajet {
     margin-top: 35px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
+.form-create-trajet input {
+    padding: 20px;
+    border-radius: 25px;
+    border: grey 2px solid;
+}
+
+.form-create-trajet ::placeholder {
+    text-align: center;
+}
 
 .form-champs {
     display: flex;
@@ -31,7 +41,7 @@
     margin-bottom: 25px;
 }
 
-.btn {
+.btn-create-trajet {
     border: none;
     color: white;
     padding: 20px;
@@ -39,7 +49,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    margin: 15px 0 15px 25%;
+    margin-top: 20px;
     border-radius: 200px;
     background-color: #2146C7;
   }
