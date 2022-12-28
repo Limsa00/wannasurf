@@ -1,13 +1,19 @@
 const express = require('express');
 const mainController = require('./controllers/mainController');
+const loginController = require('./controllers/loginController');
+
 
 const router = express.Router();
 
-router.get('/', mainController.home);
 router.get('/journeys', mainController.showAllJourneys);
 router.get('/journeys/:id', mainController.showOneJourney);
+router.post('/journeys', mainController.addOneJourney);
+router.delete('/journeys/:id', mainController.deleteOneJourney);
 
 
-router.post('/journeys', mainController.AddOneJourney);
+router.post('/login', loginController.doLogin);
+router.get('/isLogged', loginController.loginCheck);
+
+
 
 module.exports = router;

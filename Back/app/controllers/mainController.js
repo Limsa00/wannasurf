@@ -2,11 +2,10 @@ const Journey = require('../models/Journey');
 
 
 const mainController = {
-    home: async (_,res) => {
-        await res.json('toto')
-    },
 
     showAllJourneys: async (_,res) =>{
+        console.log("----- Controller request showAllJourneys -----")
+
         const journeysList = await Journey.findAlljourneys();
 
         if (journeysList) {
@@ -17,21 +16,43 @@ const mainController = {
     },
 
     showOneJourney: async (req,res) =>{
+        console.log("----- Controller request showOneJourney -----")
+
         const journeyId = req.params.id;
         const journeySelected = await Journey.findOneJourney(journeyId);
 
         if (journeySelected) {
-            console.log(journeySelected);
             res.json(journeySelected);
         } else {
             res.status(404).json('Ce trajet n\'existe pas');
         };
     },
 
-    AddOneJourney: async (req,res) =>{
+    addOneJourney: async (req,res) =>{
+        console.log("----- Controller request addOneJourney -----")
+
         const newJourney = new Journey(req.body);
-        await newJourney.saveOneJourney();
-        res.json(newJourney);        
+        const addedJourney = await newJourney.saveOneJourney();
+
+        // Insère toutes les propriétés de newJourney dans newJourney2 sauf _id
+        const {_id, ...newJourney2} = newJourney; 
+
+        // Rassemble les propriétés des objets addedJourney et newJourney2 dans un seul objet dans l'objectif de retourner l'enregistrement inséré avec l'id retourné par la BDD
+        res.json({...addedJourney,...newJourney2});
+        // res.json(newJourney);   
+    },
+
+    deleteOneJourney: async (req,res) => {
+        console.log("----- Controller request deleteOneJourney -----");
+
+        const journey= await Journey.findOneJourney(req.params.id);
+        if (journey) {
+            const journeyToDelete = new Journey(journey);
+            await journeyToDelete.delete();
+            res.json("suppression effectuée");
+        } else{
+            res.status(404).json('ce trajet n\'existe pas');
+        }
     }
 
 };

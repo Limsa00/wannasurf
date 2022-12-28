@@ -3,16 +3,30 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
+const session = require('express-session');
 const router = require('./router');
 const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000;
 const app = express();
 
+// Paramètres de la session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24,
+    },
+}));
+
 // middleware pour avoir accès à req.body
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+// Politique de CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Credentials', true);
