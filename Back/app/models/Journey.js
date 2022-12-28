@@ -23,8 +23,6 @@ class Journey extends CoreModel {
     }
 
     async saveOneJourney() {
-        console.log("----- Model saveOneJourney starts ----");
-
         const insertedJourney = await db.query(`
         INSERT INTO journey ("departure_city", "destination_surfspot_or_city", "meeting_address", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed","number_of_boards_loaded","driver")
         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)

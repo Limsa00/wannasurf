@@ -3,7 +3,7 @@ const CoreModel = require('./CoreModel');
 
 class User extends CoreModel {
 
-    static tableName = 'user';
+    static tableName = "user";
 
     constructor (data) {
         super(data);
@@ -14,6 +14,11 @@ class User extends CoreModel {
 
     static async findByEmail(email) {
         const user = await db.query ('SELECT * FROM "user" WHERE email=$1', [email]);
+        return user.rows[0];
+    }
+
+    static async findById(id) {
+        const user = await db.query ('SELECT * FROM "user" WHERE id=$1', [id]);
         return user.rows[0];
     }
 

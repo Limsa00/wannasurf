@@ -1,7 +1,7 @@
 const Journey = require('../models/Journey');
 
 
-const mainController = {
+const journeyController = {
 
     showAllJourneys: async (_,res) =>{
         console.log("----- Controller request showAllJourneys -----")
@@ -57,4 +57,4 @@ const mainController = {
 
 };
 
-module.exports = mainController;
+module.exports = journeyController;

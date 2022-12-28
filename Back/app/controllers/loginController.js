@@ -73,6 +73,21 @@ const loginController = {
 
         req.session.destroy();
         res.json('tu es maintenant déconnecté');
+    },
+
+    deleteOneUser: async (req,res)=>{
+        console.log("----- Controller request deleteOneUser -----");
+
+        const user= await User.findById(req.params.id);
+        // console.log(user);
+        if (user){
+            const userToDelete = new User(user);
+            // console.log(userToDelete);
+            await userToDelete.delete();
+            res.json("utilisateur supprimé")
+        } else {
+            res.status(404).json('utilisateur introuvable');
+        }
     }
 };
 
