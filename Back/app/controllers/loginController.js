@@ -57,12 +57,15 @@ const loginController = {
                     password: req.body.password,
                 });
 
-                await newUser.saveOneUser();
+                const addedUserId = await newUser.saveOneUser();
 
-                res.json('signup réussi');
+                // Insère toutes les propriétés de newUser dans newUser2 sauf _id et password
+                const {_id, password, ...newUser2} = newUser; 
+
+                res.json({...addedUserId,...newUser2});
+                // res.json('signup réussi');
             }
         }
-
     },
     
     logout: async ()=>{

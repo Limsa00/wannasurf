@@ -32,13 +32,13 @@ const mainController = {
         console.log("----- Controller request addOneJourney -----")
 
         const newJourney = new Journey(req.body);
-        const addedJourney = await newJourney.saveOneJourney();
+        const addedJourneyId = await newJourney.saveOneJourney();
 
         // Insère toutes les propriétés de newJourney dans newJourney2 sauf _id
         const {_id, ...newJourney2} = newJourney; 
 
-        // Rassemble les propriétés des objets addedJourney et newJourney2 dans un seul objet dans l'objectif de retourner l'enregistrement inséré avec l'id retourné par la BDD
-        res.json({...addedJourney,...newJourney2});
+        // Rassemble les propriétés des objets addedJourneyId et newJourney2 dans un seul objet dans l'objectif de retourner l'enregistrement inséré avec l'id retourné par la BDD
+        res.json({...addedJourneyId,...newJourney2});
         // res.json(newJourney);   
     },
 
