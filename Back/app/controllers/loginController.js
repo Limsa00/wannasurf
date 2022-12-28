@@ -68,8 +68,11 @@ const loginController = {
         }
     },
     
-    logout: async ()=>{
+    doLogout: async (req,res)=>{
+        console.log("----- doLogout starts ------");
 
+        req.session.destroy();
+        res.json('tu es maintenant déconnecté');
     }
 };
 
