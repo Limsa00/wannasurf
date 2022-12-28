@@ -1,4 +1,10 @@
 # wannasurf
+----POSTGRESQL----
+- sudo service postgresql start
+- sudo -u postgres psql
+- sudo -i -u postgres
+- psql -U salim -d wannasurf
+- psql -U salim -d wannasurf -f migrations/insert.sql
 
 ----SQITCH----
 
