@@ -17,6 +17,23 @@ class User extends CoreModel {
         return user.rows[0];
     }
 
+    async saveOneUser() {
+        const insertedUser = await db.query(`
+        INSERT INTO "user"("firstname","lastname","gender","phone","email","city","password")
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        RETURNING id;
+        `, [
+            this.firstname,
+            this.lastname,
+            this.gender,
+            this.phone,
+            this.email,
+            this.city,
+            this.password
+        ]);
+
+        return insertedUser.rows[0];
+    }
 }
 
 module.exports = User;

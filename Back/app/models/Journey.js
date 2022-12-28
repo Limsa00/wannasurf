@@ -42,7 +42,6 @@ class Journey extends CoreModel {
             this.driver
         ]);
 
-        console.log(insertedJourney.rows[0]);
         return insertedJourney.rows[0];
     }
 }
