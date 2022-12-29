@@ -19,7 +19,7 @@ class CoreModel {
     }
 
     async delete() {
-        await db.query(`DELETE FROM ${this.constructor.tableName} WHERE id = $1 ;`, [this.id]);
+        await db.query(`DELETE FROM "${this.constructor.tableName}" WHERE id = $1 ;`, [this.id]);
     }
 }
 
