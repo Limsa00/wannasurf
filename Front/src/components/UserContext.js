@@ -1,8 +1,22 @@
 import React, {useState, useEffect, createContext } from "react";
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    onAuthStateChanged
+} from "frebase/auth"
+import {auth} from "../firebase.config"
 
 export const UserContext = createContext();
 
 export function UserContextProvider (props) {
+
+    const [currentUser, setCurrentUser] = useState();
+    const [loadingData, setLoadingData] = useState(true);
+
+    const SignUp = (email,password) => createUserWithEmailAndPassword
+    (auth, email, password)
+
+    // modals
     const [modalState, setModalState] = useState({
         signUpModal: false,
         signInModal: false

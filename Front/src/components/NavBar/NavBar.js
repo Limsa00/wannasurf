@@ -26,14 +26,16 @@ export const Navbar = () => {
         <div className="bruger-menu">
                 <ul className="navbar-links">
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <button onClick={() => toggleModals("SignUp")} className="navbar-link">
+                    <Link to="/wannasurf/sinscrire"><button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
                     </button>
+                    </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <button onClick={() => toggleModals("SignIn")} className="navbar-link">
+                    <Link to="/wannasurf/seconnecter"> <button onClick={() => toggleModals("SignIn")} className="navbar-link">
                       Se connecter
                     </button>
+                    </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
                     <button  onClick={() => toggleModals("close")} href="/" className="navbar-link">
