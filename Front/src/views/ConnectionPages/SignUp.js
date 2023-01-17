@@ -1,6 +1,20 @@
 import './Sign.css'
+import React, {useCallback} from "react";
+import app from "../../base"
 
-export const SignUp = () => {
+export const SignUp = ({ history }) => {
+    const handleSignUp = useCallback(async event => {
+        event.preventDefault();
+        const { email, password } = event.target.elements;
+        try {
+            await app
+                .auth()
+                .createUserWithEmailAndPassword(email.value, password.value);
+            history.push("/wannasurf/home");
+        } catch {error} {
+            alert(error);
+        }
+    }, [history]);
 
     return (
     
@@ -10,20 +24,20 @@ export const SignUp = () => {
             <div className='desc-inscription'>
                 <p className='intro-texte'>Vous n'avez pas de compte ? Inscrivez-vous et rejoigné une grande communauté de surfer</p>
             </div>
-            <form action='' className='form'>
+            <form onSubmit={handleSignUp} className='form'>
                 <input type="text" placeholder='pseudo'>
 
                 </input>
 
-                <input type="email" placeholder='Email'>
+                <input name="email" type="email" placeholder='Email'>
                     
                 </input>
 
-                <input type="password" placeholder='Mot de passe'>
+                <input name="password" type="password" placeholder='Mot de passe'>
                     
                 </input>
 
-                <input type="password" placeholder='Confirmez votre mot de passe'>
+                <input name="password" type="password" placeholder='Confirmez votre mot de passe'>
                     
                 </input>
 
