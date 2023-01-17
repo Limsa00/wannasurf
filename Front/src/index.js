@@ -6,11 +6,14 @@ import {
 } from "react-router-dom";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserContextProvider } from './components/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
   </BrowserRouter>
 );
 

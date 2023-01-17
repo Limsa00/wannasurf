@@ -1,7 +1,8 @@
 import "./navBar.css"
 import logoWannaSurf from "../../images/logoWannaSurf.png"
-import { useState } from "react"
+import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
+import { UserContext } from "../UserContext"
 
 export const Navbar = () => {
 
@@ -9,6 +10,9 @@ export const Navbar = () => {
 
   const handleShowLinks = () =>
     setShowLinks(!showLinks)
+
+  const {toggleModals} = useContext(UserContext)
+
     return (
       <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
         <div className="logo">
@@ -22,24 +26,19 @@ export const Navbar = () => {
         <div className="bruger-menu">
                 <ul className="navbar-links">
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/home" className="navbar-link">
-                      Home
-                    </Link>
+                    <button onClick={() => toggleModals("SignUp")} className="navbar-link">
+                      S'inscrire
+                    </button>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/monEspace" className="navbar-link">
-                      Mon espace
-                    </Link>
+                    <button onClick={() => toggleModals("SignIn")} className="navbar-link">
+                      Se connecter
+                    </button>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/createTraject" className="navbar-link">
-                      Publier un trajet
-                    </Link>
-                  </li>
-                  <li className="navbar-item" onClick={handleShowLinks}>
-                    <a href="/" className="navbar-link">
+                    <button  onClick={() => toggleModals("close")} href="/" className="navbar-link">
                       Se deconnecter
-                    </a>
+                    </button>
                   </li>
                 </ul>  
                 <button className="navbar-burger" onClick={handleShowLinks}>

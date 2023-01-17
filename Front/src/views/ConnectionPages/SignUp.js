@@ -1,24 +1,27 @@
 import './Sign.css'
-import React, {useCallback} from "react";
-import app from "../../firebase.config"
+import React, {useContext} from "react";
+import { UserContext } from '../../components/UserContext';
 
-export const SignUp = ({ history }) => {
-    const handleSignUp = useCallback(async event => {
-        event.preventDefault();
-        const { email, password } = event.target.elements;
-        try {
-            await app
-                .auth()
-                .createUserWithEmailAndPassword(email.value, password.value);
-            history.push("/wannasurf/home");
-        } catch {error} {
-            alert(error);
-        }
-    }, [history]);
+export default function SignUp () {
+    const {modalState, toggleModals} = useContext(UserContext)
+    console.log(modalState, toggleModals)
+    // const handleSignUp = useContext(async event => {
+    //     event.preventDefault();
+    //     const { email, password } = event.target.elements;
+    //     try {
+    //         await app
+    //             .auth()
+    //             .createUserWithEmailAndPassword(email.value, password.value);
+    //         history.push("/wannasurf/home");
+    //     } catch {error} {
+    //         alert(error);
+    //     }
+    // }, [history]);
 
     return (
-    
-        <div className="inscription-bloc">
+        <>
+        {modalState.SignUp && (
+        <div className="inscription-bloc" onClick={() => toggleModals("close")}>
             <h1 className='title'>S'inscrire</h1>
 
             <div className='desc-inscription'>
@@ -46,6 +49,7 @@ export const SignUp = ({ history }) => {
                 </button>
 
             </form>
-        </div>
+        </div>)}
+        </>
         )
     }

@@ -6,7 +6,6 @@ import { useState } from 'react';
 import ImageCarrou1 from "../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../images/surf-carrou-ex2.jpg";
 import ImageCarrou3 from "../../images/surf-carrou-ex3.jpg";
-import app from "../../firebase.config"
 
 export const Home = () => {
     
@@ -30,7 +29,6 @@ export const Home = () => {
     
             <div className="home-bloc">
 
-                <button onClick={() => app.auth().signOut()}>Sign Out</button>
                 <div className="intro">
                     <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.
                         <span>

@@ -11,19 +11,15 @@ import { MyProfil } from './views/MyProfil/MyProfil';
 import { FuturTrajects } from './views/FuturTrajets/FuturTrajects';
 import { TrajectsHistory } from './views/TrajectsHistory/TrajectsHistory';
 import { SignIn } from './views/ConnectionPages/SignIn';
-import { SignUp } from './views/ConnectionPages/SignUp';
 import {
   Routes,
   Route
 } from "react-router-dom";
 
-import { AuthProvider } from './Auth';
-
 export const App = () => {
   return (
       <div className="app">
 
-        <AuthProvider>
           <Navbar />
 
           <Routes>
@@ -31,8 +27,6 @@ export const App = () => {
             <Route exact path="/wannasurf/home" element={<Home />} />
           
             <Route exact path="/wannasurf/seconnecter" element= { <SignIn />} />
-
-            <Route exact path="/wannasurf/sinscrire" element= { <SignUp /> } />
 
             <Route exact path="/wannasurf/trajectsList" element= { <TrajectResult /> } />
 
@@ -54,8 +48,6 @@ export const App = () => {
 
           <Footer />
 
-        </AuthProvider>
-        
       </div> 
 
   );
