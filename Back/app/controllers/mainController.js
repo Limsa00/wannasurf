@@ -1,7 +1,6 @@
 const Journey = require('../models/Journey');
 const User = require('../models/User');
 
-
 const objectModel = [Journey, User];
 
 const mainController = {
@@ -56,6 +55,22 @@ const mainController = {
 
         res.json(addedInstance);
     },
+
+    deleteOneComponent: async (req,res) =>{
+        console.log(`----- Controller request deleteOneComponent for ${req.params.entity} -----`)
+
+        const entityToUse = mainController.getEntityToUse(req,res);
+
+        const record = await entityToUse.findOneComponent(req.params.id);
+
+        if (record) {
+            const recordToDelete = new entityToUse(record);
+            await recordToDelete.deleteComponent();
+            res.json("suppression effectuée");
+        } else{
+            res.status(404).json('Il n\'est pas possible de faire cette suppression');
+        }
+    }
 }
 
 module.exports = mainController;
