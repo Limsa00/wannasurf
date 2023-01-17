@@ -9,8 +9,8 @@ const mainController = {
         console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
 
         const entity = req.params.entity;
-        let entityToUse;
 
+        let entityToUse;
         for (let i = 0; i < objectModel.length; i++) {
             if (entity === objectModel[i].tableName) {
                 entityToUse = objectModel[i];
@@ -31,8 +31,8 @@ const mainController = {
 
         const id = req.params.id;
         const entity = req.params.entity;
-        let entityToUse;
 
+        let entityToUse;
         for (let i = 0; i < objectModel.length; i++) {
             if (entity === objectModel[i].tableName) {
                 entityToUse = objectModel[i];
@@ -46,6 +46,26 @@ const mainController = {
         } else {
             res.status(404).json(`Il n\'existe pas de composant pour ${entity}:${id}`);
         };
+    },
+
+    addOneComponent: async (req,res) =>{
+        console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`)
+
+        // const id = req.params.id;
+        const entity = req.params.entity;
+        console.log('entity : ',entity);
+
+        let entityToUse;
+        for (let i = 0; i < objectModel.length; i++) {
+            if (entity === objectModel[i].tableName) {
+                entityToUse = objectModel[i];
+            }
+        };
+
+        const newInstance = new entityToUse(req.body);
+        const addedInstance = await newInstance.saveOrEditOneComponent();
+
+        res.json(addedInstance);
     },
 }
 
