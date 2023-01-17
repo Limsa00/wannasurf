@@ -6,7 +6,7 @@ import { useState } from 'react';
 import ImageCarrou1 from "../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../images/surf-carrou-ex2.jpg";
 import ImageCarrou3 from "../../images/surf-carrou-ex3.jpg";
-import app from "../../base"
+import app from "../../firebase.config"
 
 export const Home = () => {
     

@@ -1,6 +1,6 @@
 import './Sign.css'
 import React, {useCallback, useContext} from "react";
-import app from '../../base';
+import app from '../../firebase.config';
 import { AuthContext } from '../../Auth';
 import { redirect, withRouter } from 'react-router-dom';
 

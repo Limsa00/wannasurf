@@ -1,6 +1,6 @@
 import './Sign.css'
 import React, {useCallback} from "react";
-import app from "../../base"
+import app from "../../firebase.config"
 
 export const SignUp = ({ history }) => {
     const handleSignUp = useCallback(async event => {
