@@ -20,13 +20,24 @@ class CoreModel {
 
     static async findAllComponents(){
         let allComponents;
-        
+
         if (this.tableName === "user") {
             allComponents = await db.query ('SELECT * FROM "user";');
         } else{
             allComponents = await db.query (`SELECT * FROM ${this.tableName};`);
         }
         return allComponents.rows;
+    }
+
+    static async findOneComponent(id){
+        let oneComponent;
+
+        if (this.tableName === "user") {
+            oneComponent = await db.query (`SELECT * FROM "user" WHERE id=$1;`, [id]);
+        } else{
+            oneComponent = await db.query (`SELECT * FROM ${this.tableName} WHERE id=$1;`, [id]);
+        }
+        return oneComponent.rows[0];
     }
 
     async delete() {

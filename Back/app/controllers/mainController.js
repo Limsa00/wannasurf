@@ -5,7 +5,6 @@ const User = require('../models/User');
 const objectModel = [Journey, User];
 
 const mainController = {
-
     showAllComponents: async (req,res) =>{
         console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
 
@@ -24,6 +23,28 @@ const mainController = {
             res.json(componentsList);
         } else {
             res.status(404).json(`Il n\'existe pas de composant pour ${entity}`);
+        };
+    },
+
+    showOneComponent: async (req,res) =>{
+        console.log(`----- Controller request showOneComponent for ${req.params.entity}:${req.params.id} -----`)
+
+        const id = req.params.id;
+        const entity = req.params.entity;
+        let entityToUse;
+
+        for (let i = 0; i < objectModel.length; i++) {
+            if (entity === objectModel[i].tableName) {
+                entityToUse = objectModel[i];
+            }
+        };
+
+        const component = await entityToUse.findOneComponent(id);
+
+        if (component) {
+            res.json(component);
+        } else {
+            res.status(404).json(`Il n\'existe pas de composant pour ${entity}:${id}`);
         };
     },
 }

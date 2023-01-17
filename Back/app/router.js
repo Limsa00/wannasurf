@@ -7,7 +7,7 @@ const mainController = require('./controllers/mainController');
 const router = express.Router();
 
 // router.get('/journeys', journeyController.showAllJourneys);
-router.get('/journeys/:id', journeyController.showOneJourney);
+// router.get('/journeys/:id', journeyController.showOneJourney);
 router.post('/journeys', journeyController.addOneJourney);
 router.delete('/journeys/:id', journeyController.deleteOneJourney);
 
@@ -17,8 +17,8 @@ router.post('/login', loginController.doLogin);
 router.post('/signup', loginController.doSignup);
 router.delete('/users/:id', loginController.deleteOneUser);
 
+// Factoring routes for models : journey, user
 router.get('/:entity', mainController.showAllComponents);
-
-
+router.get('/:entity/:id', mainController.showOneComponent);
 
 module.exports = router;
