@@ -4,7 +4,6 @@ BEGIN;
 
 CREATE TABLE "journey" (
 	"id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	"departure_city" TEXT NOT NULL,
 	"destination_surfspot_or_city" TEXT NOT NULL,
 	"meeting_address" TEXT,
 	"departure_time" TIMESTAMP NOT NULL,

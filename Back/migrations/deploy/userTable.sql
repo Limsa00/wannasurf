@@ -10,9 +10,9 @@ CREATE TABLE "user" (
     "phone" TEXT,
 	"email" TEXT NOT NULL UNIQUE,
     "email_check" BOOLEAN default false,
-    "city" TEXT,
     "password" TEXT NOT NULL,
-    "image_link" TEXT
+    "image_link" TEXT,
+    "role" TEXT DEFAULT 'normal'
 );
 
 ALTER TABLE "journey" ADD COLUMN "driver" INT NOT NULL REFERENCES "user"(id);
