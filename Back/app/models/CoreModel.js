@@ -41,7 +41,6 @@ class CoreModel {
     }
 
     async saveOrEditOneComponent(){
-        console.log('this.constructor.tableName : ',this.constructor.tableName);
 
         const fieldNames = []; // clés
         const fieldValues = []; // valeurs

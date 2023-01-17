@@ -5,9 +5,7 @@ const User = require('../models/User');
 const objectModel = [Journey, User];
 
 const mainController = {
-    showAllComponents: async (req,res) =>{
-        console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
-
+    getEntityToUse:(req,res)=>{
         const entity = req.params.entity;
 
         let entityToUse;
@@ -16,6 +14,13 @@ const mainController = {
                 entityToUse = objectModel[i];
             }
         };
+        return entityToUse;
+    },
+
+    showAllComponents: async (req,res) =>{
+        console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
+
+        const entityToUse = mainController.getEntityToUse(req,res);
 
         const componentsList = await entityToUse.findAllComponents();
 
@@ -30,14 +35,7 @@ const mainController = {
         console.log(`----- Controller request showOneComponent for ${req.params.entity}:${req.params.id} -----`)
 
         const id = req.params.id;
-        const entity = req.params.entity;
-
-        let entityToUse;
-        for (let i = 0; i < objectModel.length; i++) {
-            if (entity === objectModel[i].tableName) {
-                entityToUse = objectModel[i];
-            }
-        };
+        const entityToUse = mainController.getEntityToUse(req,res);
 
         const component = await entityToUse.findOneComponent(id);
 
@@ -51,16 +49,7 @@ const mainController = {
     addOneComponent: async (req,res) =>{
         console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`)
 
-        // const id = req.params.id;
-        const entity = req.params.entity;
-        console.log('entity : ',entity);
-
-        let entityToUse;
-        for (let i = 0; i < objectModel.length; i++) {
-            if (entity === objectModel[i].tableName) {
-                entityToUse = objectModel[i];
-            }
-        };
+        const entityToUse = mainController.getEntityToUse(req,res);
 
         const newInstance = new entityToUse(req.body);
         const addedInstance = await newInstance.saveOrEditOneComponent();
