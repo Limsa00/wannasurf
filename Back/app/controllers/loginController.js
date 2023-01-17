@@ -35,7 +35,7 @@ const loginController = {
         };
     },
 
-    doSinup: async (req,res)=>{
+    doSignup: async (req,res)=>{
         console.log("----- doSinup starts ------");
 
         const user = await User.findByEmail(req.body.email)

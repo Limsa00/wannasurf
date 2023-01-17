@@ -18,6 +18,17 @@ class CoreModel {
         this._id = value;
     }
 
+    static async findAllComponents(){
+        let allComponents;
+        
+        if (this.tableName === "user") {
+            allComponents = await db.query ('SELECT * FROM "user";');
+        } else{
+            allComponents = await db.query (`SELECT * FROM ${this.tableName};`);
+        }
+        return allComponents.rows;
+    }
+
     async delete() {
         await db.query(`DELETE FROM "${this.constructor.tableName}" WHERE id = $1 ;`, [this.id]);
     }
