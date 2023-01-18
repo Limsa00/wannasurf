@@ -36,7 +36,8 @@ export const SignInModal = () => {
                     toggleModals("close")
                     navigate("/wannasurf/private/monEspace")
 
-            }  catch {
+            }  catch (err) {
+                    console.log(err)
                     setValidation("Woops, votre email ou votre mot de passe est incorrect !")
         }
     };
