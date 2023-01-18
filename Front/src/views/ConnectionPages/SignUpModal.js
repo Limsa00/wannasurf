@@ -36,8 +36,8 @@ export const SignUpModal = () => {
             try {
                 
                 const cred = await signUp (
-                    inputs.current[0].value,
-                    inputs.current[1].value
+                    inputs.current[1].value,
+                    inputs.current[2].value
                 )
                     formRef.current.reset();
                     setValidation("")

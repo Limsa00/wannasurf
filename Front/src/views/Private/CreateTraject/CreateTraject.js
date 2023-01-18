@@ -30,7 +30,7 @@ export const CreateTraject = (props) => {
         };
 
         axios
-            .post('http://localhost:5000/journeys', newTraject)
+            .post('http://localhost:5000/journey', newTraject)
     }
 
     return (
