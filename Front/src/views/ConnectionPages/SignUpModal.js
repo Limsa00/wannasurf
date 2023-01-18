@@ -101,7 +101,7 @@ export const SignUpModal = () => {
                         <input 
                             required
                             ref={addInputs}
-                            name="password" 
+                            name="pwd" 
                             type="password" 
                             placeholder='Mot de passe'
                             id="signUpPwd"          
@@ -110,7 +110,7 @@ export const SignUpModal = () => {
                         <input 
                             required
                             ref={addInputs}
-                            name="password" 
+                            name="pwd" 
                             type="password" 
                             placeholder='Confirmez votre mot de passe'
                             id="signUpReapeatPwd"  
