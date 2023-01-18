@@ -3,6 +3,9 @@ import logoWannaSurf from "../../images/logoWannaSurf.png"
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../context/UserContext"
+import { signOut } from "firebase/auth"
+import { useNavigate } from "react-router-dom"
+import { auth } from "../../firebase.config"
 
 export const Navbar = () => {
 
@@ -12,6 +15,17 @@ export const Navbar = () => {
     setShowLinks(!showLinks)
 
   const {toggleModals} = useContext(UserContext)
+
+  const navigate = useNavigate()
+
+  const logOut = async () => {
+    try {
+      await signOut (auth)
+      navigate("/wannasurf/home")
+    } catch {
+      alert("For some reason we can't deconnect, please check your internet connection and retry")
+    }
+  }
 
     return (
       <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
@@ -38,7 +52,9 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <button  onClick={() => toggleModals("close")} href="/" className="navbar-link">
+                    <button  
+                      onClick={logOut} 
+                      href="/" className="navbar-link">
                       Se deconnecter
                     </button>
                   </li>
