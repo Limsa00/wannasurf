@@ -2,7 +2,7 @@ import "./navBar.css"
 import logoWannaSurf from "../../images/logoWannaSurf.png"
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
-import { UserContext } from "../UserContext"
+import { UserContext } from "../../context/UserContext"
 
 export const Navbar = () => {
 

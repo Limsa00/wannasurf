@@ -3,9 +3,9 @@ import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import ImageCarrou1 from "../../images/surf-carrou-ex1.jpg";
-import ImageCarrou2 from "../../images/surf-carrou-ex2.jpg";
-import ImageCarrou3 from "../../images/surf-carrou-ex3.jpg";
+import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
+import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";
+import ImageCarrou3 from "../../../images/surf-carrou-ex3.jpg";
 
 export const Home = () => {
     

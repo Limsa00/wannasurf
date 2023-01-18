@@ -1,12 +1,12 @@
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
-import { UserContext } from '../../components/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 export const SignUpModal = () => {
 
-    const {modalState, toggleModals, SignUp} = useContext(UserContext)
+    const {modalState, toggleModals, signUp} = useContext(UserContext)
 
-    console.log(SignUp)
+    console.log(signUp)
 
     const [validation, setValidation] = useState("");
 
@@ -16,8 +16,9 @@ export const SignUpModal = () => {
                 inputs.current.push(el)
             }
         }
+        const formRef = useRef();
 
-        const handleForm = e => {
+        const handleForm = async e => {
             e.preventDefault()
 
             if((inputs.current[2].value.length || inputs.current[3].value.length) <6) {
@@ -26,22 +27,39 @@ export const SignUpModal = () => {
             }
             else if(inputs.current[2].value !== inputs.current[3].value) {
                 setValidation("Password do not match")
-                    return
+                    return;
             }
 
             try {
+                
+                const cred = await signUp (
+                    inputs.current[0].value,
+                    inputs.current[1].value
+                )
+                    formRef.current.reset();
+                    setValidation("")
+                    console.log(cred)
 
             }  catch (err) {
-                
+                if(err.code === "auth/invalid-email") {
+                    setValidation("Email format invalid")
+                }
+
+                if(err.code === "auth/email-already-in-use") {
+                    setValidation("Email deja utilisé")
+                }
             }
+        }
+
+        const closeModal = () => {
+            setValidation("")
+            toggleModals("close")
         }
 
     return (
         <>
-            {modalState.SignUp && (
-                <div 
-                    className="inscription-bloc" 
-                    onClick={() => toggleModals("close")}>
+            {modalState.signUpModal && (
+                <div className="inscription-bloc">
                     
                     <h1 
                         className='title'>
@@ -55,11 +73,12 @@ export const SignUpModal = () => {
                         </p>
                     </div>
                     <form 
+                        ref={formRef}
                         className='form'
                         onSubmit={handleForm}>
                         <input 
                             ref={addInputs}
-                            name="psuedonyme"
+                            name="pseudonyme"
                             required
                             type="text" 
                             placeholder='pseudo'
@@ -82,7 +101,7 @@ export const SignUpModal = () => {
                             type="password" 
                             placeholder='Mot de passe'
                             id="signUpPwd"          
-                        /> <p>{validation}</p>    
+                        />   
 
                         <input 
                             required
@@ -91,7 +110,7 @@ export const SignUpModal = () => {
                             type="password" 
                             placeholder='Confirmez votre mot de passe'
                             id="signUpReapeatPwd"  
-                        /> <p>{validation}</p>    
+                        /> <span className='err'>{validation}</span>    
 
                         <button 
                             type="submit" 

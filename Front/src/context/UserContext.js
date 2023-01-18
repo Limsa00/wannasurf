@@ -3,7 +3,7 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     onAuthStateChanged
-} from "frebase/auth"
+} from "firebase/auth"
 import {auth} from "../firebase.config"
 
 export const UserContext = createContext();
@@ -13,20 +13,20 @@ export function UserContextProvider (props) {
     const [currentUser, setCurrentUser] = useState();
     const [loadingData, setLoadingData] = useState(true);
 
-    const SignUp = (email,password) => createUserWithEmailAndPassword
+    const signUp = (email,password) => createUserWithEmailAndPassword
     (auth, email, password)
 
     // modals
     const [modalState, setModalState] = useState({
-        signUpModal: false,
+        signUpModal: true,
         signInModal: false
     });
 
     const toggleModals = modal => {
         if(modal === "signIn") {
             setModalState ({
-                signUpModal: false,
-                signInModal: true
+                signUpModal: true,
+                signInModal: false
             });
         }
         if(modal === "signUp") {
@@ -43,7 +43,7 @@ export function UserContextProvider (props) {
         }     
     }
     return (
-        <UserContext.Provider value={{modalState, toggleModals}}>
+        <UserContext.Provider value={{modalState, toggleModals, signUp}}>
             {props.children}
         </UserContext.Provider>
     );
