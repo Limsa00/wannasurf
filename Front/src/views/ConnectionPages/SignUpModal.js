@@ -1,10 +1,13 @@
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
+import { useNavigate } from 'react-router-dom';
 
 export const SignUpModal = () => {
 
     const {modalState, toggleModals, signUp} = useContext(UserContext)
+
+    const navigate = useNavigate();
 
     console.log(signUp)
 
@@ -38,7 +41,8 @@ export const SignUpModal = () => {
                 )
                     formRef.current.reset();
                     setValidation("")
-                    console.log(cred)
+                    // console.log(cred)
+                    navigate("/wannasurf/private/monEspace")
 
             }  catch (err) {
                 if(err.code === "auth/invalid-email") {

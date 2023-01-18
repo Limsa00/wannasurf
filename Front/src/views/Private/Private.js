@@ -1,11 +1,20 @@
-import React, { Component } from 'react'
+import React, { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
+import { Outlet, useLocation,Navigate } from "react-router-dom";
 
-export class Private extends Component {
-  render() {
+export default function Private () {
+
+    const {currentUser} = useContext(UserContext)
+        console.log("route de: ", currentUser )
+
+        if(!currentUser) {
+            return <Navigate to="/wannasurf/home" />
+        }
+
     return (
-      <div>Private</div>
-    )
-  }
-}
+        <div className="container">
+            <Outlet />
 
-export default Private
+        </div>
+    )
+}
