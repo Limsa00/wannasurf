@@ -17,7 +17,17 @@
     justify-content: center;
     flex-direction: column;
     margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: solid 1px #2146C7;
 }
+
+.form input:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: solid 1px grey ;
+}
+
 
 .intro-texte {
     font-style: italic;
@@ -36,6 +46,7 @@
     border-radius: 200px;
     background-color: #2146C7;
     margin-top: 20px;
+    width: 180px;
 }
 
 .btn-style:hover {

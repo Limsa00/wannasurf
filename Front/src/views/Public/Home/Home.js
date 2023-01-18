@@ -79,7 +79,6 @@ export const Home = () => {
 
                 <div className="bloc-info">
                     <h2>WannaSurf, ton ami du quotidien !</h2>
-
                     <div id="bloc-info-1">
                         <h3>Faites des economies pour surfer un max</h3>
                         <img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
@@ -92,7 +91,6 @@ export const Home = () => {
                         <h3>Faites vous de nouveaux partenaires de glisse grace à wannaSurf</h3>
                         <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
                     </div>
-
                 </div>
 
             </div>

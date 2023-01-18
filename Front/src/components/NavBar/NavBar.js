@@ -27,6 +27,58 @@ export const Navbar = () => {
     }
   }
 
+const {currentUser} = useContext(UserContext)
+        console.log("route de: ", currentUser )
+
+        if(currentUser) {
+            return (
+              <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
+              <div className="logo">
+                  <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
+              </div>
+      
+              <div className="title-wannasurf">
+                <h1>WANNA<span className="logo-color">SURF</span></h1>
+              </div>
+
+            <div className="bruger-menu">
+            <ul className="navbar-links">
+              <li className="navbar-item" onClick={handleShowLinks}>
+                <Link to="/wannasurf/home" className="navbar-link">
+                <button className="navbar-link">
+                  Home
+                </button>
+                </Link>
+              </li>
+              <li className="navbar-item" onClick={handleShowLinks}>
+                <Link to="/wannasurf/private/monEspace" className="navbar-link">
+                  <button className="navbar-link">
+                    Mon espace
+                  </button>
+                </Link>
+              </li>
+              <li className="navbar-item" onClick={handleShowLinks}>
+                <Link to="/wannasurf/createTraject" className="navbar-link">
+                <button className="navbar-link"> 
+                  Publier un trajet
+                </button>
+                </Link>
+              </li>
+              <li className="navbar-item" onClick={handleShowLinks}>
+                    <button  
+                      onClick={logOut} 
+                      href="/" className="navbar-link">
+                      Se deconnecter
+                    </button>
+                  </li>
+            </ul>  
+            <button className="navbar-burger" onClick={handleShowLinks}>
+              <span className="burger-bar"></span>
+            </button> 
+      </div>
+      </nav>)
+        }
+
     return (
       <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
         <div className="logo">
@@ -38,7 +90,7 @@ export const Navbar = () => {
         </div>
             
         <div className="bruger-menu">
-                <ul className="navbar-links">
+                <ul className="navbar-links-public">
                   <li className="navbar-item" onClick={handleShowLinks}>
                     <Link to="/wannasurf/sinscrire"><button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
@@ -50,13 +102,6 @@ export const Navbar = () => {
                       Se connecter
                     </button>
                     </Link>
-                  </li>
-                  <li className="navbar-item" onClick={handleShowLinks}>
-                    <button  
-                      onClick={logOut} 
-                      href="/" className="navbar-link">
-                      Se deconnecter
-                    </button>
                   </li>
                 </ul>  
                 <button className="navbar-burger" onClick={handleShowLinks}>

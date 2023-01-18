@@ -87,7 +87,7 @@ export const SignUpModal = () => {
                             type="text" 
                             placeholder='pseudo'
                             id="signUpPseudo"
-                        />
+                        /> 
 
                         <input 
                             required

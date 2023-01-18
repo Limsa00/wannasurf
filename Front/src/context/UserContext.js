@@ -48,8 +48,8 @@ export function UserContextProvider (props) {
         }
         if(modal === "close") {
             setModalState ({
-                signUpModal: false,
-                signInModal: false
+                signUpModal: true,
+                signInModal: true
             });
         }     
     }
