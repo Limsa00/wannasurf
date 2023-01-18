@@ -9,8 +9,8 @@ CREATE TABLE "city" (
     "Country" TEXT
 );
 
-ALTER TABLE "user" ADD COLUMN "city" INT REFERENCES "city"(id);
+ALTER TABLE "user" ADD COLUMN "city_id" INT REFERENCES "city"(id);
 
-ALTER TABLE "journey" ADD COLUMN "departure_city" INT NOT NULL REFERENCES "city"(id);
+ALTER TABLE "journey" ADD COLUMN "departure_city_id" INT NOT NULL REFERENCES "city"(id);
 
 COMMIT;

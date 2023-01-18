@@ -15,7 +15,7 @@ CREATE TABLE "user" (
     "role" TEXT DEFAULT 'normal'
 );
 
-ALTER TABLE "journey" ADD COLUMN "driver" INT NOT NULL REFERENCES "user"(id);
+ALTER TABLE "journey" ADD COLUMN "driver_id" INT NOT NULL REFERENCES "user"(id);
 
 CREATE TABLE "journey_has_user"(
     "journey_id" INT NOT NULL references "journey"(id) ON DELETE CASCADE,

@@ -2,8 +2,8 @@
 
 BEGIN;
 
-ALTER TABLE "journey" DROP COLUMN "departure_city";
-ALTER TABLE "user" DROP COLUMN "city";
+ALTER TABLE "journey" DROP COLUMN "departure_city_id";
+ALTER TABLE "user" DROP COLUMN "city_id";
 DROP TABLE "city";
 
 COMMIT;

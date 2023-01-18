@@ -3,13 +3,13 @@ BEGIN;
 INSERT INTO "city" ("cityName","zipCode","Country")
 VALUES
   ('Bordeaux','33000','France'),
-  ('Ajaccio','46035','France'),
-  ('Strasbourg','14245','France'),
-  ('Épernay','42558','France'),
-  ('Illkirch-Graffenstaden','25224','France'),
-  ('Villeneuve-d''Ascq','75687','France'),
-  ('Soissons','37053','France'),
-  ('Limoges','08413','France'),
+  ('Lacanau','33214','France'),
+  ('Le Porge','33333','France'),
+  ('Lège-Cap-Ferret','33950','France'),
+  ('Cap-Ferret','33970','France'),
+  ('Arcachon','33120','France'),
+  ('Biscarosse','40600','France'),
+  ('Mimizan','40200','France'),
   ('La Roche-sur-Yon','56432','France'),
   ('Chalon-sur-Saône','36286','France'),
   ('Caen','94878','France'),
@@ -51,9 +51,11 @@ VALUES
   ('Aurillac','46233','France'),
   ('Laval','43224','France'),
   ('Mulhouse','38638','France'),
-  ('Laval','50817','France');
+  ('Laval','50817','France')
+;
 
-INSERT INTO "user"("firstname","lastname","gender","phone","email","city","password")
+
+INSERT INTO "user"("firstname","lastname","gender","phone","email","city_id","password")
 VALUES
   ('Ray','Marin','male','06 05 19 21 51','amet@google.couk',1,'NYR72PPL0VO'),
   ('Wang','Reyes','male','04 17 74 85 27','semper.rutrum@icloud.couk',2,'ZBC22NZJ6HJ'),
@@ -74,19 +76,48 @@ VALUES
   ('Alika','Santana','female','04 47 07 31 51','amet@protonmail.edu',17,'MGQ67QPA9PQ'),
   ('Joseph','Soto','female','05 21 14 07 72','turpis.in@yahoo.ca',18,'CLM44XFI6SC'),
   ('Alice','Torres','male','03 79 15 27 86','dolor.fusce.mi@aol.edu',19,'QQK02QKA1GQ'),
-  ('Devin','Gimenez','female','09 86 38 41 46','nam.consequat@protonmail.ca',20,'ZXE17NOV4DG');
+  ('Devin','Gimenez','female','09 86 38 41 46','nam.consequat@protonmail.ca',20,'ZXE17NOV4DG')
+;
 
-INSERT INTO "journey" ("departure_city", "destination_surfspot_or_city", "meeting_address", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed", "driver")
+INSERT INTO "surfspot" ("surfspotName","difficulty","city_id")
+VALUES
+  ('Plage Centrale',9,2),
+  ('Plage Sud',0,2),
+  ('Plage Nord',4,2),
+  ('Le Porge',8,3),
+  ('La Jenny',0,3),
+  ('Le Grand Crohot',7,4),
+  ('Le Truc vert',10,4),
+  ('La Torchère',6,4),
+  ('L\"horizon',9,5),
+  ('La pointe',6,5),
+  ('La lagune',7,6),
+  ('La Salie',4,6),
+  ('Biscarosse plage',4,7),
+  ('Biscarosse plage Nord',8,7),
+  ('Biscarosse plage Surd',2,7),
+  ('Plage Remember',10,8),
+  ('Plage Sud',7,8),
+  ('Lespecier',7,8)
+;
+
+INSERT INTO "journey" ("departure_city_id", "destination_surfspot_or_city_id", "meeting_address", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed", "driver_id")
 VALUES 
-    (1, 'Lacanau', '5 av Thiers', '2023-01-01 08:00:00-00', 10, 2, 2, 6, 5 ),
-    (2, 'Aguachica', 'Ap #478-2169 Est Avenue', '2022-02-16 4:47:52-00', 20, 3, 3, 6, 1 ),
-    ('3', 'Rio de Janeiro', '445-4747 A, Rd.', '2022-06-23 10:55:02-00', 90, 0, 1, 9, 3 ),
-    ('4', 'Piła', '728-1547 Et Avenue', '2022-11-27 9:30:50-00', 25, 1, 6, 9, 4 ),
-    ('5', 'Port Harcourt', 'Ap #536-4865 Vitae, St.', '2022-10-26 8:40:16-00', 23, 5, 7, 7, 7 ),
-    ('6', 'Słupsk', '805-6544 Auctor, Av.', '2022-02-13 5:14:35-00', 37, 1, 3, 8, 9 ),
-    ('7', 'Tanjay', 'Ap #347-7327 Rutrum St.', '2022-02-17 10:53:28-00', 83, 2, 5, 9, 10 ),
-    ('8', 'Celaya', '108-1723 Sem Street', '2022-03-20 10:03:43-00', 14, 2, 5, 6, 9 ),
-    ('9', 'Chakwal', '633-4350 Dolor Road', '2022-03-12 1:10:32-00', 85, 4, 6, 10, 10 ),
-    ('10', 'Ludvika', 'Ap #389-8738 In Avenue', '2022-11-14 4:48:44-00', 18, 4, 2, 6, 6 );
+  (1, '1', '5 av Thiers', '2023-01-01 08:00:00-00', 10, 2, 2, 6, 5 ),
+  (2, '2', 'Ap #478-2169 Est Avenue', '2022-02-16 4:47:52-00', 20, 3, 3, 6, 1 ),
+  ('3', '3', '445-4747 A, Rd.', '2022-06-23 10:55:02-00', 90, 0, 1, 9, 3 ),
+  ('4', '4', '728-1547 Et Avenue', '2022-11-27 9:30:50-00', 25, 1, 6, 9, 4 ),
+  ('5', '5', 'Ap #536-4865 Vitae, St.', '2022-10-26 8:40:16-00', 23, 5, 7, 7, 7 ),
+  ('6', '6', '805-6544 Auctor, Av.', '2022-02-13 5:14:35-00', 37, 1, 3, 8, 9 ),
+  ('7', '7', 'Ap #347-7327 Rutrum St.', '2022-02-17 10:53:28-00', 83, 2, 5, 9, 10 ),
+  ('8', '8', '108-1723 Sem Street', '2022-03-20 10:03:43-00', 14, 2, 5, 6, 9 ),
+  ('9', '9', '633-4350 Dolor Road', '2022-03-12 1:10:32-00', 85, 4, 6, 10, 10 ),
+  ('10', '10', 'Ap #389-8738 In Avenue', '2022-11-14 4:48:44-00', 18, 4, 2, 6, 6 )
+;
+
+INSERT INTO "journey_has_user" ("journey_id", "user_id")
+VALUES
+  (1,1),(1,2),(1,3),(2,3),(2,4),(3,5),(4,1),(4,4),(5,19),(6,18),(6,17),(7,16),(7,1),(8,14),(8,10),(9,9),(9,15),(9,1)
+;
 
 COMMIT;
