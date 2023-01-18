@@ -69,13 +69,15 @@ const {currentUser} = useContext(UserContext)
     return (
         <NavFrame>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/sinscrire"><button onClick={() => toggleModals("SignUp")} className="navbar-link">
+                    <Link to="/wannasurf/sinscrire">
+                    <button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
                     </button>
                     </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/seconnecter"> <button onClick={() => toggleModals("SignIn")} className="navbar-link">
+                    <Link to="/wannasurf/seconnecter"> 
+                    <button onClick={() => toggleModals("SignIn")} className="navbar-link">
                       Se connecter
                     </button>
                     </Link>
