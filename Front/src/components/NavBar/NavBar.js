@@ -6,6 +6,7 @@ import { UserContext } from "../../context/UserContext"
 import { signOut } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase.config"
+import NavFrame from "../NavFrame"
 
 export const Navbar = () => {
 
@@ -32,17 +33,7 @@ const {currentUser} = useContext(UserContext)
 
         if(currentUser) {
             return (
-              <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
-              <div className="logo">
-                  <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
-              </div>
-      
-              <div className="title-wannasurf">
-                <h1>WANNA<span className="logo-color">SURF</span></h1>
-              </div>
-
-            <div className="bruger-menu">
-            <ul className="navbar-links">
+              <NavFrame>
               <li className="navbar-item" onClick={handleShowLinks}>
                 <Link to="/wannasurf/home" className="navbar-link">
                 <button className="navbar-link">
@@ -71,26 +62,12 @@ const {currentUser} = useContext(UserContext)
                       Se deconnecter
                     </button>
                   </li>
-            </ul>  
-            <button className="navbar-burger" onClick={handleShowLinks}>
-              <span className="burger-bar"></span>
-            </button> 
-      </div>
-      </nav>)
+              </NavFrame>
+          )
         }
 
     return (
-      <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
-        <div className="logo">
-            <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
-        </div>
-
-        <div className="title-wannasurf">
-          <h1>WANNA<span className="logo-color">SURF</span></h1>
-        </div>
-            
-        <div className="bruger-menu">
-                <ul className="navbar-links-public">
+        <NavFrame>
                   <li className="navbar-item" onClick={handleShowLinks}>
                     <Link to="/wannasurf/sinscrire"><button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
@@ -103,11 +80,6 @@ const {currentUser} = useContext(UserContext)
                     </button>
                     </Link>
                   </li>
-                </ul>  
-                <button className="navbar-burger" onClick={handleShowLinks}>
-                  <span className="burger-bar"></span>
-                </button> 
-        </div>
-      </nav>
+        </NavFrame>
     )
 }
