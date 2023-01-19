@@ -24,13 +24,14 @@ class Journey extends CoreModel {
 
     async saveOneJourney() {
         const insertedJourney = await db.query(`
-        INSERT INTO journey ("departure_city", "destination_surfspot_or_city", "meeting_address", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed","number_of_boards_loaded","driver")
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        INSERT INTO journey ("departure_city", "destination_surfspot_or_city", "meeting_address", "departure_date", "departure_time", "price", "place_available", "number_of_boards_allowed", "board_size_allowed","number_of_boards_loaded","driver")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
         RETURNING id;
         `, [
             this.departure_city,
             this.destination_surfspot_or_city,
             this.meeting_address,
+            this.departure_date,
             this.departure_time,
             this.price,
             this.place_available,

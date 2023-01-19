@@ -22,7 +22,8 @@ export const CreateTraject = (props) => {
         const newTraject = { 
             departure_city: lieuDepart,
             destination_surfspot_or_city: lieuArrive,
-            departure_time: dateDepart + " " + heureDepart,
+            departure_date: dateDepart,
+            departure_time: heureDepart,
             price:15,
             place_available: nbPassager,
             board_size_allowed: taillePlanche,
