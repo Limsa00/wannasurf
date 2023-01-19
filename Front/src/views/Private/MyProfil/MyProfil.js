@@ -1,7 +1,11 @@
 import './MyProfil.css'
+import React, {useContext} from 'react';
+import { UserContext } from '../../../context/UserContext';
 import { Link } from "react-router-dom";
 
 export const MyProfil = () => {
+
+    const {currentUser} = useContext(UserContext)
 
     return (
     
@@ -23,7 +27,7 @@ export const MyProfil = () => {
                     <div className='mail-user'>
                         <p>Email</p>
                         <div className='bloc-value-mail'>
-                            <p>exemplemail@rr.com</p>
+                            <p>{currentUser.email}</p>
                         </div>
                     </div>
                 </div>
