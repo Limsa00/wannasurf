@@ -6,6 +6,8 @@ const mainController = require('./controllers/mainController');
 
 const router = express.Router();
 
+router.get('/journeySearch', journeyController.showJourneysFiltered);
+
 // router.get('/journeys', journeyController.showAllJourneys);
 // router.get('/journeys/:id', journeyController.showOneJourney);
 // router.post('/journeys', journeyController.addOneJourney);
@@ -22,7 +24,5 @@ router.get('/:entity', mainController.showAllComponents);
 router.get('/:entity/:id', mainController.showOneComponent);
 router.post('/:entity', mainController.addOneComponent);
 router.delete('/:entity/:id', mainController.deleteOneComponent);
-
-
 
 module.exports = router;

@@ -43,6 +43,33 @@ class Journey extends CoreModel {
 
         return insertedJourney.rows[0];
     }
+
+    static async findJourneysFiltered(nb_place,date) {
+        const query = `
+        SELECT 
+            journey.id AS journey_id,
+            departure_date::date AS "date",
+            firstname || ' ' || lastname AS "driver",
+            "cityName" AS city,
+            meeting_address AS address,
+            "surfspotName" AS surfspot,
+            departure_time AS "time",
+            price,
+            nb_passengers AS booked_places,
+            (place_available - nb_passengers) AS place_available		
+        FROM journey
+        JOIN nb_place_booked on journey.id = nb_place_booked."journey_id"
+        JOIN city ON journey.departure_city_id = city.id
+        JOIN surfspot ON journey.destination_surfspot_or_city_id = surfspot.id
+        JOIN "user" ON journey.driver_id = "user".id
+        WHERE (place_available - nb_passengers) >= $1
+        AND departure_date::date = $2;`;
+
+
+        const allJourneysFiltered = await db.query (query,[nb_place,date]);
+        return allJourneysFiltered.rows;
+
+    }
 }
 
 module.exports = Journey;
