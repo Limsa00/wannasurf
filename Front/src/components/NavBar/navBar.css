@@ -83,8 +83,7 @@ a {
         align-items: center;
         right: -100vw;
         top: 0px;
-        height: 40%;
-        background-color: black;
+        background-color: #2146C7;
         visibility: hidden;
     }
     .show-nav .navbar-links {
@@ -133,7 +132,7 @@ a {
         align-items: center;
         right: -100vw;
         top: 0px;
-        height: 40%;
+        height: 50%;
         background-color: black;
         visibility: hidden;
     }

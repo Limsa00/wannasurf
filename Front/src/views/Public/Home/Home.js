@@ -80,21 +80,23 @@ export const Home = () => {
                     </form>
                 </div>
 
-                <div className="bloc-info">
+                <div className="bloc-info-title">
                     <h2>WannaSurf, ton ami du quotidien !</h2>
-                    <div id="bloc-info-1">
-                        <h3>Faites des economies pour surfer un max</h3>
-                        <img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
-                    </div>
-                    <div id="bloc-info-2">
-                        <h3>Pratiquez votre passion tout en respectant l'environnement</h3>
-                        <img src={ImageCarrou2} className="img-size" alt="illustration du bloc, respectez l'environnement avec wannaSurf" />
-                    </div>
-                    <div id="bloc-info-3">
-                        <h3>Faites vous de nouveaux partenaires de glisse grace à wannaSurf</h3>
-                        <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
-                    </div>
                 </div>
+                    <div className="bloc-info">
+                        <div id="bloc-info-1">
+                            <h3>Faites des economies pour surfer un max</h3>
+                            <img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
+                        </div>
+                        <div id="bloc-info-2">
+                            <h3>Pratiquez votre passion tout en respectant l'environnement</h3>
+                            <img src={ImageCarrou2} className="img-size" alt="illustration du bloc, respectez l'environnement avec wannaSurf" />
+                        </div>
+                        <div id="bloc-info-3">
+                            <h3>Faites vous de nouveaux partenaires de glisse grace à wannaSurf</h3>
+                            <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
+                        </div>
+                    </div>
 
             </div>
 

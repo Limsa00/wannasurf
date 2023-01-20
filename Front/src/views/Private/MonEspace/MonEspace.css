@@ -5,3 +5,50 @@
     justify-content: center;
     margin-top: 10%;
 }
+
+.home-back {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.title-bloc h1 {
+    text-align: center;
+    color:#2146C7;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.text-espace-intro {
+    margin: 25px 0 15px 25px;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.user-espace {
+    font-weight:bold ;
+}
+
+.icon-home {
+    height: 35px;
+    margin: 25px 0 0 30px
+}
+
+@media screen and (min-width:1300px) {
+    .espace-bloc     {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 20%;
+    }
+}
+
+Button {
+    margin: 40px;
+}
+
+.title-bloc h1 {
+    text-align: left;
+    color:blue;
+    font-size: 30px;
+    margin: 25px 0 15px 25px;
+}

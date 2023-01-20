@@ -59,28 +59,6 @@ body {
     cursor: pointer;
 }
 
-.btn-search {
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 200px;
-    background-color: #2146C7;
-    margin: 10px;
-    position: relative;
-    top: 30px;
-  }
-  
-.btn-search:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
 output {
     margin-right: 30px;
 }
@@ -110,10 +88,13 @@ output {
     margin-bottom: 25px;
  }
 
- .bloc-info h2{
+ .bloc-info-title h2{
     font-size: larger;
     font-weight: bold;
+    text-align: center;
+    color: #2146C7;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .close-footer {
@@ -164,5 +145,8 @@ output {
         flex-direction: row;
         align-items: center;
         margin-top: 70px;
+    }
+    .bloc-info-title h2{
+        font-size: 35px;
     }
 }
