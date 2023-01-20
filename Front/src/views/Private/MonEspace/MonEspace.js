@@ -1,5 +1,6 @@
 import './MonEspace.css'
 import { Link } from "react-router-dom"
+import Button from '../../../components/UI/Button'
 
 export const MonEspace = () => {
 
@@ -7,13 +8,19 @@ export const MonEspace = () => {
     
         <div className="espace-bloc">
             <Link to="/wannasurf/monProfil" >
-                <button type="submit" className="btn-space">Mon profil</button>
+                <Button>
+                    Mon profil
+                </Button>
             </Link>
             <Link to="/wannasurf/mesFutursTrajets">
-                <button type="submit" className="btn-space">Mes futurs trajets</button>
+                <Button>
+                    Mes futurs trajets
+                </Button>
             </Link>
             <Link to="/wannasurf/monHistorique">
-                <button type="submit" className="btn-space">Historique des trajets</button>
+                <Button>
+                    Historique des trajets
+                </Button>
             </Link>
         </div>
         )

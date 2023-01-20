@@ -42,24 +42,3 @@
 .form-champs {
     margin-bottom: 25px;
 }
-
-.btn-create-trajet {
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-    border-radius: 200px;
-    background-color: #2146C7;
-  }
-  
-.btn:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-

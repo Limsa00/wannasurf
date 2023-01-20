@@ -1,6 +1,7 @@
 import './SiteContact.css'
 import { useState } from 'react';
 import axios from 'axios';
+import Button from '../../../components/UI/Button';
 
 export const SiteContact = () => {
 
@@ -65,7 +66,9 @@ export const SiteContact = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn-contact" >Envoyez votre message</button>
+                <Button>
+                    Envoyez votre message
+                </Button>
 
 
             </form>

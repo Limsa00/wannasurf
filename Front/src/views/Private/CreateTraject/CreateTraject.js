@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import './CreateTraject.css'
+import Button from "../../../components/UI/Button";
 
 export const CreateTraject = (props) => {
 
@@ -109,9 +110,9 @@ export const CreateTraject = (props) => {
                 </div>
 
             
-                <button type="submit" className="btn-create-trajet">
+                <Button>
                     Créer mon trajet
-                    </button>
+                </Button>
             </div>
         </form>
         </div>

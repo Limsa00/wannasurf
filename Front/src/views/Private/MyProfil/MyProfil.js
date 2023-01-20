@@ -2,6 +2,7 @@ import './MyProfil.css'
 import React, {useContext} from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { Link } from "react-router-dom";
+import Button from '../../../components/UI/Button';
 
 export const MyProfil = () => {
 
@@ -74,7 +75,9 @@ export const MyProfil = () => {
             </div>
 
             <Link to="/wannasurf/home">
-                        <button type="submit" className="btn-home">Retour à l'acceuil</button>
+                        <Button>
+                            Retour à l'acceuil
+                        </Button>
             </Link>
         </div>
 

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";
 import ImageCarrou3 from "../../../images/surf-carrou-ex3.jpg";
+import Button from '../../../components/UI/Button';
 
 export const Home = () => {
     
@@ -72,7 +73,9 @@ export const Home = () => {
                         
                         </div>
                         <Link to="/wannasurf/trajectsList">
-                            <button type="submit" className="btn-search">Trouver un trajet</button>
+                            <Button>
+                                Trouver un trajet
+                            </Button>
                         </Link>
                     </form>
                 </div>

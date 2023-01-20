@@ -35,27 +35,6 @@
     margin: 20px;
 }
 
-.btn-style {
-    border: none;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 200px;
-    background-color: #2146C7;
-    margin-top: 20px;
-    width: 180px;
-}
-
-.btn-style:hover {
-    opacity: 0.8;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
 .err {
     color: red;
     font-weight: bold;

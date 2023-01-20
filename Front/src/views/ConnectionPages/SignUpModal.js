@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/UI/Button';
 
 export const SignUpModal = () => {
 
@@ -116,11 +117,9 @@ export const SignUpModal = () => {
                             id="signUpReapeatPwd"  
                         /> <span className='err'>{validation}</span>    
 
-                        <button 
-                            type="submit" 
-                            className="btn-style">
+                        <Button>
                             S'inscrire
-                        </button>
+                        </Button>
 
                     </form>
                 </div>)}

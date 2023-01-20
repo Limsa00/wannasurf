@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../components/UI/Button';
 
 export const SignInModal = () => {
 
@@ -87,11 +88,10 @@ export const SignInModal = () => {
                             id="signInPwd"          
                         /> <span className='err'>{validation}</span>    
 
-                        <button 
-                            type="submit" 
-                            className="btn-style">
+                        <Button
+                            onClick={() => {}}>
                             Se Connecter
-                        </button>
+                        </Button>
 
                     </form>
                 </div>)}
