@@ -65,7 +65,6 @@ class Journey extends CoreModel {
         WHERE (place_available - nb_passengers) >= $1
         AND departure_date::date = $2;`;
 
-
         const allJourneysFiltered = await db.query (query,[nb_place,date]);
         return allJourneysFiltered.rows;
 
