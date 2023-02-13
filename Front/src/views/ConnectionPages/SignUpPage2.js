@@ -1,11 +1,13 @@
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 import axios from 'axios';
 
 export const SignUpInfo = () => {
+
+    const navigate = useNavigate();
 
     const {currentUser} = useContext(UserContext)
         console.log("route de: ", currentUser )
@@ -32,6 +34,9 @@ export const SignUpInfo = () => {
     
             axios
                 .post('http://localhost:5000/user', newUser)
+                .then(
+                    navigate("/wannasurf/home")
+                    )            
         }
 
     return (
@@ -84,11 +89,9 @@ export const SignUpInfo = () => {
                             onChange={e => setGender(e.target.value)}          
                         />   
 
-                    {/* <Link to="/wannasurf/home"> */}
                         <Button>
                             Completer mon profil
                         </Button>
-                    {/* </Link> */}
 
                     </form>
                 </div>
