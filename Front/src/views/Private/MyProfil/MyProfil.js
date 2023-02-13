@@ -7,6 +7,7 @@ import Button from '../../../components/UI/Button';
 export const MyProfil = () => {
 
     const {currentUser} = useContext(UserContext)
+    console.log("route de: ", currentUser )
 
     return (
     
