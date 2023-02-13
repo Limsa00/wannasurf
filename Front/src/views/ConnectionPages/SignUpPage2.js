@@ -28,6 +28,7 @@ export const SignUpInfo = () => {
                 city_id: 1,
                 uid: uid
             };
+            console.log(newUser);
     
             axios
                 .post('http://localhost:5000/user', newUser)
@@ -83,11 +84,11 @@ export const SignUpInfo = () => {
                             onChange={e => setGender(e.target.value)}          
                         />   
 
-                    <Link to="/wannasurf/home">
+                    {/* <Link to="/wannasurf/home"> */}
                         <Button>
                             Completer mon profil
                         </Button>
-                    </Link>
+                    {/* </Link> */}
 
                     </form>
                 </div>
