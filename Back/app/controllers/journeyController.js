@@ -53,6 +53,28 @@ const journeyController = {
         } else{
             res.status(404).json('ce trajet n\'existe pas');
         }
+    },
+
+    showJourneysFiltered: async (req,res) => {
+        console.log(`----- Controller request showJourneysFiltered for ${req.query.date} & a minimum of ${req.query.place} place available -----`);
+
+        const date = new Date();
+        const dateNow = date.getTime();
+        let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+        let nbPlaceWanted = req.query.place;
+        let dateWanted = req.query.date;
+
+        nbPlaceWanted<1 ? nbPlaceWanted=1 : nbPlaceWanted; // Configurer le nombre de places minimum à 1
+        Date.parse(dateWanted)<dateNow ? dateWanted=currentDate : dateWanted; // Configurer la recherche uniquement pour la date du jour ou les dates futures
+ 
+        const journeySearch = await Journey.findJourneysFiltered(nbPlaceWanted,dateWanted);
+
+        if (journeySearch.length>0) {
+            res.json(journeySearch);
+        } else {
+            res.status(404).json('Il n\'existe pas de trajets pour cette recherche');
+        };
     }
 
 };

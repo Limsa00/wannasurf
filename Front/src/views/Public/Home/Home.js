@@ -21,7 +21,7 @@ export const Home = () => {
         const trajectSearch = {
             departure_city: lieuDepart,
             destination_surfspot_or_city: lieuDestination,
-            departure_time: dateDepart,
+            departure_date: dateDepart,
             place_available: nombrePersonne,
         };
     }

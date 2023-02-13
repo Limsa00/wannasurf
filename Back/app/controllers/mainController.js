@@ -1,9 +1,10 @@
 const Journey = require('../models/Journey');
 const User = require('../models/User');
 const City = require('../models/City');
+const Journey_has_user = require('../models/Journey_has_user');
 
 
-const objectModel = [Journey, User, City];
+const objectModel = [Journey, User, City, Journey_has_user];
 
 const mainController = {
     getEntityToUse:(req,res)=>{
