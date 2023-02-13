@@ -7,6 +7,8 @@ const mainController = require('./controllers/mainController');
 const router = express.Router();
 
 router.get('/journeySearch', journeyController.showJourneysFiltered);
+router.get('/user/:uid', loginController.findUserWithUid);
+
 
 // router.get('/journeys', journeyController.showAllJourneys);
 // router.get('/journeys/:id', journeyController.showOneJourney);

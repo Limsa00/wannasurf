@@ -17,8 +17,8 @@ class User extends CoreModel {
         return user.rows[0];
     }
 
-    static async findById(id) {
-        const user = await db.query ('SELECT * FROM "user" WHERE id=$1', [id]);
+    static async findByUid(uid) {
+        const user = await db.query ('SELECT * FROM "user" WHERE uid=$1', [uid]);
         return user.rows[0];
     }
 
