@@ -25,6 +25,18 @@ const loginController = {
         }
     },
 
+    findUserWithUid: async (req,res) => {
+        console.log("----- findUserWithUid starts ------");
+
+        const user = await User.findByUid(req.params.uid);
+       
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(202).json(`utilisateur introuvable`);
+        };
+    },
+
     loginCheck: async (req,res)=>{
         console.log("----- loginCheck starts ------");
 
