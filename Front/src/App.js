@@ -12,6 +12,7 @@ import { FuturTrajects } from './views/Private/FuturTrajets/FuturTrajects';
 import { TrajectsHistory } from './views/Public/TrajectsHistory/TrajectsHistory';
 import { SignInModal } from './views/ConnectionPages/SignInModal';
 import { SignUpModal } from './views/ConnectionPages/SignUpModal';
+import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';
 import {
   Routes,
   Route
@@ -37,9 +38,15 @@ export const App = () => {
             />
 
             <Route 
-              exact path="/wannasurf/sinscrire" 
-              element= { <SignUpModal />} 
+              path="/wannasurf/sinscrire" 
+              element={<SignUpModal />}
             />
+
+            <Route 
+                path="/wannasurf/sinscrire/complements" 
+                element= { <SignUpInfo /> } 
+              />
+
 
             <Route 
               exact path="/wannasurf/trajectsList" 

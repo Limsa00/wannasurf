@@ -25,11 +25,11 @@ export const SignUpModal = () => {
         const handleForm = async e => {
             e.preventDefault()
 
-            if((inputs.current[2].value.length || inputs.current[3].value.length) <6) {
+            if((inputs.current[1].value.length || inputs.current[2].value.length) <6) {
                 setValidation("6 characters min")
                     return;
             }
-            else if(inputs.current[2].value !== inputs.current[3].value) {
+            else if(inputs.current[1].value !== inputs.current[2].value) {
                 setValidation("Password do not match")
                     return;
             }
@@ -37,13 +37,13 @@ export const SignUpModal = () => {
             try {
                 
                 const cred = await signUp (
-                    inputs.current[1].value,
-                    inputs.current[2].value
+                    inputs.current[0].value,
+                    inputs.current[1].value
                 )
                     formRef.current.reset();
                     setValidation("")
                     // console.log(cred)
-                    navigate("/wannasurf/private/monEspace")
+                    navigate("/wannasurf/sinscrire/complements")
 
             }  catch (err) {
                 if(err.code === "auth/invalid-email") {
@@ -81,14 +81,6 @@ export const SignUpModal = () => {
                         ref={formRef}
                         className='form'
                         onSubmit={handleForm}>
-                        <input 
-                            ref={addInputs}
-                            name="pseudonyme"
-                            required
-                            type="text" 
-                            placeholder='pseudo'
-                            id="signUpPseudo"
-                        /> 
 
                         <input 
                             required

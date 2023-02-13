@@ -35,7 +35,7 @@ export const SignInModal = () => {
                     formRef.current.reset();
                     setValidation("")
                     toggleModals("close")
-                    navigate("/wannasurf/private/monEspace")
+                    navigate("/wannasurf/home")
 
             }  catch (err) {
                     console.log(err)
