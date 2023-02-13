@@ -55,28 +55,28 @@ VALUES
 ;
 
 
-INSERT INTO "user"("firstname","lastname","gender","phone","email","city_id","password")
+INSERT INTO "user"("firstname","lastname","gender","phone","uid","city_id")
 VALUES
-  ('Ray','Marin','male','06 05 19 21 51','amet@google.couk',1,'NYR72PPL0VO'),
-  ('Wang','Reyes','male','04 17 74 85 27','semper.rutrum@icloud.couk',2,'ZBC22NZJ6HJ'),
-  ('Stone','Suarez','female','03 58 62 28 57','rhoncus.nullam@icloud.org',3,'KJO43OGL1LS'),
-  ('Kellie','Casado','female','04 64 63 48 48','elementum.sem@aol.ca',4,'NCU02XUI2IT'),
-  ('Lilah','Pascual','female','08 17 67 69 73','eu.enim.etiam@protonmail.com',5,'QXQ51IHT2HT'),
-  ('Bryar','Sanchez','male','07 02 18 48 22','lorem@outlook.couk',6,'UDT74NBG0WC'),
-  ('Joel','Jimenez','female','08 74 56 83 28','egestas.hendrerit.neque@icloud.net',7,'OYY11MAT9LW'),
-  ('Suki','Medina','female','01 14 38 20 63','nullam@icloud.org',8,'OYE34TMW3OH'),
-  ('Janna','Gonzalez','male','09 85 58 62 15','faucibus.id@aol.couk',9,'QYN49FUB2HC'),
-  ('Abraham','Ortega','female','08 91 66 79 02','elit.pharetra@icloud.org',10,'IHJ85KQD3YU'),
-  ('Adrienne','Duran','female','07 18 00 44 16','sapien@outlook.couk',11,'UNF27TUI5RE'),
-  ('Hu','Vicente','male','07 24 51 44 33','leo.morbi@icloud.ca',12,'CXB52VSE2ZF'),
-  ('Karen','Ramos','male','07 70 76 83 02','ipsum.porta@hotmail.edu',13,'OWB00NQJ3IP'),
-  ('Petra','Pardo','male','03 71 87 28 10','auctor.nunc.nulla@yahoo.edu',14,'RXN45WVD1NR'),
-  ('Rhonda','Pardo','female','02 36 78 51 69','mi.fringilla.mi@protonmail.com',15,'LLV62CFJ7GT'),
-  ('Mollie','Torres','male','07 74 49 92 13','orci.consectetuer@google.ca',16,'PGI41VKF8HG'),
-  ('Alika','Santana','female','04 47 07 31 51','amet@protonmail.edu',17,'MGQ67QPA9PQ'),
-  ('Joseph','Soto','female','05 21 14 07 72','turpis.in@yahoo.ca',18,'CLM44XFI6SC'),
-  ('Alice','Torres','male','03 79 15 27 86','dolor.fusce.mi@aol.edu',19,'QQK02QKA1GQ'),
-  ('Devin','Gimenez','female','09 86 38 41 46','nam.consequat@protonmail.ca',20,'ZXE17NOV4DG')
+  ('Ray','Marin','male','06 05 19 21 51', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1),
+  ('Wang','Reyes','male','04 17 74 85 27', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',2),
+  ('Stone','Suarez','female','03 58 62 28 57', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',3),
+  ('Kellie','Casado','female','04 64 63 48 48', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',4),
+  ('Lilah','Pascual','female','08 17 67 69 73', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',5),
+  ('Bryar','Sanchez','male','07 02 18 48 22', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',6),
+  ('Joel','Jimenez','female','08 74 56 83 28', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',7),
+  ('Suki','Medina','female','01 14 38 20 63', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',8),
+  ('Janna','Gonzalez','male','09 85 58 62 15', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',9),
+  ('Abraham','Ortega','female','08 91 66 79 02', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',10),
+  ('Adrienne','Duran','female','07 18 00 44 16', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',11),
+  ('Hu','Vicente','male','07 24 51 44 33', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',12),
+  ('Karen','Ramos','male','07 70 76 83 02', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',13),
+  ('Petra','Pardo','male','03 71 87 28 10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',14),
+  ('Rhonda','Pardo','female','02 36 78 51 69', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',15),
+  ('Mollie','Torres','male','07 74 49 92 13', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',16),
+  ('Alika','Santana','female','04 47 07 31 51', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',17),
+  ('Joseph','Soto','female','05 21 14 07 72', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',18),
+  ('Alice','Torres','male','03 79 15 27 86', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',19),
+  ('Devin','Gimenez','female','09 86 38 41 46', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',20)
 ;
 
 INSERT INTO "surfspot" ("surfspotName","difficulty","city_id")

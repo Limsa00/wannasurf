@@ -8,11 +8,12 @@ CREATE TABLE "user" (
 	"lastname" TEXT NOT NULL,
 	"gender" TEXT,
     "phone" TEXT,
-	"email" TEXT NOT NULL UNIQUE,
-    "email_check" BOOLEAN default false,
-    "password" TEXT NOT NULL,
+	-- "email" TEXT NOT NULL UNIQUE,
+    -- "email_check" BOOLEAN default false,
+    -- "password" TEXT NOT NULL,
     "image_link" TEXT,
-    "role" TEXT DEFAULT 'normal'
+    "role" TEXT DEFAULT 'normal',
+    "uid" TEXT NOT NULL
 );
 
 ALTER TABLE "journey" ADD COLUMN "driver_id" INT NOT NULL REFERENCES "user"(id);

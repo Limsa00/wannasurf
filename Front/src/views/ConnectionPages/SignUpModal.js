@@ -74,7 +74,7 @@ export const SignUpModal = () => {
                     <div className='desc-inscription'>
                         <p 
                             className='intro-texte'>
-                                Vous n'avez pas de compte ? Inscrivez-vous et rejoigné une grande communauté de surfer
+                                Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
                         </p>
                     </div>
                     <form 
