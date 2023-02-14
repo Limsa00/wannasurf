@@ -25,7 +25,7 @@ export const MonEspace = () => {
         [uid]);
     
     if (error) return `Error: ${error.message}`;
-    if (!user) return "Pas de trajets disponible :(";
+    if (!user) return "Pas de user connecté :(";
 
     return (
         <>
