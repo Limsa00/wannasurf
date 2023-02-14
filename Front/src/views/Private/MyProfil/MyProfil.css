@@ -1,8 +1,68 @@
 .profil-bloc {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin: 30px 30px 70px 30px;
+}
+.title-profil-bloc {
+    margin-bottom: 20px;
+}
+
+.title-profil-style {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.bloc-profil-user, 
+.bloc-mail-user, 
+.bloc-birth-user,
+.bloc-mdp-user,
+.picture-user,
+.bloc-other {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.delete-acc {
+    color:red;
+}
+
+.reset-pwd {
+    color:indigo;
+}
+
+.img-style {
+ height: 150px;
+}
+.name-profil {
+    font-size: 25px;
+    font-weight: bold;
+    background-color: #0008C1;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #F2F2F2;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 1px #f2f2f2;
+}
+
+.icon {
+    margin-right: 25px;
+    font-size: 20px;
+    color: #0008C1;
+}
+.mail-user, 
+.birth-user,
+.phone-user {
+    text-align: center;
+}
+
+.bloc-value-mail, 
+.bloc-value-birth,
+.bloc-value-phone {
+    margin-top:15px;
 }
 
 .bloc-profil-1,

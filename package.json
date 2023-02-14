@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-gender-input": "^1.0.2",
+    "react-phone-number-input": "^3.2.18"
+  }
+}

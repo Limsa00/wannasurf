@@ -11,6 +11,12 @@
     flex-direction: column;
 }
 
+.row-gender {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .form input{
     display: flex;
     align-items: center;

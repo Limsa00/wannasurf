@@ -4,6 +4,10 @@ import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 import axios from 'axios';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const SignUpInfo = () => {
 
@@ -15,18 +19,45 @@ export const SignUpInfo = () => {
     const uid = currentUser.uid;
     console.log(uid)
 
+        const [errormsg, Seterrormsg] = useState("");
+
         const [name, setName] = useState ("");
         const [surname, setSurname] = useState ("");
-        const [gender, setGender] = useState ("");
+        const [gender, setGender] = useState("");
+        const [phoneNumber, setPhoneNumber] = useState ("");
+        const [city, setCity] = useState ("");
+        const [birth, setBirth] = useState ("");
 
         const handleForm = (evt) => {
             // On empeche le formulaire de recharger notre application
             evt.preventDefault()
-            // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
+
+              if (
+                name === "" ||
+                surname === "" ||
+                gender === "" ||
+                birth === "" ||
+                phoneNumber === "" ||
+                city === "" 
+            ) {
+            Seterrormsg("All fields are mandatory");
+            } else if (!name.match(/^[a-zA-Z]*$/)) {
+            Seterrormsg("Name is not alphanumeric");
+            } else if (
+            gender !== "Homme" &&
+            gender !== "Femme" &&
+            gender !== "Autres"
+            ) {
+            Seterrormsg("Please identify as male, female or others");
+            } else if (!phoneNumber.match(/^[0-9]*$/)) {
+            Seterrormsg("Phone Number must contain only numbers");
+            } 
+
             const newUser = { 
                 lastname: name,
                 firstname: surname,
                 gender: gender,
+                phone: phoneNumber,
                 city_id: 1,
                 uid: uid
             };
@@ -37,7 +68,11 @@ export const SignUpInfo = () => {
                 .then(
                     navigate("/wannasurf/home")
                     )            
-        }
+    }
+    
+    console.log(phoneNumber)
+    console.log(gender)
+    console.log(birth)
 
     return (
         <>
@@ -78,15 +113,59 @@ export const SignUpInfo = () => {
                             value={surname}
                             onChange={e => setSurname(e.target.value)}          
                         />   
-
-                        <input 
+                    
+                        <label>Date de naissance</label>
+                        <div className='center'>
+                        <DatePicker
+                        
                             required
-                            name="gender" 
-                            type="text" 
-                            placeholder='Genre'
-                            id="signUpGenre"
-                            value={gender}
-                            onChange={e => setGender(e.target.value)}          
+                            selected={birth}
+                            onChange={(date) => setBirth(date)}
+                        />
+                        </div>
+
+                    <label>Genre</label>
+                        <div className='row-gender'>
+                            <input
+                                type="radio"
+                                id="male"
+                                name="gender"
+                                value= "Homme"
+                                onChange={(e) => setGender(e.target.value)}
+                                checked={gender === 'Homme'} />
+                            <label
+                                htmlFor="male">
+                                Homme
+                            </label>
+                        <input
+                            type="radio"
+                            id="female"
+                            name="gender"
+                            value="Femme"
+                            onChange={(e) => setGender(e.target.value)}
+                            checked={gender === 'Femme'} />
+                        <label
+                            htmlFor="female">
+                            Femme
+                        </label>
+                        <input
+                            type="radio"
+                            id="other"
+                            name="gender"
+                            value="Autres"
+                            onChange={(e) => setGender(e.target.value)}
+                            checked={gender === 'Autres'} />
+                        <label htmlFor="other">Autres</label>
+                        </div>
+                    
+                        <PhoneInput
+                            required
+                            name="tel" 
+                            defaultCountry='FR'
+                            placeholder='phoneNumber'
+                            id="signUpPhoneNumber"
+                            value={phoneNumber}
+                            onChange={setPhoneNumber}          
                         />   
 
                         <Button>

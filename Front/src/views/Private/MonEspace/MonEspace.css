@@ -3,13 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10%;
 }
 
 .home-back {
     display: flex;
     justify-content: center;
-    margin-top: 5%;
 }
 
 .title-bloc h1 {
@@ -20,13 +18,21 @@
 }
 
 .text-espace-intro {
-    margin: 25px 0 15px 25px;
+    margin: 25px 0 0 25px;
     font-style: italic;
     font-size: 20px;
 }
 
 .user-espace {
     font-weight:bold ;
+}
+
+.space-button{
+    height: 95px;
+}
+
+.space-button a {
+    margin: 0;
 }
 
 .icon-home {

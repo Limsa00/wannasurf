@@ -34,22 +34,28 @@ export const MonEspace = () => {
                 <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
             </div>
             
-                <div className="espace-bloc">
+            <div className="espace-bloc">
+                <div className='space-button'>
                     <Link to="/wannasurf/monProfil" >
                         <Button>
                             Mon profil
                         </Button>
                     </Link>
+                </div>
+                <div className='space-button'>
                     <Link to="/wannasurf/mesFutursTrajets">
                         <Button>
                             Mes futurs trajets
                         </Button>
                     </Link>
+                </div>
+                <div className='space-button'>
                     <Link to="/wannasurf/monHistorique">
                         <Button>
                             Historique des trajets
                         </Button>
                     </Link>
+                </div>
                 </div>
 
                 <div className='home-back'>
