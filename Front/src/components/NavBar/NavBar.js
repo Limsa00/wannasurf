@@ -24,12 +24,12 @@ export const Navbar = () => {
       await signOut (auth)
       navigate("/wannasurf/home")
     } catch {
-      alert("For some reason we can't deconnect, please check your internet connection and retry")
+      alert("For some reason we can't log out, please check your internet connection and retry")
     }
   }
 
 const {currentUser} = useContext(UserContext)
-        console.log("route de: ", currentUser )
+        console.log("currentUser from navBar.js // route de : ", currentUser );
 
         if(currentUser) {
             return (
