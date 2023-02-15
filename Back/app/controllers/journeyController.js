@@ -65,8 +65,8 @@ const journeyController = {
         let nbPlaceWanted = req.query.place;
         let dateWanted = req.query.date;
 
-        nbPlaceWanted<1 ? nbPlaceWanted=1 : nbPlaceWanted; // Configurer le nombre de places minimum à 1
-        Date.parse(dateWanted)<dateNow ? dateWanted=currentDate : dateWanted; // Configurer la recherche uniquement pour la date du jour ou les dates futures
+        (!nbPlaceWanted || isNaN(nbPlaceWanted)) ? nbPlaceWanted=0 : nbPlaceWanted; // Contrôler la valeur entrante et configurer le nombre de places minimum à 0
+        (Date.parse(dateWanted)<dateNow || isNaN(Date.parse(dateWanted))) ? dateWanted=currentDate : dateWanted; // Contrôler la valeur entrante et configurer la recherche uniquement pour la date >= aujourd'hui
  
         const journeySearch = await Journey.findJourneysFiltered(nbPlaceWanted,dateWanted);
 
@@ -76,7 +76,6 @@ const journeyController = {
             res.status(404).json('Il n\'existe pas de trajets pour cette recherche');
         };
     }
-
 };
 
 module.exports = journeyController;
