@@ -8,7 +8,9 @@ const authMW = require('./services/authMW')
 const router = express.Router();
 
 router.get('/journeySearch', journeyController.showJourneysFiltered);
+
 router.get('/user/:uid', loginController.findUserWithUid);
+router.patch('/user/:uid', loginController.editUser);
 
 
 // router.get('/journeys', journeyController.showAllJourneys);
