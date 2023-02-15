@@ -55,28 +55,28 @@ VALUES
 ;
 
 
-INSERT INTO "user"("firstname","lastname","gender","phone","uid","city_id")
+INSERT INTO "user"("firstname","lastname","gender","phone", "birthday", "uid","city_id")
 VALUES
-  ('Ray','Marin','male','06 05 19 21 51', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1),
-  ('Wang','Reyes','male','04 17 74 85 27', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',2),
-  ('Stone','Suarez','female','03 58 62 28 57', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',3),
-  ('Kellie','Casado','female','04 64 63 48 48', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',4),
-  ('Lilah','Pascual','female','08 17 67 69 73', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',5),
-  ('Bryar','Sanchez','male','07 02 18 48 22', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',6),
-  ('Joel','Jimenez','female','08 74 56 83 28', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',7),
-  ('Suki','Medina','female','01 14 38 20 63', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',8),
-  ('Janna','Gonzalez','male','09 85 58 62 15', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',9),
-  ('Abraham','Ortega','female','08 91 66 79 02', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',10),
-  ('Adrienne','Duran','female','07 18 00 44 16', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',11),
-  ('Hu','Vicente','male','07 24 51 44 33', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',12),
-  ('Karen','Ramos','male','07 70 76 83 02', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',13),
-  ('Petra','Pardo','male','03 71 87 28 10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',14),
-  ('Rhonda','Pardo','female','02 36 78 51 69', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',15),
-  ('Mollie','Torres','male','07 74 49 92 13', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',16),
-  ('Alika','Santana','female','04 47 07 31 51', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',17),
-  ('Joseph','Soto','female','05 21 14 07 72', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',18),
-  ('Alice','Torres','male','03 79 15 27 86', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',19),
-  ('Devin','Gimenez','female','09 86 38 41 46', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',20)
+  ('Ray','Marin','male','06 05 19 21 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1),
+  ('Wang','Reyes','male','04 17 74 85 27', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',2),
+  ('Stone','Suarez','female','03 58 62 28 57', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',3),
+  ('Kellie','Casado','female','04 64 63 48 48', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',4),
+  ('Lilah','Pascual','female','08 17 67 69 73', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',5),
+  ('Bryar','Sanchez','male','07 02 18 48 22', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',6),
+  ('Joel','Jimenez','female','08 74 56 83 28', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',7),
+  ('Suki','Medina','female','01 14 38 20 63', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',8),
+  ('Janna','Gonzalez','male','09 85 58 62 15', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',9),
+  ('Abraham','Ortega','female','08 91 66 79 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',10),
+  ('Adrienne','Duran','female','07 18 00 44 16', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',11),
+  ('Hu','Vicente','male','07 24 51 44 33', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',12),
+  ('Karen','Ramos','male','07 70 76 83 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',13),
+  ('Petra','Pardo','male','03 71 87 28 10', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',14),
+  ('Rhonda','Pardo','female','02 36 78 51 69', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',15),
+  ('Mollie','Torres','male','07 74 49 92 13', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',16),
+  ('Alika','Santana','female','04 47 07 31 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',17),
+  ('Joseph','Soto','female','05 21 14 07 72', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',18),
+  ('Alice','Torres','male','03 79 15 27 86', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',19),
+  ('Devin','Gimenez','female','09 86 38 41 46', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',20)
 ;
 
 INSERT INTO "surfspot" ("surfspotName","difficulty","city_id")

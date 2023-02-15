@@ -11,7 +11,7 @@ export const TrajectResult = () => {
     
     React.useEffect(() => {
         axios
-            .get("http://localhost:5000/journeys/2")
+            .get("http://localhost:5000/journey/2")
             .then((response) => { setTraject(response.data); })
             .catch(error => { setError(error); });
     },
@@ -26,7 +26,7 @@ export const TrajectResult = () => {
             <div className="traject-card">
                 <div className="up-card">
                     <div className="left-side">
-                        <p><span className="bold">Depart: </span> {traject.departure_city}</p>
+                        <p><span className="bold">Depart: </span> {traject.departure_city_id}</p>
                     </div>
                     <div className="right-side">
                         <p><span className="bold"> Destination : </span>{traject.destination_surfspot_or_city}</p>

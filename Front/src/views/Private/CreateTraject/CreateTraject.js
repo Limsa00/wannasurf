@@ -21,14 +21,17 @@ export const CreateTraject = (props) => {
         evt.preventDefault()
         // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
         const newTraject = { 
-            departure_city: lieuDepart,
-            destination_surfspot_or_city: lieuArrive,
+            departure_city_id: lieuDepart,
+            destination_surfspot_or_city_id: lieuArrive,
             departure_date: dateDepart,
             departure_time: heureDepart,
             price:15,
             place_available: nbPassager,
             board_size_allowed: taillePlanche,
-            number_of_boards_allowed: 3
+            number_of_boards_allowed: 3,
+            meeting_address: "633-4350 Dolor Road",
+            driver_id: 10
+        
         };
 
         axios

@@ -8,6 +8,7 @@ CREATE TABLE "user" (
 	"lastname" TEXT NOT NULL,
 	"gender" TEXT,
     "phone" TEXT,
+    "birthday" DATE,
 	-- "email" TEXT NOT NULL UNIQUE,
     -- "email_check" BOOLEAN default false,
     -- "password" TEXT NOT NULL,

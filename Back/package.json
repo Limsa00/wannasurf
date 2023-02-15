@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "seed": "DROP DATABASE wannasurf; CREATE DATABASE wannasurf WITH OWNER salim; sqitch deploy db:pg:wannasurf  ; psql -d wannasurf -f migrations/insert.sql"
+    "seed": "DROP DATABASE wannasurf; CREATE DATABASE wannasurf WITH OWNER franswap; sqitch deploy db:pg:wannasurf  ; psql -d wannasurf -f migrations/insert.sql"
   },
   "repository": {
     "type": "git",

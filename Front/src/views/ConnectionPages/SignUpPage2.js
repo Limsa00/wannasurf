@@ -6,10 +6,13 @@ import Button from '../../components/UI/Button';
 import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import DatePicker from "react-datepicker";
+import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import fr from "date-fns/locale/fr";
 
 export const SignUpInfo = () => {
+
+    registerLocale("fr", fr);
 
     const navigate = useNavigate();
 
@@ -58,6 +61,7 @@ export const SignUpInfo = () => {
                 firstname: surname,
                 gender: gender,
                 phone: phoneNumber,
+                birthday: birth,
                 city_id: 1,
                 uid: uid
             };
@@ -115,12 +119,15 @@ export const SignUpInfo = () => {
                         />   
                     
                         <label>Date de naissance</label>
-                        <div className='center'>
+                        <div className='center row'>
                         <DatePicker
                         
                             required
                             selected={birth}
                             onChange={(date) => setBirth(date)}
+                            locale="fr"
+                            isClearable
+                            dateFormat="P"
                         />
                         </div>
 

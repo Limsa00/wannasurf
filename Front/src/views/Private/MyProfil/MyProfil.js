@@ -74,7 +74,7 @@ export const MyProfil = () => {
                     <div className='birth-user'>
                         <p className="bold">Date de naissance</p>
                         <div className='bloc-value-birth'>
-                            <p>11/12/2022</p>
+                            <p>{user.birthday}</p>
                         </div>
                     </div>
                 </div>

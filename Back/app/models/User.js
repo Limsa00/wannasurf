@@ -24,14 +24,15 @@ class User extends CoreModel {
 
     async saveOneUser() {
         const insertedUser = await db.query(`
-        INSERT INTO "user"("firstname","lastname","gender","phone","email","city","password")
-        VALUES ($1, $2, $3, $4, $5, $6, $7)
+        INSERT INTO "user"("firstname","lastname","gender","phone","birthday","email","city","password")
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
         RETURNING id;
         `, [
             this.firstname,
             this.lastname,
             this.gender,
             this.phone,
+            this.birthday,
             this.email,
             this.city,
             this.password
