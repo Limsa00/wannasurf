@@ -6,7 +6,8 @@ import Button from '../../../components/UI/Button';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import CakeIcon from '@mui/icons-material/Cake';
-import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; 
+import dateFormat, { masks } from "dateformat";
 import axios
     from 'axios';
 export const MyProfil = () => {
@@ -74,7 +75,7 @@ export const MyProfil = () => {
                     <div className='birth-user'>
                         <p className="bold">Date de naissance</p>
                         <div className='bloc-value-birth'>
-                            <p>{user.birthday}</p>
+                            <p>{dateFormat(user.birthday, "dd - mm - yyyy")}</p>
                         </div>
                     </div>
                 </div>
