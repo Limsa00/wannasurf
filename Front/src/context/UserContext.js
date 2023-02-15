@@ -2,18 +2,26 @@ import React, {useState, useEffect, createContext } from "react";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    onAuthStateChanged
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    updatePassword
 } from "firebase/auth"
 import {auth} from "../firebase.config"
 
 export const UserContext = createContext();
 
-export function UserContextProvider (props) {
+export function UserContextProvider(props) {
 
-    const signUp = (email,pwd) => createUserWithEmailAndPassword
-    (auth, email, pwd)
-    const signIn = (email,pwd) => signInWithEmailAndPassword
-    (auth, email, pwd)
+    const signUp = (email, pwd) => createUserWithEmailAndPassword
+        (auth, email, pwd)
+    const signIn = (email, pwd) => signInWithEmailAndPassword
+        (auth, email, pwd)
+    const forgotPassword = (email) => sendPasswordResetEmail
+        (auth, email, {
+            url: 'http://localhost:3000/wannasurf/seconnecter',
+        })
+    const changePasswordFirebase = (newPassword) => updatePassword
+        (auth, newPassword)
 
     const [currentUser, setCurrentUser] = useState();
     const [loadingData, setLoadingData] = useState(true);
@@ -54,7 +62,7 @@ export function UserContextProvider (props) {
         }     
     }
     return (
-        <UserContext.Provider value={{modalState, toggleModals, signUp, signIn, currentUser}}>
+        <UserContext.Provider value={{modalState, toggleModals, signUp, signIn, changePasswordFirebase, forgotPassword, currentUser}}>
             {!loadingData && props.children}
         </UserContext.Provider>
     );

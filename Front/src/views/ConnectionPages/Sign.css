@@ -50,3 +50,18 @@
     display: flex;
     flex-direction: row;
 }
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.no-decoration {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.no-decoration:hover {
+    font-weight: bold;
+}

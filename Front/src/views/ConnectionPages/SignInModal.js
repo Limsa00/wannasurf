@@ -1,7 +1,7 @@
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 
 export const SignInModal = () => {
@@ -88,12 +88,18 @@ export const SignInModal = () => {
                             id="signInPwd"          
                         /> <span className='err'>{validation}</span>    
 
+                        <Link to='/wannasurf/resetPassword'>
+                            <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
+                        </Link>
+                        
+
                         <Button
                             onClick={() => {}}>
                             Se Connecter
                         </Button>
 
                     </form>
+
                 </div>)}
             </>
         )

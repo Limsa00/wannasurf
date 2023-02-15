@@ -13,6 +13,8 @@ import { TrajectsHistory } from './views/Public/TrajectsHistory/TrajectsHistory'
 import { SignInModal } from './views/ConnectionPages/SignInModal';
 import { SignUpModal } from './views/ConnectionPages/SignUpModal';
 import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';
+import { ResetPassword } from './views/ConnectionPages/ResetPassword';
+import { ChangePassword } from './views/ConnectionPages/ChangePassword';
 import {
   Routes,
   Route
@@ -35,6 +37,16 @@ export const App = () => {
             <Route 
               exact path="/wannasurf/seconnecter" 
               element= { <SignInModal />} 
+            />
+        
+            <Route 
+              exact path="/wannasurf/resetPassword" 
+              element= { <ResetPassword />} 
+            />
+        
+            <Route 
+              exact path="/wannasurf/changePassword" 
+              element= { <ChangePassword />} 
             />
 
             <Route 
