@@ -28,6 +28,7 @@ router.patch('/user/:uid', loginController.editUser);
 router.get('/:entity', mainController.showAllComponents);
 router.get('/:entity/:id', mainController.showOneComponent);
 router.post('/:entity', /*authMW,*/ mainController.addOneComponent);
+router.patch('/:entity/:id', mainController.editOneComponent);
 router.delete('/:entity/:id', mainController.deleteOneComponent);
 
 module.exports = router;
