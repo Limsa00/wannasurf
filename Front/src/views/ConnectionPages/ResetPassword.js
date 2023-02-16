@@ -18,7 +18,7 @@ export const ResetPassword = () => {
 
             try {
                 
-                const cred = await forgotPassword (
+                await forgotPassword (
                     email,
                 ).then(
                     setSendReset("Un mail vous a ete envoyé"))
@@ -41,7 +41,7 @@ export const ResetPassword = () => {
                     <div className='desc-inscription'>
                         <p 
                             className='intro-texte'>
-                            Votre mot de passe à bu la tasse ? Reinitialisez-le !                        
+                            Votre mot de passe a bu la tasse ? Reinitialisez-le !                        
                         </p>
 
                     </div>
