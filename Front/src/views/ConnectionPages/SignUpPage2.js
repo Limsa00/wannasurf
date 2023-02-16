@@ -9,7 +9,7 @@ import 'react-phone-number-input/style.css';
 import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
-// import {callApi} from './callApi';
+const callApi = require('../../components/callApi');
 
 export const SignUpInfo = () => {
 
@@ -23,86 +23,51 @@ export const SignUpInfo = () => {
     const uid = currentUser.uid;
     console.log("uid from SignUpPage2.js : ", uid);
 
-        const [errormsg, Seterrormsg] = useState("");
+    const [errormsg, Seterrormsg] = useState("");
 
-        const [name, setName] = useState ("");
-        const [surname, setSurname] = useState ("");
-        const [gender, setGender] = useState("");
-        const [phoneNumber, setPhoneNumber] = useState ("");
-        const [city, setCity] = useState ("");
-        const [birth, setBirth] = useState ("");
+    const [name, setName] = useState ("");
+    const [surname, setSurname] = useState ("");
+    const [gender, setGender] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState ("");
+    const [city, setCity] = useState ("");
+    const [birth, setBirth] = useState ("");
 
-        const callApi = (url, method, body) => {
-            var options = {
-                method: method,
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: body !== undefined ? JSON.stringify(body) : undefined
-            };
-          
-            if (currentUser) {
-                currentUser.getIdToken(true)
-                .then(function(idToken) {
-                    options.headers["Authorization"] = "Bearer " + idToken;
-                    fetch(url, options);
-                })
-                .then(navigate("/wannasurf/home"))
-                .catch(error => {
-                    console.log(error);
-                });
-            } else {
-                fetch(url, options);
-            }
-        }
+    const handleForm = (evt) => {
+        evt.preventDefault()
 
-        const handleForm = (evt) => {
-            // On empeche le formulaire de recharger notre application
-            evt.preventDefault()
-
-              if (
-                name === "" ||
-                surname === "" ||
-                gender === "" ||
-                birth === "" ||
-                phoneNumber === "" ||
-                city === "" 
-            ) {
+        if (name === "" || surname === "" || gender === "" || birth === "" || phoneNumber === "" || city === "") {
             Seterrormsg("All fields are mandatory");
-            } else if (!name.match(/^[a-zA-Z]*$/)) {
+        } else if (!name.match(/^[a-zA-Z]*$/)) {
             Seterrormsg("Name is not alphanumeric");
-            } else if (
-            gender !== "Homme" &&
-            gender !== "Femme" &&
-            gender !== "Autres"
-            ) {
+        } else if (gender !== "Homme" && gender !== "Femme" && gender !== "Autres") {
             Seterrormsg("Please identify as male, female or others");
-            } else if (!phoneNumber.match(/^[0-9]*$/)) {
+        } else if (!phoneNumber.match(/^[0-9]*$/)) {
             Seterrormsg("Phone Number must contain only numbers");
-            } 
+        };
 
-            const newUser = { 
-                lastname: name,
-                firstname: surname,
-                gender: gender,
-                phone: phoneNumber,
-                birthday: birth,
-                city_id: 1,
-                uid: uid
-            };
-            console.log(newUser);
+        const newUser = { 
+            lastname: surname,
+            firstname: name,
+            gender: gender,
+            phone: phoneNumber,
+            birthday: birth,
+            city_id: 1,
+            uid: uid
+        };
+        console.log("newUser : ", newUser);
 
-            const endpoint = 'http://localhost:5000/user';
+        const endpoint = `http://localhost:5000/user`;
 
-            callApi(endpoint, "POST", newUser)
-    
-            /*
-            axios
-                .post('http://localhost:5000/user', newUser)
-                .then(
-                    navigate("/wannasurf/home")
-                    )   
-            */
+        callApi(endpoint, "POST", newUser);
+        navigate("/wannasurf/home");
+
+        /*
+        axios
+            .post('http://localhost:5000/user', newUser)
+            .then(
+                navigate("/wannasurf/home")
+                )   
+        */
     }
 
     return (
