@@ -9,7 +9,7 @@ import 'react-phone-number-input/style.css';
 import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
-const callApi = require('../../components/callApi');
+const callApiModule = require('../../components/callApiModule');
 
 export const SignUpInfo = () => {
 
@@ -58,7 +58,7 @@ export const SignUpInfo = () => {
 
         const endpoint = `http://localhost:5000/user`;
 
-        callApi(endpoint, "POST", newUser);
+        callApiModule(endpoint, "POST", newUser, currentUser);
         navigate("/wannasurf/home");
 
         /*

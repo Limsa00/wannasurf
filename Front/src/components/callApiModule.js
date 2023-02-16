@@ -1,4 +1,4 @@
-const callApi = (url, method, body) => {
+const callApiModule = (url, method, body, currentUser) => {
     var options = {
         method: method,
         headers: {
@@ -6,9 +6,9 @@ const callApi = (url, method, body) => {
         },
         body: body !== undefined ? JSON.stringify(body) : undefined
     };
-    
-    if (this.currentUser) {
-        this.currentUser.getIdToken(true)
+
+    if (currentUser) {
+        currentUser.getIdToken(true)
         .then(function(idToken) {
             options.headers["Authorization"] = "Bearer " + idToken;
             fetch(url, options);
@@ -21,4 +21,4 @@ const callApi = (url, method, body) => {
     }
 }
 
-module.exports = callApi;
+module.exports = callApiModule;

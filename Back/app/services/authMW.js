@@ -8,7 +8,7 @@ var serviceAccount = {
   admin.initializeApp(serviceAccount);
 
 const authMW = (req,res,next) => {
-    console.log('--Call to Auth MW--');
+    console.log('--Call to backend AuthMW.js--');
 
     var token;
 
@@ -20,11 +20,7 @@ const authMW = (req,res,next) => {
         .then(function(decodedToken) {
           console.log("Decoded token:")
           console.log(decodedToken);
-    
-        //   if (callback) {
-        //     callback(req, res);
-        //   }
-        next();  
+          next();  
         }).catch(function(error) {
           // Setup response
           console.log(error);
@@ -35,16 +31,6 @@ const authMW = (req,res,next) => {
         console.log('No bearer token');
         res.status(401).send();
     }
-
-  
-    /*
-    if(authorized) {
-        next()
-    } else{
-        res.status(403).send('Unauthorized!')
-        return
-    }
-    */
 }
 
 module.exports = authMW;

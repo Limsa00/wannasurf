@@ -27,7 +27,7 @@ router.patch('/user/:uid', loginController.editUser);
 // Factoring routes for models : journey, user
 router.get('/:entity', mainController.showAllComponents);
 router.get('/:entity/:id', mainController.showOneComponent);
-router.post('/:entity', /*authMW,*/ mainController.addOneComponent);
+router.post('/:entity', authMW, mainController.addOneComponent);
 router.patch('/:entity/:id', mainController.editOneComponent);
 router.delete('/:entity/:id', mainController.deleteOneComponent);
 
