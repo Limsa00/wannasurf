@@ -61,7 +61,7 @@ export const MonEspace = () => {
                 <div className='home-back'>
                     <Link to="/wannasurf/home">
                             <Button>
-                                Acceuil
+                                Accueil
                                 <span className='icon-home'>
                                     <HomeIcon />
                                 </span>

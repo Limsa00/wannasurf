@@ -9,6 +9,7 @@ import 'react-phone-number-input/style.css';
 import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import fr from "date-fns/locale/fr";
+// import {callApi} from './callApi';
 
 export const SignUpInfo = () => {
 
@@ -17,10 +18,10 @@ export const SignUpInfo = () => {
     const navigate = useNavigate();
 
     const {currentUser} = useContext(UserContext)
-        console.log("route de: ", currentUser )
+    console.log("currentUser from SignUpPage2.js // route de : ", currentUser );
     
     const uid = currentUser.uid;
-    console.log(uid)
+    console.log("uid from SignUpPage2.js : ", uid);
 
         const [errormsg, Seterrormsg] = useState("");
 
@@ -30,6 +31,30 @@ export const SignUpInfo = () => {
         const [phoneNumber, setPhoneNumber] = useState ("");
         const [city, setCity] = useState ("");
         const [birth, setBirth] = useState ("");
+
+        const callApi = (url, method, body) => {
+            var options = {
+                method: method,
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: body !== undefined ? JSON.stringify(body) : undefined
+            };
+          
+            if (currentUser) {
+                currentUser.getIdToken(true)
+                .then(function(idToken) {
+                    options.headers["Authorization"] = "Bearer " + idToken;
+                    fetch(url, options);
+                })
+                .then(navigate("/wannasurf/home"))
+                .catch(error => {
+                    console.log(error);
+                });
+            } else {
+                fetch(url, options);
+            }
+        }
 
         const handleForm = (evt) => {
             // On empeche le formulaire de recharger notre application
@@ -66,17 +91,19 @@ export const SignUpInfo = () => {
                 uid: uid
             };
             console.log(newUser);
+
+            const endpoint = 'http://localhost:5000/user';
+
+            callApi(endpoint, "POST", newUser)
     
+            /*
             axios
                 .post('http://localhost:5000/user', newUser)
                 .then(
                     navigate("/wannasurf/home")
-                    )            
+                    )   
+            */
     }
-    
-    console.log(phoneNumber)
-    console.log(gender)
-    console.log(birth)
 
     return (
         <>

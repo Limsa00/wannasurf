@@ -6,11 +6,11 @@ import Button from '../../components/UI/Button';
 
 export const SignInModal = () => {
 
-    const {modalState, toggleModals, signIn} = useContext(UserContext)
+    const {modalState, toggleModals, signIn} = useContext(UserContext);
 
     const navigate = useNavigate();
 
-    console.log(signIn)
+    console.log('signIn from signInModal : ', signIn);
 
     const [validation, setValidation] = useState("");
 
@@ -26,8 +26,7 @@ export const SignInModal = () => {
         const handleForm = async e => {
             e.preventDefault()
 
-            try {
-                
+            try {                
                 const cred = await signIn (
                     inputs.current[0].value,
                     inputs.current[1].value
@@ -51,8 +50,7 @@ export const SignInModal = () => {
     return (
         <>
             {modalState.signInModal && (
-                <div className="inscription-bloc">
-                    
+                <div className="inscription-bloc">                    
                     <h1 
                         className='title'>
                             Se Connecter
@@ -63,8 +61,8 @@ export const SignInModal = () => {
                             className='intro-texte'>
                             Ride the wave !                        
                         </p>
-
                     </div>
+
                     <form 
                         ref={formRef}
                         className='form'
@@ -97,7 +95,6 @@ export const SignInModal = () => {
                             onClick={() => {}}>
                             Se Connecter
                         </Button>
-
                     </form>
 
                 </div>)}

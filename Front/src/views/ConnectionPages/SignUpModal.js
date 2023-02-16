@@ -10,7 +10,7 @@ export const SignUpModal = () => {
 
     const navigate = useNavigate();
 
-    console.log(signUp)
+    console.log('signUp from signUpModal : ',signUp);
 
     const [validation, setValidation] = useState("");
 

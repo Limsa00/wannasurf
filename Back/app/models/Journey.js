@@ -49,23 +49,27 @@ class Journey extends CoreModel {
         SELECT 
             journey.id AS journey_id,
             departure_date::date AS "date",
-            firstname || ' ' || lastname AS "driver",
+            driver_id,
+            firstname AS driver_firstname,
+            lastname AS "driver_lastname",
             "cityName" AS city,
             meeting_address AS address,
             "surfspotName" AS surfspot,
             departure_time AS "time",
             price,
-            nb_passengers AS booked_places,
-            (place_available - nb_passengers) AS place_available		
+            place_available AS places_offered,	
+            COALESCE(nb_passengers,0) AS places_booked,
+            COALESCE((place_available - nb_passengers), place_available) AS places_remaining		
         FROM journey
-        JOIN nb_place_booked on journey.id = nb_place_booked."journey_id"
+        LEFT JOIN nb_place_booked on journey.id = nb_place_booked."journey_id"
         JOIN city ON journey.departure_city_id = city.id
         JOIN surfspot ON journey.destination_surfspot_or_city_id = surfspot.id
         JOIN "user" ON journey.driver_id = "user".id
-        WHERE (place_available - nb_passengers) >= $1
+        WHERE COALESCE((place_available - nb_passengers), place_available)>= $1
         AND departure_date::date = $2;`;
 
         const allJourneysFiltered = await db.query (query,[nb_place,date]);
+
         return allJourneysFiltered.rows;
 
     }

@@ -103,6 +103,12 @@ class CoreModel {
             await db.query(`DELETE FROM ${this.constructor.tableName} WHERE id = $1;`, [this.id]);
         }
     }
+
+    update(data){
+        for(const prop in data){
+            this[prop] = data[prop];
+        }
+    }
 }
 
 module.exports = CoreModel ;

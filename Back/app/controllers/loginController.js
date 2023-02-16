@@ -1,6 +1,35 @@
 const User = require('../models/User');
 
 const loginController = {
+
+    findUserWithUid: async (req,res) => {
+        console.log("----- loginController request findUserWithUid starts ------");
+
+        const user = await User.findByUid(req.params.uid);
+       
+        if (user) {
+            res.json(user);
+        } else {
+            res.status(202).json(`utilisateur introuvable`);
+        };
+    },
+
+    editUser: async (req,res) => {
+        console.log("----- loginController request editUser starts ------");
+
+        const user = await User.findByUid(req.params.uid);
+
+        if(user){
+            const userToEdit = await new User(user);
+            userToEdit.update(req.body);
+            userToEdit.saveOrEditOneComponent();
+            res.status(200).json('Utilisateur mis à jour')
+        }else{
+            res.status(202).json(`Impossible d'effectuer cette opération`);
+        }        
+    }
+
+    /*
     doLogin: async (req,res)=>{
         console.log("----- doLogin starts ------");
 
@@ -23,18 +52,6 @@ const loginController = {
                 res.status(200).json({ logged: true, session: req.session.user });
             // }
         }
-    },
-
-    findUserWithUid: async (req,res) => {
-        console.log("----- findUserWithUid starts ------");
-
-        const user = await User.findByUid(req.params.uid);
-       
-        if (user) {
-            res.json(user);
-        } else {
-            res.status(202).json(`utilisateur introuvable`);
-        };
     },
 
     loginCheck: async (req,res)=>{
@@ -101,6 +118,7 @@ const loginController = {
             res.status(404).json('utilisateur introuvable');
         }
     }
+    */
 };
 
 module.exports = loginController;

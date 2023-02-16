@@ -49,7 +49,7 @@ const mainController = {
     },
 
     addOneComponent: async (req,res) =>{
-        console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`)
+        console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`);
 
         const entityToUse = mainController.getEntityToUse(req,res);
 
@@ -57,6 +57,22 @@ const mainController = {
         const addedInstance = await newInstance.saveOrEditOneComponent();
 
         res.json(addedInstance);
+    },
+
+    editOneComponent: async (req,res) => {
+        console.log(`----- Controller request UpdateOneComponent for ${req.params.entity} -----`);
+
+        const entityToUse = mainController.getEntityToUse(req,res);
+        const instance = await entityToUse.findOneComponent(req.params.id);
+        
+        if(instance){
+            instanceToEdit = await new entityToUse(instance);
+            instanceToEdit.update(req.body);
+            instanceToEdit.saveOrEditOneComponent();
+            res.status(200).json('Utilisateur mis à jour');
+        } else {
+            res.status(202).json(`Impossible d'effectuer cette opération`);
+        }
     },
 
     deleteOneComponent: async (req,res) =>{
