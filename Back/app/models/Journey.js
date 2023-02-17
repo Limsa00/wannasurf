@@ -71,7 +71,6 @@ class Journey extends CoreModel {
         const allJourneysFiltered = await db.query (query,[nb_place,date]);
 
         return allJourneysFiltered.rows;
-
     }
 }
 

@@ -1,9 +1,9 @@
 const User = require('../models/User');
 
-const loginController = {
+const userController = {
 
     findUserWithUid: async (req,res) => {
-        console.log("----- loginController request findUserWithUid starts ------");
+        console.log("----- userController request findUserWithUid starts ------");
 
         const user = await User.findByUid(req.params.uid);
        
@@ -14,8 +14,13 @@ const loginController = {
         };
     },
 
+    // A FINIR
+    // showUserJourneys : async (req,res) => {
+    //     console.log("----- userController request findUserWithUid starts ------");
+    // },
+
     editUser: async (req,res) => {
-        console.log("----- loginController request editUser starts ------");
+        console.log("----- userController request editUser starts ------");
 
         const user = await User.findByUid(req.params.uid);
 
@@ -121,4 +126,4 @@ const loginController = {
     */
 };
 
-module.exports = loginController;
+module.exports = userController;
