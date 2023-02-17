@@ -16,7 +16,7 @@ import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';
 import { ResetPassword } from './views/ConnectionPages/ResetPassword';
 import { ChangePassword } from './views/ConnectionPages/ChangePassword';
 import Container from './views/Public/Container';
-import TajectScreen from './views/Public/TajectScreen';
+import TrajectScreen from './views/Public/TrajectScreen';
 import {
   Routes,
   Route
@@ -42,8 +42,8 @@ export const App = () => {
                 element= { <TrajectResult /> } 
               />
               <Route 
-                exact path="/wannasurf/trajectsDetails" 
-                element= { <TajectScreen /> } 
+                exact path="/wannasurf/trajectsDetails/:id" 
+                element= { <TrajectScreen /> } 
               />
             </Route>
   

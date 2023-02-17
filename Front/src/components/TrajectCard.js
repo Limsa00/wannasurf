@@ -19,8 +19,6 @@ export const TrajectCard = ({
     places_remaining,
 }) => {
 
-    const navigation = useNavigate();
-
     return (
         <div className="traject-page"> 
             <h1 className="title-traject">Liste des trajets disponibles</h1>
@@ -30,14 +28,14 @@ export const TrajectCard = ({
                         <p><span className="bold">Depart: </span> {city}</p>
                     </div>
                     <div className="right-side">
-                        <p><span className="bold"> Destination : </span>{surfspot}</p>
+                        <p><span className="bold"> Destination : </span>{journey_id}</p>
                     </div>
                 </div>
                     <div className="down-card">
                         <p><span className="bold"> heure de depart:</span> {time}</p>
                         <p className="traject-price"> <span className="bold"> Prix du traject: </span>{price} $ </p>
                 </div>
-                <Link to='/wannasurf/trajectsDetails'>
+                <Link to={`/wannasurf/trajectsDetails/${journey_id}`} >
                     <Button>
                             Detail du trajet
                     </Button>

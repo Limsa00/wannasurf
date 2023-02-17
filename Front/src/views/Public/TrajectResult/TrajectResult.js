@@ -8,13 +8,14 @@ import dateFormat, { masks } from "dateformat";
 
 export const TrajectResult = () => {
 
-    const [traject, setTraject] = React.useState(null);
+    const context = useOutletContext()
+    const [traject, setTraject] = context.traject;
     const [error, setError] = React.useState(null);
-    const [trajectSearch, setTrajectSearch] = useOutletContext() 
+    const [trajectSearch,] = context.trajectSearch
 
     const place = trajectSearch.place_available
     const date = trajectSearch.departure_date
-
+    
     React.useEffect(() => {
         axios
             .get(`http://localhost:5000/journeySearch?place=${place}&date=${date}`)
@@ -28,16 +29,16 @@ export const TrajectResult = () => {
 
     return (
         <div>
-            {traject?.map(traject =>(
+            {traject?.map(traject => (           
                 <TrajectCard
-                    key={traject.toString()}
-                    journey_id={traject.id}
+                    key={`${traject.journey_id}`}
+                    journey_id={traject.journey_id}
                     date={traject.date}
                     driver_firstname={traject.driver_firstname}
                     driver_lastname={traject.driver_lastname}
                     city={traject.city}
                     address={traject.address}
-                    surfspot={traject.surfsport}
+                    surfspot={traject.surfspot}
                     time={traject.time}
                     price={traject.price}
                     places_remaining={traject.places_remaining}

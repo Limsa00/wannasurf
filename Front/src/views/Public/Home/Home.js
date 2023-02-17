@@ -15,7 +15,7 @@ export const Home = () => {
     const [lieuDestination, setLieuDestination] = useState("");
     const [dateDepart, setDateDepart] = useState("");
     const [nombrePersonne, setNombrePersonne] = useState(1);
-    const [trajectSearch, setTrajectSearch] = useOutletContext() 
+    const [trajectSearch, setTrajectSearch] = useOutletContext().trajectSearch 
 
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
