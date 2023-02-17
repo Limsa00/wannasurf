@@ -10,7 +10,7 @@ import NavFrame from "../NavFrame"
 
 export const Navbar = () => {
 
-  const [ showLinks, setShowLinks ] = useState(false)
+  const [showLinks, setShowLinks] = useState(false)
 
   const handleShowLinks = () =>
     setShowLinks(!showLinks)

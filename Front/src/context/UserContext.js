@@ -20,8 +20,8 @@ export function UserContextProvider(props) {
         (auth, email, {
             url: 'http://localhost:3000/wannasurf/seconnecter',
         })
-    const changePasswordFirebase = (newPassword) => updatePassword
-        (auth, newPassword)
+    const changePasswordFirebase = (user, newPassword) => updatePassword
+        (user, newPassword)
 
     const [currentUser, setCurrentUser] = useState();
     const [loadingData, setLoadingData] = useState(true);

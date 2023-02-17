@@ -1,7 +1,7 @@
 import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
-import { Link } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";
@@ -10,20 +10,24 @@ import Button from '../../../components/UI/Button';
 
 export const Home = () => {
     
+    const navigate = useNavigate();
     const [lieuDepart, setLieuDepart] = useState("");
     const [lieuDestination, setLieuDestination] = useState("");
     const [dateDepart, setDateDepart] = useState("");
     const [nombrePersonne, setNombrePersonne] = useState(1);
-   
+    const [trajectSearch, setTrajectSearch] = useOutletContext() 
+
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
 
-        const trajectSearch = {
+        setTrajectSearch ( {
             departure_city: lieuDepart,
             destination_surfspot_or_city: lieuDestination,
             departure_date: dateDepart,
             place_available: nombrePersonne,
-        };
+        });
+        console.log(trajectSearch)
+        navigate("/wannasurf/trajectsList")
     }
 
         return (
@@ -56,7 +60,7 @@ export const Home = () => {
                         </div>
                         <div className="flex-mobile">
                             <input
-                                type="text"
+                                type="date"
                                 placeholder="Date de depart"
                                 className="input-search-style"
                                 value={dateDepart}
@@ -72,11 +76,10 @@ export const Home = () => {
                             <output>{nombrePersonne}</output>
                         
                         </div>
-                        <Link to="/wannasurf/trajectsList">
+
                             <Button>
                                 Trouver un trajet
                             </Button>
-                        </Link>
                     </form>
                 </div>
 
@@ -99,6 +102,6 @@ export const Home = () => {
                     </div>
 
             </div>
-
         )
+
     }

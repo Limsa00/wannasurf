@@ -15,6 +15,8 @@ import { SignUpModal } from './views/ConnectionPages/SignUpModal';
 import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';
 import { ResetPassword } from './views/ConnectionPages/ResetPassword';
 import { ChangePassword } from './views/ConnectionPages/ChangePassword';
+import Container from './views/Public/Container';
+import TajectScreen from './views/Public/TajectScreen';
 import {
   Routes,
   Route
@@ -22,17 +24,29 @@ import {
 import Private from './views/Private/Private';
 
 export const App = () => {
+
   return (
       <div className="app">
 
           <Navbar />
-
+      
           <Routes>
           
-            <Route 
-              exact path="/wannasurf/home" 
-              element={<Home />} 
-            />
+            <Route path="/wannasurf" element={<Container />}>
+              <Route 
+                exact path="/wannasurf/home" 
+                element={<Home />} 
+              />
+              <Route 
+                exact path="/wannasurf/trajectsList" 
+                element= { <TrajectResult /> } 
+              />
+              <Route 
+                exact path="/wannasurf/trajectsDetails" 
+                element= { <TajectScreen /> } 
+              />
+            </Route>
+  
           
             <Route 
               exact path="/wannasurf/seconnecter" 
@@ -58,12 +72,6 @@ export const App = () => {
                 path="/wannasurf/sinscrire/complements" 
                 element= { <SignUpInfo /> } 
               />
-
-
-            <Route 
-              exact path="/wannasurf/trajectsList" 
-              element= { <TrajectResult /> } 
-            />
 
             <Route 
               exact path="/wannasurf/siteContact" 
