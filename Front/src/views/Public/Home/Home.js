@@ -1,7 +1,7 @@
 import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";

@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import EmailIcon from '@mui/icons-material/Email';
 import CakeIcon from '@mui/icons-material/Cake';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; 
-import dateFormat, { masks } from "dateformat";
+import dateFormat from "dateformat";
 import axios
     from 'axios';
 export const MyProfil = () => {
