@@ -1,29 +1,10 @@
 import './SiteContact.css'
 import { useState } from 'react';
-import axios from 'axios';
-import Button from '../../../components/UI/Button';
+import EmailIcon from '@mui/icons-material/Email';
+import HouseIcon from '@mui/icons-material/House';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; 
 
 export const SiteContact = () => {
-
-    const API_KEY = "136e91e838764f66c6c3abc38e4f733806f02d2c5aa8dae5b4160a4b654b9862";
-
-    const [nom, setNom] = useState ("");
-    const [email, setEmail] = useState ("");
-    const [message, setMessage] = useState("");
-
-     const envoiFormulaireContact = (evt) => {
-        // On empeche le formulaire de recharger notre application
-        evt.preventDefault()
-        // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
-         const newContact = { 
-            nom: nom,
-            email: email,
-            body: message,
-        };
-
-        axios
-            .post(`https://api.mailslurp.com/createInbox?apiKey=${API_KEY}`, newContact)
-    }
     
     return (
     
@@ -32,47 +13,27 @@ export const SiteContact = () => {
                 <h1>Une question, un commentaire ? Contactez-nous !</h1>
             </div>
 
-            <form className="form-contact" onSubmit={envoiFormulaireContact}>
-                <div className="form-champs">
-                    <input 
-                    type="texte" 
-                    placeholder='votre nom'
-                    id="name" 
-                    name="name" 
-                    value={nom}
-                    onChange={e => setNom(e.target.value)}
-                    />
+            <div className="Contact-bloc">
+                <div className="intro-contact">
+                    <p>Nous sommes ravis de pouvoir vous aider avec toutes vos questions ou préoccupations concernant notre application de covoiturage de surfeurs. N'hésitez pas à nous contacter via l'un des canaux suivants :</p>
                 </div>
 
-                <div className="form-champs">
-                    <input 
-                    type="mail" 
-                    placeholder='Votre email'
-                    id="emailContact" 
-                    name="emailContact" 
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    />
+                <div className="contact">
+                    <div className='contact-line'>
+                        <EmailIcon /> <p className='space'><span className='bold'>E-mail :</span>support@nomdevotreapplication.com</p>
+                    </div>
+                    <div className='contact-line'>
+                        <PhoneIphoneIcon /> <p className='space'><span className='bold'>Téléphone :</span>+33 1 23 45 67 89</p>
+                    </div>
+                    <div className='contact-line'>
+                        <HouseIcon /><p className='space'><span className='bold'>Adresse : </span>123 Rue des Surfeurs, 75001 Paris, France</p>
+                    </div>
                 </div>
 
-                <div className="form-champs">
-                    <input 
-                    placeholder='Votre message'
-                    type="textarea" 
-                    id="votreCommentaire" 
-                    name="votreCommentaire" 
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    />
+                <div className="contact-end">
+                    <p>Nous sommes disponibles du lundi au vendredi de 9h à 18h pour répondre à vos questions. Nous ferons de notre mieux pour vous répondre dans les meilleurs délais. Merci de votre intérêt pour notre application !</p>
                 </div>
-
-                <Button>
-                    Envoyez votre message
-                </Button>
-
-
-            </form>
-
+            </div>
         </div>
         )
     }

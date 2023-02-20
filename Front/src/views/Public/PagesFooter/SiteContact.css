@@ -3,21 +3,29 @@
     margin: 20px;
 }
 
-.form-contact {
-    margin: 35px 0 25px 0;
+.contact-bloc {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: justify;
 }
 
-.form-contact input {
-    padding: 20px;
-    border-radius: 25px;
-    border: grey 2px solid;
-    text-align: center;
+.intro-contact,
+.contact,
+.contact-end {
+    margin: 20px;
 }
 
-.form-contact ::placeholder {
-    text-align: center;
+.intro-contact {
+    font-style: italic;
+}
+
+.space {
+    margin-left: 20px;
+}
+.contact-line {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    align-items: center;
 }
