@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
+import { Navbar } from "../../../components/NavBar/NavBar";
+import { Footer } from "../../../components/Footer/Footer";
 
 export const CreateTraject = (props) => {
 
@@ -39,86 +41,89 @@ export const CreateTraject = (props) => {
     }
 
     return (
-    
-        <div className="createTraject-bloc">
+        <div className="create-traject-page">
+            <Navbar />
+                <div className="createTraject-bloc">
 
-            <h1>Créer votre trajet </h1>
+                    <h1>Créer votre trajet </h1>
 
-        <form onSubmit={envoiFormulaire}>
-            <div className="form-create-trajet">
-            
-                <div className="form-champs">
-                    <input 
-                    placeholder="Lieu de depart"
-                    type="texte" 
-                    id="lieuDeDepart" 
-                    name="lieuDepart" 
-                    value={lieuDepart}
-                    onChange={e => setLieuDepart(e.target.value)}
-                    />
+                <form onSubmit={envoiFormulaire}>
+                    <div className="form-create-trajet">
+                    
+                        <div className="form-champs">
+                            <input 
+                            placeholder="Lieu de depart"
+                            type="texte" 
+                            id="lieuDeDepart" 
+                            name="lieuDepart" 
+                            value={lieuDepart}
+                            onChange={e => setLieuDepart(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-champs">
+                            <input 
+                            placeholder="Lieu d'arrivé "
+                            type="texte" 
+                            id="lieuArrive" 
+                            name="lieuArrive" 
+                            value={lieuArrive}
+                            onChange={e => setLieuArrive(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-champs">
+                            <input 
+                            type="date"
+                            placeholder="Date de depart"        
+                            id="dateDepart" 
+                            name="dateDepart" 
+                            value={dateDepart}
+                            onChange={e => setDateDepart(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-champs">
+                            <input 
+                            type="hours" 
+                            placeholder="Heure de depart"
+                            id="heureDepart" 
+                            name="heureDepart" 
+                            value={heureDepart}
+                            onChange={e => setHeureDepart(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-champs">
+                            <input 
+                            type="number" 
+                            placeholder="Nombre de passagers"
+                            id="nbPassager" 
+                            name="nbPassager" 
+                            value={nbPassager}
+                            onChange={e => setNbPassager(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-champs">
+                            <input 
+                            placeholder="Taille de planche autorisée"
+                            type="texte" 
+                            id="taillePlanche" 
+                            name="taillePlanche" 
+                            value={taillePlanche}
+                            onChange={e => setTaillePlanche(e.target.value)}
+                            />
+                        </div>
+
+                    
+                        <Button>
+                            Créer mon trajet
+                        </Button>
+                    </div>
+                </form>
                 </div>
-
-                <div className="form-champs">
-                    <input 
-                    placeholder="Lieu d'arrivé "
-                    type="texte" 
-                    id="lieuArrive" 
-                    name="lieuArrive" 
-                    value={lieuArrive}
-                    onChange={e => setLieuArrive(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="date"
-                    placeholder="Date de depart"        
-                    id="dateDepart" 
-                    name="dateDepart" 
-                    value={dateDepart}
-                    onChange={e => setDateDepart(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="hours" 
-                    placeholder="Heure de depart"
-                    id="heureDepart" 
-                    name="heureDepart" 
-                    value={heureDepart}
-                    onChange={e => setHeureDepart(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="number" 
-                    placeholder="Nombre de passagers"
-                    id="nbPassager" 
-                    name="nbPassager" 
-                    value={nbPassager}
-                    onChange={e => setNbPassager(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    placeholder="Taille de planche autorisée"
-                    type="texte" 
-                    id="taillePlanche" 
-                    name="taillePlanche" 
-                    value={taillePlanche}
-                    onChange={e => setTaillePlanche(e.target.value)}
-                    />
-                </div>
-
-            
-                <Button>
-                    Créer mon trajet
-                </Button>
-            </div>
-        </form>
+            <Footer />
         </div>
         )
     }

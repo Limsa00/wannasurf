@@ -8,8 +8,10 @@ import EmailIcon from '@mui/icons-material/Email';
 import CakeIcon from '@mui/icons-material/Cake';
 import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; 
 import dateFormat from "dateformat";
-import axios
-    from 'axios';
+import axios from 'axios';
+import { Navbar } from '../../../components/NavBar/NavBar';
+import { Footer } from '../../../components/Footer/Footer';
+
 export const MyProfil = () => {
 
     
@@ -33,104 +35,107 @@ export const MyProfil = () => {
     if (!user) return "Pas de user connecté :(";
 
     return (
-    
-        <div className="profil-bloc">
-            <div className='title-profil-bloc'>
-                <h1 className='title-profil-style'>Mon profil wannaSurf</h1>
-            </div>
-            <div className='bloc-profil-1'>
-                <div className='bloc-profil-user'>
-                    <div className='icon'>
-                    <AccountCircleIcon fontSize='large' />
-                    </div>
-                        <div className='name-profil'>
-                        <p>{user.firstname} {user.lastname}</p>
-                        <div className='img-round-profil'>
 
+        <div className='profil-page'>
+            <Navbar />
+                <div className="profil-bloc">
+                    <div className='title-profil-bloc'>
+                        <h1 className='title-profil-style'>Mon profil wannaSurf</h1>
+                    </div>
+                    <div className='bloc-profil-1'>
+                        <div className='bloc-profil-user'>
+                            <div className='icon'>
+                            <AccountCircleIcon fontSize='large' />
+                            </div>
+                                <div className='name-profil'>
+                                <p>{user.firstname} {user.lastname}</p>
+                                <div className='img-round-profil'>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className='bloc-profil-2'>
-                <div className='bloc-mail-user'>
-                    <div className='icon'>
-                        <EmailIcon fontSize='large' />
-                    </div>
-                    <div className='mail-user'>
-                        <p className="bold">Email</p>
-                        <div className='bloc-value-mail'>
-                            <p>{currentUser.email}</p>
+                    <div className='bloc-profil-2'>
+                        <div className='bloc-mail-user'>
+                            <div className='icon'>
+                                <EmailIcon fontSize='large' />
+                            </div>
+                            <div className='mail-user'>
+                                <p className="bold">Email</p>
+                                <div className='bloc-value-mail'>
+                                    <p>{currentUser.email}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
 
-            <div className='bloc-profil-3'>
-                <div className='bloc-birth-user'>
-                    <div className='icon'>
-                    <CakeIcon fontSize='large' />
-                    </div>
-                    <div className='birth-user'>
-                        <p className="bold">Date de naissance</p>
-                        <div className='bloc-value-birth'>
-                            <p>{dateFormat(user.birthday, "dd - mm - yyyy")}</p>
+                    <div className='bloc-profil-3'>
+                        <div className='bloc-birth-user'>
+                            <div className='icon'>
+                            <CakeIcon fontSize='large' />
+                            </div>
+                            <div className='birth-user'>
+                                <p className="bold">Date de naissance</p>
+                                <div className='bloc-value-birth'>
+                                    <p>{dateFormat(user.birthday, "dd - mm - yyyy")}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className='bloc-profil-4'>
-                <div className='bloc-mdp-user'>
-                    <div className='icon'>
-                    <PhoneIphoneIcon fontSize='large' />
-                    </div>
-                    <div className='phone-user'>
-                        <p className='bold'>Numero de telephone</p>
-                        <div className='bloc-value-phone'>
-                            <p>{ user.phone }</p>
+                    <div className='bloc-profil-4'>
+                        <div className='bloc-mdp-user'>
+                            <div className='icon'>
+                            <PhoneIphoneIcon fontSize='large' />
+                            </div>
+                            <div className='phone-user'>
+                                <p className='bold'>Numero de telephone</p>
+                                <div className='bloc-value-phone'>
+                                    <p>{ user.phone }</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className='bloc-profil-5'>
-                <div className='bloc-modif-picture-user'>
-                    <div className='picture-user'>
-                        <img className='img-style' src={`https://robohash.org/${user.firstname}.png`} alt='user-profil'></img>
-                            <div className='bloc-value-phone'>
-                            <Button className='button-img'>Modifier ma photo</Button>
+                    <div className='bloc-profil-5'>
+                        <div className='bloc-modif-picture-user'>
+                            <div className='picture-user'>
+                                <img className='img-style' src={`https://robohash.org/${user.firstname}.png`} alt='user-profil'></img>
+                                    <div className='bloc-value-phone'>
+                                    <Button className='button-img'>Modifier ma photo</Button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div className='bloc-profil-6'>
+                        <div className='bloc-other'>
+                            <div className='reset-pwd'>
+                                <Link to='/wannasurf/resetPassword'>
+                                    <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
+                                </Link>
+                            </div>
+
+                            <div className='change-pwd'>
+                                <Link to='/wannasurf/changePassword'>
+                                    <button className='no-decoration center'>Changez votre mot de passe</button>
+                                </Link>
+                            </div>
+                            <div className='delete-acc'>
+                                <p>Supprimer mon compte</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <Link to="/wannasurf/home">
+                                <Button>
+                                    Retour à l'acceuil
+                                </Button>
+                    </Link>
                 </div>
-            </div>
-
-            <div className='bloc-profil-6'>
-                <div className='bloc-other'>
-                    <div className='reset-pwd'>
-                        <Link to='/wannasurf/resetPassword'>
-                            <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
-                        </Link>
-                    </div>
-
-                    <div className='change-pwd'>
-                        <Link to='/wannasurf/changePassword'>
-                            <button className='no-decoration center'>Changez votre mot de passe</button>
-                        </Link>
-                    </div>
-                    <div className='delete-acc'>
-                        <p>Supprimer mon compte</p>
-                    </div>
-                </div>
-            </div>
-
-            <Link to="/wannasurf/home">
-                        <Button>
-                            Retour à l'acceuil
-                        </Button>
-            </Link>
+            <Footer />
         </div>
-
         )
     }

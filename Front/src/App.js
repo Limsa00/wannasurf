@@ -1,6 +1,4 @@
 import './reset.css';
-import { Navbar } from './components/NavBar/NavBar';
-import { Footer } from './components/Footer/Footer';
 import { Home } from './views/Public/Home/Home'
 import { TrajectResult } from './views/Public/TrajectResult/TrajectResult';
 import { SiteContact } from './views/Public/PagesFooter/SiteContact';
@@ -28,8 +26,6 @@ export const App = () => {
   return (
       <div className="app">
 
-          <Navbar />
-      
           <Routes>
           
             <Route path="/wannasurf" element={<Container />}>
@@ -111,8 +107,6 @@ export const App = () => {
             />
           
           </Routes>
-
-          <Footer />
 
       </div> 
 

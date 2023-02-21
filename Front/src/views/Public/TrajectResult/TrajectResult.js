@@ -4,7 +4,8 @@ import "./TrajectResult.css";
 import axios from "axios";
 import { TrajectCard } from "../../../components/TrajectCard";
 import { useOutletContext } from "react-router-dom"
-import dateFormat, { masks } from "dateformat";
+import { Navbar } from "../../../components/NavBar/NavBar";
+import { Footer } from "../../../components/Footer/Footer";
 
 export const TrajectResult = () => {
 
@@ -28,22 +29,26 @@ export const TrajectResult = () => {
     if (!traject) return "Pas de trajets disponible :(";
 
     return (
-        <div>
-            {traject?.map(traject => (           
-                <TrajectCard
-                    key={`${traject.journey_id}`}
-                    journey_id={traject.journey_id}
-                    date={traject.date}
-                    driver_firstname={traject.driver_firstname}
-                    driver_lastname={traject.driver_lastname}
-                    city={traject.city}
-                    address={traject.address}
-                    surfspot={traject.surfspot}
-                    time={traject.time}
-                    price={traject.price}
-                    places_remaining={traject.places_remaining}
-                />
-            ))}
+        <div className="traject-result-page">
+            <Navbar />
+                <div>
+                    {traject?.map(traject => (           
+                        <TrajectCard
+                            key={`${traject.journey_id}`}
+                            journey_id={traject.journey_id}
+                            date={traject.date}
+                            driver_firstname={traject.driver_firstname}
+                            driver_lastname={traject.driver_lastname}
+                            city={traject.city}
+                            address={traject.address}
+                            surfspot={traject.surfspot}
+                            time={traject.time}
+                            price={traject.price}
+                            places_remaining={traject.places_remaining}
+                        />
+                    ))}
+                </div>
+            <Footer />
         </div>
         )
     }

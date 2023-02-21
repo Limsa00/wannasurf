@@ -1,5 +1,7 @@
 import React from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
+import { Navbar } from '../../components/NavBar/NavBar'
+import { Footer } from '../../components/Footer/Footer'
 
 export default function TajectScreen() {
 
@@ -14,9 +16,13 @@ export default function TajectScreen() {
     console.log(trajectDetails)
   
   return (
-      <div>
-        <h1>Detail du trajet</h1>
-        <p>{trajectDetails.price}</p>
+    <div className='detail-traject-page'>
+      <Navbar />
+        <div>
+          <h1>Detail du trajet</h1>
+          <p>{trajectDetails.price}</p>
+        </div>
+      <Footer />
     </div>
   )
 }
