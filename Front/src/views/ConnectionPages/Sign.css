@@ -73,3 +73,9 @@
     justify-content: center;
     height: 100vh;
 }
+
+.inscrption-card-phone {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+    width: 70%;
+}

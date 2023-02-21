@@ -65,55 +65,56 @@ export const SignUpModal = () => {
         <>
             {modalState.signUpModal && (
                 <div className="inscription-bloc">
-                    
-                    <h1 
-                        className='title'>
-                            S'inscrire
-                    </h1>
+                    <div className='inscrption-card-phone'>
+                        <h1 
+                            className='title'>
+                                S'inscrire
+                        </h1>
 
-                    <div className='desc-inscription'>
-                        <p 
-                            className='intro-texte'>
-                                Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
-                        </p>
+                        <div className='desc-inscription'>
+                            <p 
+                                className='intro-texte'>
+                                    Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
+                            </p>
+                        </div>
+                        <form 
+                            ref={formRef}
+                            className='form'
+                            onSubmit={handleForm}>
+
+                            <input 
+                                required
+                                ref={addInputs}
+                                name="email" 
+                                type="email" 
+                                placeholder='Email'
+                                id="signUpEmail"
+                            />
+
+                            <input 
+                                required
+                                ref={addInputs}
+                                name="pwd" 
+                                type="password" 
+                                placeholder='Mot de passe'
+                                id="signUpPwd"          
+                            />   
+
+                            <input 
+                                required
+                                ref={addInputs}
+                                name="pwd" 
+                                type="password" 
+                                placeholder='Confirmez votre mot de passe'
+                                id="signUpReapeatPwd"  
+                            /> <span className='err'>{validation}</span>    
+
+                            <Button>
+                                S'inscrire
+                            </Button>
+
+                            </form>
                     </div>
-                    <form 
-                        ref={formRef}
-                        className='form'
-                        onSubmit={handleForm}>
-
-                        <input 
-                            required
-                            ref={addInputs}
-                            name="email" 
-                            type="email" 
-                            placeholder='Email'
-                            id="signUpEmail"
-                        />
-
-                        <input 
-                            required
-                            ref={addInputs}
-                            name="pwd" 
-                            type="password" 
-                            placeholder='Mot de passe'
-                            id="signUpPwd"          
-                        />   
-
-                        <input 
-                            required
-                            ref={addInputs}
-                            name="pwd" 
-                            type="password" 
-                            placeholder='Confirmez votre mot de passe'
-                            id="signUpReapeatPwd"  
-                        /> <span className='err'>{validation}</span>    
-
-                        <Button>
-                            S'inscrire
-                        </Button>
-
-                    </form>
                 </div>)}
             </>
         )
