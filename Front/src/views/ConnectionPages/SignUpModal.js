@@ -1,7 +1,7 @@
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import InscImg from '../../images/insc-img-surf.jpg'
 import Button from '../../components/UI/Button';
 
@@ -134,6 +134,10 @@ export const SignUpModal = () => {
                                 <Button>
                                     S'inscrire
                                 </Button>
+
+                                <Link to='/wannasurf/seconnecter'>
+                                    <button className='no-decoration center'>Deja inscrit ? Se connecter !</button>
+                                </Link>
 
                                 </form>
                             </div>

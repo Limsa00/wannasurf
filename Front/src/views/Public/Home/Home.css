@@ -75,6 +75,7 @@ output {
     height: 280px;
     max-width: 350px;
     max-height: 350px;
+    min-height: 300px;
     border-radius: 10px;
     margin-top: 30px;
  }
@@ -97,10 +98,6 @@ output {
     margin-top: 30px;
 }
 
-.close-footer {
-    margin-bottom: 50px;
-}
-
 #bloc-info-1,
 #bloc-info-2,
 #bloc-info-3 {
@@ -115,9 +112,22 @@ output {
 #bloc-info-2 h3,
 #bloc-info-3 h3 {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+@media screen and (min-width:615px) {
+.img-size {
+        width: 400px;
+        height: 380px;
+        max-width: 450px;
+        max-height: 450px;
+        min-height: 300px;
+    }
+}
 @media screen and (min-width:767px) {
+
     .shearch-bar-section {
         width: 90%;
         margin-left: 5%;
@@ -138,7 +148,16 @@ output {
     }
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:1100px) {
+
+    .img-size {
+        width: 320px;
+        height: 280px;
+        max-width: 350px;
+        max-height: 350px;
+        min-height: 300px;
+    }
+    
     .bloc-info {
         flex-direction: row;
         align-items: center;

@@ -46,6 +46,11 @@
     font-weight: bold;
 }
 
+.connection-option {
+    display: flex;
+    align-items: center;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -75,7 +80,8 @@
     justify-content: center;
     height: 100vh;
 }
-.inscrption-card-phone {
+.inscrption-card-phone,
+.connection-card-phone {
     width: 70%;
 }
 
@@ -101,7 +107,7 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         border-radius: 30px;
         width: 90%;
-        height: auto;
+        height: 450px;
     }
 
     .size-pic {
@@ -137,5 +143,19 @@
         top: 60%;
         color: white;
         width: 70%;
+    }
+}
+
+@media screen and (min-width:1281px) {
+    .desktop-bloc {
+        height: 520px;
+    }
+
+    .size-pic {
+        min-width: 550px;
+        max-width: 650px;
+        min-height: 500px;
+        max-height: 664px;
+        border-radius: 30px 0 0 30px;
     }
 }

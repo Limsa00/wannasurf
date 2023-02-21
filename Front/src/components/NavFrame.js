@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logoWannaSurf from "../images/logoWannaSurf.png"
 
 
@@ -16,7 +17,7 @@ export default function NavFrame(props) {
             </div>
 
             <div className="title-wannasurf">
-            <h1>WANNA<span className="logo-color">SURF</span></h1>
+                  <h1>WANNA<span className="logo-color">SURF</span></h1>
             </div>
 
             <div className="bruger-menu">
