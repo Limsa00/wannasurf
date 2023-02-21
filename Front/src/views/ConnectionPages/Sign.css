@@ -66,7 +66,8 @@
     font-weight: bold;
 }
 
-.inscription-bloc {
+.inscription-bloc,
+.desktop-bloc {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,4 +79,58 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 30px;
     width: 70%;
+}
+
+.col-desktop-1 {
+    display: none;
+}
+
+@media screen and (min-width:767px) {
+
+    .col-desktop-1{
+        display: inline-block;
+        position: relative;
+    }
+    .desktop-bloc {
+        flex-direction: row;
+        margin: 20px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 30px;
+        width: 90%;
+        height: auto;
+    }
+
+    .size-pic {
+        min-width: 333px;
+        max-width: 430px;
+        min-height: 450px;
+        max-height: 664px;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .inscrption-card-phone {
+        border: none;
+        box-shadow: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .image-position {
+        z-index: 1;
+    }
+    .col-desktop-1 .text-position {
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+        position: absolute;
+        text-align: center;
+        font-family: Georgia;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 60%;
+        color: white;
+        width: 70%;
+    }
 }

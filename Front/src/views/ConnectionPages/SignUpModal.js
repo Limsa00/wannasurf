@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
+import InscImg from '../../images/insc-img-surf.jpg'
 import Button from '../../components/UI/Button';
 
 export const SignUpModal = () => {
@@ -65,56 +66,78 @@ export const SignUpModal = () => {
         <>
             {modalState.signUpModal && (
                 <div className="inscription-bloc">
-                    <div className='inscrption-card-phone'>
-                        <h1 
-                            className='title'>
-                                S'inscrire
-                        </h1>
+                    <div className='desktop-bloc'>
+                        <div className='col-desktop-1'>
+                            <div className='image-position'>
+                                <img src={InscImg} alt='illustration page inscription à wannasurf' className='size-pic'></img>
+                            </div>
+                            <div className='text-position'>
+                                <h1 
+                                    className='title'>
+                                        S'inscrire
+                                </h1>
 
-                        <div className='desc-inscription'>
-                            <p 
-                                className='intro-texte'>
-                                    Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
-                            </p>
+                                <div className='desc-inscription'>
+                                    <p 
+                                        className='intro-texte'>
+                                            Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <form 
-                            ref={formRef}
-                            className='form'
-                            onSubmit={handleForm}>
+                        <div className='inscrption-card-phone col-desktop-2'>
+                            <div className='mobile'>
+                                <h1 
+                                    className='title'>
+                                        S'inscrire
+                                </h1>
 
-                            <input 
-                                required
-                                ref={addInputs}
-                                name="email" 
-                                type="email" 
-                                placeholder='Email'
-                                id="signUpEmail"
-                            />
+                                <div className='desc-inscription'>
+                                    <p 
+                                        className='intro-texte'>
+                                            Vous n'avez pas de compte ? Inscrivez-vous et rejoignez une grande communauté de surfers
+                                    </p>
+                                </div>
+                            </div>
+                            <form 
+                                ref={formRef}
+                                className='form'
+                                onSubmit={handleForm}>
 
-                            <input 
-                                required
-                                ref={addInputs}
-                                name="pwd" 
-                                type="password" 
-                                placeholder='Mot de passe'
-                                id="signUpPwd"          
-                            />   
+                                <input 
+                                    required
+                                    ref={addInputs}
+                                    name="email" 
+                                    type="email" 
+                                    placeholder='Email'
+                                    id="signUpEmail"
+                                />
 
-                            <input 
-                                required
-                                ref={addInputs}
-                                name="pwd" 
-                                type="password" 
-                                placeholder='Confirmez votre mot de passe'
-                                id="signUpReapeatPwd"  
-                            /> <span className='err'>{validation}</span>    
+                                <input 
+                                    required
+                                    ref={addInputs}
+                                    name="pwd" 
+                                    type="password" 
+                                    placeholder='Mot de passe'
+                                    id="signUpPwd"          
+                                />   
 
-                            <Button>
-                                S'inscrire
-                            </Button>
+                                <input 
+                                    required
+                                    ref={addInputs}
+                                    name="pwd" 
+                                    type="password" 
+                                    placeholder='Confirmez votre mot de passe'
+                                    id="signUpReapeatPwd"  
+                                /> <span className='err'>{validation}</span>    
 
-                            </form>
-                    </div>
+                                <Button>
+                                    S'inscrire
+                                </Button>
+
+                                </form>
+                            </div>
+                        </div>
                 </div>)}
             </>
         )
