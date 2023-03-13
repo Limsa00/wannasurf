@@ -42,6 +42,7 @@ export const MyProfil = () => {
                     <div className='title-profil-bloc'>
                         <h1 className='title-profil-style'>Mon profil wannaSurf</h1>
                     </div>
+                <div className='row-desktop'>
                     <div className='bloc-profil-1'>
                         <div className='bloc-profil-user'>
                             <div className='icon'>
@@ -109,6 +110,7 @@ export const MyProfil = () => {
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <div className='bloc-profil-6'>
                         <div className='bloc-other'>
@@ -129,11 +131,13 @@ export const MyProfil = () => {
                         </div>
                     </div>
 
-                    <Link to="/wannasurf/home">
-                                <Button>
-                                    Retour à l'acceuil
-                                </Button>
-                    </Link>
+                    <div className='center'>
+                        <Link to="/wannasurf/home">
+                            <Button>
+                                Retour à l'acceuil
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             <Footer />
         </div>

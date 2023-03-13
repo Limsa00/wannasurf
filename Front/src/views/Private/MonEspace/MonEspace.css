@@ -40,11 +40,11 @@
     margin: 25px 0 0 30px
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:900px) {
     .espace-bloc     {
         flex-direction: row;
         align-items: center;
-        margin-top: 20%;
+        margin-top: 5%;
     }
 }
 

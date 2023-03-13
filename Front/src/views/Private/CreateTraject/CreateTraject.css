@@ -42,3 +42,14 @@
 .form-champs {
     margin-bottom: 25px;
 }
+
+@media screen and (min-width:900px) {
+    .large-screen {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .form-champs {
+        margin-right: 30px;
+    }
+}
