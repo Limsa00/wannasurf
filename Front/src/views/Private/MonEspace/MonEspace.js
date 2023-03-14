@@ -7,6 +7,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import axios from 'axios';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
+import Desk_illustration from '../../../images/img_mon_espace.jpg'
 
 export const MonEspace = () => {
 
@@ -37,40 +38,48 @@ export const MonEspace = () => {
                     <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
                 </div>
                 
-                <div className="espace-bloc">
-                    <div className='space-button'>
-                        <Link to="/wannasurf/monProfil" >
-                            <Button>
-                                Mon profil
-                            </Button>
-                        </Link>
+                <div className='desk-div'>
+                    <div className='left-desk'>
+                        <img src={Desk_illustration} className="style-img" alt="illustration desktop pour mon espace" />
                     </div>
-                    <div className='space-button'>
-                        <Link to="/wannasurf/mesFutursTrajets">
-                            <Button>
-                                Mes futurs trajets
-                            </Button>
-                        </Link>
-                    </div>
-                    <div className='space-button'>
-                        <Link to="/wannasurf/monHistorique">
-                            <Button>
-                                Historique des trajets
-                            </Button>
-                        </Link>
-                    </div>
-                    </div>
+                
+                    <div className='right-desk'>
+                        <div className="espace-bloc">
+                            <div className='space-button'>
+                                <Link to="/wannasurf/monProfil" >
+                                    <Button>
+                                        Mon profil
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className='space-button'>
+                                <Link to="/wannasurf/mesFutursTrajets">
+                                    <Button>
+                                        Mes futurs trajets
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div className='space-button'>
+                                <Link to="/wannasurf/monHistorique">
+                                    <Button>
+                                        Historique des trajets
+                                    </Button>
+                                </Link>
+                            </div>
+                        </div>
 
-                    <div className='home-back'>
-                        <Link to="/wannasurf/home">
-                                <Button>
-                                    Accueil
-                                    <span className='icon-home'>
-                                        <HomeIcon />
-                                    </span>
-                                </Button>
-                        </Link>
+                        <div className='home-back'>
+                            <Link to="/wannasurf/home">
+                                    <Button>
+                                        Accueil
+                                        <span className='icon-home'>
+                                            <HomeIcon />
+                                        </span>
+                                    </Button>
+                            </Link>
+                        </div>
                     </div>
+                </div>
                 <Footer />
             </div>
         )

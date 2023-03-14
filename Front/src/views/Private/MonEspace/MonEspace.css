@@ -40,13 +40,17 @@
     margin: 25px 0 0 30px
 }
 
-@media screen and (min-width:900px) {
-    .espace-bloc     {
-        flex-direction: row;
-        align-items: center;
-        margin-top: 5%;
-    }
+.left-desk, .style-img {
+    display: none;
 }
+
+.desk-div {
+    margin-top: 15px;
+}
+@media screen and (min-width:763px) {
+    .espace-bloc     {
+        align-items: center;
+    }
 
 Button {
     margin: 40px;
@@ -57,4 +61,32 @@ Button {
     color:blue;
     font-size: 30px;
     margin: 25px 0 15px 25px;
+}
+
+.left-desk {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+.style-img {
+    display: flex;
+    width: 500px;
+    height: 400px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.desk-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right-desk {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-grow: 2;
+}
 }

@@ -31,7 +31,7 @@ router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourne
 // Factoring routes for models : journey, user
 router.get('/:entity', mainController.showAllComponents);
 router.get('/:entity/:id', mainController.showOneComponent);
-router.post('/:entity', authMW, mainController.addOneComponent);
+router.post('/:entity', mainController.addOneComponent);
 router.patch('/:entity/:id', mainController.editOneComponent);
 router.delete('/:entity/:id', mainController.deleteOneComponent);
 

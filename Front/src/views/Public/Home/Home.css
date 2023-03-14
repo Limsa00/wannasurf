@@ -9,6 +9,10 @@ body {
     margin-bottom: 25px;
 }
 
+.bottom-magin {
+    margin-bottom: 20px;
+}
+
 .home-bloc .intro p {
     font-size: 15px;
     font-style: italic;

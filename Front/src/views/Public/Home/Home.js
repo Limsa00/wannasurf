@@ -79,10 +79,12 @@ export const Home = () => {
                                     <output>{nombrePersonne}</output>
                                 
                                 </div>
-
+                                
+                                <div className='bottom-magin'>
                                     <Button>
                                         Trouver un trajet
                                     </Button>
+                                </div>
                             </form>
                         </div>
 
