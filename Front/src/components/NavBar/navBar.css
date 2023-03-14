@@ -2,7 +2,11 @@ h1 {
     text-align: center;
     font-size: 20px;
 }
-  
+
+.bg-blue {
+background-color: #0008C1;
+}
+
 .nav-bar-bloc {
     background-color: #0008C1;
     width: 100%;

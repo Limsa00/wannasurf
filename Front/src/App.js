@@ -7,7 +7,7 @@ import { CreateTraject } from './views/Private/CreateTraject/CreateTraject';
 import { MonEspace } from './views/Private/MonEspace/MonEspace';
 import { MyProfil } from './views/Private/MyProfil/MyProfil';
 import { FuturTrajects } from './views/Private/FuturTrajets/FuturTrajects';
-import { TrajectsHistory } from './views/Public/TrajectsHistory/TrajectsHistory';
+import { TrajectsHistory } from './views/Private/TrajectsHistory/TrajectsHistory';
 import { SignInModal } from './views/ConnectionPages/SignInModal';
 import { SignUpModal } from './views/ConnectionPages/SignUpModal';
 import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';

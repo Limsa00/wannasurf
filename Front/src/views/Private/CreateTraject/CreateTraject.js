@@ -10,7 +10,10 @@ export const CreateTraject = (props) => {
     const [lieuDepart, setLieuDepart] = useState ("");
     const [lieuArrive, setLieuArrive] = useState ("");
     const [dateDepart, setDateDepart] = useState ("");
-    const [heureDepart, setHeureDepart] = useState ("");
+    const [heureDepart, setHeureDepart] = useState("");
+    const [adresseDepart, setAdresseDepart] = useState("");
+    const [nbPlanche, setNbPlanche] = useState("");
+    const [price, setPrice] = useState ("");
     const [nbPassager, setNbPassager] = useState ("");
     const [taillePlanche, setTaillePlanche] = useState ("");
 
@@ -27,11 +30,11 @@ export const CreateTraject = (props) => {
             destination_surfspot_or_city_id: lieuArrive,
             departure_date: dateDepart,
             departure_time: heureDepart,
-            price:15,
+            price: price,
             place_available: nbPassager,
             board_size_allowed: taillePlanche,
-            number_of_boards_allowed: 3,
-            meeting_address: "633-4350 Dolor Road",
+            number_of_boards_allowed: nbPlanche,
+            meeting_address: adresseDepart,
             driver_id: 10
         
         };
@@ -83,6 +86,28 @@ export const CreateTraject = (props) => {
                                 onChange={e => setDateDepart(e.target.value)}
                                 />
                             </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="number"
+                                placeholder="Price"        
+                                id="price" 
+                                name="price" 
+                                value={price}
+                                onChange={e => setPrice(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="number"
+                                placeholder="Nombre de planche autorisée"        
+                                id="nbPlanche" 
+                                name="nbPlanche" 
+                                value={nbPlanche}
+                                onChange={e => setNbPlanche(e.target.value)}
+                                />
+                            </div>
                         </div>
 
                         <div className="large-screen">
@@ -118,6 +143,18 @@ export const CreateTraject = (props) => {
                                 onChange={e => setTaillePlanche(e.target.value)}
                                 />
                             </div>
+
+                            <div className="form-champs">
+                                <input 
+                                placeholder="Adresse de depart"
+                                type="texte" 
+                                id="adresseDepart" 
+                                name="adresseDepart" 
+                                value={adresseDepart}
+                                onChange={e => setAdresseDepart(e.target.value)}
+                                />
+                            </div>
+
                         </div>
                     
                         <Button>

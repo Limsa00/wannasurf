@@ -16,9 +16,11 @@ export default function NavFrame(props) {
                 <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
             </div>
 
-            <div className="title-wannasurf">
-                  <h1>WANNA<span className="logo-color">SURF</span></h1>
-            </div>
+            <Link to="/wannasurf/home" className="navbar-link link-style">
+                <div className="title-wannasurf">
+                    <h1>WANNA<span className="logo-color">SURF</span></h1>
+                </div>
+            </Link>
 
             <div className="bruger-menu">
                 <ul className="navbar-links">

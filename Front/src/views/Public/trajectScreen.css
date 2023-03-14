@@ -11,6 +11,10 @@
     margin: 20px 0 20px 0;
 }
 
+.margin {
+    margin-left: 5px
+}
+
 .departure {
     margin-right: 30px;
 }
@@ -27,8 +31,8 @@
 }
 
 @media screen and (min-width:767px) {
-    .driver {
-        font-size: 20px;
+    .driver, .price, .departure, .surfspot {
+        font-size: 19px;
     }
     .title-detail h1 {
         font-size: 40px;
