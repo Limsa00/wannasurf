@@ -34,7 +34,8 @@ class CoreModel {
 
         if (this.tableName === "user") {
             oneComponent = await db.query (`SELECT * FROM "user" WHERE id=$1;`, [id]);
-        } else{
+        }
+         else{
             oneComponent = await db.query (`SELECT * FROM ${this.tableName} WHERE id=$1;`, [id]);
         }
         return oneComponent.rows[0];

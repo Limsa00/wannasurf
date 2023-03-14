@@ -1,30 +1,82 @@
 import './legalNotice.css'
+import { Navbar } from '../../../components/NavBar/NavBar'
+import { Footer } from '../../../components/Footer/Footer'
 
 export const LegalNotice = () => {
 
     return (
-    
-        <div className="legal-notice-bloc">
-            <div className='Title'>
-                <h1>Informations Légales</h1>
-            </div>
-
-            <div className='texte-corps'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc congue nisi vitae suscipit. Sed risus ultricies tristique nulla aliquet enim tortor. Quam pellentesque nec nam aliquam sem et tortor consequat id. Tempus iaculis urna id volutpat lacus. Id neque aliquam vestibulum morbi blandit cursus risus. Nisi porta lorem mollis aliquam ut porttitor leo a. Aliquam sem et tortor consequat id porta nibh venenatis. Eget mi proin sed libero. Ut porttitor leo a diam sollicitudin.</p>
-
-                <p>Porta non pulvinar neque laoreet suspendisse interdum. Dapibus ultrices in iaculis nunc sed augue lacus. Ultrices neque ornare aenean euismod elementum. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Nulla at volutpat diam ut venenatis tellus in metus. Risus pretium quam vulputate dignissim suspendisse in est ante. Elit duis tristique sollicitudin nibh sit amet commodo nulla. Tristique sollicitudin nibh sit amet commodo. Quis imperdiet massa tincidunt nunc pulvinar sapien et. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum. Odio tempor orci dapibus ultrices in iaculis. Suscipit tellus mauris a diam maecenas sed enim ut sem. Molestie at elementum eu facilisis sed. Aliquam ut porttitor leo a diam. Eget aliquet nibh praesent tristique magna sit amet. Lectus urna duis convallis convallis. Et molestie ac feugiat sed lectus.</p>
-
-                <p>Euismod in pellentesque massa placerat. Sem nulla pharetra diam sit amet nisl suscipit adipiscing. Consectetur lorem donec massa sapien faucibus et. Placerat vestibulum lectus mauris ultrices eros in cursus. Tellus orci ac auctor augue mauris augue. Quis enim lobortis scelerisque fermentum. Tincidunt id aliquet risus feugiat in. Eget sit amet tellus cras. Vel elit scelerisque mauris pellentesque. Lorem mollis aliquam ut porttitor leo a diam. Dictum fusce ut placerat orci nulla. Justo nec ultrices dui sapien eget mi proin sed libero. Curabitur gravida arcu ac tortor dignissim. Cursus euismod quis viverra nibh cras pulvinar. Nunc non blandit massa enim. Et egestas quis ipsum suspendisse ultrices gravida. Non diam phasellus vestibulum lorem sed risus ultricies tristique. Nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Id velit ut tortor pretium viverra suspendisse potenti. A pellentesque sit amet porttitor eget dolor.</p>
-
-                <p>Pellentesque massa placerat duis ultricies lacus sed. Ac turpis egestas integer eget aliquet. Aliquam sem fringilla ut morbi. Tincidunt dui ut ornare lectus sit amet. Vestibulum lorem sed risus ultricies tristique nulla aliquet enim. Netus et malesuada fames ac turpis. Laoreet suspendisse interdum consectetur libero id. Lectus nulla at volutpat diam ut venenatis. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Vitae sapien pellentesque habitant morbi tristique senectus. Amet luctus venenatis lectus magna. Tristique magna sit amet purus gravida quis blandit turpis cursus. Et pharetra pharetra massa massa ultricies. Vel orci porta non pulvinar. Quisque id diam vel quam elementum pulvinar etiam. Non consectetur a erat nam at lectus urna. Arcu odio ut sem nulla pharetra diam sit amet nisl. Eu sem integer vitae justo eget magna fermentum iaculis eu.</p>
-
-                <p>Sit amet consectetur adipiscing elit duis. Fusce ut placerat orci nulla. Maecenas accumsan lacus vel facilisis volutpat est velit. Mi eget mauris pharetra et ultrices. Fames ac turpis egestas sed tempus urna. Pretium lectus quam id leo in vitae turpis. Fermentum dui faucibus in ornare quam viverra orci. Purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae. Egestas integer eget aliquet nibh praesent tristique. Enim nec dui nunc mattis. Fringilla ut morbi tincidunt augue interdum velit. Consectetur adipiscing elit pellentesque habitant morbi tristique senectus et netus. Ullamcorper eget nulla facilisi etiam.</p>
-
-                <p>Sit amet volutpat consequat mauris nunc. Morbi tristique senectus et netus et malesuada fames. Sed risus ultricies tristique nulla aliquet enim tortor at auctor. Tincidunt dui ut ornare lectus sit amet est. Lectus sit amet est placerat in egestas. Nec tincidunt praesent semper feugiat nibh sed. Eros in cursus turpis massa tincidunt. Augue ut lectus arcu bibendum at varius. Malesuada nunc vel risus commodo viverra maecenas. Elementum eu facilisis sed odio morbi quis commodo odio. Non consectetur a erat nam at. Odio ut sem nulla pharetra diam. Semper risus in hendrerit gravida rutrum quisque. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Adipiscing elit pellentesque habitant morbi tristique senectus et netus et. Quis hendrerit dolor magna eget est. Tincidunt lobortis feugiat vivamus at augue eget. Id semper risus in hendrerit. Accumsan sit amet nulla facilisi morbi tempus iaculis urna. Vulputate dignissim suspendisse in est ante in nibh.</p>
-
-                <p>Tristique senectus et netus et malesuada. Vitae ultricies leo integer malesuada nunc vel risus commodo. Ipsum a arcu cursus vitae congue mauris rhoncus aenean. Ornare arcu odio ut sem nulla pharetra diam sit amet. Nec ullamcorper sit amet risus nullam eget felis eget nunc. Sit amet nulla facilisi morbi tempus iaculis urna. Vitae turpis massa sed elementum tempus egestas. Vitae auctor eu augue ut lectus arcu bibendum. Feugiat nibh sed pulvinar proin. Ac auctor augue mauris augue neque. Ultricies integer quis auctor elit sed vulputate mi sit. Facilisis gravida neque convallis a cras semper. Vitae nunc sed velit dignissim sodales ut. Risus ultricies tristique nulla aliquet enim tortor at auctor urna. Euismod quis viverra nibh cras. Consequat id porta nibh venenatis cras.</p>
-                
-            </div>
+        <div className='legal-notice-page'>
+            <Navbar />
+                <div className="legal-notice-bloc">
+                    <div className='Title'>
+                        <h1>Conditions générales</h1>
+                    </div>
+                        <p className='intro'>Version applicable à compter du 1er janvier 2023.</p>
+                    <div className='texte-corps'>
+                        <p>
+                            <span className='bold space'>
+                                1.
+                            </span>
+                            Acceptation des conditions générales : L'utilisation de l'application de covoiturage pour les surfeurs implique l'acceptation de ces conditions générales.
+                        </p>
+                        
+                        <p>
+                            <span className='bold space'>
+                                2.
+                            </span>
+                            Objet de l'application : L'application permet la mise en relation des conducteurs et des passagers souhaitant partager un trajet pour se rendre sur des spots de surf. L'application n'est pas responsable des trajets effectués ni des activités des utilisateurs.
+                        </p>         
+                        <p>
+                            <span className='bold space'>
+                                3.
+                            </span>
+                            Utilisation de l'application : L'application est réservée à un usage personnel et non-commercial. Il est interdit d'utiliser l'application à des fins autres que la mise en relation pour le covoiturage de surfeurs.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                4.
+                            </span>
+                            Inscription : L'inscription à l'application est gratuite. Les utilisateurs doivent fournir des informations exactes et à jour lors de leur inscription.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                5.
+                            </span>
+                            Conditions d'utilisation : Les utilisateurs doivent respecter les conditions d'utilisation de l'application, qui comprennent les règles de sécurité en matière de transport et de conduite, ainsi que les horaires convenus pour le covoiturage.
+                        </p>
+                        
+                        <p>
+                            <span className='bold space'>
+                                6.
+                            </span>Contribution aux frais : Les conducteurs peuvent demander une contribution aux frais de transport. Celle-ci doit être proportionnelle aux coûts réels engagés pour le trajet.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                7.
+                            </span>
+                            Responsabilité : L'application ne peut être tenue responsable des dommages, pertes ou préjudices causés par les utilisateurs de l'application.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                8.
+                            </span>
+                            Données personnelles : Les données personnelles des utilisateurs sont traitées conformément aux dispositions de la législation en vigueur. Les utilisateurs disposent d'un droit d'accès, de rectification et de suppression de leurs données.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                9. 
+                            </span>
+                            Modification des conditions générales : L'application se réserve le droit de modifier les conditions générales à tout moment. Les utilisateurs seront informés de ces modifications par tout moyen approprié.
+                        </p>
+                        <p>
+                            <span className='bold space'>
+                                10.
+                            </span>
+                            Résiliation : Les utilisateurs peuvent résilier leur inscription à l'application à tout moment. L'application se réserve le droit de résilier l'inscription d'un utilisateur en cas de non-respect des conditions générales.
+                        </p>
+                    </div>
+                </div>
+            <Footer />
         </div>
         )
     }

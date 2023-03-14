@@ -46,6 +46,11 @@
     font-weight: bold;
 }
 
+.connection-option {
+    display: flex;
+    align-items: center;
+}
+
 .row {
     display: flex;
     flex-direction: row;
@@ -64,4 +69,93 @@
 
 .no-decoration:hover {
     font-weight: bold;
+}
+
+.inscription-bloc,
+.desktop-bloc,
+.connection-bloc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.inscrption-card-phone,
+.connection-card-phone {
+    width: 70%;
+}
+
+.inscrption-card-phone,
+.connection-card-phone {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 30px;
+}
+
+.col-desktop-1 {
+    display: none;
+}
+
+@media screen and (min-width:767px) {
+
+    .col-desktop-1{
+        display: inline-block;
+        position: relative;
+    }
+    .desktop-bloc {
+        flex-direction: row;
+        margin: 20px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 30px;
+        width: 90%;
+        height: 450px;
+    }
+
+    .size-pic {
+        min-width: 333px;
+        max-width: 430px;
+        min-height: 450px;
+        max-height: 664px;
+        border-radius: 30px 0 0 30px;
+    }
+
+    .inscrption-card-phone,
+    .connection-card-phone {
+        border: none;
+        box-shadow: none;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .image-position {
+        z-index: 1;
+    }
+    .col-desktop-1 .text-position {
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+        position: absolute;
+        text-align: center;
+        font-family: Georgia;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 60%;
+        color: white;
+        width: 70%;
+    }
+}
+
+@media screen and (min-width:1281px) {
+    .desktop-bloc {
+        height: 520px;
+    }
+
+    .size-pic {
+        min-width: 550px;
+        max-width: 650px;
+        min-height: 500px;
+        max-height: 664px;
+        border-radius: 30px 0 0 30px;
+    }
 }

@@ -2,6 +2,8 @@ const express = require('express');
 const journeyController = require('./controllers/journeyController');
 const userController = require('./controllers/userController');
 const mainController = require('./controllers/mainController');
+const journey_has_userController = require('./controllers/journey_has_userController');
+
 const authMW = require('./services/authMW')
 
 
@@ -12,6 +14,8 @@ router.get('/journeySearch', journeyController.showJourneysFiltered);
 router.get('/user/:uid', userController.findUserWithUid);
 router.patch('/user/:uid', userController.editUser);
 
+router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);
+router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourneys);
 
 // router.get('/journeys', journeyController.showAllJourneys);
 // router.get('/journeys/:id', journeyController.showOneJourney);

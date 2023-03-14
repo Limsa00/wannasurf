@@ -2,13 +2,18 @@ import { useState } from "react";
 import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
+import { Navbar } from "../../../components/NavBar/NavBar";
+import { Footer } from "../../../components/Footer/Footer";
 
 export const CreateTraject = (props) => {
 
     const [lieuDepart, setLieuDepart] = useState ("");
     const [lieuArrive, setLieuArrive] = useState ("");
     const [dateDepart, setDateDepart] = useState ("");
-    const [heureDepart, setHeureDepart] = useState ("");
+    const [heureDepart, setHeureDepart] = useState("");
+    const [adresseDepart, setAdresseDepart] = useState("");
+    const [nbPlanche, setNbPlanche] = useState("");
+    const [price, setPrice] = useState ("");
     const [nbPassager, setNbPassager] = useState ("");
     const [taillePlanche, setTaillePlanche] = useState ("");
 
@@ -25,11 +30,11 @@ export const CreateTraject = (props) => {
             destination_surfspot_or_city_id: lieuArrive,
             departure_date: dateDepart,
             departure_time: heureDepart,
-            price:15,
+            price: price,
             place_available: nbPassager,
             board_size_allowed: taillePlanche,
-            number_of_boards_allowed: 3,
-            meeting_address: "633-4350 Dolor Road",
+            number_of_boards_allowed: nbPlanche,
+            meeting_address: adresseDepart,
             driver_id: 10
         
         };
@@ -39,86 +44,126 @@ export const CreateTraject = (props) => {
     }
 
     return (
-    
-        <div className="createTraject-bloc">
+        <div className="create-traject-page">
+            <Navbar />
+                <div className="createTraject-bloc">
 
-            <h1>Créer votre trajet </h1>
+                    <h1>Créer votre trajet </h1>
 
-        <form onSubmit={envoiFormulaire}>
-            <div className="form-create-trajet">
-            
-                <div className="form-champs">
-                    <input 
-                    placeholder="Lieu de depart"
-                    type="texte" 
-                    id="lieuDeDepart" 
-                    name="lieuDepart" 
-                    value={lieuDepart}
-                    onChange={e => setLieuDepart(e.target.value)}
-                    />
+                <form onSubmit={envoiFormulaire}>
+                    <div className="form-create-trajet">
+                    
+                        <div className="large-screen">
+                            <div className="form-champs">
+                                <input 
+                                placeholder="Lieu de depart"
+                                type="texte" 
+                                id="lieuDeDepart" 
+                                name="lieuDepart" 
+                                value={lieuDepart}
+                                onChange={e => setLieuDepart(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                placeholder="Lieu d'arrivé "
+                                type="texte" 
+                                id="lieuArrive" 
+                                name="lieuArrive" 
+                                value={lieuArrive}
+                                onChange={e => setLieuArrive(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="date"
+                                placeholder="Date de depart"        
+                                id="dateDepart" 
+                                name="dateDepart" 
+                                value={dateDepart}
+                                onChange={e => setDateDepart(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="number"
+                                placeholder="Price"        
+                                id="price" 
+                                name="price" 
+                                value={price}
+                                onChange={e => setPrice(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="number"
+                                placeholder="Nombre de planche autorisée"        
+                                id="nbPlanche" 
+                                name="nbPlanche" 
+                                value={nbPlanche}
+                                onChange={e => setNbPlanche(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="large-screen">
+                            <div className="form-champs">
+                                <input 
+                                type="hours" 
+                                placeholder="Heure de depart"
+                                id="heureDepart" 
+                                name="heureDepart" 
+                                value={heureDepart}
+                                onChange={e => setHeureDepart(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                type="number" 
+                                placeholder="Nombre de passagers"
+                                id="nbPassager" 
+                                name="nbPassager" 
+                                value={nbPassager}
+                                onChange={e => setNbPassager(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                placeholder="Taille de planche autorisée"
+                                type="texte" 
+                                id="taillePlanche" 
+                                name="taillePlanche" 
+                                value={taillePlanche}
+                                onChange={e => setTaillePlanche(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="form-champs">
+                                <input 
+                                placeholder="Adresse de depart"
+                                type="texte" 
+                                id="adresseDepart" 
+                                name="adresseDepart" 
+                                value={adresseDepart}
+                                onChange={e => setAdresseDepart(e.target.value)}
+                                />
+                            </div>
+
+                        </div>
+                    
+                        <Button>
+                            Créer mon trajet
+                        </Button>
+                    </div>
+                </form>
                 </div>
-
-                <div className="form-champs">
-                    <input 
-                    placeholder="Lieu d'arrivé "
-                    type="texte" 
-                    id="lieuArrive" 
-                    name="lieuArrive" 
-                    value={lieuArrive}
-                    onChange={e => setLieuArrive(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="date"
-                    placeholder="Date de depart"        
-                    id="dateDepart" 
-                    name="dateDepart" 
-                    value={dateDepart}
-                    onChange={e => setDateDepart(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="hours" 
-                    placeholder="Heure de depart"
-                    id="heureDepart" 
-                    name="heureDepart" 
-                    value={heureDepart}
-                    onChange={e => setHeureDepart(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    type="number" 
-                    placeholder="Nombre de passagers"
-                    id="nbPassager" 
-                    name="nbPassager" 
-                    value={nbPassager}
-                    onChange={e => setNbPassager(e.target.value)}
-                    />
-                </div>
-
-                <div className="form-champs">
-                    <input 
-                    placeholder="Taille de planche autorisée"
-                    type="texte" 
-                    id="taillePlanche" 
-                    name="taillePlanche" 
-                    value={taillePlanche}
-                    onChange={e => setTaillePlanche(e.target.value)}
-                    />
-                </div>
-
-            
-                <Button>
-                    Créer mon trajet
-                </Button>
-            </div>
-        </form>
+            <Footer />
         </div>
         )
     }

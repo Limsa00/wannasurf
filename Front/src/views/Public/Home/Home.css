@@ -20,11 +20,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #F2F2F2;
-    border-radius: 10px;
-    margin-left: 20px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;    margin-left: 20px;
     width: 90%;
-    height: 20%5;
+    height: 20%;
   }
 
 .flex-mobile {
@@ -48,15 +46,24 @@ body {
 
 .input-search-style {
     font-weight: bold;
-    border: 2px solid #f2f2f2;
+    color: black;
+    border: 2px solid white;
+    background-color:rgb(141, 144, 151, 0.4);
     height: 50px;
-    border-radius: 30px;
+    border-radius: 10px;
     text-align: center;
     font-size: 10px;
 }
 
+.input-search-style::placeholder {
+    color: black;
+}
+
 .input-search-style:hover {
     cursor: pointer;
+    transition: 1000ms;
+    transform: scale(1.03);
+    opacity: 0.8;
 }
 
 output {
@@ -75,6 +82,7 @@ output {
     height: 280px;
     max-width: 350px;
     max-height: 350px;
+    min-height: 300px;
     border-radius: 10px;
     margin-top: 30px;
  }
@@ -97,10 +105,6 @@ output {
     margin-top: 30px;
 }
 
-.close-footer {
-    margin-bottom: 50px;
-}
-
 #bloc-info-1,
 #bloc-info-2,
 #bloc-info-3 {
@@ -115,17 +119,28 @@ output {
 #bloc-info-2 h3,
 #bloc-info-3 h3 {
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+@media screen and (min-width:615px) {
+.img-size {
+        width: 400px;
+        height: 380px;
+        max-width: 450px;
+        max-height: 450px;
+        min-height: 300px;
+    }
+}
 @media screen and (min-width:767px) {
+
     .shearch-bar-section {
-        width: 100%;
-        margin: auto 0;
-        height: 20%;
+        width: 90%;
+        margin-left: 5%;
       }    
 
     .input-search-style {
-        margin: auto 0;
         height: 60px;
         
       }   
@@ -133,14 +148,23 @@ output {
         width: 40%;
     }
     .search-form {
-        width: 100%;
+        width: 80%;
     }
     .flex-mobile {
         width: 100%;
     }
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:1100px) {
+
+    .img-size {
+        width: 320px;
+        height: 280px;
+        max-width: 350px;
+        max-height: 350px;
+        min-height: 300px;
+    }
+    
     .bloc-info {
         flex-direction: row;
         align-items: center;

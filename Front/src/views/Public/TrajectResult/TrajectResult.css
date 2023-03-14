@@ -3,29 +3,3 @@
     font-weight: bolder;
     margin: 40px;
 }
-
-.traject-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #F2F2F2;
-    border-radius: 10px;
-    margin: 20px;
-    width: 80%;
-}
-
-.left-side {
-    margin-right: 40px;
-}
-.up-card,
-.down-card{
-    display: flex;
-    flex-direction: row;
-    margin: 15px;
-}
-
-.bold {
-    font-weight: bold;
-}

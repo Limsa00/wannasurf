@@ -14,8 +14,8 @@
 
 .form-create-trajet input {
     padding: 20px;
-    border-radius: 25px;
-    border: grey 2px solid;
+    border-radius: 5px;
+    border: rgb(191, 174, 174) 2px solid;
     text-align: center;
 }
 
@@ -41,4 +41,15 @@
 
 .form-champs {
     margin-bottom: 25px;
+}
+
+@media screen and (min-width:900px) {
+    .large-screen {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .form-champs {
+        margin-right: 30px;
+    }
 }

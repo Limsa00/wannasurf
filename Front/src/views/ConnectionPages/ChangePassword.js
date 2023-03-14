@@ -22,19 +22,10 @@ export const ChangePassword = () => {
         console.log(user)
         console.log(credential)
 
-        reauthenticateWithCredential(credential).then(() => {
-        }).catch((error) => {
-            // An error ocurred
-            // ...
-        });
-    }
-    reauthenticate(pwd)
-
-
-        const handleForm = async e => {
-            e.preventDefault()
+        reauthenticateWithCredential(user, credential).then(() => {
             try {
-                await changePasswordFirebase(
+                changePasswordFirebase(
+                    user,
                     newPassword
                 ).then(
                     setSendReset("Votre pwd a bien été changé"))
@@ -43,7 +34,15 @@ export const ChangePassword = () => {
                 console.log(err)
                 setValidation('')
             }
-        };
+        }).catch((error) => {
+            console.log(error)
+        });
+}
+    const handleForm = async e => {
+        e.preventDefault()
+
+        reauthenticate(pwd)
+    }
 
         return (
             <>

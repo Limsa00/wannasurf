@@ -2,14 +2,18 @@ h1 {
     text-align: center;
     font-size: 20px;
 }
-  
+
+.bg-blue {
+background-color: #0008C1;
+}
+
 .nav-bar-bloc {
     background-color: #0008C1;
     width: 100%;
     height: 50px; 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:space-between;
     align-items: center ;
     padding: 20px 0 20px 0px;
 }
@@ -18,6 +22,7 @@ h1 {
     width: 35px;
     height: 35px;
     margin-left: 15px;
+    margin-right: 40px;
 }
 
 .logo-color {

@@ -5,6 +5,8 @@ import React, {useContext} from 'react';
 import { UserContext } from '../../../context/UserContext';
 import HomeIcon from '@mui/icons-material/Home';
 import axios from 'axios';
+import { Navbar } from '../../../components/NavBar/NavBar';
+import { Footer } from '../../../components/Footer/Footer';
 
 export const MonEspace = () => {
 
@@ -28,46 +30,48 @@ export const MonEspace = () => {
     if (!user) return "Pas de user connecté :(";
 
     return (
-        <>
-            <div className='title-bloc'>
-                <h1>MON ESPACE</h1>
-                <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
-            </div>
-            
-            <div className="espace-bloc">
-                <div className='space-button'>
-                    <Link to="/wannasurf/monProfil" >
-                        <Button>
-                            Mon profil
-                        </Button>
-                    </Link>
+        <div className='mon-espace-page'>
+            <Navbar />
+                <div className='title-bloc'>
+                    <h1>MON ESPACE</h1>
+                    <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
                 </div>
-                <div className='space-button'>
-                    <Link to="/wannasurf/mesFutursTrajets">
-                        <Button>
-                            Mes futurs trajets
-                        </Button>
-                    </Link>
-                </div>
-                <div className='space-button'>
-                    <Link to="/wannasurf/monHistorique">
-                        <Button>
-                            Historique des trajets
-                        </Button>
-                    </Link>
-                </div>
-                </div>
-
-                <div className='home-back'>
-                    <Link to="/wannasurf/home">
+                
+                <div className="espace-bloc">
+                    <div className='space-button'>
+                        <Link to="/wannasurf/monProfil" >
                             <Button>
-                                Accueil
-                                <span className='icon-home'>
-                                    <HomeIcon />
-                                </span>
+                                Mon profil
                             </Button>
-                    </Link>
-                </div>
-        </>
+                        </Link>
+                    </div>
+                    <div className='space-button'>
+                        <Link to="/wannasurf/mesFutursTrajets">
+                            <Button>
+                                Mes futurs trajets
+                            </Button>
+                        </Link>
+                    </div>
+                    <div className='space-button'>
+                        <Link to="/wannasurf/monHistorique">
+                            <Button>
+                                Historique des trajets
+                            </Button>
+                        </Link>
+                    </div>
+                    </div>
+
+                    <div className='home-back'>
+                        <Link to="/wannasurf/home">
+                                <Button>
+                                    Accueil
+                                    <span className='icon-home'>
+                                        <HomeIcon />
+                                    </span>
+                                </Button>
+                        </Link>
+                    </div>
+                <Footer />
+            </div>
         )
     }

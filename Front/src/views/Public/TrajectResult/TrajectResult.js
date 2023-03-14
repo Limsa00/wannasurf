@@ -2,41 +2,53 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./TrajectResult.css";
 import axios from "axios";
-
+import { TrajectCard } from "../../../components/TrajectCard";
+import { useOutletContext } from "react-router-dom"
+import { Navbar } from "../../../components/NavBar/NavBar";
+import { Footer } from "../../../components/Footer/Footer";
 
 export const TrajectResult = () => {
 
-    const [traject, setTraject] = React.useState(null);
+    const context = useOutletContext()
+    const [traject, setTraject] = context.traject;
     const [error, setError] = React.useState(null);
+    const [trajectSearch,] = context.trajectSearch
+
+    const place = trajectSearch.place_available
+    const date = trajectSearch.departure_date
     
     React.useEffect(() => {
         axios
-            .get("http://localhost:5000/journey/2")
+            .get(`http://localhost:5000/journeySearch?place=${place}&date=${date}`)
             .then((response) => { setTraject(response.data); })
             .catch(error => { setError(error); });
     },
-    []);
+    [place, date]);
     
     if (error) return `Error: ${error.message}`;
     if (!traject) return "Pas de trajets disponible :(";
 
     return (
-        <div className="traject-page">
-            <h1 className="title-traject">Liste des trajets disponibles</h1>
-            <div className="traject-card">
-                <div className="up-card">
-                    <div className="left-side">
-                        <p><span className="bold">Depart: </span> {traject.departure_city_id}</p>
-                    </div>
-                    <div className="right-side">
-                        <p><span className="bold"> Destination : </span>{traject.destination_surfspot_or_city}</p>
-                    </div>
+        <div className="traject-result-page">
+            <Navbar />
+                <div>
+                    {traject?.map(traject => (           
+                        <TrajectCard
+                            key={`${traject.journey_id}`}
+                            journey_id={traject.journey_id}
+                            date={traject.date}
+                            driver_firstname={traject.driver_firstname}
+                            driver_lastname={traject.driver_lastname}
+                            city={traject.city}
+                            address={traject.address}
+                            surfspot={traject.surfspot}
+                            time={traject.time}
+                            price={traject.price}
+                            places_remaining={traject.places_remaining}
+                        />
+                    ))}
                 </div>
-                    <div className="down-card">
-                        <p><span className="bold"> heure de depart:</span> {traject.departure_time}</p>
-                        <p className="traject-price"> <span className="bold"> Prix du traject: </span>{traject.price} $ </p>
-                    </div>
-            </div>
+            <Footer />
         </div>
         )
     }

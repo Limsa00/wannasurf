@@ -2,6 +2,10 @@
     margin: 20px;
 }
 
+.intro {
+    font-style: italic;
+}
+
 .texte-corps {
     margin-top: 20px;
     text-align: justify;
@@ -14,4 +18,8 @@
 
 .legal-notice-bloc p {
     margin-top: 15px;
+}
+
+.space {
+    margin-right: 15px;
 }
