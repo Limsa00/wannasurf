@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
@@ -15,8 +15,26 @@ export const CreateTraject = (props) => {
     const [nbPlanche, setNbPlanche] = useState("");
     const [price, setPrice] = useState ("");
     const [nbPassager, setNbPassager] = useState ("");
-    const [taillePlanche, setTaillePlanche] = useState ("");
-
+    const [taillePlanche, setTaillePlanche] = useState("");
+    const [city, setCity] = useState ("");
+    const [error, setError] = React.useState(null);
+    const [surfspot, setSurfspot] = useState ("");
+    
+    React.useEffect(() => {
+        axios
+            .get(`http://localhost:5000/city`)
+            .then((response) => { setCity(response.data); })
+            .catch(error => { setError(error); });
+        axios
+            .get(`http://localhost:5000/surfspot`)
+            .then((response) => { setSurfspot(response.data); })
+            .catch(error => { setError(error); });
+    },
+    []);
+    
+    if (error) return `Error: ${error.message}`;
+    if (!city) return "Pas de villes disponible :(";
+    if (!surfspot) return "Pas de villes disponible :(";
 
     // Lorsquon va envoyer notre form
     // Le but du jeu est de créer un objet indentique à ceux presents dans la base de données
@@ -43,6 +61,8 @@ export const CreateTraject = (props) => {
             .post('http://localhost:5000/journey', newTraject)
     }
 
+    console.log(lieuDepart)
+
     return (
         <div className="create-traject-page">
             <Navbar />
@@ -55,27 +75,49 @@ export const CreateTraject = (props) => {
                     
                         <div className="large-screen">
                             <div className="form-champs">
-                                <input 
-                                placeholder="Lieu de depart"
-                                type="texte" 
-                                id="lieuDeDepart" 
-                                name="lieuDepart" 
-                                value={lieuDepart}
-                                onChange={e => setLieuDepart(e.target.value)}
-                                />
+                                <select
+                                    onChange={e => setLieuDepart(e.target.value)}
+                                    name="lieuDepart"
+                                    id="lieuDeDepart"
+                                >
+                                    <option
+                                        value=''
+                                    >
+                                        -- Selectionnez ville depart --
+                                    </option>
+                                    {city?.map(city => (                                                                                                                         
+                                    <option                                       
+                                        key={`${city.id}`}  
+                                        value= {city.id}                                       
+                                    >
+                                        {city.cityName}
+                                    </option>
+                                        ))}
+                                </select>
                             </div>
 
                             <div className="form-champs">
-                                <input 
-                                placeholder="Lieu d'arrivé "
-                                type="texte" 
-                                id="lieuArrive" 
-                                name="lieuArrive" 
-                                value={lieuArrive}
-                                onChange={e => setLieuArrive(e.target.value)}
-                                />
+                                <select
+                                    onChange={e => setLieuArrive(e.target.value)}
+                                    name="lieuArrive"
+                                    id="lieuArrive"
+                                >
+                                    <option
+                                        value=''
+                                    >
+                                        -- Selectionnez surfspot --
+                                    </option>
+                                    {surfspot?.map(surfspot => (                                                                                                                         
+                                    <option                                       
+                                        key={`${surfspot.id}`}  
+                                        value= {surfspot.id}                                       
+                                    >
+                                        {surfspot.surfspotName}
+                                    </option>
+                                        ))}
+                                </select>                         
                             </div>
-
+                            
                             <div className="form-champs">
                                 <input 
                                 type="date"
@@ -113,7 +155,7 @@ export const CreateTraject = (props) => {
                         <div className="large-screen">
                             <div className="form-champs">
                                 <input 
-                                type="hours" 
+                                type="time" 
                                 placeholder="Heure de depart"
                                 id="heureDepart" 
                                 name="heureDepart" 

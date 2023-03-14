@@ -4,7 +4,7 @@ const City = require('../models/City');
 const Journey_has_user = require('../models/Journey_has_user');
 
 
-const objectModel = [Journey, User, City, Journey_has_user];
+const objectModel = [Journey, User, City, Journey_has_user, Surfspot];
 
 const mainController = {
     getEntityToUse:(req,res)=>{
@@ -91,5 +91,3 @@ const mainController = {
         }
     }
 }
-
-module.exports = mainController;
