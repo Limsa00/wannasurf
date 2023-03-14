@@ -1,6 +1,6 @@
 const express = require('express');
 const journeyController = require('./controllers/journeyController');
-const loginController = require('./controllers/loginController');
+const userController = require('./controllers/userController');
 const mainController = require('./controllers/mainController');
 const journey_has_userController = require('./controllers/journey_has_userController');
 
@@ -11,8 +11,8 @@ const router = express.Router();
 
 router.get('/journeySearch', journeyController.showJourneysFiltered);
 
-router.get('/user/:uid', loginController.findUserWithUid);
-router.patch('/user/:uid', loginController.editUser);
+router.get('/user/:uid', userController.findUserWithUid);
+router.patch('/user/:uid', userController.editUser);
 
 router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);
 router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourneys);
@@ -22,16 +22,16 @@ router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourne
 // router.post('/journeys', journeyController.addOneJourney);
 // router.delete('/journeys/:id', journeyController.deleteOneJourney);
 
-// router.get('/isLogged', loginController.loginCheck);
-// router.get('/logout', loginController.doLogout);
-// router.post('/login', loginController.doLogin);
-// router.post('/signup', loginController.doSignup);
-// router.delete('/users/:id', loginController.deleteOneUser);
+// router.get('/isLogged', userController.loginCheck);
+// router.get('/logout', userController.doLogout);
+// router.post('/login', userController.doLogin);
+// router.post('/signup', userController.doSignup);
+// router.delete('/users/:id', userController.deleteOneUser);
 
 // Factoring routes for models : journey, user
 router.get('/:entity', mainController.showAllComponents);
 router.get('/:entity/:id', mainController.showOneComponent);
-router.post('/:entity', mainController.addOneComponent);
+router.post('/:entity', /*authMW,*/ mainController.addOneComponent);
 router.patch('/:entity/:id', mainController.editOneComponent);
 router.delete('/:entity/:id', mainController.deleteOneComponent);
 

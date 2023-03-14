@@ -14,7 +14,7 @@ CREATE TABLE "user" (
     -- "password" TEXT NOT NULL,
     "image_link" TEXT,
     "role" TEXT DEFAULT 'normal',
-    "uid" TEXT NOT NULL
+    "uid" TEXT NOT NULL UNIQUE
 );
 
 ALTER TABLE "journey" ADD COLUMN "driver_id" INT NOT NULL REFERENCES "user"(id);
