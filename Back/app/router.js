@@ -1,7 +1,7 @@
 const express = require('express');
 const journeyController = require('./controllers/journeyController');
 const userController = require('./controllers/userController');
-const mainController = require('./controllers/mainController');
+const mainController = require('./controllers/mainController')
 const journey_has_userController = require('./controllers/journey_has_userController');
 
 const authMW = require('./services/authMW')
