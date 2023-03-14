@@ -1,6 +1,7 @@
 const Journey = require('../models/Journey');
 const User = require('../models/User');
 const City = require('../models/City');
+const Surfspot = require('../models/Surfspot');
 const Journey_has_user = require('../models/Journey_has_user');
 
 
