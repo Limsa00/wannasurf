@@ -4,7 +4,7 @@ const Journey_has_user = require('../models/Journey_has_user');
 const journeyController = {
 
     showOneJourneyUsers: async (req,res) =>{
-        console.log("----- Controller request showOneJourneyUsers -----")
+        console.log("----- Controller request showOneJourneyUsers -----");
 
         const journeyId = req.params.id;
         const journeySelected = await Journey_has_user.findOneJourneyUsers(journeyId);
@@ -17,7 +17,7 @@ const journeyController = {
     },
 
     showOneUserJourneys: async (req,res) =>{
-        console.log("----- Controller request showOneUserJourneys -----")
+        console.log("----- Controller request showOneUserJourneys -----");
 
         const userId = req.params.id;
         const userSelected = await Journey_has_user.findOneUserJourneys(userId);
@@ -28,6 +28,15 @@ const journeyController = {
             res.status(404).json('Cet utilisateur n\'est inscrit sur aucun trajet');
         };
     },
+
+    addOneUserToJourney: async (req,res) => {
+        console.log("----- Controller request addOneUserToJourney -----");
+
+        const newUserToJourney = new Journey_has_user (req.body);
+        const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
+
+        res.json(addedUserToJourney);
+    }
 
     /*
     addOneJourney: async (req,res) =>{

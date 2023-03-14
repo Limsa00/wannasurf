@@ -14,8 +14,13 @@ router.get('/journeySearch', journeyController.showJourneysFiltered);
 router.get('/user/:uid', userController.findUserWithUid);
 router.patch('/user/:uid', userController.editUser);
 
+// Afficher la liste des passagers dans un trajet
 router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);
+// Afficher la liste des trajets auxquels est inscrit un passager 
 router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourneys);
+
+// S'inscrire dans un trajet
+router.post('/journey_has_user', journey_has_userController.addOneUserToJourney);
 
 // router.get('/journeys', journeyController.showAllJourneys);
 // router.get('/journeys/:id', journeyController.showOneJourney);
