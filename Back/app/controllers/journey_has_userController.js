@@ -47,10 +47,17 @@ const journeyController = {
     addOneUserToJourney: async (req,res) => {
         console.log("----- Controller request addOneUserToJourney -----");
 
-        const newUserToJourney = new Journey_has_user (req.body);
-        const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
+        const userId = req.body.user_id;
+        const journeyId = req.body.journey_id;
 
-        res.json(addedUserToJourney);
+        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
+        if(userInJourney) {
+            res.status(202).json('déjà inscrit');
+        } else {
+            const newUserToJourney = new Journey_has_user (req.body);
+            const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
+            res.json(addedUserToJourney);
+        }
     },
 
     deleteOneUserFromJourney: async (req,res) =>{
