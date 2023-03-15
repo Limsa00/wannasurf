@@ -7,7 +7,7 @@ const journeyController = {
         console.log("----- Controller request showOneJourneyUsers -----");
 
         const journeyId = req.params.id;
-        const journeySelected = await Journey_has_user.findOneJourneyUsers(journeyId);
+        const journeySelected = await Journey_has_user.findOneJourneyAllUsers(journeyId);
 
         if (journeySelected) {
             res.json(journeySelected);
@@ -20,12 +20,27 @@ const journeyController = {
         console.log("----- Controller request showOneUserJourneys -----");
 
         const userId = req.params.id;
-        const userSelected = await Journey_has_user.findOneUserJourneys(userId);
+        const userSelected = await Journey_has_user.findOneUserAllJourneys(userId);
 
         if (userSelected) {
             res.json(userSelected);
         } else {
             res.status(404).json('Cet utilisateur n\'est inscrit sur aucun trajet');
+        };
+    },
+
+    showOneUserOneJourney: async (req,res) =>{
+        console.log("----- Controller request showOneUserOneJourney -----");
+
+        const userId = req.params.userId;
+        const journeyId = req.params.journeyId;
+
+        const userSelected = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
+
+        if (userSelected) {
+            res.json(userSelected);
+        } else {
+            res.status(404).json('Cet utilisateur ou ce trajet n\'existe pas');
         };
     },
 
@@ -36,6 +51,22 @@ const journeyController = {
         const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
 
         res.json(addedUserToJourney);
+    },
+
+    deleteOneUserFromJourney: async (req,res) =>{
+        console.log("----- Controller request deleteOneUserFromJourney -----");
+
+        const userId = req.params.userId;
+        const journeyId = req.params.journeyId;
+
+        const user = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
+        if (user) {
+            const userToDeleteFromJourney = new Journey_has_user(user);
+            await userToDeleteFromJourney.deleteOneUserFromOneJourney();
+            res.json("suppression effectuée");
+        } else{
+            res.status(404).json('Cet utilisateur ou ce trajet n\'existe pas');
+        }
     }
 
     /*

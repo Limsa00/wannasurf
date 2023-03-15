@@ -12,14 +12,19 @@ class Journey_has_user extends CoreModel {
         }
     }
 
-    static async findOneJourneyUsers(journeyId) {
+    static async findOneJourneyAllUsers(journeyId) {
         const oneJourney_has_user = await db.query (`SELECT * FROM journey_has_user WHERE journey_id=$1;`, [journeyId]);
         return oneJourney_has_user.rows;
     }
 
-    static async findOneUserJourneys (userId) {
+    static async findOneUserAllJourneys (userId) {
         const oneUser_has_journey = await db.query (`SELECT * FROM journey_has_user WHERE user_id=$1;`, [userId]);
         return oneUser_has_journey.rows;
+    }
+
+    static async findOneUserOneJourney (journeyId, userId) {
+        const oneUser_has_journey = await db.query (`SELECT * FROM journey_has_user WHERE journey_id=$1 AND user_id=$2;`, [journeyId, userId]);
+        return oneUser_has_journey.rows[0];
     }
 
     async saveOneUserToJourney() {
@@ -33,6 +38,10 @@ class Journey_has_user extends CoreModel {
         ]);
 
         return insertedUserToJourney.rows[0];
+    }
+
+    async deleteOneUserFromOneJourney() {
+        await db.query(`DELETE FROM journey_has_user WHERE "journey_id"=$1 AND "user_id"=$2;`, [this.journey_id,this.user_id]);
     }
 }
 

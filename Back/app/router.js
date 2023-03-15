@@ -6,7 +6,6 @@ const journey_has_userController = require('./controllers/journey_has_userContro
 
 const authMW = require('./services/authMW')
 
-
 const router = express.Router();
 
 router.get('/journeySearch', journeyController.showJourneysFiltered);
@@ -18,9 +17,13 @@ router.patch('/user/:uid', userController.editUser);
 router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);
 // Afficher la liste des trajets auxquels est inscrit un passager 
 router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourneys);
+// Afficher 1 trajet et 1 passager
+router.get('/journey_has_user/:journeyId/:userId', journey_has_userController.showOneUserOneJourney);
 
 // S'inscrire dans un trajet
 router.post('/journey_has_user', journey_has_userController.addOneUserToJourney);
+// Se désinscrire d'un trajet
+router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController.deleteOneUserFromJourney);
 
 // router.get('/journeys', journeyController.showAllJourneys);
 // router.get('/journeys/:id', journeyController.showOneJourney);
