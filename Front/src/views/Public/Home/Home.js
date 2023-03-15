@@ -36,8 +36,8 @@ export const Home = () => {
     []);
     
     if (error) return `Error: ${error.message}`;
-    if (!city) return "Pas de villes disponible :(";
-    if (!surfspot) return "Pas de villes disponible :(";
+    if (!city) return "Chargement des données ...";
+    if (!surfspot) return "Chargement des données ...";
 
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
