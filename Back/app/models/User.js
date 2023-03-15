@@ -22,6 +22,36 @@ class User extends CoreModel {
         return user.rows[0];
     }
 
+    static async findJourneyDetail(id) {
+        const query = `
+        SELECT
+            journey.id AS journey_id,
+            journey.departure_date::date AS "date",
+            journey.departure_time AS time,
+            driver_user.id AS driver_id,
+            driver_user.firstname AS driver_firstname,
+            driver_user.lastname AS driver_lastname,
+            residence_city."cityName" AS start_city,
+            surfspot."surfspotName" AS surfspot,
+            surfspot_city."cityName" AS surfspot_city,
+            journey.price,
+            journey_has_user.user_id AS passenger_id,
+            passenger_user.firstname AS passenger_firstname,
+            passenger_user.lastname AS passenger_lastname
+        FROM journey
+        JOIN "user" AS driver_user ON journey.driver_id = driver_user.id
+        JOIN journey_has_user ON journey.id = journey_has_user.journey_id
+        JOIN "user" AS passenger_user ON journey_has_user.user_id = passenger_user.id
+        JOIN city AS residence_city ON journey.departure_city_id = residence_city.id
+        JOIN surfspot ON journey.destination_surfspot_or_city_id = surfspot.id
+        JOIN city AS surfspot_city ON surfspot.city_id = surfspot_city.id
+        WHERE journey_has_user.user_id = $1
+        ORDER BY "date" ASC;
+        `
+        const userJourneys = await db.query(query, [id]);
+        return userJourneys.rows;
+    }
+
     // A FINIR (requête pour obtenir liste des trajets d'un user)
     // SELECT
     //     journey.id AS journey_id,

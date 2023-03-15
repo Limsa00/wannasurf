@@ -8,7 +8,10 @@ const authMW = require('./services/authMW')
 
 const router = express.Router();
 
+// Rechercher les trajets à partir de la date et des places dispos
 router.get('/journeySearch', journeyController.showJourneysFiltered);
+// Afficher Trajets d'un User avec tous les détails
+router.get('/myTravels/:id', userController.showUserJourneyDetail);
 
 router.get('/user/:uid', userController.findUserWithUid);
 router.patch('/user/:uid', userController.editUser);

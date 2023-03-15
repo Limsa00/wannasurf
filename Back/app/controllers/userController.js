@@ -32,6 +32,19 @@ const userController = {
         }else{
             res.status(202).json(`Impossible d'effectuer cette opération`);
         }        
+    },
+
+    showUserJourneyDetail : async (req,res) =>{
+        console.log("----- Controller request showUserJourneyDetail -----");
+
+        const id = req.params.id;
+        
+        const userJourneys = await User.findJourneyDetail(id);
+        if(userJourneys) {
+            res.json(userJourneys);
+        } else {
+            res.status(202).json(`pas de voyages trouvés pour cet utilisateur`);
+        }
     }
 
     /*
