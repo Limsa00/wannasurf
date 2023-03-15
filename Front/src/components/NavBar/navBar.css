@@ -17,9 +17,14 @@ background-color: #0008C1;
     align-items: center ;
     padding: 20px 0 20px 0px;
 }
+
+.title-wannasurf {
+    color: white;
+}
   
-.logo-param {
+.icon-param {
     width: 35px;
+    color:beige;
     height: 35px;
     margin-left: 15px;
     margin-right: 40px;

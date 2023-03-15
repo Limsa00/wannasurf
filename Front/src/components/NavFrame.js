@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoWannaSurf from "../images/logoWannaSurf.png"
+import SurfingIcon from '@mui/icons-material/Surfing';
 
 
 export default function NavFrame(props) {
@@ -13,12 +14,12 @@ export default function NavFrame(props) {
   return (
         <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
             <div className="logo">
-                <img src={logoWannaSurf} alt="logo la startup wannaSurf" className="logo-param" />
+                <SurfingIcon className='icon-param' />
             </div>
 
             <Link to="/wannasurf/home" className="navbar-link link-style">
                 <div className="title-wannasurf">
-                    <h1>WANNA<span className="logo-color">SURF</span></h1>
+                    <h1>WANNASURF</h1>
                 </div>
             </Link>
 
