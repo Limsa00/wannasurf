@@ -28,7 +28,7 @@ export const TrajectCard = ({
                         <p><span className="bold">Depart: </span> {city}</p>
                     </div>
                     <div className="right-side">
-                        <p><span className="bold"> Destination : </span>{journey_id}</p>
+                        <p><span className="bold"> Destination : </span>{surfspot}</p>
                     </div>
                 </div>
                     <div className="down-card">

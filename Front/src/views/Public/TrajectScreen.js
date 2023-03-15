@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../../context/UserContext'
 import '../../views/Public/trajectScreen.css'
 import { useOutletContext, useParams } from 'react-router-dom'
 import Button from '../../../src/components/UI/Button'
@@ -19,11 +20,32 @@ export default function TajectScreen() {
     console.log(trajectDetails)
     console.log(trajectDetails.journey_id)
   
+    const [user, setUser] = React.useState(null);
+    const [error, setError] = React.useState(null);
+    
+    const {currentUser} = useContext(UserContext)
+    console.log("route de: ", currentUser )
+    const uid = currentUser.uid;
+
+        React.useEffect(() => {
+
+        axios
+            .get(`http://localhost:5000/user/${uid}`)
+            .then((response) => { setUser(response.data); })
+            .catch(error => { setError(error); });
+    },
+        [uid]);
+    
+    if (error) return `Error: ${error.message}`;
+    if (!user) return "Pas de user connecté :(";
+  
+    console.log(uid)
+  
       const signUpTraject = (evt) => {
         evt.preventDefault()
         const postTraject = { 
           journey_id: trajectDetails.journey_id,
-          user_id: 3
+          user_id: user.id
         };
 
         axios

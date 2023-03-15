@@ -2,7 +2,8 @@ import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
 import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";
 import ImageCarrou3 from "../../../images/surf-carrou-ex3.jpg";
@@ -18,6 +19,25 @@ export const Home = () => {
     const [dateDepart, setDateDepart] = useState("");
     const [nombrePersonne, setNombrePersonne] = useState(1);
     const [trajectSearch, setTrajectSearch] = useOutletContext().trajectSearch 
+    const [city, setCity] = useState ("");
+    const [error, setError] = React.useState(null);
+    const [surfspot, setSurfspot] = useState ("");
+
+    React.useEffect(() => {
+        axios
+            .get(`http://localhost:5000/city`)
+            .then((response) => { setCity(response.data); })
+            .catch(error => { setError(error); });
+        axios
+            .get(`http://localhost:5000/surfspot`)
+            .then((response) => { setSurfspot(response.data); })
+            .catch(error => { setError(error); });
+    },
+    []);
+    
+    if (error) return `Error: ${error.message}`;
+    if (!city) return "Pas de villes disponible :(";
+    if (!surfspot) return "Pas de villes disponible :(";
 
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
@@ -47,20 +67,52 @@ export const Home = () => {
 
                         <div className="shearch-bar-section">
                             <form className="search-form" onSubmit={envoiFormulaire}>
-                                <div className="flex-mobile">
-                                    <input
-                                        type="text"
-                                        placeholder="Lieu de depart"
-                                        className="input-search-style" 
-                                        value={lieuDepart}
-                                        onChange={(e) => setLieuDepart(e.target.value)} />
-                                    <input
-                                        type="text"
-                                        placeholder="Lieu de destination"
-                                        className="input-search-style" 
-                                        value={lieuDestination}
-                                        onChange={(e) => setLieuDestination(e.target.value)} />
+                            <div className="flex-mobile">
+                                <div className="form-champs-home">
+                                    <select
+                                        onChange={e => setLieuDepart(e.target.value)}
+                                        name="lieuDepart"
+                                        id="lieuDeDepart"
+                                    >
+                                        <option
+                                            value=''
+                                        >
+                                            -- Ville depart --
+                                        </option>
+                                        {city?.map(city => (                                                                                                                         
+                                        <option                                       
+                                            key={`${city.id}`}  
+                                            value= {city.cityName}                                       
+                                        >
+                                            {city.cityName}
+                                        </option>
+                                            ))}
+                                    </select>
+                                    </div>
+
+                                    <div className="form-champs-home">
+                                    <select
+                                        onChange={e => setLieuDestination(e.target.value)}
+                                        name="lieuArrive"
+                                        id="lieuArrive"
+                                    >
+                                        <option
+                                            value=''
+                                        >
+                                            -- Surfspot --
+                                        </option>
+                                        {surfspot?.map(surfspot => (                                                                                                                         
+                                        <option                                       
+                                            key={`${surfspot.id}`}  
+                                            value= {surfspot.surfspotName}                                       
+                                        >
+                                            {surfspot.surfspotName}
+                                        </option>
+                                            ))}
+                                    </select>                         
+                                    </div>
                                 </div>
+                            
                                 <div className="flex-mobile">
                                     <input
                                         type="date"

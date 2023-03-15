@@ -48,15 +48,28 @@ body {
     justify-content: center;
 }
 
+.search-form input,
+.search-form select {
+    padding: 10px;
+    width: 85%;
+    border-radius: 5px;
+    border: rgb(191, 174, 174) 2px solid;
+    text-align: center;
+}
+
 .input-search-style {
     font-weight: bold;
     color: black;
     border: 2px solid white;
-    background-color:rgb(141, 144, 151, 0.4);
-    height: 50px;
+    height: 20px;
     border-radius: 10px;
+    width: 100%;
     text-align: center;
     font-size: 10px;
+}
+
+.form-champs-home {
+    margin: 15px 0 0 15px
 }
 
 .input-search-style::placeholder {
