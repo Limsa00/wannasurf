@@ -31,7 +31,8 @@ export const TrajectResult = () => {
     return (
         <div className="traject-result-page">
             <Navbar />
-                <div>
+            <div>
+                <h1 className="title-traject">Liste des trajets disponibles</h1>
                     {traject?.map(traject => (           
                         <TrajectCard
                             key={`${traject.journey_id}`}

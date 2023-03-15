@@ -28,14 +28,23 @@ class Journey_has_user extends CoreModel {
     }
 
     async saveOneUserToJourney() {
-        const insertedUserToJourney = await db.query(`
-        INSERT INTO journey_has_user ("journey_id", "user_id")
-        VALUES ($1, $2)
-        RETURNING "journey_id", "user_id";
-        `, [
-            this.journey_id,
-            this.user_id
-        ]);
+        const checkUserToJourney = await db.query(`
+        SELECT "user_id" FROM journey_has_user WHERE "user_id"=$1 AND "journey_id"=$2;`,[this.user_id, this.journey_id])
+
+        console.log(checkUserToJourney.rowCount)
+        if (checkUserToJourney.rowCount > 0) {
+             return 'error'
+        } else {
+            const insertedUserToJourney = await db.query(`
+            INSERT INTO journey_has_user ("journey_id", "user_id")
+            VALUES ($1, $2)
+            RETURNING "journey_id", "user_id";
+             `, [
+             this.journey_id,
+             this.user_id
+         ]);
+             return 'success'
+         }
 
         return insertedUserToJourney.rows[0];
     }

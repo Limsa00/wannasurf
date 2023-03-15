@@ -21,7 +21,6 @@ export const TrajectCard = ({
 
     return (
         <div className="traject-page"> 
-            <h1 className="title-traject">Liste des trajets disponibles</h1>
             <div className="traject-card">
                 <div className="up-card">
                     <div className="left-side">
