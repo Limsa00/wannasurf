@@ -36,6 +36,10 @@ export const TrajectCard = ({
     console.log("route de: ", currentUser )
     const uid = currentUser.uid;
 
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
     //     React.useEffect(() => {
 
     //     axios
@@ -89,7 +93,8 @@ export const TrajectCard = ({
             if (response.status === 202) {
             setMsgErr(notifyErr)
             } else {
-            setMsgSuccess(notify)
+                setMsgSuccess(notify)
+                refreshPage()
             }
         })
         }

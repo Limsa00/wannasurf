@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
@@ -25,6 +26,19 @@ export const CreateTraject = (props) => {
     
     const [msgSuccess, setMsgSuccess] = useState("");
     const [msgErr, setMsgErr] = useState("");
+
+    const navigate = useNavigate();
+    
+
+    function Timer () {
+        useEffect(() => {
+            let timerID = setTimeout(() => {
+                navigate('/wannasurf/home')
+            }, 2000);
+            return () => clearTimeout(timerID)
+        })
+    }
+
     
     React.useEffect(() => {
         axios
@@ -70,6 +84,7 @@ export const CreateTraject = (props) => {
                     setMsgErr(notifyErr)
                 } else {
                     setMsgSuccess(notify)
+                    .then(Timer())
                 }
             })
         }
@@ -79,7 +94,7 @@ export const CreateTraject = (props) => {
     //const de notif avec la lib react-toastity
     const notify = () => toast.success("Votre trajet a bien été créé ! ", {
         position: "bottom-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -90,7 +105,7 @@ export const CreateTraject = (props) => {
   
       const notifyErr = () => toast.error("Erreur lors de la creation de votre trajet, veuillez rééssayer ! ", {
         position: "bottom-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
