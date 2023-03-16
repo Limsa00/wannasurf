@@ -3,7 +3,10 @@ import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
 import { Navbar } from "../../../components/NavBar/NavBar";
+import { toast } from 'react-toastify';
 import { Footer } from "../../../components/Footer/Footer";
+import { Loader } from "../../../components/Loader/Loader";
+import { Error } from "../../../components/ErrorComponent/Error";
 
 export const CreateTraject = (props) => {
 
@@ -18,7 +21,10 @@ export const CreateTraject = (props) => {
     const [taillePlanche, setTaillePlanche] = useState("");
     const [city, setCity] = useState ("");
     const [error, setError] = React.useState(null);
-    const [surfspot, setSurfspot] = useState ("");
+    const [surfspot, setSurfspot] = useState("");
+    
+    const [msgSuccess, setMsgSuccess] = useState("");
+    const [msgErr, setMsgErr] = useState("");
     
     React.useEffect(() => {
         axios
@@ -32,9 +38,9 @@ export const CreateTraject = (props) => {
     },
     []);
     
-    if (error) return `Error: ${error.message}`;
-    if (!city) return "Pas de villes disponible :(";
-    if (!surfspot) return "Pas de villes disponible :(";
+    if (error) return (<Error />);
+    if (!city) return (<Loader />);
+    if (!surfspot) return  (<Loader />);
 
     // Lorsquon va envoyer notre form
     // Le but du jeu est de créer un objet indentique à ceux presents dans la base de données
@@ -59,9 +65,39 @@ export const CreateTraject = (props) => {
 
         axios
             .post('http://localhost:5000/journey', newTraject)
-    }
+            .then(response => {
+                if (response.status === 202) {
+                    setMsgErr(notifyErr)
+                } else {
+                    setMsgSuccess(notify)
+                }
+            })
+        }
 
     console.log(lieuDepart)
+
+    //const de notif avec la lib react-toastity
+    const notify = () => toast.success("Votre trajet a bien été créé ! ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    })
+  
+      const notifyErr = () => toast.error("Erreur lors de la creation de votre trajet, veuillez rééssayer ! ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
 
     return (
         <div className="create-traject-page">

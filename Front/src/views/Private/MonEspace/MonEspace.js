@@ -8,6 +8,8 @@ import axios from 'axios';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
 import Desk_illustration from '../../../images/img_mon_espace.jpg'
+import { Loader } from '../../../components/Loader/Loader';
+import { Error } from '../../../components/ErrorComponent/Error';
 
 export const MonEspace = () => {
 
@@ -27,8 +29,8 @@ export const MonEspace = () => {
     },
         [uid]);
     
-    if (error) return `Error: ${error.message}`;
-    if (!user) return "Pas de user connecté :(";
+    if (error) return (<Error />);
+    if (!user) return (<Loader />);
 
     return (
         <div className='mon-espace-page'>

@@ -5,6 +5,8 @@ import './TrajectsHistory.css';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { TrajectCard } from '../../../components/TrajectCard';
 import { Footer } from '../../../components/Footer/Footer';
+import { Loader } from '../../../components/Loader/Loader';
+import { Error } from '../../../components/ErrorComponent/Error';
 
 export const TrajectsHistory = () => {
 
@@ -46,8 +48,8 @@ export const TrajectsHistory = () => {
     fetchUid();
         }, [uid]);
  
-    if (error) return `Error: ${error.message}`;
-    if (!myTravel) return "Chargement en cours...";
+    if (error) return (<Error />);
+    if (!myTravel) return (<Loader />);
     
     console.log(myTravel)
 

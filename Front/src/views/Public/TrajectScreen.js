@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import Button from '../../../src/components/UI/Button';
 import { Navbar } from '../../components/NavBar/NavBar';
 import { Footer } from '../../components/Footer/Footer';
+import { Error } from '../../components/ErrorComponent/Error';
+import { Loader } from '../../components/Loader/Loader';
 import axios from 'axios';
 
 export default function TajectScreen() {
@@ -39,8 +41,8 @@ export default function TajectScreen() {
     },
         [uid]);
     
-    if (error) return `Error: ${error.message}`;
-    if (!user) return "Pas de user connecté :(";
+    if (error) return (<Error />);
+    if (!user) return (<Loader />);
   
     console.log(uid)
   

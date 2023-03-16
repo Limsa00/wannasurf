@@ -11,6 +11,8 @@ import dateFormat from "dateformat";
 import axios from 'axios';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
+import { Error } from '../../../components/ErrorComponent/Error';
+import { Loader } from '../../../components/Loader/Loader';
 
 export const MyProfil = () => {
 
@@ -31,8 +33,8 @@ export const MyProfil = () => {
     },
         [uid]);
     
-    if (error) return `Error: ${error.message}`;
-    if (!user) return "Pas de user connecté :(";
+    if (error) return (<Error />);
+    if (!user) return (<Loader />);
 
     return (
 

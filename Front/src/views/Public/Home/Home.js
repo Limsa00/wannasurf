@@ -10,6 +10,8 @@ import ImageCarrou3 from "../../../images/surf-carrou-ex3.jpg";
 import Button from '../../../components/UI/Button';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
+import { Loader } from '../../../components/Loader/Loader';
+import { Error } from '../../../components/ErrorComponent/Error';
 
 export const Home = () => {
     
@@ -35,9 +37,9 @@ export const Home = () => {
     },
     []);
     
-    if (error) return `Error: ${error.message}`;
-    if (!city) return "Chargement des données ...";
-    if (!surfspot) return "Chargement des données ...";
+    if (error) return (<Error />);
+    if (!city) return (<Loader />);
+    if (!surfspot) return (<Loader />);
 
     const envoiFormulaire = (evt) => {
         evt.preventDefault()

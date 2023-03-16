@@ -6,6 +6,8 @@ import { TrajectCard } from "../../../components/TrajectCard";
 import { useOutletContext } from "react-router-dom"
 import { Navbar } from "../../../components/NavBar/NavBar";
 import { Footer } from "../../../components/Footer/Footer";
+import { Loader } from "../../../components/Loader/Loader";
+import { Error } from "../../../components/ErrorComponent/Error";
 
 export const TrajectResult = () => {
 
@@ -25,8 +27,8 @@ export const TrajectResult = () => {
     },
     [place, date]);
     
-    if (error) return `Error: ${error.message}`;
-    if (!traject) return "Pas de trajets disponible :(";
+    if (error) return (<Error />);
+    if (!traject) return (<Loader />);
 
     return (
         <div className="traject-result-page">

@@ -5,6 +5,8 @@ import './FuturTrajects.css'
 import { TrajectCard } from '../../../components/TrajectCard'
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
+import { Error } from '../../../components/ErrorComponent/Error'
+import { Loader } from '../../../components/Loader/Loader'
 
 export const FuturTrajects = () => {
 
@@ -46,8 +48,8 @@ export const FuturTrajects = () => {
     fetchUid();
         }, [uid]);
  
-    if (error) return `Error: ${error.message}`;
-    if (!myTravel) return "Chargement en cours...";
+    if (error) return (<Error />);
+    if (!myTravel) return (<Loader />);
     
     console.log(myTravel)
 
