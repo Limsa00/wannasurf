@@ -70,6 +70,7 @@ export const TrajectsHistory = () => {
                             time={traject.time}
                             price={traject.price}
                             start_city={traject.start_city}
+                            passenger_id={traject.passenger_id}
                             places_remaining={traject.places_remaining}
                         />
                     ))}
