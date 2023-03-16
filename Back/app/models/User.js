@@ -45,7 +45,7 @@ class User extends CoreModel {
         JOIN city AS residence_city ON journey.departure_city_id = residence_city.id
         JOIN surfspot ON journey.destination_surfspot_or_city_id = surfspot.id
         JOIN city AS surfspot_city ON surfspot.city_id = surfspot_city.id
-        WHERE journey_has_user.user_id = $1
+        WHERE journey_has_user.user_id = $1 OR driver_user.id=$1
         ORDER BY "date" ASC;
         `
         const userJourneys = await db.query(query, [id]);
