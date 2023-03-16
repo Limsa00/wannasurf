@@ -8,22 +8,25 @@ const Journey_has_user = require('../models/Journey_has_user');
 const objectModel = [Journey, User, City, Journey_has_user, Surfspot];
 
 const mainController = {
-    getEntityToUse:(req,res)=>{
+    getEntityToUse:(req,res,next)=>{
         const entity = req.params.entity;
-
         let entityToUse;
         for (let i = 0; i < objectModel.length; i++) {
             if (entity === objectModel[i].tableName) {
                 entityToUse = objectModel[i];
             }
         };
-        return entityToUse;
+        return entityToUse
     },
 
     showAllComponents: async (req,res) =>{
         console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
 
         const entityToUse = mainController.getEntityToUse(req,res);
+        if(!entityToUse){
+            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
+            return;
+        };
 
         const componentsList = await entityToUse.findAllComponents();
 
@@ -38,7 +41,12 @@ const mainController = {
         console.log(`----- Controller request showOneComponent for ${req.params.entity}:${req.params.id} -----`)
 
         const id = req.params.id;
+        const entity = req.params.entity;
         const entityToUse = mainController.getEntityToUse(req,res);
+        if(!entityToUse){
+            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
+            return;
+        };
 
         const component = await entityToUse.findOneComponent(id);
 
@@ -53,6 +61,10 @@ const mainController = {
         console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`);
 
         const entityToUse = mainController.getEntityToUse(req,res);
+        if(!entityToUse){
+            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
+            return;
+        };
 
         const newInstance = new entityToUse(req.body);
         const addedInstance = await newInstance.saveOrEditOneComponent();
@@ -64,6 +76,11 @@ const mainController = {
         console.log(`----- Controller request UpdateOneComponent for ${req.params.entity} -----`);
 
         const entityToUse = mainController.getEntityToUse(req,res);
+        if(!entityToUse){
+            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
+            return;
+        };
+
         const instance = await entityToUse.findOneComponent(req.params.id);
         
         if(instance){
@@ -80,6 +97,10 @@ const mainController = {
         console.log(`----- Controller request deleteOneComponent for ${req.params.entity} -----`)
 
         const entityToUse = mainController.getEntityToUse(req,res);
+        if(!entityToUse){
+            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
+            return;
+        };
 
         const record = await entityToUse.findOneComponent(req.params.id);
 
