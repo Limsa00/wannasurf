@@ -4,11 +4,10 @@ const City = require('../models/City');
 const Surfspot = require('../models/Surfspot');
 const Journey_has_user = require('../models/Journey_has_user');
 
-
 const objectModel = [Journey, User, City, Journey_has_user, Surfspot];
 
 const mainController = {
-    getEntityToUse:(req,res,next)=>{
+    getEntityToUse:(req,res)=>{
         const entity = req.params.entity;
         let entityToUse;
         for (let i = 0; i < objectModel.length; i++) {
@@ -23,10 +22,6 @@ const mainController = {
         console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
 
         const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
 
         const componentsList = await entityToUse.findAllComponents();
 

@@ -5,6 +5,7 @@ const mainController = require('./controllers/mainController')
 const journey_has_userController = require('./controllers/journey_has_userController');
 
 const authMW = require('./services/authMW')
+const entityToUseControl = require('./services/getEntityToUse');
 
 const router = express.Router();
 
@@ -40,10 +41,10 @@ router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController
 // router.delete('/users/:id', userController.deleteOneUser);
 
 // Factoring routes for models : journey, user
-router.get('/:entity', mainController.showAllComponents);
-router.get('/:entity/:id', mainController.showOneComponent);
-router.post('/:entity', /*authMW,*/ mainController.addOneComponent);
-router.patch('/:entity/:id', mainController.editOneComponent);
-router.delete('/:entity/:id', mainController.deleteOneComponent);
+router.get('/:entity', entityToUseControl, mainController.showAllComponents);
+router.get('/:entity/:id', entityToUseControl, mainController.showOneComponent);
+router.post('/:entity', /*authMW,*/ entityToUseControl, mainController.addOneComponent);
+router.patch('/:entity/:id', entityToUseControl, mainController.editOneComponent);
+router.delete('/:entity/:id', entityToUseControl, mainController.deleteOneComponent);
 
 module.exports = router;
