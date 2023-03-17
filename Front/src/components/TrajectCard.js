@@ -5,6 +5,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Button from './UI/Button'
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import { Error } from './ErrorComponent/Error';
+import { Loader } from './Loader/Loader';
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 
 export const TrajectCard = ({
@@ -74,14 +76,15 @@ export const TrajectCard = ({
     
 
 
-    if (error) return `Error: ${error.message}`;
-    if (!user) return "Chargement en cours...";
-    if (!myTravel) return "Chargement en cours...";
+    if (error) return (<Error />);
+    if (!user) return (<Loader />);
+    if (!myTravel) return (<Loader />);
 
         console.log(myTravel)
     myTravel.forEach(travel => {
         console.log(travel.journey_id)
         console.log(travel.passenger_id)
+        console.log(travel.driver_id)
     });
     
     const deleteTraject = (evt) => {

@@ -31,15 +31,13 @@ export const CreateTraject = (props) => {
     
 
     function Timer () {
-        useEffect(() => {
+            console.log(Timer)
             let timerID = setTimeout(() => {
+                clearTimeout(timerID)
                 navigate('/wannasurf/home')
             }, 2000);
-            return () => clearTimeout(timerID)
-        })
     }
 
-    
     React.useEffect(() => {
         axios
             .get(`http://localhost:5000/city`)
@@ -84,7 +82,6 @@ export const CreateTraject = (props) => {
                     setMsgErr(notifyErr)
                 } else {
                     setMsgSuccess(notify)
-                    .then(Timer())
                 }
             })
         }
@@ -250,7 +247,7 @@ export const CreateTraject = (props) => {
 
                         </div>
                     
-                        <Button>
+                        <Button onClick={Timer}>
                             Créer mon trajet
                         </Button>
                     </div>

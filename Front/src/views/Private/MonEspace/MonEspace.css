@@ -5,6 +5,10 @@
     justify-content: center;
 }
 
+.right-desk {
+        margin-top: 25px;
+}
+
 .home-back {
     display: flex;
     justify-content: center;
@@ -33,6 +37,12 @@
 
 .space-button a {
     margin: 0;
+}
+
+.desk-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-home {
