@@ -41,40 +41,30 @@ export const TrajectCard = ({
     function refreshPage() {
         window.location.reload(false);
     }
-
-    //     React.useEffect(() => {
-
-    //     axios
-    //         .get(`http://localhost:5000/user/${uid}`)
-    //         .then((response) => { setUser(response.data); })
-    //         .catch(error => { setError(error); });
-    // },
-    //     [uid]);
-   
-        React.useEffect(() => {
+ 
+    React.useEffect(() => {
         const fetchUid = async () => {
-        try {
-            await axios
-                .get(`http://localhost:5000/user/${uid}`)
-                .then((response) => {
-                    setUser(response.data.id);
-                   axios
-                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                       .then((response) => {
-                           setMyTravel(response.data);
-                       })
-                    .catch(error => { setError(error) });
-                    })
-                .catch(error => { setError(error) });
-        } catch (error) {
-            console.error(error);
-        }
-        };
-
-    fetchUid();
-        }, [uid]);
-    
-
+                try {
+                    await axios
+                        .get(`http://localhost:5000/user/${uid}`)
+                        .then((response) => {
+                            setUser(response.data.id);
+                        axios
+                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .then((response) => {
+                                setMyTravel(response.data);
+                            })
+                            .catch(error => { setError(error) });
+                            })
+                        .catch(error => { setError(error) });
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+            fetchUid();
+        },
+        [uid]
+    );
 
     if (error) return (<Error />);
     if (!user) return (<Loader />);
