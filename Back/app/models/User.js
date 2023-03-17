@@ -40,13 +40,13 @@ class User extends CoreModel {
             passenger_user.lastname AS passenger_lastname
         FROM journey
         JOIN "user" AS driver_user ON journey.driver_id = driver_user.id
-        JOIN journey_has_user ON journey.id = journey_has_user.journey_id
-        JOIN "user" AS passenger_user ON journey_has_user.user_id = passenger_user.id
+        LEFT JOIN journey_has_user ON journey.id = journey_has_user.journey_id
+        LEFT JOIN "user" AS passenger_user ON journey_has_user.user_id = passenger_user.id
         JOIN city AS residence_city ON journey.departure_city_id = residence_city.id
         JOIN surfspot ON journey.destination_surfspot_or_city_id = surfspot.id
         JOIN city AS surfspot_city ON surfspot.city_id = surfspot_city.id
         WHERE journey_has_user.user_id = $1 OR driver_user.id=$1
-        ORDER BY "date" ASC;
+        ORDER BY journey_id ASC;
         `
         const userJourneys = await db.query(query, [id]);
         return userJourneys.rows;

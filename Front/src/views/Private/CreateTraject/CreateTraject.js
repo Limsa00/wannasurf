@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
+import { UserContext } from "../../../context/UserContext";
 import axios from "axios";
 import './CreateTraject.css'
 import Button from "../../../components/UI/Button";
@@ -10,6 +11,9 @@ import { Loader } from "../../../components/Loader/Loader";
 import { Error } from "../../../components/ErrorComponent/Error";
 
 export const CreateTraject = (props) => {
+
+    const { currentUser } = useContext(UserContext)
+    const uid = currentUser.uid;
 
     const [lieuDepart, setLieuDepart] = useState ("");
     const [lieuArrive, setLieuArrive] = useState ("");
@@ -23,6 +27,7 @@ export const CreateTraject = (props) => {
     const [city, setCity] = useState ("");
     const [error, setError] = React.useState(null);
     const [surfspot, setSurfspot] = useState("");
+    const [user, setUser] = useState("");
     
     const [msgSuccess, setMsgSuccess] = useState("");
     const [msgErr, setMsgErr] = useState("");
@@ -34,7 +39,7 @@ export const CreateTraject = (props) => {
             console.log(Timer)
             let timerID = setTimeout(() => {
                 clearTimeout(timerID)
-                navigate('/wannasurf/home')
+                navigate('/wannasurf/mesFutursTrajets')
             }, 2000);
     }
 
@@ -46,6 +51,10 @@ export const CreateTraject = (props) => {
         axios
             .get(`http://localhost:5000/surfspot`)
             .then((response) => { setSurfspot(response.data); })
+            .catch(error => { setError(error); });
+        axios
+            .get(`http://localhost:5000/user/${uid}`)
+            .then((response) => { setUser(response.data); })
             .catch(error => { setError(error); });
     },
     []);
@@ -71,7 +80,7 @@ export const CreateTraject = (props) => {
             board_size_allowed: taillePlanche,
             number_of_boards_allowed: nbPlanche,
             meeting_address: adresseDepart,
-            driver_id: 10
+            driver_id: user.id
         
         };
 

@@ -32,6 +32,8 @@ export const MonEspace = () => {
     if (error) return (<Error />);
     if (!user) return (<Loader />);
 
+    console.log("user.id :", user.id);
+
     return (
         <div className='mon-espace-page'>
             <Navbar />
