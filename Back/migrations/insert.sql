@@ -54,7 +54,6 @@ VALUES
   ('Laval','50817','France')
 ;
 
-
 INSERT INTO "user"("firstname","lastname","gender","phone", "birthday", "uid","city_id")
 VALUES
   ('Ray','Marin','male','06 05 19 21 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1),
@@ -117,8 +116,8 @@ VALUES
 
 INSERT INTO "journey_has_user" ("journey_id", "user_id")
 VALUES
-  -- Je commente les valeurs relatives au conducteur (pas nécessaire d'unclure le conducteur aussi en tant que passager)
-  /*(1,5),*/(1,2),(1,1),/*(2,1),*/(2,3),(2,4),/*(3,1),*/(3,5),/*(4,4)*/,(4,1),/*(5,7)*/,(5,19),/*(6,9)*/,(6,18),(6,17),/*(7,10)*/,(7,16),(7,1),/*(8,9)*/,(8,14),(8,10),/*(9,10)*/,(9,9),(9,15),(9,1),/*(10,6)*/
+  -- Je commente les valeurs relatives au conducteur (pas nécessaire d'inclure le conducteur aussi en tant que passager)
+  /*(1,5),*/(1,2),(1,1),/*(2,1),*/(2,3),(2,4),/*(3,1),*/(3,5),/*(4,4),*/(4,1),/*(5,7),*/(5,19),/*(6,9),*/(6,18),(6,17),/*(7,10),*/(7,16),(7,1),/*(8,9),*/(8,14),(8,10),/*(9,10),*/(9,9),(9,15),(9,1)/*(10,6)*/
 ;
 
 COMMIT;
