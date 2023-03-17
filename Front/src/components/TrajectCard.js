@@ -25,7 +25,7 @@ export const TrajectCard = ({
     places_offered,
     places_booked,
     places_remaining,
-}) => {
+    }) => {
 
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -70,7 +70,8 @@ export const TrajectCard = ({
     if (!user) return (<Loader />);
     if (!myTravel) return (<Loader />);
 
-        console.log(myTravel)
+    console.log(myTravel)
+
     myTravel.forEach(travel => {
         console.log(travel.journey_id)
         console.log(travel.passenger_id)
@@ -147,12 +148,11 @@ export const TrajectCard = ({
     if (location.pathname === '/wannasurf/trajectsList') {
         btnDetail =
             <Link to={`/wannasurf/trajectsDetails/${journey_id}`} >
-                    <Button>
-                            Detail du trajet
-                    </Button>
-                </Link>
+                <Button>
+                        Detail du trajet
+                </Button>
+            </Link>
     }
-
 
     return (
         <div className="traject-page"> 
@@ -168,14 +168,12 @@ export const TrajectCard = ({
                     <div className="down-card">
                         <p><span className="bold"> heure de depart:</span> {time}</p>
                         <p className="traject-price"> <span className="bold"> Prix du traject: </span>{price} $ </p>
-                </div>
-                
+                </div>                
                 
                 {futurDelete}
                 
-                {btnDetail}
-                
+                {btnDetail}                
             </div>
         </div>
     )
-  }
+}
