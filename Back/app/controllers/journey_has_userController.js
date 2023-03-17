@@ -50,10 +50,19 @@ const journeyController = {
         const userId = req.body.user_id;
         const journeyId = req.body.journey_id;
 
-        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
-        if(userInJourney) {
-            res.status(202).json('déjà inscrit');
-        } else {
+        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);  
+        if(userInJourney){
+            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
+            return
+        }
+        
+        const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
+        if(placeLeft.nb_place_left<1){
+            res.status(202).json('Il n\'y a plus de place disponible');
+            return
+        }
+
+        if(!userInJourney && placeLeft.nb_place_left>0){
             const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);

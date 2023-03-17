@@ -27,6 +27,11 @@ class Journey_has_user extends CoreModel {
         return oneUser_has_journey.rows[0];
     }
 
+    static async checkPlaceAvailability (journeyId) {
+        const placeAvailable = await db.query(`SELECT nb_place_left FROM traject_place_left WHERE journey_id = $1;`, [journeyId]);
+        return placeAvailable.rows[0];
+    }
+
     async saveOneUserToJourney() {
         const insertedUserToJourney = await db.query(`
             INSERT INTO journey_has_user ("journey_id", "user_id") VALUES ($1, $2) RETURNING "journey_id", "user_id";`, 

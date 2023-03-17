@@ -5,8 +5,8 @@ BEGIN;
 CREATE TABLE "city" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "cityName" TEXT NOT NULL,
-    "zipCode" TEXT,
-    "Country" TEXT
+    "zipCode" TEXT NOT NULL,
+    "Country" TEXT NOT NULL
 );
 
 ALTER TABLE "user" ADD COLUMN "city_id" INT REFERENCES "city"(id);

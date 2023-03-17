@@ -9,8 +9,8 @@ CREATE TABLE "journey" (
 	"departure_time" TIME NOT NULL,
 	"price" INT NOT NULL,
 	"place_available" INT NOT NULL,
-	"number_of_boards_allowed" INT NOT NULL,
-	"board_size_allowed" INT NOT NULL,
+	"number_of_boards_allowed" INT,
+	"board_size_allowed" INT,
 	"number_of_boards_loaded" INT	
 );
 
