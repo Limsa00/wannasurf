@@ -28,22 +28,23 @@ export const TrajectsHistory = () => {
     //     [uid]);
    
         React.useEffect(() => {
-        const fetchUid = async () => {
-        try {
-            await axios
-                .get(`http://localhost:5000/user/${uid}`)
-                .then((response) => {
-                    //setUser(response.data.id);
-                   axios
-                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                    .then((response) => { setMyTravel(response.data); })
-                    .catch(error => { setError(error) });
-                    })
-                .catch(error => { setError(error) });
-        } catch (error) {
-            console.error(error);
-        }
-        };
+            const dateNow = new Date()
+            const fetchUid = async () => {
+                try {
+                    await axios
+                        .get(`http://localhost:5000/user/${uid}`)
+                        .then((response) => {
+                            //setUser(response.data.id);
+                        axios
+                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) < dateNow; }))))})
+                            .catch(error => { setError(error) });
+                            })
+                        .catch(error => { setError(error) });
+                } catch (error) {
+                    console.error(error);
+                }
+                };
 
     fetchUid();
         }, [uid]);

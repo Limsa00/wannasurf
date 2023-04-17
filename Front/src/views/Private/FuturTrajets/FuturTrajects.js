@@ -5,8 +5,8 @@ import './FuturTrajects.css'
 import { TrajectCard } from '../../../components/TrajectCard'
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
-import { Error } from '../../../components/ErrorComponent/Error'
-import { Loader } from '../../../components/Loader/Loader'
+import { Error } from '../../../components/ErrorComponent/Error';
+import { Loader } from '../../../components/Loader/Loader';
 
 export const FuturTrajects = () => {
 
@@ -27,23 +27,28 @@ export const FuturTrajects = () => {
     // },
     //     [uid]);
    
+
+
         React.useEffect(() => {
-        const fetchUid = async () => {
+            const fetchUid = async () => {
+            const dateNow = new Date()
         try {
             await axios
                 .get(`http://localhost:5000/user/${uid}`)
                 .then((response) => {
                     //setUser(response.data.id);
                    axios
-                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                    .then((response) => { setMyTravel(response.data); })
-                    .catch(error => { setError(error) });
-                    })
+                        .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                       .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) > dateNow; }))))
+                       })
+                        .catch(error => { setError(error) });
+                })
                 .catch(error => { setError(error) });
         } catch (error) {
             console.error(error);
         }
-        };
+    };
+            
 
     fetchUid();
         }, [uid]);
@@ -52,6 +57,7 @@ export const FuturTrajects = () => {
     if (!myTravel) return (<Loader />);
     
     console.log(myTravel)
+
 
     return (
 
