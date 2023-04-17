@@ -73,7 +73,7 @@ export const SignUpInfo = () => {
     return (
         <>
                 <div className="inscription-bloc">
-                    
+                    <p className='title-sign-up-page-2'>WANNASURF</p>
                     <h1 
                         className='title'>
                             Plus qu'une etape pour acceder à votre compte

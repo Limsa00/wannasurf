@@ -69,11 +69,13 @@ export const Home = () => {
 
                         <div className="shearch-bar-section">
                             <form className="search-form" onSubmit={envoiFormulaire}>
+                            <div className='desk-form'>
                             <div className="flex-mobile">
                                 <div className="form-champs-home">
                                     <select
                                         onChange={e => setLieuDepart(e.target.value)}
                                         name="lieuDepart"
+                                        className='field-style'
                                         id="lieuDeDepart"
                                     >
                                         <option
@@ -97,6 +99,7 @@ export const Home = () => {
                                         onChange={e => setLieuDestination(e.target.value)}
                                         name="lieuArrive"
                                         id="lieuArrive"
+                                        className='field-style'
                                     >
                                         <option
                                             value=''
@@ -115,13 +118,16 @@ export const Home = () => {
                                     </div>
                                 </div>
                             
-                                <div className="flex-mobile">
+                            <div className="flex-mobile">
+                                <div className="form-champs-home">
                                     <input
                                         type="date"
                                         placeholder="Date de depart"
-                                        className="input-search-style"
+                                        className="field-style"
                                         value={dateDepart}
                                         onChange={(e) => setDateDepart(e.target.value)} />
+                                </div>
+                                <div className="form-champs-home-slider">
                                     <GroupIcon fontSize='small' />
                                     <input
                                         type="range"
@@ -129,9 +135,10 @@ export const Home = () => {
                                         max="8"
                                         value={nombrePersonne}
                                         onChange={(e) => setNombrePersonne(e.target.value)}
-                                        className="input-search-style" />
+                                        className="field-style-nb" />
                                     <output>{nombrePersonne}</output>
-                                
+                                    </div>
+                                    </div>
                                 </div>
                                 
                                 <div className='bottom-magin'>
