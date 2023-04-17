@@ -5,6 +5,7 @@ import { SiteContact } from './views/Public/PagesFooter/SiteContact';
 import { LegalNotice } from './views/Public/PagesFooter/legalNotice';
 import { CreateTraject } from './views/Private/CreateTraject/CreateTraject';
 import { MonEspace } from './views/Private/MonEspace/MonEspace';
+import { DeleteAccount } from './views/ConnectionPages/DeleteAccount';
 import { MyProfil } from './views/Private/MyProfil/MyProfil';
 import { FuturTrajects } from './views/Private/FuturTrajets/FuturTrajects';
 import { TrajectsHistory } from './views/Private/TrajectsHistory/TrajectsHistory';
@@ -52,6 +53,11 @@ export const App = () => {
             <Route 
               exact path="/wannasurf/resetPassword" 
               element= { <ResetPassword />} 
+            />  
+                
+            <Route 
+              exact path="/wannasurf/deleteAccount" 
+              element= { <DeleteAccount />} 
             />
         
             <Route 

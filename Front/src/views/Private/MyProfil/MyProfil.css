@@ -1,7 +1,7 @@
 .profil-bloc, .row-desktop {
     display: flex;
     justify-content: center;
-    align-items: left;
+    align-items: center;
     flex-direction: column;
     margin: 30px 30px 70px 30px;
 }
@@ -18,23 +18,24 @@
 .bloc-mail-user, 
 .bloc-birth-user,
 .bloc-mdp-user,
-.picture-user,
-.bloc-other {
+.picture-user {
     display: flex;
     align-items: center;
     flex-direction: row;
 }
 
-.delete-acc {
+.delete-acc .no-decoration {
     color:red;
+    text-align: center;
 }
 
-.reset-pwd {
+.reset-pwd .no-decoration {
     color:indigo;
 }
 
-.change-pwd {
+.change-pwd .no-decoration {
     color:#0008C1;
+    margin: 0 25px;;
 }
 
 .img-style {
@@ -78,6 +79,13 @@
     display: flex;
     flex-direction: row;
     margin: 30px;
+}
+
+.bloc-other {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (min-width:900px) {

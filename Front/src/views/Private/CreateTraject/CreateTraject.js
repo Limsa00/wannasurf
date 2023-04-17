@@ -130,139 +130,158 @@ export const CreateTraject = (props) => {
                 <form onSubmit={envoiFormulaire}>
                     <div className="form-create-trajet">
                     
-                        <div className="large-screen">
-                            <div className="form-champs">
-                                <select
-                                    onChange={e => setLieuDepart(e.target.value)}
-                                    name="lieuDepart"
-                                    id="lieuDeDepart"
-                                >
-                                    <option
-                                        value=''
-                                    >
-                                        -- Selectionnez ville depart --
-                                    </option>
-                                    {city?.map(city => (                                                                                                                         
-                                    <option                                       
-                                        key={`${city.id}`}  
-                                        value= {city.id}                                       
-                                    >
-                                        {city.cityName}
-                                    </option>
-                                        ))}
-                                </select>
-                            </div>
 
-                            <div className="form-champs">
-                                <select
-                                    onChange={e => setLieuArrive(e.target.value)}
-                                    name="lieuArrive"
-                                    id="lieuArrive"
-                                >
-                                    <option
-                                        value=''
+                            <div className="large-screen">
+                                <div className="form-champs">
+                                    <label>
+                                    <select
+                                        onChange={e => setLieuDepart(e.target.value)}
+                                        name="lieuDepart"
+                                        id="lieuDeDepart"
                                     >
-                                        -- Selectionnez surfspot --
-                                    </option>
-                                    {surfspot?.map(surfspot => (                                                                                                                         
-                                    <option                                       
-                                        key={`${surfspot.id}`}  
-                                        value= {surfspot.id}                                       
+                                        <option
+                                            value=''
+                                        >
+                                            -- Selectionnez ville depart --
+                                        </option>
+                                        {city?.map(city => (                                                                                                                         
+                                        <option                                       
+                                            key={`${city.id}`}  
+                                            value= {city.id}                                       
+                                        >
+                                            {city.cityName}
+                                        </option>
+                                            ))}
+                                    </select>
+                                    </label>
+                                </div>
+
+                                <div className="form-champs">
+                                    <label>
+                                    <select
+                                        onChange={e => setLieuArrive(e.target.value)}
+                                        name="lieuArrive"
+                                        id="lieuArrive"
                                     >
-                                        {surfspot.surfspotName}
-                                    </option>
-                                        ))}
-                                </select>                         
-                            </div>
-                            
-                            <div className="form-champs">
-                                <input 
-                                type="date"
-                                placeholder="Date de depart"        
-                                id="dateDepart" 
-                                name="dateDepart" 
-                                value={dateDepart}
-                                onChange={e => setDateDepart(e.target.value)}
-                                />
-                            </div>
+                                        <option
+                                            value=''
+                                        >
+                                            -- Selectionnez surfspot --
+                                        </option>
+                                        {surfspot?.map(surfspot => (                                                                                                                         
+                                        <option                                       
+                                            key={`${surfspot.id}`}  
+                                            value= {surfspot.id}                                       
+                                        >
+                                            {surfspot.surfspotName}
+                                        </option>
+                                            ))}
+                                    </select>
+                                    </label>
+                                </div>
+                                
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        type="date"      
+                                        id="dateDepart" 
+                                        name="dateDepart" 
+                                        value={dateDepart}
+                                        onChange={e => setDateDepart(e.target.value)}
+                                        /><span className='label-create-traject'>Date de depart</span>
+                                    </label>
+                                </div>
+                            </div>     
+                        
+                            <div className="large-screen">
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        type="number"
+                                        placeholder= " "        
+                                        id="price" 
+                                        name="price" 
+                                        value={price}
+                                        onChange={e => setPrice(e.target.value)}
+                                        /><span className='label-create-traject'>Price</span>
+                                    </label>
+                                </div>
 
-                            <div className="form-champs">
-                                <input 
-                                type="number"
-                                placeholder="Price"        
-                                id="price" 
-                                name="price" 
-                                value={price}
-                                onChange={e => setPrice(e.target.value)}
-                                />
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        type="number"      
+                                        id="nbPlanche" 
+                                        placeholder= " "   
+                                        name="nbPlanche" 
+                                        value={nbPlanche}
+                                        onChange={e => setNbPlanche(e.target.value)}
+                                        /><span className='label-create-traject'>Nombre de planche autorisée</span>
+                                    </label>
+                                </div>
+                                
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        type="time" 
+                                        id="heureDepart"   
+                                        name="heureDepart" 
+                                        value={heureDepart}
+                                        onChange={e => setHeureDepart(e.target.value)}
+                                        /><span className='label-create-traject'>Heure de depart</span>
+                                    </label>
+                                </div>
                             </div>
+                        
+                            <div className="large-screen">
 
-                            <div className="form-champs">
-                                <input 
-                                type="number"
-                                placeholder="Nombre de planche autorisée"        
-                                id="nbPlanche" 
-                                name="nbPlanche" 
-                                value={nbPlanche}
-                                onChange={e => setNbPlanche(e.target.value)}
-                                />
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        type="number" 
+                                        id="nbPassager" 
+                                        placeholder= " "   
+                                        name="nbPassager" 
+                                        value={nbPassager}
+                                        onChange={e => setNbPassager(e.target.value)}
+                                        /><span className='label-create-traject'>Nombre de passager</span>
+                                    </label>
+                                </div>
+
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        placeholder= " "   
+                                        type="texte" 
+                                        id="taillePlanche" 
+                                        name="taillePlanche" 
+                                        value={taillePlanche}
+                                        onChange={e => setTaillePlanche(e.target.value)}
+                                        /><span className='label-create-traject'>Taille de planche autorisée</span>
+                                    </label>
+                                </div>
+
+                                <div className="form-champs">
+                                    <label>
+                                        <input 
+                                        placeholder= " "
+                                        type="texte" 
+                                        id="adresseDepart" 
+                                        name="adresseDepart" 
+                                        value={adresseDepart}
+                                        onChange={e => setAdresseDepart(e.target.value)}
+                                        /><span className='label-create-traject'>Adresse de depart</span>
+                                    </label>
+                                </div>
                             </div>
+                        
+                            <Button onClick={Timer}>
+                                Créer mon trajet
+                            </Button>
                         </div>
-
-                        <div className="large-screen">
-                            <div className="form-champs">
-                                <input 
-                                type="time" 
-                                placeholder="Heure de depart"
-                                id="heureDepart" 
-                                name="heureDepart" 
-                                value={heureDepart}
-                                onChange={e => setHeureDepart(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-champs">
-                                <input 
-                                type="number" 
-                                placeholder="Nombre de passagers"
-                                id="nbPassager" 
-                                name="nbPassager" 
-                                value={nbPassager}
-                                onChange={e => setNbPassager(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-champs">
-                                <input 
-                                placeholder="Taille de planche autorisée"
-                                type="texte" 
-                                id="taillePlanche" 
-                                name="taillePlanche" 
-                                value={taillePlanche}
-                                onChange={e => setTaillePlanche(e.target.value)}
-                                />
-                            </div>
-
-                            <div className="form-champs">
-                                <input 
-                                placeholder="Adresse de depart"
-                                type="texte" 
-                                id="adresseDepart" 
-                                name="adresseDepart" 
-                                value={adresseDepart}
-                                onChange={e => setAdresseDepart(e.target.value)}
-                                />
-                            </div>
-
-                        </div>
-                    
-                        <Button onClick={Timer}>
-                            Créer mon trajet
-                        </Button>
-                    </div>
                 </form>
-                </div>
-            <Footer />
-        </div>
-        )
-    }
+            </div>
+        <Footer />
+    </div>
+    )
+}

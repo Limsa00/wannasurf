@@ -14,11 +14,22 @@
     margin-bottom: 75px;
 }
 
+.large-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .form-create-trajet input, .form-create-trajet select {
     padding: 20px;
     border-radius: 5px;
     border: rgb(191, 174, 174) 2px solid;
     text-align: center;
+    width: 200px;
+}
+.form-create-trajet select {
+    width: 244px;
 }
 
 .form-create-trajet ::placeholder {
@@ -28,11 +39,7 @@
 .form-champs {
     display: flex;
     flex-wrap: nowrap;
-}
-
-.form-champs label {
-    margin-right: 20px;
-    font-weight: 600;
+    width: 250px;
 }
 
 .createTraject-bloc h1 {
@@ -45,13 +52,70 @@
     margin-bottom: 25px;
 }
 
-@media screen and (min-width:900px) {
-    .large-screen {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+.form-champs label {
+    margin: 20px 0;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+span.label-create-traject {
+    padding: 10px;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity: 0.5;
+}
+
+
+input:focus+span.label-create-traject,
+input:not(:placeholder-shown)+span.label-create-traject {
+    opacity: 1;
+    transform: scale(0.75) translateY(-100%) translateX(-30px);
+}
+
+/* For IE Browsers*/
+input:focus+span.label-create-traject,
+input:not(:-ms-input-placeholder)+span.label-create-traject {
+    opacity: 1;
+    transform: scale(0.75) translateY(-100%) translateX(-30px);
+}
+
+@media screen and (min-width:775px) {
+    .form-create-trajet input {
+            width: 300px;
     }
-    .form-champs {
-        margin-right: 30px;
+    .form-create-trajet select {
+            width: 344px;
     }
+
+    span.label-create-traject {
+        font-size: 18px;
+    }
+    .form-create-trajet select {
+        font-size: 18px;
+    }
+}
+    @media screen and (min-width:1500px) {
+        .large-screen {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+        }
+    
+        .form-champs {
+            margin-right: 30px;
+        }
+
+        .form-create-trajet input {
+            width: 220px;
+        }
+        .form-create-trajet select {
+            width: 264px;
+        }
 }

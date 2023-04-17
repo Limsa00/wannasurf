@@ -16,14 +16,13 @@ import { Loader } from '../../../components/Loader/Loader';
 
 export const MyProfil = () => {
 
-    
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     
     const {currentUser} = useContext(UserContext)
     console.log("route de: ", currentUser )
     const uid = currentUser.uid;
-
+    
         React.useEffect(() => {
 
         axios
@@ -106,9 +105,6 @@ export const MyProfil = () => {
                         <div className='bloc-modif-picture-user'>
                             <div className='picture-user'>
                                 <img className='img-style' src={`https://robohash.org/${user.firstname}.png`} alt='user-profil'></img>
-                                    <div className='bloc-value-phone'>
-                                    <Button className='button-img'>Modifier ma photo</Button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -127,8 +123,10 @@ export const MyProfil = () => {
                                     <button className='no-decoration center'>Changez votre mot de passe</button>
                                 </Link>
                             </div>
-                            <div className='delete-acc'>
-                                <p>Supprimer mon compte</p>
+                        <div className='delete-acc'>
+                            <Link to='/wannasurf/DeleteAccount'>
+                                <button className='no-decoration center'>Supprimer mon compte</button>
+                            </Link>
                             </div>
                         </div>
                     </div>
