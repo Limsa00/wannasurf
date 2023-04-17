@@ -101,6 +101,7 @@ const mainController = {
 
         if (record) {
             const recordToDelete = new entityToUse(record);
+            // console.log(recordToDelete);
             await recordToDelete.deleteComponent();
             res.json("suppression effectuée");
         } else{

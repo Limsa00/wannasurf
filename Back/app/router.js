@@ -16,6 +16,7 @@ router.get('/myTravels/:id', userController.showUserJourneyDetail);
 
 router.get('/user/:uid', userController.findUserWithUid);
 router.patch('/user/:uid', userController.editUser);
+router.delete('/user/:id', userController.deleteOneUser);
 
 // Afficher la liste des passagers dans un trajet
 router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);

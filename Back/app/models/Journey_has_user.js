@@ -43,6 +43,10 @@ class Journey_has_user extends CoreModel {
     async deleteOneUserFromOneJourney() {
         await db.query(`DELETE FROM journey_has_user WHERE "journey_id"=$1 AND "user_id"=$2;`, [this.journey_id,this.user_id]);
     }
+
+    async deleteOneUserFormAllJourney() {
+        await db.query(`DELETE FROM "user" WHERE user_id = $1;`, [this.id]);
+    }
 }
 
 module.exports = Journey_has_user;
