@@ -9,13 +9,12 @@ import { EmailAuthProvider, reauthenticateWithCredential, deleteUser } from '@fi
 export const DeleteAccount = () => {
 
     function TimerDelete () {
-            console.log(TimerDelete)
-            let timerIDelete = setTimeout(() => {
-                clearTimeout(timerIDelete)
-                navigate('/wannasurf/home')
-            }, 2000);
+        console.log(TimerDelete)
+        let timerIDelete = setTimeout(() => {
+            clearTimeout(timerIDelete)
+            navigate('/wannasurf/home')
+        }, 2000);
     }
-
 
     const navigate = useNavigate();
 
@@ -25,7 +24,7 @@ export const DeleteAccount = () => {
     const {currentUser} = useContext(UserContext)
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
-    
+
     const Reauthenticate = (pwd) => {
         const user = currentUser
         const credential = EmailAuthProvider.credential(user.email, pwd)
@@ -33,36 +32,37 @@ export const DeleteAccount = () => {
         console.log(credential)
         const uid = currentUser.uid;
 
-    reauthenticateWithCredential(user, credential).then(() => {
-            try {
-                deleteUser(
-                    user
-                )
-            } catch (err) {
-                console.log(err)
-                setValidation('')
-            }
-        },
-                        // async () => {
-                        //     try {
-                        //         await axios
-                        //             .get(`http://localhost:5000/userUid/${uid}`)
-                        //             .then((response) => {
-                        //                 //setUser(response.data.id);
-                        //             axios
-                        //                 .patch(`http://localhost:5000/user/deactivate/${response.data.id}`)
-                        //                 .then((response) => { console.log(response) })
-                        //                 .catch(error => { setError(error) });
-                        //                 })
-                        //             .catch(error => { setError(error) });
-                        //     } catch (error) {
-                        //         console.error(error);
-                        //     }
-                        //     }
-
-                )
-                    navigate("/wannasurf/home")
+        reauthenticateWithCredential(user, credential)
+        .then(() => {
+                try {
+                    deleteUser(
+                        user
+                    )
+                } catch (err) {
+                    console.log(err)
+                    setValidation('')
+                }
+            })
+        .then ( async () => {
+                    try {
+                        await axios
+                            .get(`http://localhost:5000/userUid/${uid}`)
+                            .then((response) => {
+                                //setUser(response.data.id);
+                                axios
+                                    .patch(`http://localhost:5000/user/deactivate/${response.data.id}`)
+                                    .then((response) => { navigate("/wannasurf/home") })
+                                    .catch(error => { setError(error) });
+                            })
+                            .catch(error => { setError(error) });
+                    } catch (error) {
+                        console.error(error);
                     }
+                }
+            )
+        
+
+    }
 
     const handleForm = async e => {
         e.preventDefault()

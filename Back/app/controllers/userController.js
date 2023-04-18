@@ -51,18 +51,17 @@ const userController = {
         if(user){
             // chercher les trajets auxquels le user est enregistré dans journey_has_user
             const userJourneys = await Journey_has_user.findOneUserAllJourneys(userId);
-            console.log("userJourneys[0] : ", userJourneys[0]);
+            // console.log("userJourneys: ", userJourneys);
 
-            if (userJourneys){
+            if (userJourneys.length>0){
                 const userJourneysToDeactivate = await new Journey_has_user(userJourneys[0]);
                 userJourneysToDeactivate.deactivateStatus(userId);
                 console.log('Désactivation des trajets du user OK');
             }
 
-            console.log("deactivating user");
             const userToDeactivate = await new User(user);
             const userDeactivated = userToDeactivate.editUserForRemoval(userId);
-            res.status(200).json('Désactivation du statut du user OK');
+            res.status(200).json("Utilisateur désactivé");
         }
         
     },
