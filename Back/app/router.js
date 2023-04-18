@@ -14,12 +14,10 @@ router.get('/journeySearch', journeyController.showJourneysFiltered);
 // Afficher Trajets d'un User avec tous les détails
 router.get('/myTravels/:id', userController.showUserJourneyDetail);
 
-router.get('/user/:uid', userController.findUserWithUid);
+router.get('/userId/:id',userController.findUserWithId);
+router.get('/userUid/:uid', userController.findUserWithUid);
 router.patch('/user/:uid', userController.editUser);
-router.patch('/user/:id', userController.editUserForRemoval);
-
-
-//router.delete('/user/:id', userController.deleteOneUser);
+router.patch('/user/deactivate/:id', userController.editUserForRemoval);
 
 // Afficher la liste des passagers dans un trajet
 router.get('/journey_has_user/:id', journey_has_userController.showOneJourneyUsers);
@@ -32,17 +30,6 @@ router.get('/journey_has_user/:journeyId/:userId', journey_has_userController.sh
 router.post('/journey_has_user', journey_has_userController.addOneUserToJourney);
 // Se désinscrire d'un trajet
 router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController.deleteOneUserFromJourney);
-
-// router.get('/journeys', journeyController.showAllJourneys);
-// router.get('/journeys/:id', journeyController.showOneJourney);
-// router.post('/journeys', journeyController.addOneJourney);
-// router.delete('/journeys/:id', journeyController.deleteOneJourney);
-
-// router.get('/isLogged', userController.loginCheck);
-// router.get('/logout', userController.doLogout);
-// router.post('/login', userController.doLogin);
-// router.post('/signup', userController.doSignup);
-// router.delete('/users/:id', userController.deleteOneUser);
 
 // Factoring routes for models : journey, user
 router.get('/:entity', entityToUseControl, mainController.showAllComponents);

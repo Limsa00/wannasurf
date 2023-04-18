@@ -47,6 +47,10 @@ class Journey_has_user extends CoreModel {
     async deleteOneUserFormAllJourney() {
         await db.query(`DELETE FROM "user" WHERE user_id = $1;`, [this.id]);
     }
+
+    async deactivateStatus(id) {
+        await db.query(`UPDATE journey_has_user SET "inscription-status"=false WHERE user_id=$1 returning journey_id;`, [id]);
+    }
 }
 
 module.exports = Journey_has_user;
