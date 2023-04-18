@@ -54,28 +54,28 @@ VALUES
   ('Laval','50817','France')
 ;
 
-INSERT INTO "user"("firstname","lastname","gender","phone", "birthday", "uid","city_id")
+INSERT INTO "user"("firstname","lastname","gender","phone", "birthday", "uid","city_id","inscription-status")
 VALUES
-  ('Ray','Marin','male','06 05 19 21 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1),
-  ('Wang','Reyes','male','04 17 74 85 27', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK1',2),
-  ('Stone','Suarez','female','03 58 62 28 57', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK2',3),
-  ('Kellie','Casado','female','04 64 63 48 48', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK3',4),
-  ('Lilah','Pascual','female','08 17 67 69 73', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK4',5),
-  ('Bryar','Sanchez','male','07 02 18 48 22', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK5',6),
-  ('Joel','Jimenez','female','08 74 56 83 28', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK6',7),
-  ('Suki','Medina','female','01 14 38 20 63', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK7',8),
-  ('Janna','Gonzalez','male','09 85 58 62 15', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK8',9),
-  ('Abraham','Ortega','female','08 91 66 79 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK9',10),
-  ('Adrienne','Duran','female','07 18 00 44 16', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW0',11),
-  ('Hu','Vicente','male','07 24 51 44 33', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW1',12),
-  ('Karen','Ramos','male','07 70 76 83 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW2',13),
-  ('Petra','Pardo','male','03 71 87 28 10', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW3',14),
-  ('Rhonda','Pardo','female','02 36 78 51 69', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW4',15),
-  ('Mollie','Torres','male','07 74 49 92 13', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW5',16),
-  ('Alika','Santana','female','04 47 07 31 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW6',17),
-  ('Joseph','Soto','female','05 21 14 07 72', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW7',18),
-  ('Alice','Torres','male','03 79 15 27 86', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW8',19),
-  ('Devin','Gimenez','female','09 86 38 41 46', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW9',20)
+  ('Ray','Marin','male','06 05 19 21 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK0',1,true),
+  ('Wang','Reyes','male','04 17 74 85 27', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK1',2,true),
+  ('Stone','Suarez','female','03 58 62 28 57', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK2',3,true),
+  ('Kellie','Casado','female','04 64 63 48 48', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK3',4,true),
+  ('Lilah','Pascual','female','08 17 67 69 73', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK4',5,true),
+  ('Bryar','Sanchez','male','07 02 18 48 22', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK5',6,true),
+  ('Joel','Jimenez','female','08 74 56 83 28', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK6',7,true),
+  ('Suki','Medina','female','01 14 38 20 63', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK7',8,true),
+  ('Janna','Gonzalez','male','09 85 58 62 15', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK8',9,true),
+  ('Abraham','Ortega','female','08 91 66 79 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFK9',10,true),
+  ('Adrienne','Duran','female','07 18 00 44 16', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW0',11,true),
+  ('Hu','Vicente','male','07 24 51 44 33', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW1',12,true),
+  ('Karen','Ramos','male','07 70 76 83 02', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW2',13,true),
+  ('Petra','Pardo','male','03 71 87 28 10', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW3',14,true),
+  ('Rhonda','Pardo','female','02 36 78 51 69', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW4',15,true),
+  ('Mollie','Torres','male','07 74 49 92 13', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW5',16,true),
+  ('Alika','Santana','female','04 47 07 31 51', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW6',17,true),
+  ('Joseph','Soto','female','05 21 14 07 72', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW7',18,true),
+  ('Alice','Torres','male','03 79 15 27 86', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW8',19,true),
+  ('Devin','Gimenez','female','09 86 38 41 46', '1997-11-10', 'tGiwoCGlyBMOduwYexpZfuQIOFW9',20,true)
 ;
 
 INSERT INTO "surfspot" ("surfspotName","difficulty","city_id")
@@ -114,10 +114,10 @@ VALUES
   ('10', '10', 'Ap #389-8738 In Avenue', '2023-01-27T12:00:00', '4:48:44', 18, 4, 2, 6, 6 )
 ;
 
-INSERT INTO "journey_has_user" ("journey_id", "user_id")
+INSERT INTO "journey_has_user" ("journey_id", "user_id","inscription-status")
 VALUES
   -- Je commente les valeurs relatives au conducteur (pas nécessaire d'inclure le conducteur aussi en tant que passager)
-  /*(1,5),*/(1,2),(1,1),/*(2,1),*/(2,3),(2,4),/*(3,1),*/(3,5),/*(4,4),*/(4,1),/*(5,7),*/(5,19),/*(6,9),*/(6,18),(6,17),/*(7,10),*/(7,16),(7,1),/*(8,9),*/(8,14),(8,10),/*(9,10),*/(9,9),(9,15),(9,1)/*(10,6)*/
+  /*(1,5,true),*/(1,2,true),(1,1,true),/*(2,1,true),*/(2,3,true),(2,4,true),/*(3,1,true),*/(3,5,true),/*(4,4,true),*/(4,1,true),/*(5,7,true),*/(5,19,true),/*(6,9,true),*/(6,18,true),(6,17,true),/*(7,10,true),*/(7,16,true),(7,1,true),/*(8,9,true),*/(8,14,true),(8,10,true),/*(9,10,true),*/(9,9,true),(9,15,true),(9,1,true)/*,(10,6,true)*/
 ;
 
 COMMIT;
