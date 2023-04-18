@@ -23,7 +23,7 @@ export const MonEspace = () => {
     React.useEffect(() => {
 
         axios
-            .get(`http://localhost:5000/user/${uid}`)
+            .get(`http://localhost:5000/userUid/${uid}`)
             .then((response) => { setUser(response.data); })
             .catch(error => { setError(error); });
     },

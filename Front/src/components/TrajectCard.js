@@ -46,7 +46,7 @@ export const TrajectCard = ({
         const fetchUid = async () => {
                 try {
                     await axios
-                        .get(`http://localhost:5000/user/${uid}`)
+                        .get(`http://localhost:5000/userUid/${uid}`)
                         .then((response) => {
                             setUser(response.data.id);
                         axios

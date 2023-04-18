@@ -53,7 +53,7 @@ export const CreateTraject = (props) => {
             .then((response) => { setSurfspot(response.data); })
             .catch(error => { setError(error); });
         axios
-            .get(`http://localhost:5000/user/${uid}`)
+            .get(`http://localhost:5000/userUid/${uid}`)
             .then((response) => { setUser(response.data); })
             .catch(error => { setError(error); });
     },

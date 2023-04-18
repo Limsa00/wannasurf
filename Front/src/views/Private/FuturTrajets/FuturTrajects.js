@@ -34,7 +34,7 @@ export const FuturTrajects = () => {
             const dateNow = new Date()
         try {
             await axios
-                .get(`http://localhost:5000/user/${uid}`)
+                .get(`http://localhost:5000/userUid/${uid}`)
                 .then((response) => {
                     //setUser(response.data.id);
                    axios
