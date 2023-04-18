@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useState, useContext} from "react";
 import { UserContext } from '../../context/UserContext';
 import Button from '../../components/UI/Button';
+import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 
 export const ResetPassword = () => {
@@ -32,7 +33,7 @@ export const ResetPassword = () => {
     return (
         <>
                 <div className="inscription-bloc">
-                    
+                    <BackToHome />
                     <h1 
                         className='title'>
                             Reinitialiser son mot de passe

@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, {useState, useContext, useEffect} from "react";
 import { UserContext } from '../../context/UserContext';
 import Button from '../../components/UI/Button';
+import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 import { EmailAuthProvider, reauthenticateWithCredential, deleteUser } from '@firebase/auth';
 
@@ -51,7 +52,7 @@ export const DeleteAccount = () => {
                                 //setUser(response.data.id);
                                 axios
                                     .patch(`http://localhost:5000/user/deactivate/${response.data.id}`)
-                                    .then((response) => { navigate("/wannasurf/home") })
+                                    .then((response) => { TimerDelete(); setSendReset("Votre compte a bien été supprimé, vous allez être redirigé sur la page d'acceuil") })
                                     .catch(error => { setError(error) });
                             })
                             .catch(error => { setError(error) });
@@ -73,7 +74,7 @@ export const DeleteAccount = () => {
         return (
             <>
                 <div className="inscription-bloc">
-                    
+                    <BackToHome />
                     <h1
                         className='title'>
                         Supprimez votre compte
@@ -100,8 +101,7 @@ export const DeleteAccount = () => {
                             onChange={e => setPwd(e.target.value)}
                         />
 
-                        <Button
-                            onClick={TimerDelete}>
+                        <Button>
                             Supprimer votre compte
                         </Button> <span className='success'>{sendReset}</span>
 

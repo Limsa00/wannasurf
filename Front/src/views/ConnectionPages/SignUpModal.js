@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate, Link } from 'react-router-dom';
+import BackToHome from '../../components/BackArrow/BackToHome';
 import InscImg from '../../images/insc-img-surf.jpg'
 import Button from '../../components/UI/Button';
 
@@ -66,6 +67,7 @@ export const SignUpModal = () => {
         <>
             {modalState.signUpModal && (
                 <div className="inscription-bloc">
+                    <BackToHome />
                     <div className='desktop-bloc'>
                         <div className='col-desktop-1'>
                             <div className='image-position'>

@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useState, useContext} from "react";
 import { UserContext } from '../../context/UserContext';
 import Button from '../../components/UI/Button';
+import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 import { EmailAuthProvider, reauthenticateWithCredential } from '@firebase/auth';
 
@@ -47,7 +48,7 @@ export const ChangePassword = () => {
         return (
             <>
                 <div className="inscription-bloc">
-                    
+                    <BackToHome />
                     <h1
                         className='title'>
                         Changer son mot de passe
