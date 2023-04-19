@@ -4,18 +4,30 @@ import '../../views/Public/trajectScreen.css';
 import { useOutletContext, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Button from '../../../src/components/UI/Button';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/NavBar/NavBar';
 import { Footer } from '../../components/Footer/Footer';
 import { Error } from '../../components/ErrorComponent/Error';
 import { Loader } from '../../components/Loader/Loader';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import axios from 'axios';
 
 export default function TajectScreen() {
 
+    function Timer () {
+            console.log(Timer)
+            let timerID = setTimeout(() => {
+                clearTimeout(timerID)
+                navigate('/mesFutursTrajets')
+            }, 2000);
+    }
+  
     const context = useOutletContext()
     const [traject,] = context.traject  
     const { id } = useParams();
     const journeyId = parseInt(id)
+  
+    const navigate = useNavigate();
  
     const trajectDetails = traject.find(t => t.journey_id === journeyId)
     console.log(id)
@@ -58,6 +70,7 @@ export default function TajectScreen() {
       .then(response => {
         if (response.status === 202) {
           setMsgErr(notifyErr)
+          Timer()
         } else {
           setMsgSuccess(notify)
         }
@@ -113,7 +126,8 @@ export default function TajectScreen() {
             <span className='margin'>{trajectDetails.price}</span>
           </div>
 
-          <div className='driver'>
+        <div className='driver line-detail'>
+          <DirectionsCarIcon fontSize='large' className='position-driver-icon' />
           <p> Trajet proposé par
             <span className='bold margin'>
             {trajectDetails.driver_firstname} {trajectDetails.driver_lastname}

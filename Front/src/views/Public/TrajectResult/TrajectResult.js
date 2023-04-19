@@ -35,6 +35,7 @@ export const TrajectResult = () => {
             <Navbar />
             <div>
                 <h1 className="title-traject">Liste des trajets disponibles</h1>
+                    <div className='flex-desktop'>
                     {traject?.map(traject => (           
                         <TrajectCard
                             key={`${traject.journey_id}`}
@@ -50,6 +51,7 @@ export const TrajectResult = () => {
                             places_remaining={traject.places_remaining}
                         />
                     ))}
+                    </div>
                 </div>
             <Footer />
         </div>

@@ -29,6 +29,25 @@
     margin-top: 20px;
     font-style: italic;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.position-driver-icon {
+    margin-right: 20px;
+}
+
+.corps-traject {
+    margin: 5%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    border-radius: 25px;
+    align-items: center;
+    height: 300px;
+    justify-content: center;
+    flex-direction: column;
 }
 
 @media screen and (min-width:767px) {
@@ -37,5 +56,8 @@
     }
     .title-detail h1 {
         font-size: 40px;
+    }
+    .corps-traject {
+        height: 400px;
     }
 }

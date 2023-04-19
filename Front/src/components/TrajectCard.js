@@ -43,15 +43,6 @@ export const TrajectCard = ({
         window.location.reload(false);
     }
 
-    //     React.useEffect(() => {
-
-    //     axios
-    //         .get(`http://localhost:5000/user/${uid}`)
-    //         .then((response) => { setUser(response.data); })
-    //         .catch(error => { setError(error); });
-    // },
-    //     [uid]);
-   
         React.useEffect(() => {
         const fetchUid = async () => {
         try {
@@ -79,31 +70,36 @@ export const TrajectCard = ({
     if (error) return (<Error />);
     if (!user) return (<Loader />);
     if (!myTravel) return (<Loader />);
-
-    console.log(myTravel)
-
-    myTravel.forEach(travel => {
-        console.log(travel.journey_id)
-        console.log(travel.passenger_id)
-        console.log(travel.driver_id)
-    });
     
-
+    console.log(user)
+    console.log(driver_id)
     const deleteTraject = (evt) => {
         evt.preventDefault()
         console.log(journey_id)
-        axios
-        .delete(`http://localhost:5000/journey_has_user/${journey_id}/${passenger_id}`)
-        .then(response => {
-            if (response.status === 202) {
-            setMsgErr(notifyErr)
-            } else {
-                setMsgSuccess(notify)
-                refreshPage()
-            }
-        })
+        if (driver_id === user) {
+            axios
+                .delete(`http://localhost:5000/journey/${journey_id}`)
+                .then(response => {
+                    if (response.status === 202) {
+                        setMsgErr(notifyErr)
+                    } else {
+                        setMsgSuccess(notify)
+                        refreshPage()
+                    }
+                })
+        } else {
+            axios
+                .delete(`http://localhost:5000/journey_has_user/${journey_id}/${passenger_id}`)
+                .then(response => {
+                    if (response.status === 202) {
+                        setMsgErr(notifyErr)
+                    } else {
+                        setMsgSuccess(notify)
+                        refreshPage()
+                    }
+                })
         }
-    
+    }
     const notify = () => toast.success("Votre trajet a bien été supprimé ! ", {
         position: "bottom-right",
         autoClose: 3000,
