@@ -64,25 +64,27 @@ export const FuturTrajects = () => {
         <div className='history-page'>
             <Navbar />
                 <div className="traject-history-bloc">
-                    <h1>Mes FUTURS TRAJETS</h1>
-                    {myTravel?.map(traject => (           
-                        <TrajectCard
-                            key={`${traject.journey_id}`}
-                            journey_id={traject.journey_id}
-                            date={traject.date}
-                            driver_id={traject.driver_id}
-                            driver_firstname={traject.driver_firstname}
-                            driver_lastname={traject.driver_lastname}
-                            city={traject.city}
-                            address={traject.address}
-                            surfspot={traject.surfspot}
-                            time={traject.time}
-                            price={traject.price}
-                            start_city={traject.start_city}
-                            passenger_id={traject.passenger_id}
-                            places_remaining={traject.places_remaining}
-                        />
-                    ))}
+                <h1>MES FUTURS TRAJETS</h1>
+                    <div className='flex-desktop'>
+                        {myTravel?.map(traject => (           
+                            <TrajectCard
+                                key={`${traject.journey_id}`}
+                                journey_id={traject.journey_id}
+                                date={traject.date}
+                                driver_id={traject.driver_id}
+                                driver_firstname={traject.driver_firstname}
+                                driver_lastname={traject.driver_lastname}
+                                city={traject.city}
+                                address={traject.address}
+                                surfspot={traject.surfspot}
+                                time={traject.time}
+                                price={traject.price}
+                                start_city={traject.start_city}
+                                passenger_id={traject.passenger_id}
+                                places_remaining={traject.places_remaining}
+                            />
+                        ))}
+                    </div>
                 </div>
             <Footer />
         </div>

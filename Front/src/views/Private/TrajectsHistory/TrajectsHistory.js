@@ -60,6 +60,7 @@ export const TrajectsHistory = () => {
             <Navbar />
                 <div className="traject-history-bloc">
                     <h1>HISTORIQUE DES TRAJETS</h1>
+                    <div className='flex-desktop'>
                     {myTravel?.map(traject => (           
                         <TrajectCard
                             key={`${traject.journey_id}`}
@@ -78,6 +79,7 @@ export const TrajectsHistory = () => {
                         />
                     ))}
                 </div>
+            </div>
             <Footer />
         </div>
         )

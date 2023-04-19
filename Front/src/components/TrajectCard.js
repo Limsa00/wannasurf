@@ -4,6 +4,7 @@ import './trajectCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from './UI/Button'
 import { toast } from 'react-toastify';
+import dateFormat from 'dateformat';
 import axios from 'axios';
 import { Error } from './ErrorComponent/Error';
 import { Loader } from './Loader/Loader';
@@ -25,7 +26,7 @@ export const TrajectCard = ({
     places_offered,
     places_booked,
     places_remaining,
-    }) => {
+}) => {
 
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -41,30 +42,39 @@ export const TrajectCard = ({
     function refreshPage() {
         window.location.reload(false);
     }
- 
-    React.useEffect(() => {
+
+    //     React.useEffect(() => {
+
+    //     axios
+    //         .get(`http://localhost:5000/user/${uid}`)
+    //         .then((response) => { setUser(response.data); })
+    //         .catch(error => { setError(error); });
+    // },
+    //     [uid]);
+   
+        React.useEffect(() => {
         const fetchUid = async () => {
-                try {
-                    await axios
-                        .get(`http://localhost:5000/userUid/${uid}`)
-                        .then((response) => {
-                            setUser(response.data.id);
-                        axios
-                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                            .then((response) => {
-                                setMyTravel(response.data);
-                            })
-                            .catch(error => { setError(error) });
-                            })
-                        .catch(error => { setError(error) });
-                } catch (error) {
-                    console.error(error);
-                }
-            };
-            fetchUid();
+        try {
+            await axios
+                .get(`http://localhost:5000/userUid/${uid}`)
+                .then((response) => {
+                    setUser(response.data.id);
+                   axios
+                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                       .then((response) => {
+                           setMyTravel(response.data);
+                       })
+                    .catch(error => { setError(error) });
+                    })
+                .catch(error => { setError(error) });
+        } catch (error) {
+            console.error(error);
+        }
+        };
+    fetchUid();
         },
-        [uid]
-    );
+            [uid]
+        );
 
     if (error) return (<Error />);
     if (!user) return (<Loader />);
@@ -77,37 +87,23 @@ export const TrajectCard = ({
         console.log(travel.passenger_id)
         console.log(travel.driver_id)
     });
+    
 
-    let id = ''    
     const deleteTraject = (evt) => {
         evt.preventDefault()
-        if (!passenger_id ){
-            id = driver_id;
-            axios
-            .delete(`http://localhost:5000/journey/${journey_id}`)
-            .then(response => {
-                if (response.status === 202) {
-                setMsgErr(notifyErr)
-                } else {
-                    setMsgSuccess(notify)
-                    refreshPage()
-                }
-            })
-        } else {
-            id = passenger_id;
-            axios
-            .delete(`http://localhost:5000/journey_has_user/${journey_id}/${id}`)
-            .then(response => {
-                if (response.status === 202) {
-                setMsgErr(notifyErr)
-                } else {
-                    setMsgSuccess(notify)
-                    refreshPage()
-                }
-            })
+        console.log(journey_id)
+        axios
+        .delete(`http://localhost:5000/journey_has_user/${journey_id}/${passenger_id}`)
+        .then(response => {
+            if (response.status === 202) {
+            setMsgErr(notifyErr)
+            } else {
+                setMsgSuccess(notify)
+                refreshPage()
+            }
+        })
         }
-    }
-
+    
     const notify = () => toast.success("Votre trajet a bien été supprimé ! ", {
         position: "bottom-right",
         autoClose: 3000,
@@ -133,7 +129,7 @@ export const TrajectCard = ({
 
     let futurDelete = ''
     let btnDetail = ''
-    if (location.pathname === '/wannasurf/mesFutursTrajets') {
+    if (location.pathname === '/monHistorique') {
         futurDelete =
             <div>
                 <form onSubmit={deleteTraject}>
@@ -145,17 +141,20 @@ export const TrajectCard = ({
             </div>
     }
 
-    if (location.pathname === '/wannasurf/trajectsList') {
+    if (location.pathname === '/trajectsList') {
         btnDetail =
-            <Link to={`/wannasurf/trajectsDetails/${journey_id}`} >
-                <Button>
-                        Detail du trajet
-                </Button>
-            </Link>
+            <Link to={`/trajectsDetails/${journey_id}`} >
+                    <Button>
+                            Detail du trajet
+                    </Button>
+                </Link>
     }
 
     return (
         <div className="traject-page"> 
+            <div className='title-card-trajet'>
+                <p><span className="bold"> Date du trajet : </span>{dateFormat(date , "dd - mm - yyyy")}</p>
+            </div>
             <div className="traject-card">
                 <div className="up-card">
                     <div className="left-side">
@@ -165,15 +164,21 @@ export const TrajectCard = ({
                         <p><span className="bold"> Destination : </span>{surfspot}</p>
                     </div>
                 </div>
-                    <div className="down-card">
+                <div className="down-card">
+                     <div className="left-side">
                         <p><span className="bold"> heure de depart:</span> {time}</p>
-                        <p className="traject-price"> <span className="bold"> Prix du traject: </span>{price} $ </p>
-                </div>                
+                    </div>
+                    <div className="right-side">
+                        <p className="traject-price"> <span className="bold"> Prix: </span>{price} € </p>
+                    </div>
+                </div>
+                
                 
                 {futurDelete}
                 
-                {btnDetail}                
+                {btnDetail}
+                
             </div>
         </div>
     )
-}
+  }
