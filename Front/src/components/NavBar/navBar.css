@@ -157,11 +157,14 @@ a {
         font-size: 5vw;
     }
 }
-    @media screen and (min-width:767px) {
+    @media screen and (min-width:1200px) {
         .bruger-menu .navbar-link {
-            font-size: 23px;
+            font-size: 21px;
+            padding: 0px;
+            margin: 10px;
         }
         .title-wannasurf h1 {
             font-size: 26px;
         }
+
 }
