@@ -27,9 +27,6 @@ export default function NavFrame(props) {
                 <ul className="navbar-links">
                     {props.children}
                 </ul>
-            </div>
-
-                <div className="bruger-menu">
                 <button className="navbar-burger" onClick={handleShowLinks}>
                     <span className="burger-bar"></span>
                 </button> 
