@@ -129,7 +129,7 @@ export const TrajectCard = ({
 
     let futurDelete = ''
     let btnDetail = ''
-    if (location.pathname === '/monHistorique') {
+    if (location.pathname === '/mesFutursTrajets') {
         futurDelete =
             <div>
                 <form onSubmit={deleteTraject}>
