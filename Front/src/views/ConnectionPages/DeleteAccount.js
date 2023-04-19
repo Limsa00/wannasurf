@@ -13,7 +13,7 @@ export const DeleteAccount = () => {
         console.log(TimerDelete)
         let timerIDelete = setTimeout(() => {
             clearTimeout(timerIDelete)
-            navigate('/wannasurf/home')
+            navigate('/')
         }, 2000);
     }
 

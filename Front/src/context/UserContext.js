@@ -18,7 +18,7 @@ export function UserContextProvider(props) {
         (auth, email, pwd)
     const forgotPassword = (email) => sendPasswordResetEmail
         (auth, email, {
-            url: 'http://localhost:3000/wannasurf/seconnecter',
+            url: 'http://localhost:3000/seconnecter',
         })
     const changePasswordFirebase = (user, newPassword) => updatePassword
         (user, newPassword)

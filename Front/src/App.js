@@ -29,86 +29,86 @@ export const App = () => {
 
           <Routes>
           
-            <Route path="/wannasurf" element={<Container />}>
+            <Route path="/" element={<Container />}>
               <Route 
-                exact path="/wannasurf/home" 
+                index 
                 element={<Home />} 
               />
               <Route 
-                exact path="/wannasurf/trajectsList" 
+                exact path="trajectsList" 
                 element= { <TrajectResult /> } 
               />
               <Route 
-                exact path="/wannasurf/trajectsDetails/:id" 
+                exact path="trajectsDetails/:id" 
                 element= { <TrajectScreen /> } 
               />
             </Route>
   
           
             <Route 
-              exact path="/wannasurf/seconnecter" 
+              exact path="/seconnecter" 
               element= { <SignInModal />} 
             />
         
             <Route 
-              exact path="/wannasurf/resetPassword" 
+              exact path="/resetPassword" 
               element= { <ResetPassword />} 
             />  
                 
             <Route 
-              exact path="/wannasurf/deleteAccount" 
+              path="/deleteAccount" 
               element= { <DeleteAccount />} 
             />
         
             <Route 
-              exact path="/wannasurf/changePassword" 
+              path="/changePassword" 
               element= { <ChangePassword />} 
             />
 
             <Route 
-              path="/wannasurf/sinscrire" 
+              path="/sinscrire" 
               element={<SignUpModal />}
             />
 
             <Route 
-                path="/wannasurf/sinscrire/complements" 
+                path="/sinscrire/complements" 
                 element= { <SignUpInfo /> } 
               />
 
             <Route 
-              exact path="/wannasurf/siteContact" 
+              path="/siteContact" 
               element= { <SiteContact /> } 
             />
 
             <Route 
-              exact path="/wannasurf/createTraject" 
+              path="/createTraject" 
               element= { <CreateTraject /> } 
             />
 
             <Route 
-              exact path="/wannasurf/legalNotice" 
+              path="/legalNotice" 
               element= { <LegalNotice /> } 
             />
 
-            <Route path="/wannasurf/private" element={<Private />}>
+            <Route path="/private" element={<Private />}>
               <Route 
-                path="/wannasurf/private/monEspace" 
+                path="monEspace" 
                 element= { <MonEspace /> } 
               />
             </Route>
 
             <Route 
-              exact path="/wannasurf/monProfil" 
+              path="/monProfil" 
               element= { <MyProfil /> } 
             />
 
             <Route 
-              exact path="/wannasurf/mesFutursTrajets" 
+              path="/mesFutursTrajets" 
               element= { <FuturTrajects /> } 
             />
 
             <Route 
-              exact path="/wannasurf/monHistorique" 
+              path="/monHistorique" 
               element= { <TrajectsHistory /> } 
             />
           

@@ -113,18 +113,18 @@ export const MyProfil = () => {
                     <div className='bloc-profil-6'>
                         <div className='bloc-other'>
                             <div className='reset-pwd'>
-                                <Link to='/wannasurf/resetPassword'>
+                                <Link to='/resetPassword'>
                                     <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
                                 </Link>
                             </div>
 
                             <div className='change-pwd'>
-                                <Link to='/wannasurf/changePassword'>
+                                <Link to='/changePassword'>
                                     <button className='no-decoration center'>Changez votre mot de passe</button>
                                 </Link>
                             </div>
                         <div className='delete-acc'>
-                            <Link to='/wannasurf/DeleteAccount'>
+                            <Link to='/DeleteAccount'>
                                 <button className='no-decoration center'>Supprimer mon compte</button>
                             </Link>
                             </div>
@@ -132,7 +132,7 @@ export const MyProfil = () => {
                     </div>
 
                     <div className='center'>
-                        <Link to="/wannasurf/home">
+                        <Link to="/">
                             <Button>
                                 Retour à l'acceuil
                             </Button>

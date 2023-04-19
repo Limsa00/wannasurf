@@ -50,21 +50,21 @@ export const MonEspace = () => {
                     <div className='right-desk'>
                         <div className="espace-bloc">
                             <div className='space-button'>
-                                <Link to="/wannasurf/monProfil" >
+                                <Link to="/monProfil" >
                                     <Button>
                                         Mon profil
                                     </Button>
                                 </Link>
                             </div>
                             <div className='space-button'>
-                                <Link to="/wannasurf/mesFutursTrajets">
+                                <Link to="/mesFutursTrajets">
                                     <Button>
                                         Mes futurs trajets
                                     </Button>
                                 </Link>
                             </div>
                             <div className='space-button'>
-                                <Link to="/wannasurf/monHistorique">
+                                <Link to="/monHistorique">
                                     <Button>
                                         Historique des trajets
                                     </Button>
@@ -73,7 +73,7 @@ export const MonEspace = () => {
                         </div>
 
                         <div className='home-back'>
-                            <Link to="/wannasurf/home">
+                            <Link to="/">
                                     <Button>
                                         Accueil
                                         <span className='icon-home'>

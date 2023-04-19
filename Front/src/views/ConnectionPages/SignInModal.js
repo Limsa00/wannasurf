@@ -36,7 +36,7 @@ export const SignInModal = () => {
                     formRef.current.reset();
                     setValidation("")
                     toggleModals("close")
-                    navigate("/wannasurf/home")
+                    navigate("/")
 
             }  catch (err) {
                     console.log(err)
@@ -90,6 +90,7 @@ export const SignInModal = () => {
                             <form 
                                 ref={formRef}
                                 className='form'
+                                autoComplete='off'
                                 onSubmit={handleForm}>
 
                                 <input 
@@ -111,11 +112,11 @@ export const SignInModal = () => {
                                 /> <span className='err'>{validation}</span>    
 
                                 <div className='connection-option'>
-                                    <Link to='/wannasurf/resetPassword'>
+                                    <Link to='/resetPassword'>
                                         <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
                                     </Link>
 
-                                    <Link to='/wannasurf/sinscrire'>
+                                    <Link to='/sinscrire'>
                                         <button className='no-decoration center'>Pas encore inscrit ? Cliquez ici !</button>
                                     </Link>
                                     

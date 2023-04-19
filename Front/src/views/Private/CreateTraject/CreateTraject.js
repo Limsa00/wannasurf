@@ -39,7 +39,7 @@ export const CreateTraject = (props) => {
             console.log(Timer)
             let timerID = setTimeout(() => {
                 clearTimeout(timerID)
-                navigate('/wannasurf/mesFutursTrajets')
+                navigate('/mesFutursTrajets')
             }, 2000);
     }
 

@@ -59,13 +59,13 @@ export const SignUpInfo = () => {
         const endpoint = `http://localhost:5000/user`;
 
         callApiModule(endpoint, "POST", newUser, currentUser);
-        navigate("/wannasurf/home");
+        navigate("/");
 
         /*
         axios
             .post('http://localhost:5000/user', newUser)
             .then(
-                navigate("/wannasurf/home")
+                navigate("/")
                 )   
         */
     }

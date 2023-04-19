@@ -8,7 +8,7 @@ export default function Private () {
         console.log("currentUser from Private.js // route de: ", currentUser );
 
         if(!currentUser) {
-            return <Navigate to="/wannasurf/home" />
+            return <Navigate to="/" />
         }
 
     return (

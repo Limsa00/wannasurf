@@ -8,7 +8,7 @@ export const LegalNotice = () => {
         <div className='legal-notice-page'>
             <Navbar />
                 <div className="legal-notice-bloc">
-                    <div className='Title'>
+                    <div className='title-notice'>
                         <h1>Conditions générales</h1>
                     </div>
                         <p className='intro'>Version applicable à compter du 1er janvier 2023.</p>

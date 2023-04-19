@@ -51,7 +51,7 @@ export const Home = () => {
             place_available: nombrePersonne,
         });
         console.log(trajectSearch)
-        navigate("/wannasurf/trajectsList")
+        navigate("trajectsList")
     }
 
         return (

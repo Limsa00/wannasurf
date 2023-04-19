@@ -30,7 +30,7 @@ export const ChangePassword = () => {
                     newPassword
                 ).then(
                     setSendReset("Votre pwd a bien été changé"))
-                navigate("/wannasurf/monProfil")
+                navigate("/monProfil")
             } catch (err) {
                 console.log(err)
                 setValidation('')

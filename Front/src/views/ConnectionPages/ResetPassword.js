@@ -23,7 +23,7 @@ export const ResetPassword = () => {
                     email,
                 ).then(
                     setSendReset("Un mail vous a ete envoyé"))
-                    navigate("/wannasurf/seconnecter")
+                    navigate("/seconnecter")
             } catch (err) {
                     console.log(err)
                     setValidation("Woops, votre email est incorrect !")

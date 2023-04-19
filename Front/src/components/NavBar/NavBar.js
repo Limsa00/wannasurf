@@ -22,7 +22,7 @@ export const Navbar = () => {
   const logOut = async () => {
     try {
       await signOut (auth)
-      navigate("/wannasurf/home")
+      navigate("/")
     } catch {
       alert("For some reason we can't log out, please check your internet connection and retry")
     }
@@ -35,21 +35,21 @@ const {currentUser} = useContext(UserContext)
             return (
               <NavFrame>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/wannasurf/home" className="navbar-link">
+                <Link to="/" className="navbar-link">
                 <button className="navbar-link">
                   Home
                 </button>
                 </Link>
               </li>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/wannasurf/private/monEspace" className="navbar-link">
+                <Link to="/private/monEspace" className="navbar-link">
                   <button className="navbar-link">
                     Mon espace
                   </button>
                 </Link>
               </li>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/wannasurf/createTraject" className="navbar-link">
+                <Link to="/createTraject" className="navbar-link">
                 <button className="navbar-link"> 
                   Publier un trajet
                 </button>
@@ -69,14 +69,14 @@ const {currentUser} = useContext(UserContext)
     return (
         <NavFrame>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/sinscrire">
+                    <Link to="/sinscrire">
                     <button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
                     </button>
                     </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/wannasurf/seconnecter"> 
+                    <Link to="/seconnecter"> 
                     <button onClick={() => toggleModals("SignIn")} className="navbar-link">
                       Se connecter
                     </button>

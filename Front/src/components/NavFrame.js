@@ -17,7 +17,7 @@ export default function NavFrame(props) {
                 <SurfingIcon className='icon-param' />
             </div>
 
-            <Link to="/wannasurf/home" className="navbar-link link-style">
+            <Link to="/" className="navbar-link link-style">
                 <div className="title-wannasurf">
                     <h1>WANNASURF</h1>
                 </div>
