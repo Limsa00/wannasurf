@@ -52,21 +52,18 @@ const journeyController = {
       
         // Contrôler s'il existe au moins 1 record relatif à journey_id dans Journey_has_user
         const journeyHasPassenger = await Journey_has_user.findOneJourneyAllUsers(journeyId);
-        // console.log(journeyHasPassenger.length);
         if(journeyHasPassenger.length>0) {
             const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
             // Et Vérifier si l'utilisateur est déjà inscrit 
-            // console.log(userInJourney)
             if(userInJourney){
                 res.status(202).json('Vous êtes déjà inscrit à ce trajet');
-                return
+                // return
             } else {
                 // Et vérifier s'il reste de la place disponible 
-                // Penser à vérifier possibilité d'inscription en fonction du nombre de places disponibles ?                
                 const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
                 if(placeLeft.nb_place_left<1){
                     res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
-                    return
+                    // return
                 }
             }
         } else {
@@ -75,14 +72,6 @@ const journeyController = {
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
         }
-
-        /*
-        if(!userInJourney && placeLeft.nb_place_left>0){
-            const newUserToJourney = new Journey_has_user (req.body);
-            const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
-            res.json(addedUserToJourney);
-        }
-        */
     },
 
     deleteOneUserFromJourney: async (req,res) =>{
@@ -99,57 +88,7 @@ const journeyController = {
         } else{
             res.status(404).json('Cet utilisateur ou ce trajet n\'existe pas');
         }
-    },
-
-    addOneJourney: async (req,res) =>{
-        console.log("----- Controller request addOneJourney -----")
-
-        const newJourney = new Journey(req.body);
-        const addedJourneyId = await newJourney.saveOneJourney();
-
-        // Insère toutes les propriétés de newJourney dans newJourney2 sauf _id
-        const {_id, ...newJourney2} = newJourney; 
-
-        // Rassemble les propriétés des objets addedJourneyId et newJourney2 dans un seul objet dans l'objectif de retourner l'enregistrement inséré avec l'id retourné par la BDD
-        res.json({...addedJourneyId,...newJourney2});
-        // res.json(newJourney);   
-    },
-
-    deleteOneJourney: async (req,res) => {
-        console.log("----- Controller request deleteOneJourney -----");
-
-        const journey= await Journey.findOneJourney(req.params.id);
-        if (journey) {
-            const journeyToDelete = new Journey(journey);
-            await journeyToDelete.delete();
-            res.json("suppression effectuée");
-        } else{
-            res.status(404).json('ce trajet n\'existe pas');
-        }
-    },
-
-    showJourneysFiltered: async (req,res) => {
-        console.log(`----- Controller request showJourneysFiltered for ${req.query.date} & a minimum of ${req.query.place} place available -----`);
-
-        const date = new Date();
-        const dateNow = date.getTime();
-        let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-
-        let nbPlaceWanted = req.query.place;
-        let dateWanted = req.query.date;
-
-        (!nbPlaceWanted || isNaN(nbPlaceWanted)) ? nbPlaceWanted=0 : nbPlaceWanted; // Contrôler la valeur entrante et configurer le nombre de places minimum à 0
-        (Date.parse(dateWanted)<dateNow || isNaN(Date.parse(dateWanted))) ? dateWanted=currentDate : dateWanted; // Contrôler la valeur entrante et configurer la recherche uniquement pour la date >= aujourd'hui
- 
-        const journeySearch = await Journey.findJourneysFiltered(nbPlaceWanted,dateWanted);
-
-        if (journeySearch.length>0) {
-            res.json(journeySearch);
-        } else {
-            res.status(404).json('Il n\'existe pas de trajets pour cette recherche');
-        };
     }
-
 };
 
 module.exports = journeyController;

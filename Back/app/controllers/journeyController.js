@@ -73,7 +73,8 @@ const journeyController = {
         if (journeySearch.length>0) {
             res.json(journeySearch);
         } else {
-            res.status(404).json('Il n\'existe pas de trajets pour cette recherche');
+            res.status(404).json('Il n\'existe pas de trajets pour cette recherche'); //status 404 géré par le front pour afficher réponse en fonction du statut envoyé
+            // res.json('Il n\'existe pas de trajets pour cette recherche');
         };
     }
 };
