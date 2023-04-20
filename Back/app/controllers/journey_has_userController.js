@@ -49,24 +49,40 @@ const journeyController = {
 
         const userId = req.body.user_id;
         const journeyId = req.body.journey_id;
-
-        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);  
-        if(userInJourney){
-            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
-            return
+      
+        // Contrôler s'il existe au moins 1 record relatif à journey_id dans Journey_has_user
+        const journeyHasPassenger = await Journey_has_user.findOneJourneyAllUsers(journeyId);
+        // console.log(journeyHasPassenger.length);
+        if(journeyHasPassenger.length>0) {
+            const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
+            // Et Vérifier si l'utilisateur est déjà inscrit 
+            // console.log(userInJourney)
+            if(userInJourney){
+                res.status(202).json('Vous êtes déjà inscrit à ce trajet');
+                return
+            } else {
+                // Et vérifier s'il reste de la place disponible 
+                // Penser à vérifier possibilité d'inscription en fonction du nombre de places disponibles ?                
+                const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
+                if(placeLeft.nb_place_left<1){
+                    res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
+                    return
+                }
+            }
+        } else {
+            // Si tous les contrôles précédents sont passés, on peut alors enregistrer l'utilisateur sur le trajet
+            const newUserToJourney = new Journey_has_user (req.body);
+            const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
+            res.json(addedUserToJourney);
         }
-        
-        const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
-        if(placeLeft.nb_place_left<1){
-            res.status(202).json('Il n\'y a plus de place disponible');
-            return
-        }
 
+        /*
         if(!userInJourney && placeLeft.nb_place_left>0){
             const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
         }
+        */
     },
 
     deleteOneUserFromJourney: async (req,res) =>{
@@ -83,9 +99,8 @@ const journeyController = {
         } else{
             res.status(404).json('Cet utilisateur ou ce trajet n\'existe pas');
         }
-    }
+    },
 
-    /*
     addOneJourney: async (req,res) =>{
         console.log("----- Controller request addOneJourney -----")
 
@@ -134,7 +149,7 @@ const journeyController = {
             res.status(404).json('Il n\'existe pas de trajets pour cette recherche');
         };
     }
-    */
+
 };
 
 module.exports = journeyController;
