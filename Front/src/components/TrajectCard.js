@@ -4,6 +4,8 @@ import './trajectCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from './UI/Button'
 import { toast } from 'react-toastify';
+import Passenger from './../images/passenger.png'
+import Driver from './../images/driver.png'
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import { Error } from './ErrorComponent/Error';
@@ -125,6 +127,8 @@ export const TrajectCard = ({
 
     let futurDelete = ''
     let btnDetail = ''
+    let roleJourney = ''
+
     if (location.pathname === '/mesFutursTrajets') {
         futurDelete =
             <div>
@@ -135,7 +139,33 @@ export const TrajectCard = ({
                     </Button>
                 </form>
             </div>
+        if (passenger_id === user) {
+            roleJourney =
+                <div>
+                    <img src={Passenger} className="icon-passenger" alt="illustration passager via flaticon" />
+                </div>
+        } else {
+            roleJourney =
+                <div>
+                    <img src={Driver} className="icon-conducteur" alt="illustration conducteur via flaticon" />
+                </div>
+        }
     }
+    
+    if (location.pathname === '/monHistorique') {
+        if (passenger_id === user) {
+            roleJourney =
+                <div>
+                    <img src={Passenger} className="icon-passenger" alt="illustration passager via flaticon" />
+                </div>
+        }
+        else {
+            roleJourney =
+                <div>
+                    <img src={Driver} className="icon-conducteur" alt="illustration conducteur via flaticon" />
+                </div>
+        }
+}
 
     if (location.pathname === '/trajectsList') {
         btnDetail =
@@ -167,8 +197,8 @@ export const TrajectCard = ({
                     <div className="right-side">
                         <p className="traject-price"> <span className="bold"> Prix: </span>{price} € </p>
                     </div>
-                </div>
-                
+                    {roleJourney}
+                </div>    
                 
                 {futurDelete}
                 
