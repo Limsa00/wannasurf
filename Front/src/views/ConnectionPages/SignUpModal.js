@@ -2,6 +2,7 @@ import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate, Link } from 'react-router-dom';
+import { sendEmailVerification } from 'firebase/auth';
 import BackToHome from '../../components/BackArrow/BackToHome';
 import InscImg from '../../images/insc-img-surf.jpg'
 import Button from '../../components/UI/Button';
@@ -42,11 +43,11 @@ export const SignUpModal = () => {
                     inputs.current[0].value,
                     inputs.current[1].value
                 )
+                    await sendEmailVerification(cred.user)
                     formRef.current.reset();
                     setValidation("")
                     // console.log(cred)
                     navigate("/sinscrire/complements")
-
             }  catch (err) {
                 if(err.code === "auth/invalid-email") {
                     setValidation("Email format invalid")
