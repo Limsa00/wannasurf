@@ -206,6 +206,7 @@ export const CreateTraject = (props) => {
                                         placeholder= " "        
                                         id="price"
                                         required={true}
+                                        min={0}
                                         name="price" 
                                         value={price}
                                         onChange={e => setPrice(e.target.value)}
@@ -219,7 +220,9 @@ export const CreateTraject = (props) => {
                                         type="number"      
                                         id="nbPlanche"
                                         required={true}
-                                        placeholder= " "   
+                                        placeholder=" " 
+                                        min={0}
+                                        max={10}
                                         name="nbPlanche" 
                                         value={nbPlanche}
                                         onChange={e => setNbPlanche(e.target.value)}
@@ -249,6 +252,8 @@ export const CreateTraject = (props) => {
                                         type="number" 
                                         id="nbPassager"
                                         required={true}
+                                        min={0}
+                                        max={10}
                                         placeholder= " "   
                                         name="nbPassager" 
                                         value={nbPassager}
@@ -261,8 +266,10 @@ export const CreateTraject = (props) => {
                                     <label>
                                         <input 
                                         placeholder=" "  
-                                        type="texte"
+                                        type="number"
                                         required={true}
+                                        min={4}
+                                        max={10}
                                         id="taillePlanche" 
                                         name="taillePlanche" 
                                         value={taillePlanche}

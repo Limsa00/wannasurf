@@ -22,16 +22,19 @@ export const SignInModal = () => {
                 inputs.current.push(el)
             }
         }
-
         const formRef = useRef();
+
 
         const handleForm = async e => {
             e.preventDefault()
 
+            const email = inputs.current[0].value 
+            const pwd = inputs.current[1].value 
+
             try {                
                 const cred = await signIn (
-                    inputs.current[0].value,
-                    inputs.current[1].value
+                    email,
+                    pwd
                 )
                     formRef.current.reset();
                     setValidation("")

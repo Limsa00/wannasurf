@@ -25,14 +25,19 @@ export const SignUpModal = () => {
         }
         const formRef = useRef();
 
+
         const handleForm = async e => {
             e.preventDefault()
 
-            if((inputs.current[1].value.length || inputs.current[2].value.length) <6) {
+            const email = inputs.current[0].value 
+            const pwd = inputs.current[1].value 
+            const pwdConfirm = inputs.current[2].value 
+
+            if((pwd.length || pwdConfirm.length) <6) {
                 setValidation("6 characters min")
                     return;
             }
-            else if(inputs.current[1].value !== inputs.current[2].value) {
+            else if(pwd !== pwdConfirm) {
                 setValidation("Password do not match")
                     return;
             }
@@ -40,8 +45,8 @@ export const SignUpModal = () => {
             try {
                 
                 const cred = await signUp (
-                    inputs.current[0].value,
-                    inputs.current[1].value
+                    email,
+                    pwd
                 )
                     await sendEmailVerification(cred.user)
                     formRef.current.reset();
