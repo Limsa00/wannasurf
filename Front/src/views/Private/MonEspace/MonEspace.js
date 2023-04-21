@@ -4,6 +4,7 @@ import Button from '../../../components/UI/Button'
 import React, {useContext} from 'react';
 import { UserContext } from '../../../context/UserContext';
 import HomeIcon from '@mui/icons-material/Home';
+import { sendEmailVerification } from 'firebase/auth';
 import axios from 'axios';
 import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
@@ -15,10 +16,23 @@ export const MonEspace = () => {
 
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
+
+    let blocVerif = ''
     
     const { currentUser } = useContext(UserContext)
     const uid = currentUser.uid;
-    console.log(uid)
+    const emailVerified = currentUser.emailVerified
+    console.log(emailVerified)
+
+    if (emailVerified === false) {
+        blocVerif =
+            <div className='bloc-verif'>
+                <p className='text-email'>Votre email n'a pas encore été validé, cliquez ici pour le valider ! </p>
+                <Button onClick={sendEmailVerification(currentUser)}>
+                    Verifier votre email
+                </Button>    
+            </div>
+    }
 
     React.useEffect(() => {
 
@@ -40,6 +54,7 @@ export const MonEspace = () => {
                 <div className='title-bloc'>
                     <h1>MON ESPACE</h1>
                     <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
+                    {blocVerif}
                 </div>
                 
                 <div className='desk-div'>

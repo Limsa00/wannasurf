@@ -48,7 +48,7 @@
 
 .icon-home {
     height: 35px;
-    margin: 25px 0 0 30px
+    margin: 25px 0 0 30px;
 }
 
 .left-desk, .style-img {
@@ -58,6 +58,25 @@
 .desk-div {
     margin-top: 15px;
 }
+
+.text-email {
+    color: red;
+    padding: 15px;
+}
+
+.bloc-verif {
+    margin: 25px 30px 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.bloc-verif Button {
+    margin: 15px;
+}
+
 @media screen and (min-width:763px) {
     .espace-bloc     {
         align-items: center;
@@ -65,6 +84,10 @@
 
 Button {
     margin: 40px;
+}
+
+.bloc-verif {
+    flex-direction: row;
 }
 
 .title-bloc h1 {
