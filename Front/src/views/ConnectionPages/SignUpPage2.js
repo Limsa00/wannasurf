@@ -5,45 +5,70 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button';
 import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
+import { validName, validPhone } from '../../components/Regex';
 import 'react-phone-number-input/style.css';
-import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import fr from "date-fns/locale/fr";
 const callApiModule = require('../../components/callApiModule');
 
 export const SignUpInfo = () => {
 
-    registerLocale("fr", fr);
-
     const navigate = useNavigate();
-
     const {currentUser} = useContext(UserContext)
-    console.log("currentUser from SignUpPage2.js // route de : ", currentUser );
-    
     const uid = currentUser.uid;
-    console.log("uid from SignUpPage2.js : ", uid);
 
-    const [errormsg, Seterrormsg] = useState("");
+    const [send, setSend] = useState (Boolean);
+
+    const [errormsg, Seterrormsg] = useState(false);
+    const [errorNameMsg, setErrorNameMsg] = useState(false);
+    const [errorSurnameMsg, setErrorSurnameMsg] = useState(false);
+    const [errorPhoneMsg, setErrorPhoneMsg] = useState(false);
+    const [errorGenderMsg, setErrorGenderMsg] = useState(false);
 
     const [name, setName] = useState ("");
     const [surname, setSurname] = useState ("");
     const [gender, setGender] = useState("");
     const [phoneNumber, setPhoneNumber] = useState ("");
-    const [city, setCity] = useState ("");
-    const [birth, setBirth] = useState ("");
+    const [city,] = useState ("");
+    const [birth, setBirth] = useState("");
+    
+
+    const validate = () => {
+      
+        if (!validName.test(name)) {
+            setErrorNameMsg(true);
+        } else {
+            setErrorNameMsg(false);
+        }
+        if (!validName.test(surname)) {
+            setErrorSurnameMsg(true);
+        } else {
+            setErrorSurnameMsg(false);
+        }
+        if (gender !== "Homme" && gender !== "Femme" && gender !== "Autres") {
+            setErrorGenderMsg(true);
+        } else {
+            setErrorGenderMsg(false);
+        }
+        if (name === "" || surname === "" || gender === "" || birth === "" || phoneNumber === "" || city === "") {
+            Seterrormsg(true);
+        } else {
+            Seterrormsg(false)
+        }
+        if (!validPhone.test(phoneNumber)) {
+            setErrorPhoneMsg(true);
+        } else {
+            setErrorPhoneMsg(false);
+        }
+        if (errormsg === false && errorNameMsg === false && errorSurnameMsg === false && errorPhoneMsg === false && errorGenderMsg === false) {
+              setSend(true)
+          }
+        }     
 
     const handleForm = (evt) => {
         evt.preventDefault()
 
-        if (name === "" || surname === "" || gender === "" || birth === "" || phoneNumber === "" || city === "") {
-            Seterrormsg("All fields are mandatory");
-        } else if (!name.match(/^[a-zA-Z]*$/)) {
-            Seterrormsg("Name is not alphanumeric");
-        } else if (gender !== "Homme" && gender !== "Femme" && gender !== "Autres") {
-            Seterrormsg("Please identify as male, female or others");
-        } else if (!phoneNumber.match(/^[0-9]*$/)) {
-            Seterrormsg("Phone Number must contain only numbers");
-        };
+        setSend(false)
+        validate()
 
         const newUser = { 
             lastname: surname,
@@ -54,20 +79,12 @@ export const SignUpInfo = () => {
             city_id: 1,
             uid: uid
         };
-        console.log("newUser : ", newUser);
 
         const endpoint = `http://localhost:5000/user`;
-
+        if (send === true) {
         callApiModule(endpoint, "POST", newUser, currentUser);
-        navigate("/");
-
-        /*
-        axios
-            .post('http://localhost:5000/user', newUser)
-            .then(
-                navigate("/")
-                )   
-        */
+        navigate("/")
+        }
     }
 
     return (
@@ -91,37 +108,32 @@ export const SignUpInfo = () => {
                         onSubmit={handleForm}>
 
                         <input 
-                            required
+                            required={true}
                             name="name" 
                             type="text" 
                             placeholder='Nom'
                             id="signUpName"
                             value={name}
                             onChange={e => setName(e.target.value)}
-                        />
+                        /><span className='err-msg-style'>{errorNameMsg && <p>Ton nom ne doit contenir que des lettres *</p>}</span>
 
                         <input 
-                            required
+                            required={true}
                             name="surname" 
                             type="text" 
                             placeholder='Prenom'
                             id="signUpSurname"
                             value={surname}
                             onChange={e => setSurname(e.target.value)}          
-                        />   
+                        /><span className='err-msg-style'>{errorSurnameMsg && <p>Ton prénom ne doit contenir que des lettres *</p>}</span>
                     
                         <label>Date de naissance</label>
-                        <div className='center row'>
-                        <DatePicker
-                        
-                            required
-                            selected={birth}
-                            onChange={(date) => setBirth(date)}
-                            locale="fr"
-                            isClearable
-                            dateFormat="P"
+                        <input
+                            type="date"
+                            placeholder=" "
+                            value={birth}
+                            onChange={(e) => setBirth(e.target.value)}
                         />
-                        </div>
 
                     <label>Genre</label>
                         <div className='row-gender'>
@@ -155,19 +167,22 @@ export const SignUpInfo = () => {
                             onChange={(e) => setGender(e.target.value)}
                             checked={gender === 'Autres'} />
                         <label htmlFor="other">Autres</label>
-                        </div>
+                        </div> <span className='err-msg-style'>{errorGenderMsg && <p>Choisis ton genre *</p>}</span>  
                     
                         <PhoneInput
-                            required
+                            required={true}
                             name="tel" 
                             defaultCountry='FR'
                             placeholder='phoneNumber'
                             id="signUpPhoneNumber"
                             value={phoneNumber}
                             onChange={setPhoneNumber}          
-                        />   
+                        /> <span className='err-msg-style'>{errorPhoneMsg && <p> Ton numero n'est pas valide</p>}</span>  
 
-                        <Button>
+                        <div className='err-form'>
+                            <span className='err-msg-style'>{errormsg && <p>Tous les champs doivent être rempli *</p>}</span>
+                        </div>
+                        <Button onClick={validate}>
                             Completer mon profil
                         </Button>
 
@@ -175,4 +190,4 @@ export const SignUpInfo = () => {
                 </div>
             </>
         )
-    }
+}

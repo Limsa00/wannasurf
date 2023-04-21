@@ -12,6 +12,11 @@
     margin-bottom: 20px;
 }
 
+.err-msg-style {
+    color: red;
+    font-style: italic;
+}
+
 .row-gender {
     display: flex;
     flex-direction: row;
@@ -182,7 +187,7 @@
     }
 
     .row-gender {
-        width: 220px;
+        width: 400px;
         font-size: 17px;
      }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../../context/UserContext";
 import axios from "axios";
@@ -14,14 +14,14 @@ export const CreateTraject = (props) => {
 
     const { currentUser } = useContext(UserContext)
     const uid = currentUser.uid;
-
+    
     const [lieuDepart, setLieuDepart] = useState ("");
     const [lieuArrive, setLieuArrive] = useState ("");
     const [dateDepart, setDateDepart] = useState ("");
     const [heureDepart, setHeureDepart] = useState("");
     const [adresseDepart, setAdresseDepart] = useState("");
     const [nbPlanche, setNbPlanche] = useState("");
-    const [price, setPrice] = useState ("");
+    const [price, setPrice] = useState("");
     const [nbPassager, setNbPassager] = useState ("");
     const [taillePlanche, setTaillePlanche] = useState("");
     const [city, setCity] = useState ("");
@@ -69,6 +69,7 @@ export const CreateTraject = (props) => {
     const envoiFormulaire = (evt) => {
         // On empeche le formulaire de recharger notre application
         evt.preventDefault()
+        
         // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
         const newTraject = { 
             departure_city_id: lieuDepart,
@@ -80,8 +81,7 @@ export const CreateTraject = (props) => {
             board_size_allowed: taillePlanche,
             number_of_boards_allowed: nbPlanche,
             meeting_address: adresseDepart,
-            driver_id: user.id
-        
+            driver_id: user.id    
         };
 
         axios
@@ -91,6 +91,7 @@ export const CreateTraject = (props) => {
                     setMsgErr(notifyErr)
                 } else {
                     setMsgSuccess(notify)
+                    Timer()
                 }
             })
         }
@@ -119,6 +120,7 @@ export const CreateTraject = (props) => {
         progress: undefined,
         theme: "dark",
       })
+    
 
     return (
         <div className="create-traject-page">
@@ -138,6 +140,7 @@ export const CreateTraject = (props) => {
                                         onChange={e => setLieuDepart(e.target.value)}
                                         name="lieuDepart"
                                         id="lieuDeDepart"
+                                        required={true}
                                     >
                                         <option
                                             value=''
@@ -161,6 +164,7 @@ export const CreateTraject = (props) => {
                                     <select
                                         onChange={e => setLieuArrive(e.target.value)}
                                         name="lieuArrive"
+                                        required={true}
                                         id="lieuArrive"
                                     >
                                         <option
@@ -185,13 +189,14 @@ export const CreateTraject = (props) => {
                                         <input 
                                         type="date"      
                                         id="dateDepart" 
+                                        required={true}
                                         name="dateDepart" 
                                         value={dateDepart}
                                         onChange={e => setDateDepart(e.target.value)}
                                         /><span className='label-create-traject'>Date de depart</span>
                                     </label>
                                 </div>
-                            </div>     
+                            </div>  
                         
                             <div className="large-screen">
                                 <div className="form-champs">
@@ -199,7 +204,8 @@ export const CreateTraject = (props) => {
                                         <input 
                                         type="number"
                                         placeholder= " "        
-                                        id="price" 
+                                        id="price"
+                                        required={true}
                                         name="price" 
                                         value={price}
                                         onChange={e => setPrice(e.target.value)}
@@ -211,7 +217,8 @@ export const CreateTraject = (props) => {
                                     <label>
                                         <input 
                                         type="number"      
-                                        id="nbPlanche" 
+                                        id="nbPlanche"
+                                        required={true}
                                         placeholder= " "   
                                         name="nbPlanche" 
                                         value={nbPlanche}
@@ -224,7 +231,8 @@ export const CreateTraject = (props) => {
                                     <label>
                                         <input 
                                         type="time" 
-                                        id="heureDepart"   
+                                        id="heureDepart" 
+                                        required={true}
                                         name="heureDepart" 
                                         value={heureDepart}
                                         onChange={e => setHeureDepart(e.target.value)}
@@ -239,7 +247,8 @@ export const CreateTraject = (props) => {
                                     <label>
                                         <input 
                                         type="number" 
-                                        id="nbPassager" 
+                                        id="nbPassager"
+                                        required={true}
                                         placeholder= " "   
                                         name="nbPassager" 
                                         value={nbPassager}
@@ -251,8 +260,9 @@ export const CreateTraject = (props) => {
                                 <div className="form-champs">
                                     <label>
                                         <input 
-                                        placeholder= " "   
-                                        type="texte" 
+                                        placeholder=" "  
+                                        type="texte"
+                                        required={true}
                                         id="taillePlanche" 
                                         name="taillePlanche" 
                                         value={taillePlanche}
@@ -264,7 +274,8 @@ export const CreateTraject = (props) => {
                                 <div className="form-champs">
                                     <label>
                                         <input 
-                                        placeholder= " "
+                                        placeholder=" "
+                                        required={true}
                                         type="texte" 
                                         id="adresseDepart" 
                                         name="adresseDepart" 
@@ -275,9 +286,9 @@ export const CreateTraject = (props) => {
                                 </div>
                             </div>
                         
-                            <Button onClick={Timer}>
+                        <Button>
                                 Créer mon trajet
-                            </Button>
+                        </Button>
                         </div>
                 </form>
             </div>
