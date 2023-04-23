@@ -1,8 +1,10 @@
 .btn-style {
     border: none;
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
@@ -21,5 +23,6 @@
 @media screen and (min-width:1300px) {
     .btn-style {
         width: 300px;
+        padding: 20px;
     }
 }
