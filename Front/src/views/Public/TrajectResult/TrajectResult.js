@@ -60,24 +60,6 @@ export const TrajectResult = () => {
                         />
                     ))}
                     </div>
-                    <h2 className="title-traject">Autres trajets disponibles sur la plateforme</h2>
-                    <div className='flex-desktop'>
-                    {allTraject?.map(traject => (           
-                        <TrajectCard
-                            key={`${traject.journey_id}`}
-                            journey_id={traject.journey_id}
-                            date={traject.date}
-                            driver_firstname={traject.driver_firstname}
-                            driver_lastname={traject.driver_lastname}
-                            city={traject.city}
-                            address={traject.address}
-                            surfspot={traject.surfspot}
-                            time={traject.time}
-                            price={traject.price}
-                            places_remaining={traject.places_remaining}
-                        />
-                    ))}
-                    </div>
                 </div>
             <Footer />
         </div>

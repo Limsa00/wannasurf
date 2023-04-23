@@ -11,6 +11,7 @@ import { Footer } from '../../../components/Footer/Footer';
 import Desk_illustration from '../../../images/img_mon_espace.jpg'
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
+import { toast } from 'react-toastify';
 
 export const MonEspace = () => {
 
@@ -23,16 +24,44 @@ export const MonEspace = () => {
     const uid = currentUser.uid;
     const emailVerified = currentUser.emailVerified
     console.log(emailVerified)
+    
+    //const de notif avec la lib react-toastity
+    let notify = () => toast.success("Un email de confirmation vous a été envoyé ! ", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark"
+    })
+
+    const notifyErr = () => toast.error("Une erreur est survenu, reessayer plus tard ", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
 
     if (emailVerified === false) {
-        blocVerif =
-            <div className='bloc-verif'>
-                <p className='text-email'>Votre email n'a pas encore été validé, cliquez ici pour le valider ! </p>
-                <Button onClick={sendEmailVerification(currentUser)}>
-                    Verifier votre email
-                </Button>    
+            blocVerif =
+                <div className='bloc-verif'>
+                    <p className='text-email'>Votre email n'a pas encore été validé, cliquez ici pour le valider ! </p>
+                    <Button
+                        onClick={() =>
+                            sendEmailVerification(currentUser)
+                            .then(notify)
+                            .catch(notifyErr)
+                        }>
+                        Verifier votre email
+                    </Button>
             </div>
-    }
+        }
 
     React.useEffect(() => {
 
