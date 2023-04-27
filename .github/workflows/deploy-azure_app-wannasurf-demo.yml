@@ -24,11 +24,11 @@ jobs:
       - name: npm install, build, and test
         run: |
           cd .\Back\
-          npm install
+          npm install --force
           npm run build --if-present
-          
+
           cd ..\Front\
-          npm install
+          npm install --force
           npm run build --if-present
       
       - name: Upload artifact for deployment job
