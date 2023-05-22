@@ -85,6 +85,11 @@ a {
     opacity: 0.8;
 }
 
+.logo-size {
+    width: 70px;
+    height: 70px;
+}
+
 @media screen and (max-width:767px) {
     .navbar-links {
         flex-direction: column;
