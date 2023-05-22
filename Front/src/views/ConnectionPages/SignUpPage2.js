@@ -7,7 +7,6 @@ import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import { validName, validPhone } from '../../components/Regex';
 import 'react-phone-number-input/style.css';
-import "react-datepicker/dist/react-datepicker.css";
 const callApiModule = require('../../components/callApiModule');
 
 export const SignUpInfo = () => {
