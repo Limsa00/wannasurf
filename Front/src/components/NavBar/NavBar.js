@@ -19,6 +19,7 @@ export const Navbar = () => {
 
   const navigate = useNavigate()
 
+  // Constante pour deconnecté le user utilisant la methode firebase signOut avec en parametre auth
   const logOut = async () => {
     try {
       await signOut (auth)
@@ -29,7 +30,6 @@ export const Navbar = () => {
   }
 
 const {currentUser} = useContext(UserContext)
-        console.log("currentUser from navBar.js // route de : ", currentUser );
 
         if(currentUser) {
             return (

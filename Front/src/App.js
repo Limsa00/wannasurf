@@ -27,8 +27,10 @@ export const App = () => {
   return (
       <div className="app">
 
+      {/* Systeme de routage front de notre app, toutes les routes sont contenues dans la balise <Routes> */}
           <Routes>
           
+          {/* Route container permettant un transit de données entre Home, TrajectResult et TrajectScreen */}
             <Route path="/" element={<Container />}>
               <Route 
                 index 

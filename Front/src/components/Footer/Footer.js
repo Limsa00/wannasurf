@@ -8,12 +8,12 @@ export const Footer = () => {
     
     useEffect(() => {
     function handleScroll() {
-          // Check if the scroll exists and if it's not at the bottom
+          // On verifie qu'il y a un scroll et que l'utilisateur n'est pas en bas de page
         if (document.documentElement.scrollHeight > (document.documentElement.scrollTop + window.innerHeight)) {
-            // Hide the element
+            // on cache l'element si cest le cas
             setShowElement('');
         } else {
-            // Show the element
+            // Sinon on montre l'element
             setShowElement('show-hide');
         }
         
@@ -26,7 +26,7 @@ export const Footer = () => {
     } else {
             setShowElement('show-hide footer-position');
         }
-    // Remove the event listener when the component unmounts
+    // Quand l'utilisateur remonte sur la page on recache le footer
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

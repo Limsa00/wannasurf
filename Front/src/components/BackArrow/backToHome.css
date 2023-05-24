@@ -8,7 +8,10 @@
 
 .bloc-back-home {
     position: fixed;
-    top: 10%;
+    top: 3%;
+    left: 0;
+    right: 0;
+    margin-bottom: 30px;
 }
 
 .size-icon-home,

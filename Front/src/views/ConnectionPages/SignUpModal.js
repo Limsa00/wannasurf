@@ -71,9 +71,9 @@ export const SignUpModal = () => {
 
     return (
         <>
+            <BackToHome />
             {modalState.signUpModal && (
                 <div className="inscription-bloc">
-                    <BackToHome />
                     <div className='desktop-bloc'>
                         <div className='col-desktop-1'>
                             <div className='image-position'>
