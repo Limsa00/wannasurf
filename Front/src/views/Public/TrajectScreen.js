@@ -14,6 +14,7 @@ import axios from 'axios';
 
 export default function TajectScreen() {
 
+    // Timer qui redirect sur mes futurs trajets quand l'utilisateur c'est inscrit à un trajet au bout de 2000 ms, puis clear le timer.
     function Timer () {
             console.log(Timer)
             let timerID = setTimeout(() => {
@@ -36,16 +37,16 @@ export default function TajectScreen() {
   
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
-    const [msgSuccess, setMsgSuccess] = useState("");
-    const [msgErr, setMsgErr] = useState("");
+    const [, setMsgSuccess] = useState("");
+    const [, setMsgErr] = useState("");
 
     
     const {currentUser} = useContext(UserContext)
     console.log("route de: ", currentUser )
     const uid = currentUser.uid;
 
-        React.useEffect(() => {
-
+  // On recupere les datas du user à inscrire sur le trajet 
+    React.useEffect(() => {
         axios
             .get(`http://localhost:5000/userUid/${uid}`)
             .then((response) => { setUser(response.data); })
@@ -58,6 +59,7 @@ export default function TajectScreen() {
   
     console.log(uid)
   
+  // On signUp notre user au trajet
   const signUpTraject = (evt) => {
     evt.preventDefault()
     const postTraject = {
@@ -65,6 +67,7 @@ export default function TajectScreen() {
       user_id: user.id
     };
 
+    // requete à notre serveur pour ajouter le user au trajet en tant que passager
     axios
       .post('http://localhost:5000/journey_has_user', postTraject)
       .then(response => {

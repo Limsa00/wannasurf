@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./TrajectResult.css";
 import axios from "axios";
 import { TrajectCard } from "../../../components/TrajectCard";
@@ -11,15 +11,18 @@ import { Error } from "../../../components/ErrorComponent/Error";
 
 export const TrajectResult = () => {
 
+    // permet d'utiliser les datas de l'outlet save dans la page home de la recherche
     const context = useOutletContext()
-    const [traject, setTraject] = context.traject;
-    const [allTraject, setAllTraject] = useState([])
-    const [error, setError] = React.useState(null);
     const [trajectSearch,] = context.trajectSearch
+    const [traject, setTraject] = context.traject;
 
+    const [error, setError] = React.useState(null);
+
+    // On recup date et place de notre Container.js
     const place = trajectSearch.place_available
     const date = trajectSearch.departure_date
     
+    // On fetch les resultat de notre recherche par date et place.
     React.useEffect(() => {
         axios
             .get(`http://localhost:5000/journeySearch?place=${place}&date=${date}`)
@@ -27,13 +30,6 @@ export const TrajectResult = () => {
             .catch(error => { setError(error); });
     },
         [place, date]);
-    
-    React.useEffect(() => {
-        axios
-            .get(`http://localhost:5000/journey`)
-            .then((response) => { setAllTraject(response.data); })
-            .catch(error => { setError(error); });
-    }, [])
         
     if (error) return (<Error />);
     if (!traject) return (<Loader />);
