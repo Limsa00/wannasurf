@@ -49,28 +49,25 @@ const journeyController = {
 
         const userId = req.body.user_id;
         const journeyId = req.body.journey_id;
-      
-        // Contrôler s'il existe au moins 1 record relatif à journey_id dans Journey_has_user
-        const journeyHasPassenger = await Journey_has_user.findOneJourneyAllUsers(journeyId);
-        if(journeyHasPassenger.length>0) {
-            const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
-            // Et Vérifier si l'utilisateur est déjà inscrit 
-            if(userInJourney){
-                res.status(202).json('Vous êtes déjà inscrit à ce trajet');
-                // return
-            } else {
-                // Et vérifier s'il reste de la place disponible 
-                const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
-                if(placeLeft.nb_place_left<1){
-                    res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
-                    // return
-                }
-            }
-        } else {
-            // Si tous les contrôles précédents sont passés, on peut alors enregistrer l'utilisateur sur le trajet
-            const newUserToJourney = new Journey_has_user (req.body);
+
+        // Vérifier si l'utilisateur n'est pas déjà inscrit sur ce trajet
+        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
+        // Vérifier la place restante sur ce trajet
+        const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
+
+        // Si la place restante est suffisante et l'utilisateur n'est pas inscrit sur le trajet, effectuer inscription
+        if (!userInJourney && placeLeft.nb_place_left>0) {
+        const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
+        // Sinon envoyer un message d'erreur explicatif personnalisé        
+        } else if (userInJourney){
+            console.log('Vous êtes déjà inscrit à ce trajet')
+            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
+        } else if(placeLeft.nb_place_left<1){
+            res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
+        } else {
+            res.status(202).json('inscription impossible ');            
         }
     },
 
