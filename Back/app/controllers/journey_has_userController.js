@@ -1,4 +1,5 @@
 const Journey_has_user = require('../models/Journey_has_user');
+const { error } = require('../schemas/journeyHasUserSchema');
 
 
 const journeyController = {
@@ -47,27 +48,32 @@ const journeyController = {
     addOneUserToJourney: async (req,res) => {
         console.log("----- Controller request addOneUserToJourney -----");
 
-        const userId = req.body.user_id;
-        const journeyId = req.body.journey_id;
+        //const userId = req.body.user_id;
+        //const journeyId = req.body.journey_id;
+        const { user_id: userId, journey_id: journeyId } = req.body;
 
         // Vérifier si l'utilisateur n'est pas déjà inscrit sur ce trajet
         const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
+        if (userInJourney){
+            console.log('Vous êtes déjà inscrit à ce trajet')
+            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
+            return
+        }
+
         // Vérifier la place restante sur ce trajet
         const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
+        if(placeLeft.nb_place_left<1){
+            res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
+            return
+        }
 
         // Si la place restante est suffisante et l'utilisateur n'est pas inscrit sur le trajet, effectuer inscription
         if (!userInJourney && placeLeft.nb_place_left>0) {
         const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
-        // Sinon envoyer un message d'erreur explicatif personnalisé        
-        } else if (userInJourney){
-            console.log('Vous êtes déjà inscrit à ce trajet')
-            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
-        } else if(placeLeft.nb_place_left<1){
-            res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
         } else {
-            res.status(202).json('inscription impossible ');            
+            console.log("inscription impossible")
         }
     },
 

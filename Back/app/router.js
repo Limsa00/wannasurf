@@ -4,6 +4,9 @@ const userController = require('./controllers/userController');
 const mainController = require('./controllers/mainController')
 const journey_has_userController = require('./controllers/journey_has_userController');
 
+const { validateBody } = require('./services/validator');
+const journeyHasUserSchema = require('./schemas/journeyHasUserSchema');
+
 const authMW = require('./services/authMW')
 const entityToUseControl = require('./services/getEntityToUse');
 
@@ -27,7 +30,7 @@ router.get('/user_has_journey/:id', journey_has_userController.showOneUserJourne
 router.get('/journey_has_user/:journeyId/:userId', journey_has_userController.showOneUserOneJourney);
 
 // S'inscrire dans un trajet
-router.post('/journey_has_user', journey_has_userController.addOneUserToJourney);
+router.post('/journey_has_user', validateBody(journeyHasUserSchema), journey_has_userController.addOneUserToJourney);
 // Se désinscrire d'un trajet
 router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController.deleteOneUserFromJourney);
 
