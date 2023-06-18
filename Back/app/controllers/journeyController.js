@@ -62,8 +62,7 @@ const journeyController = {
         const dateNow = date.getTime();
         let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-        let nbPlaceWanted = req.query.place;
-        let dateWanted = req.query.date;
+        let { date:dateWanted, place:nbPlaceWanted } = req.query;
 
         (!nbPlaceWanted || isNaN(nbPlaceWanted)) ? nbPlaceWanted=0 : nbPlaceWanted; // Contrôler la valeur entrante et configurer le nombre de places minimum à 0
         (Date.parse(dateWanted)<dateNow || isNaN(Date.parse(dateWanted))) ? dateWanted=currentDate : dateWanted; // Contrôler la valeur entrante et configurer la recherche uniquement pour la date >= aujourd'hui

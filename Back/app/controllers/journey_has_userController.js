@@ -33,9 +33,7 @@ const journeyController = {
     showOneUserOneJourney: async (req,res) =>{
         console.log("----- Controller request showOneUserOneJourney -----");
 
-        const userId = req.params.userId;
-        const journeyId = req.params.journeyId;
-
+        const { userId:userId, journeyId:journeyId } = req.params;
         const userSelected = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
 
         if (userSelected) {
@@ -48,8 +46,6 @@ const journeyController = {
     addOneUserToJourney: async (req,res) => {
         console.log("----- Controller request addOneUserToJourney -----");
 
-        //const userId = req.body.user_id;
-        //const journeyId = req.body.journey_id;
         const { user_id: userId, journey_id: journeyId } = req.body;
 
         // Vérifier si l'utilisateur n'est pas déjà inscrit sur ce trajet
@@ -80,8 +76,7 @@ const journeyController = {
     deleteOneUserFromJourney: async (req,res) =>{
         console.log("----- Controller request deleteOneUserFromJourney -----");
 
-        const userId = req.params.userId;
-        const journeyId = req.params.journeyId;
+        const { userId:userId, journeyId:journeyId } = req.params;
 
         const user = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
         if (user) {
