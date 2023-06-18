@@ -55,11 +55,7 @@ const mainController = {
     addOneComponent: async (req,res) =>{
         console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`);
 
-        const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
+        const entityToUse = req.entityToUseFromMW;
 
         const newInstance = new entityToUse(req.body);
         const addedInstance = await newInstance.saveOrEditOneComponent();

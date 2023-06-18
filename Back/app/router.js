@@ -34,6 +34,10 @@ router.post('/journey_has_user', validateBody(journeyHasUserSchema), journey_has
 // Se désinscrire d'un trajet
 router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController.deleteOneUserFromJourney);
 
+// Créer un trajet
+//router.post('/journey', /*authMW,*/ mainController.addOneComponent);
+
+
 // Factoring routes for models : journey, user
 router.get('/:entity', entityToUseControl, mainController.showAllComponents);
 router.get('/:entity/:id', entityToUseControl, mainController.showOneComponent);

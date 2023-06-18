@@ -16,6 +16,7 @@ const getEntityToUse = (req,res,next)=>{
         }
     };
     if(!!entityToUse){
+        req.entityToUseFromMW = entityToUse;
         next()
     }else{
         console.log('wrong entity called');
