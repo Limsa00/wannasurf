@@ -7,7 +7,9 @@ import { useOutletContext } from "react-router-dom"
 import { Navbar } from "../../../components/NavBar/NavBar";
 import { Footer } from "../../../components/Footer/Footer";
 import { Loader } from "../../../components/Loader/Loader";
-import { Error } from "../../../components/ErrorComponent/Error";
+import Button from "../../../components/UI/Button";
+import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 export const TrajectResult = () => {
 
@@ -16,7 +18,7 @@ export const TrajectResult = () => {
     const [trajectSearch,] = context.trajectSearch
     const [traject, setTraject] = context.traject;
 
-    const [error, setError] = React.useState(null);
+    const [error, setError] = useState("");
 
     // On recup date et place de notre Container.js
     const place = trajectSearch.place_available
@@ -26,12 +28,33 @@ export const TrajectResult = () => {
     React.useEffect(() => {
         axios
             .get(`http://localhost:5000/journeySearch?place=${place}&date=${date}`)
-            .then((response) => { setTraject(response.data); })
+            .then((response) => { setTraject(response.data); console.log(traject) })
             .catch(error => { setError(error); });
     },
         [place, date]);
         
-    if (error) return (<Error />);
+    if (error) return (
+        <div className="traject-result-page">
+            <Navbar />
+                <div>
+                    <h2 className="title-traject">Il n'existe pas de trajet disponible pour votre recherche</h2>
+                    <div className='flex-desktop'>
+                    
+
+                    </div>
+                        <div className='home-back'>
+                            <Link to="/">
+                                <Button>
+                                    Accueil
+                                        <span className='icon-home'>
+                                            <HomeIcon />
+                                        </span>
+                                </Button>
+                            </Link>
+                    </div>
+                </div>
+            <Footer />
+        </div>);
     if (!traject) return (<Loader />);
 
     return (

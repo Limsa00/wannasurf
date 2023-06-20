@@ -2,6 +2,7 @@ import styles from "./error.module.css";
 import ImgError from '../../images/img_mon_espace.jpg'
 
 export const Error = () => {
+
     return (
         <div id={styles['error']}>
             <div className={styles['img-card-error']}>

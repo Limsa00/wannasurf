@@ -77,6 +77,7 @@ export const Home = () => {
                                         name="lieuDepart"
                                         className='field-style'
                                         id="lieuDeDepart"
+                                        required
                                     >
                                         <option
                                             value=''
@@ -100,6 +101,7 @@ export const Home = () => {
                                         name="lieuArrive"
                                         id="lieuArrive"
                                         className='field-style'
+                                        required
                                     >
                                         <option
                                             value=''
@@ -125,12 +127,14 @@ export const Home = () => {
                                         placeholder="Date de depart"
                                         className="field-style"
                                         value={dateDepart}
+                                        required
                                         onChange={(e) => setDateDepart(e.target.value)} />
                                 </div>
                                 <div className="form-champs-home-slider">
                                     <GroupIcon fontSize='small' />
                                     <input
                                         type="range"
+                                        required
                                         min="1"
                                         max="8"
                                         value={nombrePersonne}
