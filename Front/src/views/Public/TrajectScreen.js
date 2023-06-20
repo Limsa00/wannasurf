@@ -102,6 +102,22 @@ export default function TajectScreen() {
         progress: undefined,
         theme: "dark",
       })
+  
+    let btnInscription = '';
+    let driverMsg = '';
+
+    if (trajectDetails.driver_id === user.id) {
+      driverMsg =
+        <div className='conducteur-style'> Vous etes deja conducteur sur ce trajet</div>
+    } else {
+      btnInscription = <div className='center'>
+            <form onSubmit={signUpTraject}>
+               <Button>
+                S'inscrire sur ce trajet
+              </Button>
+            </form>
+          </div>
+  }
 
   return (
     <div className='detail-traject-page'>
@@ -137,14 +153,8 @@ export default function TajectScreen() {
           </span></p>
         </div>
 
-          <div className='center'>
-            <form onSubmit={signUpTraject}>
-               <Button>
-                S'inscrire sur ce trajet
-              </Button>
-          </form>
-  
-          </div>
+        {btnInscription}
+        {driverMsg}
         
         </div>
       <Footer />
