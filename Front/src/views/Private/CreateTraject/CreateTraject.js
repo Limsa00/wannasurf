@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { Footer } from "../../../components/Footer/Footer";
 import { Loader } from "../../../components/Loader/Loader";
 import { Error } from "../../../components/ErrorComponent/Error";
+import dateFormat, {masks} from "dateformat";
 
 export const CreateTraject = (props) => {
 
@@ -33,7 +34,9 @@ export const CreateTraject = (props) => {
     const [msgErr, setMsgErr] = useState("");
 
     const navigate = useNavigate();
-    
+
+    masks.heureDepart= 'HH:MM';
+    console.log(heureDepart);
 
     function Timer () {
             console.log(Timer)
