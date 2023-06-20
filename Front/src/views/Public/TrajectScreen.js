@@ -71,7 +71,7 @@ export default function TajectScreen() {
     axios
       .post('http://localhost:5000/journey_has_user', postTraject)
       .then(response => {
-        if (response.status === 202) {
+        if (response.status === 202 || response.status === 400) {
           setMsgErr(notifyErr)
           Timer()
         } else {

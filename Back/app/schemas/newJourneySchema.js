@@ -6,7 +6,7 @@ const Joi = require('joi').extend(JoiFormat);
 const newJourneySchema = Joi.object({
     meeting_address: Joi.string().required(),
     departure_date: Joi.date().iso().required(),
-    departure_time: Joi.date().format('HH:mm:ss'),
+    departure_time: Joi.date().format('HH:mm'),
     price: Joi.number().greater(0).required(),
     place_available: Joi.number().greater(0).required(),
     number_of_boards_allowed: Joi.number().greater(0),
