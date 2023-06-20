@@ -12,6 +12,7 @@ import Desk_illustration from '../../../images/img_mon_espace.jpg'
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 import { toast } from 'react-toastify';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const MonEspace = () => {
 
@@ -81,7 +82,7 @@ export const MonEspace = () => {
         <div className='mon-espace-page'>
             <Navbar />
                 <div className='title-bloc'>
-                    <h1>MON ESPACE</h1>
+                        <h1>MON ESPACE</h1>
                     <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
                     {blocVerif}
                 </div>
@@ -116,7 +117,7 @@ export const MonEspace = () => {
                             </div>
                         </div>
 
-                        <div className='home-back'>
+                        <div className='space-button home-back'>
                             <Link to="/">
                                     <Button>
                                         Accueil

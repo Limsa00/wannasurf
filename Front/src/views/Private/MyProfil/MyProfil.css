@@ -3,14 +3,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 30px 30px 70px 30px;
 }
 .title-profil-bloc {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .title-profil-style {
-    font-size: 30px;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    padding: 30px;
     font-weight: bolder;
 }
 
@@ -44,7 +48,7 @@
 .name-profil {
     font-size: 25px;
     font-weight: bold;
-    background-color: #0008C1;
+    background-color: #010101;
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -56,7 +60,7 @@
 .icon {
     margin-right: 25px;
     font-size: 20px;
-    color: #0008C1;
+    color: #010101;
 }
 .mail-user, 
 .birth-user,

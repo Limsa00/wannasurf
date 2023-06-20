@@ -4,7 +4,7 @@ h1 {
 }
 
 .bg-blue {
-background-color: #0008C1;
+background-color: #010101;
 }
 
 .nav-bar-bloc {
@@ -55,7 +55,7 @@ a {
 
 .bruger-menu .navbar-link {
     padding: 0.5rem;
-    color: white;
+    color: rgba(255, 255, 255, .8);
 }
 
 .bruger-menu .navbar-links-public {
@@ -87,9 +87,8 @@ a {
 }
 .bruger-menu .navbar-link:hover {
     cursor: pointer;
-    opacity: 0.8;
     transition: 1000ms;
-    color: grey;
+    color: white;
 }
 
 .logo-size {
@@ -105,7 +104,7 @@ a {
         align-items: center;
         right: -100vw;
         top: 0px;
-        background-color: #2146C7;
+        background-color: #010101;
         visibility: hidden;
     }
     .show-nav .navbar-links {

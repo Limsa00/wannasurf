@@ -113,8 +113,12 @@ export const SignInModal = () => {
                                     placeholder='Mot de passe'
                                     id="signInPwd"          
                                 /> <span className='err'>{validation}</span>    
-
-                                <div className='connection-option'>
+                                
+                                <Button
+                                    onClick={() => {}}>
+                                    Se Connecter
+                                </Button>
+                                                                <div className='connection-option'>
                                     <Link to='/resetPassword'>
                                         <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
                                     </Link>
@@ -124,12 +128,6 @@ export const SignInModal = () => {
                                     </Link>
                                     
                                 </div>
-                                
-
-                                <Button
-                                    onClick={() => {}}>
-                                    Se Connecter
-                                </Button>
                             </form>
                         </div>
                     </div>
