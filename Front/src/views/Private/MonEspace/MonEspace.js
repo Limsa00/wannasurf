@@ -83,7 +83,7 @@ export const MonEspace = () => {
             <Navbar />
                 <div className='title-bloc'>
                         <h1>MON ESPACE</h1>
-                    <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.firstname}</span></p>
+                    <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.lastname}</span></p>
                     {blocVerif}
                 </div>
                 
