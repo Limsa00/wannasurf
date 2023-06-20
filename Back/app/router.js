@@ -33,7 +33,6 @@ router.get('/journey_has_user/:journeyId/:userId', journey_has_userController.sh
 
 // S'inscrire dans un trajet
 router.post('/journey_has_user', validateBody(journeyHasUserSchema), journey_has_userController.addOneUserToJourney);
-//router.post('/journey_has_user', journey_has_userController.addOneUserToJourney);
 
 // Se désinscrire d'un trajet
 router.delete('/journey_has_user/:journeyId/:userId', journey_has_userController.deleteOneUserFromJourney);
