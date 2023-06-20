@@ -60,14 +60,14 @@ export const Home = () => {
                     <div className="home-bloc">
                         
                         <div className="intro">
-                            <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.
-                                <span>
-                                    <SurfingIcon fontSize='small' htmlColor='blue' />
-                                </span>
-                            </p>
+                            <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.</p>
+                            <span>
+                                <SurfingIcon fontSize='small' htmlColor='white' />
+                            </span>
                         </div>
 
-                        <div className="shearch-bar-section">
+                    <div className="shearch-bar-section">
+                        <h2>RECHERCHER VOTRE TRAJET</h2>
                             <form className="search-form" onSubmit={envoiFormulaire}>
                             <div className='desk-form'>
                             <div className="flex-mobile">
@@ -152,7 +152,8 @@ export const Home = () => {
                                 </div>
                             </form>
                         </div>
-
+                    
+                    <div className='corps-page-info'>
                         <div className="bloc-info-title">
                             <h2>WannaSurf, ton ami du quotidien !</h2>
                         </div>
@@ -170,7 +171,7 @@ export const Home = () => {
                                     <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
                                 </div>
                             </div>
-
+                        </div>
                     </div>
                 <Footer />    
             </div>

@@ -11,15 +11,14 @@ export default function NavFrame(props) {
     
   return (
         <nav className={`nav-bar-bloc ${showLinks ? "show-nav" : "hide-nav"} `}>
-          <div className="logo">
+            <div className="logo">
                 <img src={logoWannaSurf} className="logo-size" alt="logo de l'application de covoiturage wannasurf" />
-            </div>
-
-            <Link to="/" className="navbar-link link-style">
-                <div className="title-wannasurf">
-                    <h1>WANNASURF</h1>
-                </div>
-            </Link>
+                <Link to="/" className="navbar-link link-style">
+                    <div className="title-wannasurf">
+                        <h1>WANNASURF</h1>
+                    </div>
+                </Link>
+          </div>
 
             <div className="bruger-menu">
                 <ul className="navbar-links">
