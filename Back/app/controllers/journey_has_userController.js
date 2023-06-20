@@ -51,8 +51,11 @@ const journeyController = {
 
         // Vérifier si le driver n'essaie de s'inscrire sur son propre trajet
         const journeyInfo = await Journey.findOneJourney(journeyId);
+        console.log("journeyInfo.driver_id : ", journeyInfo.driver_id);
+        console.log("userId : ",userId);
+
         if (journeyInfo.driver_id === userId){
-            res.status(400).json("Vous ne pouvez pas vous inscrire à votre propre trajet");
+            res.status(404).json("Vous ne pouvez pas vous inscrire à votre propre trajet");
             return
         }
 
