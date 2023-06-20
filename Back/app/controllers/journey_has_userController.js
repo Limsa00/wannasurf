@@ -1,4 +1,5 @@
 const Journey_has_user = require('../models/Journey_has_user');
+const Journey = require('../models/Journey');
 const { error } = require('../schemas/journeyHasUserSchema');
 
 
@@ -48,10 +49,16 @@ const journeyController = {
 
         const { user_id: userId, journey_id: journeyId } = req.body;
 
+        // Vérifier si le driver n'essaie de s'inscrire sur son propre trajet
+        const journeyInfo = await Journey.findOneJourney(journeyId);
+        if (journeyInfo.driver_id === userId){
+            res.status(400).json("Vous ne pouvez pas vous inscrire à votre propre trajet");
+            return
+        }
+
         // Vérifier si l'utilisateur n'est pas déjà inscrit sur ce trajet
         const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
         if (userInJourney){
-            console.log('Vous êtes déjà inscrit à ce trajet')
             res.status(202).json('Vous êtes déjà inscrit à ce trajet');
             return
         }
