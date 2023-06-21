@@ -1,7 +1,13 @@
 /* CSS CORPS PAGE */
 
-.createTraject-bloc {
-    margin: 5px 15px 5px 15px;
+.createTraject-bloc h1{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    box-shadow: 0 8px 5px -2px grey;
+    padding: 30px;
+    font-weight: bolder;
 }
 
 .form-create-trajet {
@@ -40,12 +46,6 @@
     display: flex;
     flex-wrap: nowrap;
     width: 250px;
-}
-
-.createTraject-bloc h1 {
-    font-weight: bold;
-    font-size: 30px;
-    margin-top: 25px;
 }
 
 .form-champs {

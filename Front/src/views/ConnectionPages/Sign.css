@@ -4,6 +4,11 @@
     margin: 20px;
 }
 
+#birth {
+    display: flex;
+    flex-direction: row;
+}
+
 .form {
     display: flex;
     align-items: center;
@@ -69,18 +74,40 @@
 
 .no-decoration {
     border: none;
-    background-color: white;
     cursor: pointer;
     margin: 15px 0;
+    background-color: white;
 }
 
 .no-decoration:hover {
-    font-weight: bold;
+    color: rgba(22, 22, 23, .8)
 }
 
 .title-sign-up-page-2 {
     font-size: 35px;
     font-weight: bold;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    color: white;
+    box-shadow: 0 4px 5px -2px grey;
+    background-color: #010101;
+}
+
+.subtitle-p2-insc {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    padding: 20px;
+    box-shadow: 0 8px 5px -2px grey;
+    width: 100%;
+}
+
+.bloc-insc-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;flex-direction: column;
 }
 
 .inscription-bloc,

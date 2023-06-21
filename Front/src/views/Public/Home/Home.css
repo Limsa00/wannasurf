@@ -8,6 +8,7 @@ body {
     padding: 30px;
     margin-bottom: 45px;
     background-color: rgba(22, 22, 23, .8);
+    box-shadow: 0 8px 5px -2px grey;
     display: flex;
     align-items: center;
     justify-content: center;

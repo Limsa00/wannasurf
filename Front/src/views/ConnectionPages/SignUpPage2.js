@@ -88,13 +88,14 @@ export const SignUpInfo = () => {
 
     return (
         <>
-                <div className="inscription-bloc">
+                <div className="bloc-insc-2">
                     <p className='title-sign-up-page-2'>WANNASURF</p>
-                    <h1 
-                        className='title'>
-                            Plus qu'une etape pour acceder à votre compte
-                    </h1>
-
+                    <div className='subtitle-p2-insc'>
+                        <h1 
+                            className='title'>
+                                Plus qu'une etape pour acceder à votre compte
+                        </h1>
+                    </div>
                     <div className='desc-inscription'>
                         <p 
                             className='intro-texte'>
@@ -130,6 +131,7 @@ export const SignUpInfo = () => {
                         <input
                             type="date"
                             placeholder=" "
+                            id="birth"
                             value={birth}
                             onChange={(e) => setBirth(e.target.value)}
                         />

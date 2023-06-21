@@ -9,6 +9,7 @@ background-color: #010101;
 
 .nav-bar-bloc {
     background-color: #010101;
+    box-shadow: 0 8px 5px -2px grey;
     width: 100%;
     height: 50px; 
     display: flex;

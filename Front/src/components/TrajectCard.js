@@ -39,35 +39,37 @@ export const TrajectCard = ({
     
     const {currentUser} = useContext(UserContext)
     console.log("route de: ", currentUser )
-    const uid = currentUser.uid;
+
+    const uid = currentUser ? currentUser.uid:null;
 
     function refreshPage() {
         window.location.reload(false);
     }
 
+
         React.useEffect(() => {
-        const fetchUid = async () => {
-        try {
-            await axios
-                .get(`http://localhost:5000/userUid/${uid}`)
-                .then((response) => {
-                    setUser(response.data.id);
-                   axios
-                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                       .then((response) => {
-                           setMyTravel(response.data);
-                       })
-                    .catch(error => { setError(error) });
-                    })
-                .catch(error => { setError(error) });
-        } catch (error) {
-            console.error(error);
-        }
-        };
-    fetchUid();
+            const fetchUid = async () => {
+                try {
+                    await axios
+                        .get(`http://localhost:5000/userUid/${uid}`)
+                        .then((response) => {
+                            setUser(response.data.id);
+                        axios
+                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .then((response) => {
+                                setMyTravel(response.data);
+                            })
+                            .catch(error => { setError(error) });
+                            })
+                        .catch(error => { setError(error) });
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+        fetchUid();
         },
             [uid]
-        );
+    );
 
     if (error) return (<Error />);
     if (!user) return (<Loader />);

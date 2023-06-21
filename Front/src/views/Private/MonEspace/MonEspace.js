@@ -82,9 +82,12 @@ export const MonEspace = () => {
         <div className='mon-espace-page'>
             <Navbar />
                 <div className='title-bloc'>
-                        <h1>MON ESPACE</h1>
-                    <p className='text-espace-intro'>Bienvenue, <span className='user-espace'>{user.lastname}</span></p>
-                    {blocVerif}
+                    <h1>MON ESPACE</h1>
+                        <div className='intro'>
+                            <p className='text-espace-intro'>Bienvenue,
+                            <span className='user-espace'>{user.lastname}</span></p>
+                            {blocVerif}
+                        </div>
                 </div>
                 
                 <div className='desk-div'>

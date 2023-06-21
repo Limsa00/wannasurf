@@ -90,7 +90,10 @@ export const CreateTraject = (props) => {
         axios
             .post('http://localhost:5000/journey', newTraject)
             .then(response => {
+                console.log(response.status)
                 if (response.status === 202) {
+                    setMsgErr(notifyErr)
+                } else if (response.status === 400) {
                     setMsgErr(notifyErr)
                 } else {
                     setMsgSuccess(notify)
