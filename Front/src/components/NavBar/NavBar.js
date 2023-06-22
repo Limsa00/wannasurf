@@ -1,5 +1,4 @@
 import "./navBar.css"
-import logoWannaSurf from "../../images/logoWannaSurf.png"
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../context/UserContext"
@@ -7,6 +6,17 @@ import { signOut } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase.config"
 import NavFrame from "../NavFrame"
+
+/**
+ * Affichage de la NavBar du site avec l'etat de connection de l'utilisateur
+ * @example
+ * // returns si l'utilisateur n'est pas connecté
+ * Affiche les boutons de la barre de navigation: S'inscrire, Se connecter
+ * @example
+ * // returns si l'utilisateur est connecté
+ * Affiche les boutons de la barre de navigation: Home, Publier un trajet, Mon Espace, Deconnection
+ * @returns {NavBar} Returns la valeur de la NavBar en fonction du statut de l'utilisateur.
+ */
 
 export const Navbar = () => {
 
