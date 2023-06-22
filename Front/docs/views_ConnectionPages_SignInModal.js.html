@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/ConnectionPages/SignInModal.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/ConnectionPages/SignInModal.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+*
+*Vue SignInModal.
+*Cette vue affiche une fenêtre modale pour permettre à l'utilisateur de se connecter.
+*@returns {SignInModal} Retourne la vue SignInModal.
+*/
+
+import './Sign.css'
+import React, {useContext, useRef, useState} from "react";
+import { UserContext } from '../../context/UserContext';
+import { useNavigate, Link } from 'react-router-dom';
+import BackToHome from '../../components/BackArrow/BackToHome';
+import Button from '../../components/UI/Button';
+import ConnectionImg from '../../images/connection-img-surf.jpg'
+
+/**
+*
+*Composant SignInModal.
+*@module SignInModal
+*@returns {JSX.Element} L'élément JSX représentant la vue SignInModal.
+*/
+export const SignInModal = () => {
+
+    const {modalState, toggleModals, signIn} = useContext(UserContext);
+
+    const navigate = useNavigate();
+
+    const [validation, setValidation] = useState("");
+
+        const inputs = useRef([])
+        const addInputs = el => {
+            if(el &amp;&amp; !inputs.current.includes(el)){
+                inputs.current.push(el)
+            }
+        }
+        const formRef = useRef();
+
+        /**
+        *
+        *Gestion de la soumission du formulaire.
+        *Cette fonction est appelée lors de la soumission du formulaire de connexion.
+        *@param {object} e - L'événement de soumission du formulaire.
+        */
+        const handleForm = async e => {
+            e.preventDefault()
+
+            const email = inputs.current[0].value 
+            const pwd = inputs.current[1].value 
+
+            try {                
+                const cred = await signIn (
+                    email,
+                    pwd
+                )
+                    formRef.current.reset();
+                    setValidation("")
+                    toggleModals("close")
+                    navigate("/")
+
+            }  catch (err) {
+                    console.log(err)
+                    setValidation("Woops, votre email ou votre mot de passe est incorrect !")
+        }
+    };
+        /**
+        *
+        *Fermeture de la fenêtre modale.
+        */
+        const closeModal = () => {
+            setValidation("")
+            toggleModals("close")
+        };
+
+    return (
+        &lt;>
+            {modalState.signInModal &amp;&amp; (
+                &lt;div className="connection-bloc">  
+                    &lt;BackToHome />
+                    &lt;div className='desktop-bloc'>
+                        &lt;div className='col-desktop-1'>
+                            &lt;div className='image-position'>
+                                &lt;img src={ConnectionImg} alt='illustration page connection à wannasurf / par Briam Cute de Pixabay' className='size-pic'>&lt;/img>
+                            &lt;/div>
+                            &lt;div className='text-position'>
+                                &lt;h1 
+                                    className='title'>
+                                        Se connecter
+                                &lt;/h1>
+
+                                &lt;div className='desc-inscription'>
+                                    &lt;p 
+                                        className='intro-texte'>
+                                            Ride the wave !
+                                    &lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>    
+                        &lt;div className='connection-card-phone col-desktop-2'>
+                            &lt;div className='mobile'>
+                                &lt;h1 
+                                    className='title'>
+                                        Se Connecter
+                                &lt;/h1>
+
+                                &lt;div className='desc-inscription'>
+                                    &lt;p 
+                                        className='intro-texte'>
+                                        Ride the wave !                        
+                                    &lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                            &lt;form 
+                                ref={formRef}
+                                className='form'
+                                autoComplete='off'
+                                onSubmit={handleForm}>
+
+                                &lt;input 
+                                    required
+                                    ref={addInputs}
+                                    name="email" 
+                                    type="email" 
+                                    placeholder='Email'
+                                    id="signInEmail"
+                                />
+
+                                &lt;input 
+                                    required
+                                    ref={addInputs}
+                                    name="pwd" 
+                                    type="password" 
+                                    placeholder='Mot de passe'
+                                    id="signInPwd"          
+                                /> &lt;span className='err'>{validation}&lt;/span>    
+                                
+                                &lt;Button
+                                    onClick={() => {}}>
+                                    Se Connecter
+                                &lt;/Button>
+                                                                &lt;div className='connection-option'>
+                                    &lt;Link to='/resetPassword'>
+                                        &lt;button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !&lt;/button>
+                                    &lt;/Link>
+
+                                    &lt;Link to='/sinscrire'>
+                                        &lt;button className='no-decoration center'>Pas encore inscrit ? Cliquez ici !&lt;/button>
+                                    &lt;/Link>
+                                    
+                                &lt;/div>
+                            &lt;/form>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>)}
+            &lt;/>
+        )
+    }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BackToHome.html">BackToHome</a></li><li><a href="module-Button.html">Button</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-Loader.html">Loader</a></li><li><a href="module-NavFrame.html">NavFrame</a></li><li><a href="module-Navbar.html">Navbar</a></li><li><a href="module-ResetPassword.html">ResetPassword</a></li><li><a href="module-SignInModal.html">SignInModal</a></li><li><a href="module-SignUpModal.html">SignUpModal</a></li><li><a href="module-TrajectCard.html">TrajectCard</a></li><li><a href="module-callApiModule.html">callApiModule</a></li><li><a href="module-deleteAccount.html">deleteAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateTraject">CreateTraject</a></li><li><a href="global.html#FuturTrajects">FuturTrajects</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LegalNotice">LegalNotice</a></li><li><a href="global.html#MonEspace">MonEspace</a></li><li><a href="global.html#MyProfil">MyProfil</a></li><li><a href="global.html#SignUpInfo">SignUpInfo</a></li><li><a href="global.html#SiteContact">SiteContact</a></li><li><a href="global.html#TrajectResult">TrajectResult</a></li><li><a href="global.html#TrajectsHistory">TrajectsHistory</a></li><li><a href="global.html#validName">validName</a></li><li><a href="global.html#validPhone">validPhone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 22 2023 20:30:00 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

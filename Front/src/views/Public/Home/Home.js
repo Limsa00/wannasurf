@@ -1,3 +1,10 @@
+/**
+ * Page d'accueil de l'application WannaSurf.
+ * Permet de rechercher un trajet en spécifiant le lieu de départ, le lieu de destination, la date de départ et le nombre de personnes.
+ * Affiche également des informations sur l'application et ses avantages.
+ *
+ * @returns {JSX.Element} Le composant Home.
+*/
 import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
@@ -13,8 +20,12 @@ import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 
+/**
+ * Composant de la page d'accueil.
+ *
+ * @returns {JSX.Element} Le composant Home.
+ */
 export const Home = () => {
-    
     const navigate = useNavigate();
     const [lieuDepart, setLieuDepart] = useState("");
     const [lieuDestination, setLieuDestination] = useState("");
@@ -27,10 +38,12 @@ export const Home = () => {
 
     React.useEffect(() => {
         axios
+            // Récupère les données des villes depuis l'API
             .get(`http://localhost:5000/city`)
             .then((response) => { setCity(response.data); })
             .catch(error => { setError(error); });
         axios
+            // Récupère les données des spots de surf depuis l'API
             .get(`http://localhost:5000/surfspot`)
             .then((response) => { setSurfspot(response.data); })
             .catch(error => { setError(error); });
@@ -41,6 +54,11 @@ export const Home = () => {
     if (!city) return (<Loader />);
     if (!surfspot) return (<Loader />);
 
+    /**
+     * Gère l'envoi du formulaire de recherche de trajet.
+     *
+     * @param {Event} evt - L'événement de soumission du formulaire.
+     */
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
 

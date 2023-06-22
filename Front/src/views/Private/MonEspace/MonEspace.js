@@ -1,3 +1,7 @@
+/**
+ * Rend la vue pour afficher l'espace utilisateur.
+ * Affiche les informations et les options pour l'utilisateur connecté.
+ */
 import './MonEspace.css'
 import { Link } from "react-router-dom"
 import Button from '../../../components/UI/Button'
@@ -12,10 +16,11 @@ import Desk_illustration from '../../../images/img_mon_espace.jpg'
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 import { toast } from 'react-toastify';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+/**
+ * @returns {JSX.Element} Le composant MonEspace.
+ */
 export const MonEspace = () => {
-
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
 
@@ -24,9 +29,10 @@ export const MonEspace = () => {
     const { currentUser } = useContext(UserContext)
     const uid = currentUser.uid;
     const emailVerified = currentUser.emailVerified
-    console.log(emailVerified)
     
-    //const de notif avec la lib react-toastity
+    /**
+    * Affiche une notification de succès d'envoi de l'e-mail de vérification.
+    */
     let notify = () => toast.success("Un email de confirmation vous a été envoyé ! ", {
         position: "bottom-right",
         autoClose: 2000,
@@ -38,6 +44,9 @@ export const MonEspace = () => {
         theme: "dark"
     })
 
+    /**
+   * Affiche une notification d'erreur lors de l'envoi de l'e-mail de vérification.
+   */
     const notifyErr = () => toast.error("Une erreur est survenu, reessayer plus tard ", {
         position: "bottom-right",
         autoClose: 2000,
@@ -64,19 +73,20 @@ export const MonEspace = () => {
             </div>
         }
 
-    React.useEffect(() => {
+        /**
+        * Récupère les informations de l'utilisateur en utilisant l'UID fourni.
+        */
+        React.useEffect(() => {
 
-        axios
-            .get(`http://localhost:5000/userUid/${uid}`)
-            .then((response) => { setUser(response.data); })
-            .catch(error => { setError(error); });
-    },
-        [uid]);
+            axios
+                .get(`http://localhost:5000/userUid/${uid}`)
+                .then((response) => { setUser(response.data); })
+                .catch(error => { setError(error); });
+        },
+            [uid]);
     
     if (error) return (<Error />);
     if (!user) return (<Loader />);
-
-    console.log("user.id :", user.id);
 
     return (
         <div className='mon-espace-page'>

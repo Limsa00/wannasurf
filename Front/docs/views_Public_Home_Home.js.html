@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/Public/Home/Home.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/Public/Home/Home.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Page d'accueil de l'application WannaSurf.
+ * Permet de rechercher un trajet en spécifiant le lieu de départ, le lieu de destination, la date de départ et le nombre de personnes.
+ * Affiche également des informations sur l'application et ses avantages.
+ *
+ * @returns {JSX.Element} Le composant Home.
+*/
+import './Home.css';
+import GroupIcon from '@mui/icons-material/Group';
+import SurfingIcon from '@mui/icons-material/Surfing';
+import { useOutletContext, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import ImageCarrou1 from "../../../images/surf-carrou-ex1.jpg";
+import ImageCarrou2 from "../../../images/surf-carrou-ex2.jpg";
+import ImageCarrou3 from "../../../images/surf-carrou-ex3.jpg";
+import Button from '../../../components/UI/Button';
+import { Navbar } from '../../../components/NavBar/NavBar';
+import { Footer } from '../../../components/Footer/Footer';
+import { Loader } from '../../../components/Loader/Loader';
+import { Error } from '../../../components/ErrorComponent/Error';
+
+/**
+ * Composant de la page d'accueil.
+ *
+ * @returns {JSX.Element} Le composant Home.
+ */
+export const Home = () => {
+    const navigate = useNavigate();
+    const [lieuDepart, setLieuDepart] = useState("");
+    const [lieuDestination, setLieuDestination] = useState("");
+    const [dateDepart, setDateDepart] = useState("");
+    const [nombrePersonne, setNombrePersonne] = useState(1);
+    const [trajectSearch, setTrajectSearch] = useOutletContext().trajectSearch 
+    const [city, setCity] = useState ("");
+    const [error, setError] = React.useState(null);
+    const [surfspot, setSurfspot] = useState ("");
+
+    React.useEffect(() => {
+        axios
+            // Récupère les données des villes depuis l'API
+            .get(`http://localhost:5000/city`)
+            .then((response) => { setCity(response.data); })
+            .catch(error => { setError(error); });
+        axios
+            // Récupère les données des spots de surf depuis l'API
+            .get(`http://localhost:5000/surfspot`)
+            .then((response) => { setSurfspot(response.data); })
+            .catch(error => { setError(error); });
+    },
+    []);
+    
+    if (error) return (&lt;Error />);
+    if (!city) return (&lt;Loader />);
+    if (!surfspot) return (&lt;Loader />);
+
+    /**
+     * Gère l'envoi du formulaire de recherche de trajet.
+     *
+     * @param {Event} evt - L'événement de soumission du formulaire.
+     */
+    const envoiFormulaire = (evt) => {
+        evt.preventDefault()
+
+        setTrajectSearch ( {
+            departure_city: lieuDepart,
+            destination_surfspot_or_city: lieuDestination,
+            departure_date: dateDepart,
+            place_available: nombrePersonne,
+        });
+        console.log(trajectSearch)
+        navigate("trajectsList")
+    }
+
+        return (
+            &lt;div className='home-page'>
+                &lt;Navbar />
+                    &lt;div className="home-bloc">
+                        
+                        &lt;div className="intro">
+                            &lt;p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.&lt;/p>
+                            &lt;span>
+                                &lt;SurfingIcon fontSize='small' htmlColor='white' />
+                            &lt;/span>
+                        &lt;/div>
+
+                    &lt;div className="shearch-bar-section">
+                        &lt;h2>RECHERCHER VOTRE TRAJET&lt;/h2>
+                            &lt;form className="search-form" onSubmit={envoiFormulaire}>
+                            &lt;div className='desk-form'>
+                            &lt;div className="flex-mobile">
+                                &lt;div className="form-champs-home">
+                                    &lt;select
+                                        onChange={e => setLieuDepart(e.target.value)}
+                                        name="lieuDepart"
+                                        className='field-style'
+                                        id="lieuDeDepart"
+                                        required
+                                    >
+                                        &lt;option
+                                            value=''
+                                        >
+                                            -- Ville depart --
+                                        &lt;/option>
+                                        {city?.map(city => (                                                                                                                         
+                                        &lt;option                                       
+                                            key={`${city.id}`}  
+                                            value= {city.cityName}                                       
+                                        >
+                                            {city.cityName}
+                                        &lt;/option>
+                                            ))}
+                                    &lt;/select>
+                                    &lt;/div>
+
+                                    &lt;div className="form-champs-home">
+                                    &lt;select
+                                        onChange={e => setLieuDestination(e.target.value)}
+                                        name="lieuArrive"
+                                        id="lieuArrive"
+                                        className='field-style'
+                                        required
+                                    >
+                                        &lt;option
+                                            value=''
+                                        >
+                                            -- Surfspot --
+                                        &lt;/option>
+                                        {surfspot?.map(surfspot => (                                                                                                                         
+                                        &lt;option                                       
+                                            key={`${surfspot.id}`}  
+                                            value= {surfspot.surfspotName}                                       
+                                        >
+                                            {surfspot.surfspotName}
+                                        &lt;/option>
+                                            ))}
+                                    &lt;/select>                         
+                                    &lt;/div>
+                                &lt;/div>
+                            
+                            &lt;div className="flex-mobile">
+                                &lt;div className="form-champs-home">
+                                    &lt;input
+                                        type="date"
+                                        placeholder="Date de depart"
+                                        className="field-style"
+                                        value={dateDepart}
+                                        required
+                                        onChange={(e) => setDateDepart(e.target.value)} />
+                                &lt;/div>
+                                &lt;div className="form-champs-home-slider">
+                                    &lt;GroupIcon fontSize='small' />
+                                    &lt;input
+                                        type="range"
+                                        required
+                                        min="1"
+                                        max="8"
+                                        value={nombrePersonne}
+                                        onChange={(e) => setNombrePersonne(e.target.value)}
+                                        className="field-style-nb" />
+                                    &lt;output>{nombrePersonne}&lt;/output>
+                                    &lt;/div>
+                                    &lt;/div>
+                                &lt;/div>
+                                
+                                &lt;div className='bottom-magin'>
+                                    &lt;Button>
+                                        Trouver un trajet
+                                    &lt;/Button>
+                                &lt;/div>
+                            &lt;/form>
+                        &lt;/div>
+                    
+                    &lt;div className='corps-page-info'>
+                        &lt;div className="bloc-info-title">
+                            &lt;h2>WannaSurf, ton ami du quotidien !&lt;/h2>
+                        &lt;/div>
+                            &lt;div className="bloc-info">
+                                &lt;div id="bloc-info-1">
+                                    &lt;h3>Faites des economies pour surfer un max&lt;/h3>
+                                    &lt;img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
+                                &lt;/div>
+                                &lt;div id="bloc-info-2">
+                                    &lt;h3>Pratiquez votre passion tout en respectant l'environnement&lt;/h3>
+                                    &lt;img src={ImageCarrou2} className="img-size" alt="illustration du bloc, respectez l'environnement avec wannaSurf" />
+                                &lt;/div>
+                                &lt;div id="bloc-info-3">
+                                    &lt;h3>Faites vous de nouveaux partenaires de glisse&lt;/h3>
+                                    &lt;img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;Footer />    
+            &lt;/div>
+        )
+
+    }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BackToHome.html">BackToHome</a></li><li><a href="module-Button.html">Button</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-Loader.html">Loader</a></li><li><a href="module-NavFrame.html">NavFrame</a></li><li><a href="module-Navbar.html">Navbar</a></li><li><a href="module-ResetPassword.html">ResetPassword</a></li><li><a href="module-SignInModal.html">SignInModal</a></li><li><a href="module-SignUpModal.html">SignUpModal</a></li><li><a href="module-TrajectCard.html">TrajectCard</a></li><li><a href="module-callApiModule.html">callApiModule</a></li><li><a href="module-deleteAccount.html">deleteAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateTraject">CreateTraject</a></li><li><a href="global.html#FuturTrajects">FuturTrajects</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LegalNotice">LegalNotice</a></li><li><a href="global.html#MonEspace">MonEspace</a></li><li><a href="global.html#MyProfil">MyProfil</a></li><li><a href="global.html#SignUpInfo">SignUpInfo</a></li><li><a href="global.html#SiteContact">SiteContact</a></li><li><a href="global.html#TrajectResult">TrajectResult</a></li><li><a href="global.html#TrajectsHistory">TrajectsHistory</a></li><li><a href="global.html#validName">validName</a></li><li><a href="global.html#validPhone">validPhone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 22 2023 20:29:59 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

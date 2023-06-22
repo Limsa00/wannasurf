@@ -1,3 +1,11 @@
+/**
+ * Affiche un composant TrajectCard.
+ *
+ * Ce composant affiche les détails d'un trajet, tels que la date, le conducteur, la ville de départ, la destination, l'heure de départ, etc. Il permet également de supprimer le trajet si l'utilisateur est le conducteur ou de voir les détails du trajet dans certains contextes.
+ *
+ * @module TrajectCard
+*/
+
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext';
 import './trajectCard.css'
@@ -10,8 +18,29 @@ import dateFormat from 'dateformat';
 import axios from 'axios';
 import { Error } from './ErrorComponent/Error';
 import { Loader } from './Loader/Loader';
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
+/**
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {number} props.journey_id - L'identifiant du trajet.
+ * @param {string} props.date - La date du trajet.
+ * @param {number} props.driver_id - L'identifiant du conducteur.
+ * @param {string} props.driver_firstname - Le prénom du conducteur.
+ * @param {string} props.driver_lastname - Le nom de famille du conducteur.
+ * @param {string} props.city - La ville de départ.
+ * @param {string} props.address - L'adresse de départ.
+ * @param {string} props.surfspot - Le spot de surf de destination.
+ * @param {string} props.start_city - La ville de départ.
+ * @param {number} props.passenger_id - L'identifiant du passager.
+ * @param {string} props.time - L'heure de départ.
+ * @param {number} props.price - Le prix du trajet.
+ * @param {number} props.places_offered - Le nombre de places offertes.
+ * @param {number} props.places_booked - Le nombre de places réservées.
+ * @param {number} props.places_remaining - Le nombre de places restantes.
+ *
+ * @returns {JSX.Element} Retourne le composant TrajectCard affichant les détails du trajet et les actions associées.
+ */
 export const TrajectCard = ({
     journey_id,
     date,
@@ -38,7 +67,6 @@ export const TrajectCard = ({
     const location = useLocation()
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
 
     const uid = currentUser ? currentUser.uid:null;
 
@@ -75,11 +103,8 @@ export const TrajectCard = ({
     if (!user) return (<Loader />);
     if (!myTravel) return (<Loader />);
     
-    console.log(user)
-    console.log(driver_id)
     const deleteTraject = (evt) => {
         evt.preventDefault()
-        console.log(journey_id)
         if (driver_id === user) {
             axios
                 .delete(`http://localhost:5000/journey/${journey_id}`)

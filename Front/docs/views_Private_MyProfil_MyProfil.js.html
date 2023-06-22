@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/Private/MyProfil/MyProfil.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/Private/MyProfil/MyProfil.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Rend la vue pour afficher le profil utilisateur.
+ * Affiche les informations personnelles de l'utilisateur connecté.
+ */
+import './MyProfil.css'
+import React, {useContext} from 'react';
+import { UserContext } from '../../../context/UserContext';
+import { Link } from "react-router-dom";
+import Button from '../../../components/UI/Button';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
+import CakeIcon from '@mui/icons-material/Cake';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone'; 
+import dateFormat from "dateformat";
+import axios from 'axios';
+import { Navbar } from '../../../components/NavBar/NavBar';
+import { Footer } from '../../../components/Footer/Footer';
+import { Error } from '../../../components/ErrorComponent/Error';
+import { Loader } from '../../../components/Loader/Loader';
+
+/**
+ * @returns {JSX.Element} Le composant MyProfil.
+ */
+export const MyProfil = () => {
+    const [user, setUser] = React.useState(null);
+    const [error, setError] = React.useState(null);
+    
+    const {currentUser} = useContext(UserContext)
+    const uid = currentUser.uid;
+    
+    /**
+     * Récupère les informations de l'utilisateur en utilisant l'UID fourni.
+     */
+        React.useEffect(() => {
+            axios
+                .get(`http://localhost:5000/userUid/${uid}`)
+                .then((response) => { setUser(response.data); })
+                .catch(error => { setError(error); });
+            },
+        [uid]);
+    
+    if (error) return (&lt;Error />);
+    if (!user) return (&lt;Loader />);
+
+    return (
+
+        &lt;div className='profil-page'>
+            &lt;Navbar />
+                &lt;div className="profil-bloc">
+                    &lt;div className='title-profil-bloc'>
+                        &lt;h1 className='title-profil-style'>Mon profil wannaSurf&lt;/h1>
+                    &lt;/div>
+                &lt;div className='row-desktop'>
+                    &lt;div className='bloc-profil-1'>
+                        &lt;div className='bloc-profil-user'>
+                            &lt;div className='icon'>
+                            &lt;AccountCircleIcon fontSize='large' />
+                            &lt;/div>
+                                &lt;div className='name-profil'>
+                                &lt;p>{user.firstname} {user.lastname}&lt;/p>
+                                &lt;div className='img-round-profil'>
+
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div className='bloc-profil-2'>
+                        &lt;div className='bloc-mail-user'>
+                            &lt;div className='icon'>
+                                &lt;EmailIcon fontSize='large' />
+                            &lt;/div>
+                            &lt;div className='mail-user'>
+                                &lt;p className="bold">Email&lt;/p>
+                                &lt;div className='bloc-value-mail'>
+                                    &lt;p>{currentUser.email}&lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+
+
+                    &lt;div className='bloc-profil-3'>
+                        &lt;div className='bloc-birth-user'>
+                            &lt;div className='icon'>
+                            &lt;CakeIcon fontSize='large' />
+                            &lt;/div>
+                            &lt;div className='birth-user'>
+                                &lt;p className="bold">Date de naissance&lt;/p>
+                                &lt;div className='bloc-value-birth'>
+                                    &lt;p>{dateFormat(user.birthday, "dd - mm - yyyy")}&lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div className='bloc-profil-4'>
+                        &lt;div className='bloc-mdp-user'>
+                            &lt;div className='icon'>
+                            &lt;PhoneIphoneIcon fontSize='large' />
+                            &lt;/div>
+                            &lt;div className='phone-user'>
+                                &lt;p className='bold'>Numero de telephone&lt;/p>
+                                &lt;div className='bloc-value-phone'>
+                                    &lt;p>{ user.phone }&lt;/p>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div className='bloc-profil-5'>
+                        &lt;div className='bloc-modif-picture-user'>
+                            &lt;div className='picture-user'>
+                                &lt;img className='img-style' src={`https://robohash.org/${user.firstname}.png`} alt='user-profil'>&lt;/img>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+
+                    &lt;div className='bloc-profil-6'>
+                        &lt;div className='bloc-other'>
+                            &lt;div className='reset-pwd'>
+                                &lt;Link to='/resetPassword'>
+                                    &lt;button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !&lt;/button>
+                                &lt;/Link>
+                            &lt;/div>
+
+                            &lt;div className='change-pwd'>
+                                &lt;Link to='/changePassword'>
+                                    &lt;button className='no-decoration center'>Changez votre mot de passe&lt;/button>
+                                &lt;/Link>
+                            &lt;/div>
+                        &lt;div className='delete-acc'>
+                            &lt;Link to='/DeleteAccount'>
+                                &lt;button className='no-decoration center'>Supprimer mon compte&lt;/button>
+                            &lt;/Link>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+
+                    &lt;div className='center'>
+                        &lt;Link to="/">
+                            &lt;Button>
+                                Retour à l'acceuil
+                            &lt;/Button>
+                        &lt;/Link>
+                    &lt;/div>
+                &lt;/div>
+            &lt;Footer />
+        &lt;/div>
+        )
+    }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BackToHome.html">BackToHome</a></li><li><a href="module-Button.html">Button</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-Loader.html">Loader</a></li><li><a href="module-NavFrame.html">NavFrame</a></li><li><a href="module-Navbar.html">Navbar</a></li><li><a href="module-ResetPassword.html">ResetPassword</a></li><li><a href="module-SignInModal.html">SignInModal</a></li><li><a href="module-SignUpModal.html">SignUpModal</a></li><li><a href="module-TrajectCard.html">TrajectCard</a></li><li><a href="module-callApiModule.html">callApiModule</a></li><li><a href="module-deleteAccount.html">deleteAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateTraject">CreateTraject</a></li><li><a href="global.html#FuturTrajects">FuturTrajects</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LegalNotice">LegalNotice</a></li><li><a href="global.html#MonEspace">MonEspace</a></li><li><a href="global.html#MyProfil">MyProfil</a></li><li><a href="global.html#SignUpInfo">SignUpInfo</a></li><li><a href="global.html#SiteContact">SiteContact</a></li><li><a href="global.html#TrajectResult">TrajectResult</a></li><li><a href="global.html#TrajectsHistory">TrajectsHistory</a></li><li><a href="global.html#validName">validName</a></li><li><a href="global.html#validPhone">validPhone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 22 2023 20:29:59 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

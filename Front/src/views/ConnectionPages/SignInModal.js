@@ -1,3 +1,10 @@
+/**
+*
+*Vue SignInModal.
+*Cette vue affiche une fenêtre modale pour permettre à l'utilisateur de se connecter.
+*@returns {SignInModal} Retourne la vue SignInModal.
+*/
+
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
@@ -6,13 +13,17 @@ import BackToHome from '../../components/BackArrow/BackToHome';
 import Button from '../../components/UI/Button';
 import ConnectionImg from '../../images/connection-img-surf.jpg'
 
+/**
+*
+*Composant SignInModal.
+*@module SignInModal
+*@returns {JSX.Element} L'élément JSX représentant la vue SignInModal.
+*/
 export const SignInModal = () => {
 
     const {modalState, toggleModals, signIn} = useContext(UserContext);
 
     const navigate = useNavigate();
-
-    console.log('signIn from signInModal : ', signIn);
 
     const [validation, setValidation] = useState("");
 
@@ -24,7 +35,12 @@ export const SignInModal = () => {
         }
         const formRef = useRef();
 
-
+        /**
+        *
+        *Gestion de la soumission du formulaire.
+        *Cette fonction est appelée lors de la soumission du formulaire de connexion.
+        *@param {object} e - L'événement de soumission du formulaire.
+        */
         const handleForm = async e => {
             e.preventDefault()
 
@@ -46,7 +62,10 @@ export const SignInModal = () => {
                     setValidation("Woops, votre email ou votre mot de passe est incorrect !")
         }
     };
-
+        /**
+        *
+        *Fermeture de la fenêtre modale.
+        */
         const closeModal = () => {
             setValidation("")
             toggleModals("close")

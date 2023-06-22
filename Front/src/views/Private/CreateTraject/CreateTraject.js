@@ -9,8 +9,12 @@ import { toast } from 'react-toastify';
 import { Footer } from "../../../components/Footer/Footer";
 import { Loader } from "../../../components/Loader/Loader";
 import { Error } from "../../../components/ErrorComponent/Error";
-import dateFormat, {masks} from "dateformat";
+import {masks} from "dateformat";
 
+/**
+ * Vue pour créer un trajet.
+ * @returns {JSX.Element} La vue Create Traject.
+ */
 export const CreateTraject = (props) => {
 
     const { currentUser } = useContext(UserContext)
@@ -30,14 +34,16 @@ export const CreateTraject = (props) => {
     const [surfspot, setSurfspot] = useState("");
     const [user, setUser] = useState("");
     
-    const [msgSuccess, setMsgSuccess] = useState("");
-    const [msgErr, setMsgErr] = useState("");
+    const [, setMsgSuccess] = useState("");
+    const [, setMsgErr] = useState("");
 
     const navigate = useNavigate();
 
     masks.heureDepart= 'HH:MM';
-    console.log(heureDepart);
 
+    /**
+     * Fonction pour rediriger l'utilisateur vers la page "mesFutursTrajets" après la création du trajet.
+     */
     function Timer () {
             console.log(Timer)
             let timerID = setTimeout(() => {
@@ -66,14 +72,13 @@ export const CreateTraject = (props) => {
     if (!city) return (<Loader />);
     if (!surfspot) return  (<Loader />);
 
-    // Lorsquon va envoyer notre form
-    // Le but du jeu est de créer un objet indentique à ceux presents dans la base de données
-    // Pour ce faire, on va creer une fonction envoiFormulaire
+  /**
+   * Fonction pour envoyer le formulaire de création du trajet.
+   * @param {Object} evt - L'événement de soumission du formulaire.
+   */
     const envoiFormulaire = (evt) => {
-        // On empeche le formulaire de recharger notre application
         evt.preventDefault()
         
-        // on crée une constante newTraject pour l'envoyer au back avec axios par la suite
         const newTraject = { 
             departure_city_id: lieuDepart,
             destination_surfspot_or_city_id: lieuArrive,
@@ -101,8 +106,6 @@ export const CreateTraject = (props) => {
                 }
             })
         }
-
-    console.log(lieuDepart)
 
     //const de notif avec la lib react-toastity
     const notify = () => toast.success("Votre trajet a bien été créé ! ", {

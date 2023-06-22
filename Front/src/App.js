@@ -1,3 +1,7 @@
+/**
+ * @file app.js
+ * @description Point d'entrée principal de l'application.
+ */
 import './reset.css';
 import { Home } from './views/Public/Home/Home'
 import { TrajectResult } from './views/Public/TrajectResult/TrajectResult';
@@ -15,15 +19,19 @@ import { SignUpInfo } from './views/ConnectionPages/SignUpPage2';
 import { ResetPassword } from './views/ConnectionPages/ResetPassword';
 import { ChangePassword } from './views/ConnectionPages/ChangePassword';
 import Container from './views/Public/Container';
-import TrajectScreen from './views/Public/TrajectScreen';
+import TrajectScreen from './views/Public/TrajectDetail/TrajectScreen';
 import {
   Routes,
   Route
 } from "react-router-dom";
 import Private from './views/Private/Private';
 
+/**
+ * Composant racine de l'application.
+ * 
+ * @returns {JSX.Element} L'élément racine de l'application.
+ */
 export const App = () => {
-
   return (
       <div className="app">
 

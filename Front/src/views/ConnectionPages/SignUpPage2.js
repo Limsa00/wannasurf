@@ -1,14 +1,18 @@
 import './Sign.css'
-import React, {useContext, useRef, useState} from "react";
+import React, {useContext, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button';
-import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import { validName, validPhone } from '../../components/Regex';
 import 'react-phone-number-input/style.css';
 const callApiModule = require('../../components/callApiModule');
 
+/**
+ * Vue représentant le formulaire d'inscription.
+ *
+ * @returns {JSX.Element} Élément JSX représentant le formulaire d'inscription.
+ */
 export const SignUpInfo = () => {
 
     const navigate = useNavigate();
@@ -30,7 +34,9 @@ export const SignUpInfo = () => {
     const [city,] = useState ("");
     const [birth, setBirth] = useState("");
     
-
+  /**
+   * Fonction de validation du formulaire.
+   */
     const validate = () => {
       
         if (!validName.test(name)) {
@@ -63,6 +69,11 @@ export const SignUpInfo = () => {
           }
         }     
 
+    /**
+     * Gestion de la soumission du formulaire.
+     *
+     * @param {Event} evt L'événement de soumission du formulaire.
+     */
     const handleForm = (evt) => {
         evt.preventDefault()
 

@@ -1,11 +1,25 @@
+/**
+ * Ce fichier définit le composant `NavFrame` qui représente le cadre de la barre de navigation.
+ * @module NavFrame
+*/
+
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoWannaSurf from "../images/logoWannaSurf.png"
+
+/**
+ * Composant `NavFrame`.
+ * @param {Object} props - Les propriétés du composant.
+ * @returns {JSX.Element} Élément HTML représentant le cadre de la barre de navigation.
+ */
 
 export default function NavFrame(props) {
 
     const [ showLinks, setShowLinks ] = useState(false)
 
+    /**
+     * Fonction pour afficher ou masquer les liens de navigation.
+     */
     const handleShowLinks = () =>
     setShowLinks(!showLinks)
     

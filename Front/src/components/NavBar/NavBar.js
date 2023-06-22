@@ -1,3 +1,9 @@
+/**
+ * Ce fichier définit le composant Navbar.
+ * Il affiche la barre de navigation du site avec différents liens en fonction de l'état de connexion de l'utilisateur.
+ * @module Navbar
+*/
+
 import "./navBar.css"
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
@@ -8,20 +14,16 @@ import { auth } from "../../firebase.config"
 import NavFrame from "../NavFrame"
 
 /**
- * Affichage de la NavBar du site avec l'etat de connection de l'utilisateur
- * @example
- * // returns si l'utilisateur n'est pas connecté
- * Affiche les boutons de la barre de navigation: S'inscrire, Se connecter
- * @example
- * // returns si l'utilisateur est connecté
- * Affiche les boutons de la barre de navigation: Home, Publier un trajet, Mon Espace, Deconnection
- * @returns {NavBar} Returns la valeur de la NavBar en fonction du statut de l'utilisateur.
+ * Composant Navbar.
+ * @returns {JSX.Element} Élément HTML représentant la Navbar en fonction de l'état de connexion de l'utilisateur.
  */
-
 export const Navbar = () => {
 
   const [showLinks, setShowLinks] = useState(false)
 
+   /**
+     * Gère l'affichage des liens de navigation.
+     */
   const handleShowLinks = () =>
     setShowLinks(!showLinks)
 
@@ -29,7 +31,10 @@ export const Navbar = () => {
 
   const navigate = useNavigate()
 
-  // Constante pour deconnecté le user utilisant la methode firebase signOut avec en parametre auth
+  /**
+   * Fonction de déconnexion de l'utilisateur.
+   * Utilise la méthode signOut de Firebase pour déconnecter l'utilisateur et redirige vers la page d'accueil.
+   */
   const logOut = async () => {
     try {
       await signOut (auth)

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/TrajectCard.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/TrajectCard.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Affiche un composant TrajectCard.
+ *
+ * Ce composant affiche les détails d'un trajet, tels que la date, le conducteur, la ville de départ, la destination, l'heure de départ, etc. Il permet également de supprimer le trajet si l'utilisateur est le conducteur ou de voir les détails du trajet dans certains contextes.
+ *
+ * @module TrajectCard
+*/
+
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../context/UserContext';
+import './trajectCard.css'
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from './UI/Button'
+import { toast } from 'react-toastify';
+import Passenger from './../images/passenger.png'
+import Driver from './../images/driver.png'
+import dateFormat from 'dateformat';
+import axios from 'axios';
+import { Error } from './ErrorComponent/Error';
+import { Loader } from './Loader/Loader';
+import { Link, useLocation } from 'react-router-dom'
+
+/**
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {number} props.journey_id - L'identifiant du trajet.
+ * @param {string} props.date - La date du trajet.
+ * @param {number} props.driver_id - L'identifiant du conducteur.
+ * @param {string} props.driver_firstname - Le prénom du conducteur.
+ * @param {string} props.driver_lastname - Le nom de famille du conducteur.
+ * @param {string} props.city - La ville de départ.
+ * @param {string} props.address - L'adresse de départ.
+ * @param {string} props.surfspot - Le spot de surf de destination.
+ * @param {string} props.start_city - La ville de départ.
+ * @param {number} props.passenger_id - L'identifiant du passager.
+ * @param {string} props.time - L'heure de départ.
+ * @param {number} props.price - Le prix du trajet.
+ * @param {number} props.places_offered - Le nombre de places offertes.
+ * @param {number} props.places_booked - Le nombre de places réservées.
+ * @param {number} props.places_remaining - Le nombre de places restantes.
+ *
+ * @returns {JSX.Element} Retourne le composant TrajectCard affichant les détails du trajet et les actions associées.
+ */
+export const TrajectCard = ({
+    journey_id,
+    date,
+    driver_id,
+    driver_firstname,
+    driver_lastname,
+    city,
+    address,
+    surfspot,
+    start_city,
+    passenger_id,
+    time,
+    price,
+    places_offered,
+    places_booked,
+    places_remaining,
+}) => {
+
+    const [user, setUser] = React.useState(null);
+    const [error, setError] = React.useState(null);
+    const [myTravel, setMyTravel] = React.useState(null);
+    const [msgSuccess, setMsgSuccess] = useState("");
+    const [msgErr, setMsgErr] = useState("");
+    const location = useLocation()
+    
+    const {currentUser} = useContext(UserContext)
+
+    const uid = currentUser ? currentUser.uid:null;
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
+
+        React.useEffect(() => {
+            const fetchUid = async () => {
+                try {
+                    await axios
+                        .get(`http://localhost:5000/userUid/${uid}`)
+                        .then((response) => {
+                            setUser(response.data.id);
+                        axios
+                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .then((response) => {
+                                setMyTravel(response.data);
+                            })
+                            .catch(error => { setError(error) });
+                            })
+                        .catch(error => { setError(error) });
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+        fetchUid();
+        },
+            [uid]
+    );
+
+    if (error) return (&lt;Error />);
+    if (!user) return (&lt;Loader />);
+    if (!myTravel) return (&lt;Loader />);
+    
+    const deleteTraject = (evt) => {
+        evt.preventDefault()
+        if (driver_id === user) {
+            axios
+                .delete(`http://localhost:5000/journey/${journey_id}`)
+                .then(response => {
+                    if (response.status === 202) {
+                        setMsgErr(notifyErr)
+                    } else {
+                        setMsgSuccess(notify)
+                        refreshPage()
+                    }
+                })
+        } else {
+            axios
+                .delete(`http://localhost:5000/journey_has_user/${journey_id}/${passenger_id}`)
+                .then(response => {
+                    if (response.status === 202) {
+                        setMsgErr(notifyErr)
+                    } else {
+                        setMsgSuccess(notify)
+                        refreshPage()
+                    }
+                })
+        }
+    }
+    const notify = () => toast.success("Votre trajet a bien été supprimé ! ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    })
+  
+      const notifyErr = () => toast.error("Vous êtes deja inscrit à ce trajet ! ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      })
+
+
+    let futurDelete = ''
+    let btnDetail = ''
+    let roleJourney = ''
+
+    if (location.pathname === '/mesFutursTrajets') {
+        futurDelete =
+            &lt;div>
+                &lt;form onSubmit={deleteTraject}>
+                    &lt;Button className='delete-traject'>
+                        &lt;DeleteIcon className='delete-param'/>
+                        &lt;p>Supprimer mon trajet &lt;/p>
+                    &lt;/Button>
+                &lt;/form>
+            &lt;/div>
+        if (passenger_id === user) {
+            roleJourney =
+                &lt;div>
+                    &lt;img src={Passenger} className="icon-passenger" alt="illustration passager via flaticon" />
+                &lt;/div>
+        } else {
+            roleJourney =
+                &lt;div>
+                    &lt;img src={Driver} className="icon-conducteur" alt="illustration conducteur via flaticon" />
+                &lt;/div>
+        }
+    }
+    
+    if (location.pathname === '/monHistorique') {
+        if (passenger_id === user) {
+            roleJourney =
+                &lt;div>
+                    &lt;img src={Passenger} className="icon-passenger" alt="illustration passager via flaticon" />
+                &lt;/div>
+        }
+        else {
+            roleJourney =
+                &lt;div>
+                    &lt;img src={Driver} className="icon-conducteur" alt="illustration conducteur via flaticon" />
+                &lt;/div>
+        }
+}
+
+    if (location.pathname === '/trajectsList') {
+        btnDetail =
+            &lt;Link to={`/trajectsDetails/${journey_id}`} >
+                    &lt;Button>
+                            Detail du trajet
+                    &lt;/Button>
+                &lt;/Link>
+    }
+
+    return (
+        &lt;div className="traject-page"> 
+            &lt;div className="traject-card">
+                &lt;div className='title-card-trajet'>
+                    &lt;p>&lt;span className="bold"> Date du trajet : &lt;/span>{dateFormat(date, "dd - mm - yyyy")}&lt;/p>
+                    &lt;div className='icon-card-position'>{roleJourney}&lt;/div>
+                &lt;/div>
+                &lt;div className="up-card">
+                    &lt;div className="left-side">
+                        &lt;p>&lt;span className="bold">Depart: &lt;/span> {city} {start_city}&lt;/p>
+                    &lt;/div>
+                    &lt;div className="right-side">
+                        &lt;p>&lt;span className="bold"> Destination : &lt;/span>{surfspot}&lt;/p>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="down-card">
+                     &lt;div className="left-side">
+                        &lt;p>&lt;span className="bold"> heure de depart:&lt;/span> {time}&lt;/p>
+                    &lt;/div>
+                    &lt;div className="right-side">
+                        &lt;p className="traject-price"> &lt;span className="bold"> Prix: &lt;/span>{price} € &lt;/p>
+                    &lt;/div>
+                &lt;/div>    
+                
+                {futurDelete}
+                &lt;div className='margin-btn-detail'>
+                    {btnDetail}
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    )
+  }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BackToHome.html">BackToHome</a></li><li><a href="module-Button.html">Button</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-Loader.html">Loader</a></li><li><a href="module-NavFrame.html">NavFrame</a></li><li><a href="module-Navbar.html">Navbar</a></li><li><a href="module-ResetPassword.html">ResetPassword</a></li><li><a href="module-SignInModal.html">SignInModal</a></li><li><a href="module-SignUpModal.html">SignUpModal</a></li><li><a href="module-TrajectCard.html">TrajectCard</a></li><li><a href="module-callApiModule.html">callApiModule</a></li><li><a href="module-deleteAccount.html">deleteAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateTraject">CreateTraject</a></li><li><a href="global.html#FuturTrajects">FuturTrajects</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LegalNotice">LegalNotice</a></li><li><a href="global.html#MonEspace">MonEspace</a></li><li><a href="global.html#MyProfil">MyProfil</a></li><li><a href="global.html#SignUpInfo">SignUpInfo</a></li><li><a href="global.html#SiteContact">SiteContact</a></li><li><a href="global.html#TrajectResult">TrajectResult</a></li><li><a href="global.html#TrajectsHistory">TrajectsHistory</a></li><li><a href="global.html#validName">validName</a></li><li><a href="global.html#validPhone">validPhone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jun 22 2023 20:30:00 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,3 +1,12 @@
+/**
+ * 
+ * Vue ChangePassword.
+ *
+ * Cette vue permet à l'utilisateur de changer son mot de passe.
+ *
+ * @returns {JSX.Element} Retourne la vue ChangePassword.
+ */
+
 import './Sign.css'
 import React, {useState, useContext} from "react";
 import { UserContext } from '../../context/UserContext';
@@ -17,11 +26,16 @@ export const ChangePassword = () => {
     const [pwd, setPwd] = useState('')
     const {currentUser} = useContext(UserContext)
 
+    /**
+     * Réauthentification de l'utilisateur.
+     *
+     * Cette fonction permet de réauthentifier l'utilisateur en utilisant son mot de passe actuel.
+     *
+     * @param {string} pwd - Le mot de passe actuel de l'utilisateur.
+     */
     const reauthenticate = (pwd) => {
         const user = currentUser
         const credential = EmailAuthProvider.credential(user.email, pwd)
-        console.log(user)
-        console.log(credential)
 
         reauthenticateWithCredential(user, credential).then(() => {
             try {
@@ -38,7 +52,15 @@ export const ChangePassword = () => {
         }).catch((error) => {
             console.log(error)
         });
-}
+    }
+
+    /**
+     * Gestion de la soumission du formulaire.
+     *
+     * Cette fonction est appelée lors de la soumission du formulaire de changement de mot de passe.
+     *
+     * @param {object} e - L'événement de soumission du formulaire.
+     */
     const handleForm = async e => {
         e.preventDefault()
 

@@ -1,4 +1,15 @@
+/**
+ * Ce fichier définit le composant Loader.
+ * Il affiche un élément de chargement animé avec le texte "WAITING...".
+ * @module Loader
+*/
+
 import styles from "./loader.module.css";
+
+/**
+ * Composant Loader.
+ * @returns {JSX.Element} Élément HTML représentant le Loader.
+ */
 
 export const Loader = () => {
     return (

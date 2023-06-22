@@ -1,5 +1,16 @@
+/**
+ * Composant Error
+ *
+ * Ce composant affiche un message d'erreur et une illustration lorsque le site est indisponible.
+ * @module Error
+ */
+
 import styles from "./error.module.css";
 import ImgError from '../../images/img_mon_espace.jpg'
+
+/**
+ * Composant Error
+ */
 
 export const Error = () => {
 

@@ -1,4 +1,8 @@
-import React, { useContext, useMemo } from 'react';
+/**
+ * Rend la vue pour afficher l'historique des trajets de l'utilisateur.
+ * Affiche les trajets passés de l'utilisateur connecté.
+ */
+import React, { useContext} from 'react';
 import axios from 'axios';
 import { UserContext } from '../../../context/UserContext';
 import './TrajectsHistory.css';
@@ -8,25 +12,19 @@ import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 
+/**
+ * @returns {JSX.Element} Le composant TrajectsHistory.
+ */
 export const TrajectsHistory = () => {
-
-    const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [myTravel, setMyTravel] = React.useState(null);
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
     const uid = currentUser.uid;
-
-    //     React.useEffect(() => {
-
-    //     axios
-    //         .get(`http://localhost:5000/user/${uid}`)
-    //         .then((response) => { setUser(response.data); })
-    //         .catch(error => { setError(error); });
-    // },
-    //     [uid]);
-   
+    
+    /**
+     * Récupère les trajets passés de l'utilisateur en utilisant l'UID fourni.
+     */
         React.useEffect(() => {
             const dateNow = new Date()
             const fetchUid = async () => {
@@ -34,25 +32,21 @@ export const TrajectsHistory = () => {
                     await axios
                         .get(`http://localhost:5000/userUid/${uid}`)
                         .then((response) => {
-                            //setUser(response.data.id);
-                        axios
-                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                            .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) < dateNow; }))))})
-                            .catch(error => { setError(error) });
-                            })
+                            axios
+                                .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                                .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) < dateNow; }))))})
+                                .catch(error => { setError(error) });
+                        })
                         .catch(error => { setError(error) });
-                } catch (error) {
-                    console.error(error);
+                    } catch (error) {
+                        console.error(error);
                 }
-                };
-
-    fetchUid();
-        }, [uid]);
+            };
+        fetchUid();
+    }, [uid]);
  
     if (error) return (<Error />);
     if (!myTravel) return (<Loader />);
-    
-    console.log(myTravel)
 
     return (
 

@@ -1,14 +1,26 @@
+/**
+ * @module deleteAccount
+ * @description Vue pour supprimer un compte utilisateur.
+*/
+
 import './Sign.css'
 import axios from 'axios';
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext} from "react";
 import { UserContext } from '../../context/UserContext';
 import Button from '../../components/UI/Button';
 import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 import { EmailAuthProvider, reauthenticateWithCredential, deleteUser } from '@firebase/auth';
 
-export const DeleteAccount = () => {
+/**
+ * Composant de la vue de suppression de compte utilisateur.
+ * @returns {JSX.Element} Composant de suppression de compte.
+ */
 
+export const DeleteAccount = () => {
+    /**
+     * Fonction pour déclencher la redirection vers la page d'accueil après la suppression du compte.
+     */
     function TimerDelete () {
         console.log(TimerDelete)
         let timerIDelete = setTimeout(() => {
@@ -19,18 +31,19 @@ export const DeleteAccount = () => {
 
     const navigate = useNavigate();
 
-    const [validation, setValidation] = useState("");
+    const [, setValidation] = useState("");
     const [sendReset, setSendReset] = useState("");
     const [pwd, setPwd] = useState('')
     const {currentUser} = useContext(UserContext)
-    const [user, setUser] = React.useState(null);
-    const [error, setError] = React.useState(null);
+    const [, setError] = React.useState(null);
 
+    /**
+     * Fonction pour réauthentifier l'utilisateur avant la suppression du compte.
+     * @param {string} pwd - Mot de passe de l'utilisateur.
+     */
     const Reauthenticate = (pwd) => {
         const user = currentUser
         const credential = EmailAuthProvider.credential(user.email, pwd)
-        console.log(user)
-        console.log(credential)
         const uid = currentUser.uid;
 
         reauthenticateWithCredential(user, credential)
@@ -64,7 +77,10 @@ export const DeleteAccount = () => {
         
 
     }
-
+    /**
+     * Gestionnaire de soumission du formulaire.
+     * @param {Event} e - Événement de soumission du formulaire.
+     */
     const handleForm = async e => {
         e.preventDefault()
 

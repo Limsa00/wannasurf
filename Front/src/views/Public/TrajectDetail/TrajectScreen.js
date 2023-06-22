@@ -1,18 +1,26 @@
+/**
+ * @file TrajectScreen.js
+ * @description Page affichant les détails d'un trajet et permettant à l'utilisateur de s'inscrire.
+*/
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../../context/UserContext';
-import '../../views/Public/trajectScreen.css';
+import { UserContext } from '../../../context/UserContext';
+import '../TrajectDetail/trajectScreen.css';
 import { useOutletContext, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Button from '../../../src/components/UI/Button';
+import Button from '../../../components/UI/Button';
 import { useNavigate } from 'react-router-dom';
-import { Navbar } from '../../components/NavBar/NavBar';
-import { Footer } from '../../components/Footer/Footer';
-import { Error } from '../../components/ErrorComponent/Error';
-import { Loader } from '../../components/Loader/Loader';
+import { Navbar } from '../../../components/NavBar/NavBar';
+import { Footer } from '../../../components/Footer/Footer';
+import { Error } from '../../../components/ErrorComponent/Error';
+import { Loader } from '../../../components/Loader/Loader';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import EuroSymbolIcon from '@mui/icons-material/EuroSymbol';
 import axios from 'axios';
 
+/**
+ * Composant représentant la page des détails d'un trajet et permettant à l'utilisateur de s'inscrire.
+ * @returns {JSX.Element} Élément JSX représentant la page des détails d'un trajet.
+ */
 export default function TajectScreen() {
 
     // Timer qui redirect sur mes futurs trajets quand l'utilisateur c'est inscrit à un trajet au bout de 2000 ms, puis clear le timer.
@@ -32,9 +40,6 @@ export default function TajectScreen() {
     const navigate = useNavigate();
  
     const trajectDetails = traject.find(t => t.journey_id === journeyId)
-    console.log(id)
-    console.log(trajectDetails)
-    console.log(trajectDetails.journey_id)
   
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
@@ -43,7 +48,6 @@ export default function TajectScreen() {
 
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
     const uid = currentUser.uid;
 
   // On recupere les datas du user à inscrire sur le trajet 
@@ -57,8 +61,6 @@ export default function TajectScreen() {
     
     if (error) return (<Error />);
     if (!user) return (<Loader />);
-  
-    console.log(uid)
   
   // On signUp notre user au trajet
   const signUpTraject = (evt) => {

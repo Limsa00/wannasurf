@@ -1,3 +1,8 @@
+/**
+ * @file TrajectResult.js
+ * @description Page affichant les résultats de recherche de trajets.
+*/
+
 import React from "react";
 import { useState } from "react";
 import "./TrajectResult.css";
@@ -11,8 +16,11 @@ import Button from "../../../components/UI/Button";
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 
+/**
+ * Composant représentant la page des résultats de recherche de trajets.
+ * @returns {JSX.Element} Élément JSX représentant la page des résultats de recherche de trajets.
+ */
 export const TrajectResult = () => {
-
     // permet d'utiliser les datas de l'outlet save dans la page home de la recherche
     const context = useOutletContext()
     const [trajectSearch,] = context.trajectSearch
