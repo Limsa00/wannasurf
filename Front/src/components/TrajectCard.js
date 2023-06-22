@@ -137,7 +137,7 @@ export const TrajectCard = ({
                 <form onSubmit={deleteTraject}>
                     <Button className='delete-traject'>
                         <DeleteIcon className='delete-param'/>
-                        <p>Delete mon trajet ? </p>
+                        <p>Supprimer mon trajet </p>
                     </Button>
                 </form>
             </div>
@@ -180,10 +180,11 @@ export const TrajectCard = ({
 
     return (
         <div className="traject-page"> 
-            <div className='title-card-trajet'>
-                <p><span className="bold"> Date du trajet : </span>{dateFormat(date , "dd - mm - yyyy")}</p>
-            </div>
             <div className="traject-card">
+                <div className='title-card-trajet'>
+                    <p><span className="bold"> Date du trajet : </span>{dateFormat(date, "dd - mm - yyyy")}</p>
+                    <div className='icon-card-position'>{roleJourney}</div>
+                </div>
                 <div className="up-card">
                     <div className="left-side">
                         <p><span className="bold">Depart: </span> {city} {start_city}</p>
@@ -199,13 +200,12 @@ export const TrajectCard = ({
                     <div className="right-side">
                         <p className="traject-price"> <span className="bold"> Prix: </span>{price} € </p>
                     </div>
-                    {roleJourney}
                 </div>    
                 
                 {futurDelete}
-                
-                {btnDetail}
-                
+                <div className='margin-btn-detail'>
+                    {btnDetail}
+                </div>
             </div>
         </div>
     )

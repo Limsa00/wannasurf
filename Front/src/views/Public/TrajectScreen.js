@@ -10,6 +10,7 @@ import { Footer } from '../../components/Footer/Footer';
 import { Error } from '../../components/ErrorComponent/Error';
 import { Loader } from '../../components/Loader/Loader';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import EuroSymbolIcon from '@mui/icons-material/EuroSymbol';
 import axios from 'axios';
 
 export default function TajectScreen() {
@@ -127,36 +128,37 @@ export default function TajectScreen() {
           <h1>Detail du trajet</h1>
         </div>
 
+      <div className='card'>
+        <div className='detail-up-card'></div>
         <div className='corps-traject'>
 
-          <div className='intro-traject'>
-            <div className='departure'>
-                <p>{trajectDetails.time}</p>
-                <p>{trajectDetails.address}</p>
-            </div>
-
-            <div className='surfspot'>
-              <p>{trajectDetails.surfspot}</p>
-            </div>
+          <div className='left-card'>
+              <p> <span className='bold'> Depart:</span> {trajectDetails.address}</p>
+              <p> <span className='bold'> Heure:</span>  {trajectDetails.time}</p>
+              <p> <span className='bold'>Destination:</span> {trajectDetails.surfspot}</p>
           </div>
 
-          <div className='price'>
-            <p>Prix du trajet</p>
-            <span className='margin'>{trajectDetails.price}</span>
+        <div className='right-card'>
+          <div className='driver line-detail'>
+              <DirectionsCarIcon fontSize='large' className='position-driver-icon' />
+            <p> <span className='bold margin'>Conducteur du trajet: </span>
+              {trajectDetails.driver_firstname} {trajectDetails.driver_lastname}
+            </p>
           </div>
 
-        <div className='driver line-detail'>
-          <DirectionsCarIcon fontSize='large' className='position-driver-icon' />
-          <p> Trajet proposé par
-            <span className='bold margin'>
-            {trajectDetails.driver_firstname} {trajectDetails.driver_lastname}
-          </span></p>
+            <div className='price line-detail'>
+              <EuroSymbolIcon fontSize='large' className='position-driver-icon' />
+              <p> <span className='bold margin'> Prix du trajet: </span>
+                {trajectDetails.price} euros
+              </p>
+          </div> 
         </div>
-
-        {btnInscription}
-        {driverMsg}
-        
         </div>
+        <div className='insc-info'>
+            {btnInscription}
+            {driverMsg}
+        </div>
+      </div>
       <Footer />
     </div>
   )
