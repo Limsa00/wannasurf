@@ -7,17 +7,16 @@
 */
 
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../context/UserContext';
-import './trajectCard.css'
+import { UserContext } from '../../context/UserContext';
+import '../TrajectCard/trajectCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
-import Button from './UI/Button'
+import Button from '../UI/Button'
 import { toast } from 'react-toastify';
-import Passenger from './../images/passenger.png'
-import Driver from './../images/driver.png'
+import Passenger from '../../images/passenger.png'
+import Driver from '../../images/driver.png'
 import dateFormat from 'dateformat';
 import axios from 'axios';
-import { Error } from './ErrorComponent/Error';
-import { Loader } from './Loader/Loader';
+import { Error } from '../ErrorComponent/Error';
 import { Link, useLocation } from 'react-router-dom'
 
 /**
@@ -62,13 +61,12 @@ export const TrajectCard = ({
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [myTravel, setMyTravel] = React.useState(null);
-    const [msgSuccess, setMsgSuccess] = useState("");
-    const [msgErr, setMsgErr] = useState("");
+    const [, setMsgSuccess] = useState("");
+    const [, setMsgErr] = useState("");
     const location = useLocation()
     
     const {currentUser} = useContext(UserContext)
-
-    const uid = currentUser ? currentUser.uid:null;
+    const uid = currentUser ? currentUser.uid : null;;
 
     function refreshPage() {
         window.location.reload(false);
@@ -100,8 +98,6 @@ export const TrajectCard = ({
     );
 
     if (error) return (<Error />);
-    if (!user) return (<Loader />);
-    if (!myTravel) return (<Loader />);
     
     const deleteTraject = (evt) => {
         evt.preventDefault()
@@ -155,6 +151,18 @@ export const TrajectCard = ({
     let futurDelete = ''
     let btnDetail = ''
     let roleJourney = ''
+    let redirectUser = ''
+
+    if (!uid) {
+        redirectUser = 
+            <div>
+                <Link to={`/sinscrire`} className='redirect-user'>
+                    <p>
+                        Veuillez vous inscrire à Wannasurf pour plus de details !
+                    </p>
+                </Link>
+            </div>
+    }
 
     if (location.pathname === '/mesFutursTrajets') {
         futurDelete =
@@ -194,7 +202,7 @@ export const TrajectCard = ({
         }
 }
 
-    if (location.pathname === '/trajectsList') {
+    if (location.pathname === '/trajectsList' && uid) {
         btnDetail =
             <Link to={`/trajectsDetails/${journey_id}`} >
                     <Button>
@@ -230,6 +238,7 @@ export const TrajectCard = ({
                 {futurDelete}
                 <div className='margin-btn-detail'>
                     {btnDetail}
+                    <div className='redirect-user'>{redirectUser}</div>
                 </div>
             </div>
         </div>

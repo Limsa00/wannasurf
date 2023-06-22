@@ -7,7 +7,7 @@ import React from "react";
 import { useState } from "react";
 import "./TrajectResult.css";
 import axios from "axios";
-import { TrajectCard } from "../../../components/TrajectCard";
+import { TrajectCard } from "../../../components/TrajectCard/TrajectCard";
 import { useOutletContext } from "react-router-dom"
 import { Navbar } from "../../../components/NavBar/NavBar";
 import { Footer } from "../../../components/Footer/Footer";

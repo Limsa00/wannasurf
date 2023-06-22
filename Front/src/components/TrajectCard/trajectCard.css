@@ -83,6 +83,18 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.redirect-user {
+    margin-top: 25px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.redirect-user:hover {
+    transition: 1000ms;
+    color:rgba(22, 22, 23, .8);
+}
 .delete-param {
     margin-right: 15px;
 }

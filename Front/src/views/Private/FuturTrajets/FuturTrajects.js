@@ -6,7 +6,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../../context/UserContext'
 import axios from 'axios'
 import './FuturTrajects.css'
-import { TrajectCard } from '../../../components/TrajectCard'
+import { TrajectCard } from '../../../components/TrajectCard/TrajectCard'
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
 import { Error } from '../../../components/ErrorComponent/Error';

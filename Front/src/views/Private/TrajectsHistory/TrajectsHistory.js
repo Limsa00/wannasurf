@@ -7,7 +7,7 @@ import axios from 'axios';
 import { UserContext } from '../../../context/UserContext';
 import './TrajectsHistory.css';
 import { Navbar } from '../../../components/NavBar/NavBar';
-import { TrajectCard } from '../../../components/TrajectCard';
+import { TrajectCard } from '../../../components/TrajectCard/TrajectCard';
 import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
