@@ -19,6 +19,12 @@ background-color: #010101;
     padding: 20px 0 20px 0px;
 }
 
+.navbar-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .title-wannasurf {
     color: white;
     padding-top: 10px;
@@ -177,6 +183,10 @@ a {
         }
         .title-wannasurf h1 {
             font-size: 26px;
+        }
+
+        .navbar-item {
+            margin-left: 25px;
         }
 
 }
