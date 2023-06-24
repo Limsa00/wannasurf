@@ -68,13 +68,13 @@ const journeyController = {
 
         // Vérifier la place restante sur ce trajet
         const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
-        if(placeLeft.nb_place_left<1){
+        if(!!placeLeft && placeLeft.nb_place_left<1){
             res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
             return
         }
 
         // Si la place restante est suffisante et l'utilisateur n'est pas inscrit sur le trajet, effectuer inscription
-        if (!userInJourney && placeLeft.nb_place_left>0) {
+        if (!userInJourney) {
         const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
