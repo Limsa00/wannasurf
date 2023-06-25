@@ -38,7 +38,6 @@ export const Home = () => {
 
     React.useEffect(() => {
         axios
-            // Récupère les données des villes depuis l'API
             .get(`http://localhost:5000/city`)
             .then((response) => { setCity(response.data); })
             .catch(error => { setError(error); });
@@ -72,101 +71,47 @@ export const Home = () => {
         navigate("trajectsList")
     }
 
-        return (
-            <div className='home-page'>
-                <Navbar />
-                    <div className="home-bloc">
-                        
-                        <div className="intro">
-                            <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.</p>
-                            <span>
-                                <SurfingIcon fontSize='small' htmlColor='white' />
-                            </span>
-                        </div>
+    return (
+        <div className='home-page'>
+            <Navbar />
+                <div className="home-bloc">                        
+                    <div className="intro">
+                        <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.</p>
+                        <span> <SurfingIcon fontSize='small' htmlColor='white' /> </span>
+                    </div>
 
                     <div className="shearch-bar-section">
                         <h2>RECHERCHER VOTRE TRAJET</h2>
                             <form className="search-form" onSubmit={envoiFormulaire}>
-                            <div className='desk-form'>
-                            <div className="flex-mobile">
-                                <div className="form-champs-home">
-                                    <select
-                                        onChange={e => setLieuDepart(e.target.value)}
-                                        name="lieuDepart"
-                                        className='field-style'
-                                        id="lieuDeDepart"
-                                        required
-                                    >
-                                        <option
-                                            value=''
-                                        >
-                                            -- Ville depart --
-                                        </option>
-                                        {city?.map(city => (                                                                                                                         
-                                        <option                                       
-                                            key={`${city.id}`}  
-                                            value= {city.cityName}                                       
-                                        >
-                                            {city.cityName}
-                                        </option>
-                                            ))}
-                                    </select>
-                                    </div>
+                                <div className='desk-form'>
+                                    <div className="flex-mobile">
+                                        <div className="form-champs-home">
+                                            <select onChange={e => setLieuDepart(e.target.value)} name="lieuDepart" className='field-style' id="lieuDeDepart" required>
+                                                <option value=''>-- Ville depart -- </option>
+                                                {city?.map(city => ( <option key={`${city.id}`} value= {city.cityName}> {city.cityName} </option>))}
+                                            </select>
+                                        </div>
 
-                                    <div className="form-champs-home">
-                                    <select
-                                        onChange={e => setLieuDestination(e.target.value)}
-                                        name="lieuArrive"
-                                        id="lieuArrive"
-                                        className='field-style'
-                                        required
-                                    >
-                                        <option
-                                            value=''
-                                        >
-                                            -- Surfspot --
-                                        </option>
-                                        {surfspot?.map(surfspot => (                                                                                                                         
-                                        <option                                       
-                                            key={`${surfspot.id}`}  
-                                            value= {surfspot.surfspotName}                                       
-                                        >
-                                            {surfspot.surfspotName}
-                                        </option>
-                                            ))}
-                                    </select>                         
+                                        <div className="form-champs-home">
+                                            <select onChange={e => setLieuDestination(e.target.value)} name="lieuArrive" id="lieuArrive" className='field-style' required>
+                                                <option value=''> -- Surfspot -- </option>
+                                                {surfspot?.map(surfspot => (<option key={`${surfspot.id}`} value= {surfspot.surfspotName}> {surfspot.surfspotName} </option>))}
+                                            </select>                         
+                                        </div>
+                                    </div>                                
+                                    <div className="flex-mobile">
+                                        <div className="form-champs-home">
+                                            <input type="date" placeholder="Date de depart" className="field-style" value={dateDepart} required onChange={(e) => setDateDepart(e.target.value)} />
+                                        </div>
+                                        <div className="form-champs-home-slider">
+                                            <GroupIcon fontSize='small' />
+                                            <input type="range" required min="1" max="8" value={nombrePersonne} onChange={(e) => setNombrePersonne(e.target.value)} className="field-style-nb" />
+                                            <output>{nombrePersonne}</output>
+                                        </div>
                                     </div>
-                                </div>
-                            
-                            <div className="flex-mobile">
-                                <div className="form-champs-home">
-                                    <input
-                                        type="date"
-                                        placeholder="Date de depart"
-                                        className="field-style"
-                                        value={dateDepart}
-                                        required
-                                        onChange={(e) => setDateDepart(e.target.value)} />
-                                </div>
-                                <div className="form-champs-home-slider">
-                                    <GroupIcon fontSize='small' />
-                                    <input
-                                        type="range"
-                                        required
-                                        min="1"
-                                        max="8"
-                                        value={nombrePersonne}
-                                        onChange={(e) => setNombrePersonne(e.target.value)}
-                                        className="field-style-nb" />
-                                    <output>{nombrePersonne}</output>
-                                    </div>
-                                    </div>
-                                </div>
-                                
+                                </div>                                    
                                 <div className='bottom-magin'>
-                                    <Button>
-                                        Trouver un trajet
-                                    </Button>
+                                    <Button> Trouver un trajet </Button>
                                 </div>
                             </form>
                         </div>
@@ -175,24 +120,23 @@ export const Home = () => {
                         <div className="bloc-info-title">
                             <h2>WannaSurf, ton ami du quotidien !</h2>
                         </div>
-                            <div className="bloc-info">
-                                <div id="bloc-info-1">
-                                    <h3>Faites des economies pour surfer un max</h3>
-                                    <img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
-                                </div>
-                                <div id="bloc-info-2">
-                                    <h3>Pratiquez votre passion tout en respectant l'environnement</h3>
-                                    <img src={ImageCarrou2} className="img-size" alt="illustration du bloc, respectez l'environnement avec wannaSurf" />
-                                </div>
-                                <div id="bloc-info-3">
-                                    <h3>Faites vous de nouveaux partenaires de glisse</h3>
-                                    <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
-                                </div>
+                        <div className="bloc-info">
+                            <div id="bloc-info-1">
+                                <h3>Faites des economies pour surfer un max</h3>
+                                <img src={ImageCarrou1} className="img-size" alt="illustration du bloc, faire des economies avec wannaSurf" />
+                            </div>
+                            <div id="bloc-info-2">
+                                <h3>Pratiquez votre passion tout en respectant l'environnement</h3>
+                                <img src={ImageCarrou2} className="img-size" alt="illustration du bloc, respectez l'environnement avec wannaSurf" />
+                            </div>
+                            <div id="bloc-info-3">
+                                <h3>Faites vous de nouveaux partenaires de glisse</h3>
+                                <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
                             </div>
                         </div>
                     </div>
-                <Footer />    
-            </div>
-        )
-
-    }
+                </div>
+            <Footer />    
+        </div>
+    )
+}

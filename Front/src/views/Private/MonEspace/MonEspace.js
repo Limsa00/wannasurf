@@ -59,31 +59,21 @@ export const MonEspace = () => {
       })
 
     if (emailVerified === false) {
-            blocVerif =
-                <div className='bloc-verif'>
-                    <p className='text-email'>Votre email n'a pas encore été validé, cliquez ici pour le valider ! </p>
-                    <Button
-                        onClick={() =>
-                            sendEmailVerification(currentUser)
-                            .then(notify)
-                            .catch(notifyErr)
-                        }>
-                        Verifier votre email
-                    </Button>
+        blocVerif =
+            <div className='bloc-verif'>
+                <p className='text-email'>Votre email n'a pas encore été validé, cliquez ici pour le valider ! </p>
+                <Button onClick={() => sendEmailVerification(currentUser).then(notify).catch(notifyErr)}> Verifier votre email </Button>
             </div>
-        }
+    }
 
-        /**
-        * Récupère les informations de l'utilisateur en utilisant l'UID fourni.
-        */
-        React.useEffect(() => {
-
-            axios
-                .get(`http://localhost:5000/userUid/${uid}`)
-                .then((response) => { setUser(response.data); })
-                .catch(error => { setError(error); });
-        },
-            [uid]);
+    /**
+    * Récupère les informations de l'utilisateur en utilisant l'UID fourni.
+    */
+    React.useEffect(() => {
+        axios.get(`http://localhost:5000/userUid/${uid}`)
+        .then((response) => { setUser(response.data); })
+        .catch(error => { setError(error); });
+    }, [uid]);
     
     if (error) return (<Error />);
     if (!user) return (<Loader />);
