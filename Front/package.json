@@ -5,14 +5,15 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
-    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.1",
     "better-docs": "^2.7.2",
     "dateformat": "^5.0.3",
     "datejs": "^1.0.0-rc3",
+    "dotenv": "^16.3.1",
     "firebase": "^9.15.0",
     "jsdoc": "^4.0.2",
     "react": "^18.2.0",
@@ -20,7 +21,7 @@
     "react-dayjs": "^0.3.2",
     "react-dom": "^18.2.0",
     "react-phone-number-input": "^3.2.18",
-    "react-router-dom": "^6.5.0",
+    "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.1",
     "web-vitals": "^2.1.4"
@@ -51,8 +52,18 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.0.0",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/dateformat": "^5.0.0",
-    "jest": "^27.5.1"
+    "babel-jest": "^29.5.0",
+    "file-loader": "^6.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.5.1",
+    "jest-transform-stub": "^2.0.0",
+    "jsdom": "^22.1.0",
+    "url-loader": "^4.1.1"
   }
 }
