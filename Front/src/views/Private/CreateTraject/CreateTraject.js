@@ -219,7 +219,7 @@ export const CreateTraject = (props) => {
                                         name="price" 
                                         value={price}
                                         onChange={e => setPrice(e.target.value)}
-                                        /><span className='label-create-traject'>Price</span>
+                                        /><span className='label-create-traject'>Prix en €</span>
                                     </label>
                                 </div>
 
