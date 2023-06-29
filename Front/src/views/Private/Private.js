@@ -1,12 +1,22 @@
+/**
+ * Rend la page privée qui vérifie si un utilisateur est connecté.
+ * Si aucun utilisateur n'est connecté, redirige vers la page d'accueil.
+ *
+ * @returns {JSX.Element} Le composant Private.
+*/
 import React, { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import { Outlet, useLocation,Navigate } from "react-router-dom";
+import { Outlet,Navigate } from "react-router-dom";
 
+/**
+ * Composant qui affiche la page privée.
+ *
+ * @returns {JSX.Element} Le composant Private.
+ */
 export default function Private () {
-
     const {currentUser} = useContext(UserContext)
-        console.log("currentUser from Private.js // route de: ", currentUser );
 
+      // Vérifie si l'utilisateur est connecté, sinon redirige vers la page d'accueil
         if(!currentUser) {
             return <Navigate to="/" />
         }

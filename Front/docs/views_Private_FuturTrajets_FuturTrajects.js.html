@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: views/Private/FuturTrajets/FuturTrajects.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: views/Private/FuturTrajets/FuturTrajects.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Rend la vue pour afficher les trajets futurs.
+ * Récupère et affiche les trajets prévus à l'avenir pour l'utilisateur actuel.
+ */
+import React, { useContext } from 'react'
+import { UserContext } from '../../../context/UserContext'
+import axios from 'axios'
+import './FuturTrajects.css'
+import { TrajectCard } from '../../../components/TrajectCard/TrajectCard'
+import { Navbar } from '../../../components/NavBar/NavBar'
+import { Footer } from '../../../components/Footer/Footer'
+import { Error } from '../../../components/ErrorComponent/Error';
+import { Loader } from '../../../components/Loader/Loader';
+
+/**
+ * @returns {JSX.Element} Le composant FuturTrajects.
+ */
+export const FuturTrajects = () => {
+
+    const [error, setError] = React.useState(null);
+    const [myTravel, setMyTravel] = React.useState(null);
+    
+    const {currentUser} = useContext(UserContext)
+    const uid = currentUser.uid;
+
+        /**
+         * Récupère l'ID de l'utilisateur en utilisant l'UID fourni et récupère les trajets associés à cet utilisateur.
+         */
+        React.useEffect(() => {
+            const fetchUid = async () => {
+            const dateNow = new Date()
+        try {
+            await axios
+                .get(`http://localhost:5000/userUid/${uid}`)
+                .then((response) => {
+                    //setUser(response.data.id);
+                   axios
+                        .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                       .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) > dateNow; }))))
+                       })
+                        .catch(error => { setError(error) });
+                })
+                .catch(error => { setError(error) });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+            
+
+    fetchUid();
+        }, [uid]);
+ 
+    if (error) return (&lt;Error />);
+    if (!myTravel) return (&lt;Loader />);
+
+    return (
+
+        &lt;div className='history-page'>
+            &lt;Navbar />
+                &lt;div className="traject-history-bloc">
+                &lt;h1>MES FUTURS TRAJETS&lt;/h1>
+                    &lt;div className='flex-desktop'>
+                        {myTravel?.map(traject => (           
+                            &lt;TrajectCard
+                                key={`${traject.journey_id}`}
+                                journey_id={traject.journey_id}
+                                date={traject.date}
+                                driver_id={traject.driver_id}
+                                driver_firstname={traject.driver_firstname}
+                                driver_lastname={traject.driver_lastname}
+                                city={traject.city}
+                                address={traject.address}
+                                surfspot={traject.surfspot}
+                                time={traject.time}
+                                price={traject.price}
+                                start_city={traject.start_city}
+                                passenger_id={traject.passenger_id}
+                                places_remaining={traject.places_remaining}
+                            />
+                        ))}
+                    &lt;/div>
+                &lt;/div>
+            &lt;Footer />
+        &lt;/div>
+        )
+    }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-BackToHome.html">BackToHome</a></li><li><a href="module-Button.html">Button</a></li><li><a href="module-Error.html">Error</a></li><li><a href="module-Footer.html">Footer</a></li><li><a href="module-Loader.html">Loader</a></li><li><a href="module-NavFrame.html">NavFrame</a></li><li><a href="module-Navbar.html">Navbar</a></li><li><a href="module-ResetPassword.html">ResetPassword</a></li><li><a href="module-SignInModal.html">SignInModal</a></li><li><a href="module-SignUpModal.html">SignUpModal</a></li><li><a href="module-TrajectCard.html">TrajectCard</a></li><li><a href="module-callApiModule.html">callApiModule</a></li><li><a href="module-deleteAccount.html">deleteAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateTraject">CreateTraject</a></li><li><a href="global.html#FuturTrajects">FuturTrajects</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#LegalNotice">LegalNotice</a></li><li><a href="global.html#MonEspace">MonEspace</a></li><li><a href="global.html#MyProfil">MyProfil</a></li><li><a href="global.html#SignUpInfo">SignUpInfo</a></li><li><a href="global.html#SiteContact">SiteContact</a></li><li><a href="global.html#TrajectResult">TrajectResult</a></li><li><a href="global.html#TrajectsHistory">TrajectsHistory</a></li><li><a href="global.html#validName">validName</a></li><li><a href="global.html#validPhone">validPhone</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Jun 23 2023 10:54:18 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

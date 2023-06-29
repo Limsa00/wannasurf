@@ -1,17 +1,45 @@
+/**
+ * Affiche un composant TrajectCard.
+ *
+ * Ce composant affiche les détails d'un trajet, tels que la date, le conducteur, la ville de départ, la destination, l'heure de départ, etc. Il permet également de supprimer le trajet si l'utilisateur est le conducteur ou de voir les détails du trajet dans certains contextes.
+ *
+ * @module TrajectCard
+*/
+
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../context/UserContext';
-import './trajectCard.css'
+import { UserContext } from '../../context/UserContext';
+import '../TrajectCard/trajectCard.css'
 import DeleteIcon from '@mui/icons-material/Delete';
-import Button from './UI/Button'
+import Button from '../UI/Button'
 import { toast } from 'react-toastify';
-import Passenger from './../images/passenger.png'
-import Driver from './../images/driver.png'
+import Passenger from '../../images/passenger.png'
+import Driver from '../../images/driver.png'
 import dateFormat from 'dateformat';
 import axios from 'axios';
-import { Error } from './ErrorComponent/Error';
-import { Loader } from './Loader/Loader';
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { Error } from '../ErrorComponent/Error';
+import { Link, useLocation } from 'react-router-dom'
 
+/**
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {number} props.journey_id - L'identifiant du trajet.
+ * @param {string} props.date - La date du trajet.
+ * @param {number} props.driver_id - L'identifiant du conducteur.
+ * @param {string} props.driver_firstname - Le prénom du conducteur.
+ * @param {string} props.driver_lastname - Le nom de famille du conducteur.
+ * @param {string} props.city - La ville de départ.
+ * @param {string} props.address - L'adresse de départ.
+ * @param {string} props.surfspot - Le spot de surf de destination.
+ * @param {string} props.start_city - La ville de départ.
+ * @param {number} props.passenger_id - L'identifiant du passager.
+ * @param {string} props.time - L'heure de départ.
+ * @param {number} props.price - Le prix du trajet.
+ * @param {number} props.places_offered - Le nombre de places offertes.
+ * @param {number} props.places_booked - Le nombre de places réservées.
+ * @param {number} props.places_remaining - Le nombre de places restantes.
+ *
+ * @returns {JSX.Element} Retourne le composant TrajectCard affichant les détails du trajet et les actions associées.
+ */
 export const TrajectCard = ({
     journey_id,
     date,
@@ -33,51 +61,46 @@ export const TrajectCard = ({
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [myTravel, setMyTravel] = React.useState(null);
-    const [msgSuccess, setMsgSuccess] = useState("");
-    const [msgErr, setMsgErr] = useState("");
+    const [, setMsgSuccess] = useState("");
+    const [, setMsgErr] = useState("");
     const location = useLocation()
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
-    const uid = currentUser.uid;
+    const uid = currentUser ? currentUser.uid : null;;
 
     function refreshPage() {
         window.location.reload(false);
     }
 
+
         React.useEffect(() => {
-        const fetchUid = async () => {
-        try {
-            await axios
-                .get(`http://localhost:5000/userUid/${uid}`)
-                .then((response) => {
-                    setUser(response.data.id);
-                   axios
-                    .get(`http://localhost:5000/myTravels/${response.data.id}`)
-                       .then((response) => {
-                           setMyTravel(response.data);
-                       })
-                    .catch(error => { setError(error) });
-                    })
-                .catch(error => { setError(error) });
-        } catch (error) {
-            console.error(error);
-        }
-        };
-    fetchUid();
+            const fetchUid = async () => {
+                try {
+                    await axios
+                        .get(`http://localhost:5000/userUid/${uid}`)
+                        .then((response) => {
+                            setUser(response.data.id);
+                        axios
+                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .then((response) => {
+                                setMyTravel(response.data);
+                            })
+                            .catch(error => { setError(error) });
+                            })
+                        .catch(error => { setError(error) });
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+        fetchUid();
         },
             [uid]
-        );
+    );
 
     if (error) return (<Error />);
-    if (!user) return (<Loader />);
-    if (!myTravel) return (<Loader />);
     
-    console.log(user)
-    console.log(driver_id)
     const deleteTraject = (evt) => {
         evt.preventDefault()
-        console.log(journey_id)
         if (driver_id === user) {
             axios
                 .delete(`http://localhost:5000/journey/${journey_id}`)
@@ -128,6 +151,18 @@ export const TrajectCard = ({
     let futurDelete = ''
     let btnDetail = ''
     let roleJourney = ''
+    let redirectUser = ''
+
+    if (!uid) {
+        redirectUser = 
+            <div>
+                <Link to={`/sinscrire`} className='redirect-user'>
+                    <p>
+                        Veuillez vous inscrire à Wannasurf pour plus de details !
+                    </p>
+                </Link>
+            </div>
+    }
 
     if (location.pathname === '/mesFutursTrajets') {
         futurDelete =
@@ -135,7 +170,7 @@ export const TrajectCard = ({
                 <form onSubmit={deleteTraject}>
                     <Button className='delete-traject'>
                         <DeleteIcon className='delete-param'/>
-                        <p>Delete mon trajet ? </p>
+                        <p>Supprimer mon trajet </p>
                     </Button>
                 </form>
             </div>
@@ -167,7 +202,7 @@ export const TrajectCard = ({
         }
 }
 
-    if (location.pathname === '/trajectsList') {
+    if (location.pathname === '/trajectsList' && uid) {
         btnDetail =
             <Link to={`/trajectsDetails/${journey_id}`} >
                     <Button>
@@ -178,10 +213,11 @@ export const TrajectCard = ({
 
     return (
         <div className="traject-page"> 
-            <div className='title-card-trajet'>
-                <p><span className="bold"> Date du trajet : </span>{dateFormat(date , "dd - mm - yyyy")}</p>
-            </div>
             <div className="traject-card">
+                <div className='title-card-trajet'>
+                    <p><span className="bold"> Date du trajet : </span>{dateFormat(date, "dd - mm - yyyy")}</p>
+                    <div className='icon-card-position'>{roleJourney}</div>
+                </div>
                 <div className="up-card">
                     <div className="left-side">
                         <p><span className="bold">Depart: </span> {city} {start_city}</p>
@@ -197,13 +233,13 @@ export const TrajectCard = ({
                     <div className="right-side">
                         <p className="traject-price"> <span className="bold"> Prix: </span>{price} € </p>
                     </div>
-                    {roleJourney}
                 </div>    
                 
                 {futurDelete}
-                
-                {btnDetail}
-                
+                <div className='margin-btn-detail'>
+                    {btnDetail}
+                    <div className='redirect-user'>{redirectUser}</div>
+                </div>
             </div>
         </div>
     )

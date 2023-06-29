@@ -1,5 +1,10 @@
+/**
+ * Ce fichier définit le composant Navbar.
+ * Il affiche la barre de navigation du site avec différents liens en fonction de l'état de connexion de l'utilisateur.
+ * @module Navbar
+*/
+
 import "./navBar.css"
-import logoWannaSurf from "../../images/logoWannaSurf.png"
 import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../context/UserContext"
@@ -8,10 +13,17 @@ import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase.config"
 import NavFrame from "../NavFrame"
 
+/**
+ * Composant Navbar.
+ * @returns {JSX.Element} Élément HTML représentant la Navbar en fonction de l'état de connexion de l'utilisateur.
+ */
 export const Navbar = () => {
 
   const [showLinks, setShowLinks] = useState(false)
 
+   /**
+     * Gère l'affichage des liens de navigation.
+     */
   const handleShowLinks = () =>
     setShowLinks(!showLinks)
 
@@ -19,6 +31,10 @@ export const Navbar = () => {
 
   const navigate = useNavigate()
 
+  /**
+   * Fonction de déconnexion de l'utilisateur.
+   * Utilise la méthode signOut de Firebase pour déconnecter l'utilisateur et redirige vers la page d'accueil.
+   */
   const logOut = async () => {
     try {
       await signOut (auth)
@@ -29,7 +45,6 @@ export const Navbar = () => {
   }
 
 const {currentUser} = useContext(UserContext)
-        console.log("currentUser from navBar.js // route de : ", currentUser );
 
         if(currentUser) {
             return (

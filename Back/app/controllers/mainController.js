@@ -4,25 +4,11 @@ const City = require('../models/City');
 const Surfspot = require('../models/Surfspot');
 const Journey_has_user = require('../models/Journey_has_user');
 
-const objectModel = [Journey, User, City, Journey_has_user, Surfspot];
-
 const mainController = {
-    getEntityToUse:(req,res)=>{
-        const entity = req.params.entity;
-        let entityToUse;
-        for (let i = 0; i < objectModel.length; i++) {
-            if (entity === objectModel[i].tableName) {
-                entityToUse = objectModel[i];
-            }
-        };
-        return entityToUse
-    },
-
     showAllComponents: async (req,res) =>{
         console.log(`----- Controller request showAllComponents for ${req.params.entity} -----`)
 
-        const entityToUse = mainController.getEntityToUse(req,res);
-
+        const entityToUse = req.entityToUseFromMW;
         const componentsList = await entityToUse.findAllComponents();
 
         if (componentsList) {
@@ -35,14 +21,9 @@ const mainController = {
     showOneComponent: async (req,res) =>{
         console.log(`----- Controller request showOneComponent for ${req.params.entity}:${req.params.id} -----`)
 
-        const id = req.params.id;
-        const entity = req.params.entity;
-        const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
+        const { id:id, entity:entity } = req.params; 
 
+        const entityToUse = req.entityToUseFromMW;
         const component = await entityToUse.findOneComponent(id);
 
         if (component) {
@@ -55,12 +36,7 @@ const mainController = {
     addOneComponent: async (req,res) =>{
         console.log(`----- Controller request addOneComponent for ${req.params.entity} -----`);
 
-        const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
-
+        const entityToUse = req.entityToUseFromMW;
         const newInstance = new entityToUse(req.body);
         const addedInstance = await newInstance.saveOrEditOneComponent();
 
@@ -70,12 +46,7 @@ const mainController = {
     editOneComponent: async (req,res) => {
         console.log(`----- Controller request UpdateOneComponent for ${req.params.entity} -----`);
 
-        const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
-
+        const entityToUse = req.entityToUseFromMW;
         const instance = await entityToUse.findOneComponent(req.params.id);
         
         if(instance){
@@ -91,17 +62,11 @@ const mainController = {
     deleteOneComponent: async (req,res) =>{
         console.log(`----- Controller request deleteOneComponent for ${req.params.entity} -----`)
 
-        const entityToUse = mainController.getEntityToUse(req,res);
-        if(!entityToUse){
-            res.status(500).json('Vous n\'avez pas le droit d\'aller sur ce endpoint');
-            return;
-        };
-
+        const entityToUse = req.entityToUseFromMW;
         const record = await entityToUse.findOneComponent(req.params.id);
 
         if (record) {
             const recordToDelete = new entityToUse(record);
-            // console.log(recordToDelete);
             await recordToDelete.deleteComponent();
             res.json("suppression effectuée");
         } else{

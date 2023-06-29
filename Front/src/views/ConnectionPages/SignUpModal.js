@@ -1,3 +1,11 @@
+/**
+ * Vue SignUpModal.
+ *
+ * Cette vue affiche une fenêtre modale pour permettre à l'utilisateur de s'inscrire.
+ *
+ * @returns {SignUpModal} Retourne la vue SignUpModal.
+*/
+
 import './Sign.css'
 import React, {useContext, useRef, useState} from "react";
 import { UserContext } from '../../context/UserContext';
@@ -7,13 +15,17 @@ import BackToHome from '../../components/BackArrow/BackToHome';
 import InscImg from '../../images/insc-img-surf.jpg'
 import Button from '../../components/UI/Button';
 
+/**
+ * Composant SignUpModal.
+ *
+ * @module SignUpModal
+ * @returns {JSX.Element} L'élément JSX représentant la vue SignUpModal.
+ */
 export const SignUpModal = () => {
 
     const {modalState, toggleModals, signUp} = useContext(UserContext)
 
     const navigate = useNavigate();
-
-    console.log('signUp from signUpModal : ',signUp);
 
     const [validation, setValidation] = useState("");
 
@@ -25,7 +37,13 @@ export const SignUpModal = () => {
         }
         const formRef = useRef();
 
-
+        /**
+         * Gestion de la soumission du formulaire.
+         *
+         * Cette fonction est appelée lors de la soumission du formulaire d'inscription.
+         *
+         * @param {object} e - L'événement de soumission du formulaire.
+         */
         const handleForm = async e => {
             e.preventDefault()
 
@@ -34,11 +52,11 @@ export const SignUpModal = () => {
             const pwdConfirm = inputs.current[2].value 
 
             if((pwd.length || pwdConfirm.length) <6) {
-                setValidation("6 characters min")
+                setValidation("Votre mot de passe doit faire 6 caractères minimum")
                     return;
             }
             else if(pwd !== pwdConfirm) {
-                setValidation("Password do not match")
+                setValidation("Vos mots de passe ne correspondent pas")
                     return;
             }
 
@@ -55,15 +73,18 @@ export const SignUpModal = () => {
                     navigate("/sinscrire/complements")
             }  catch (err) {
                 if(err.code === "auth/invalid-email") {
-                    setValidation("Email format invalid")
+                    setValidation("Votre mail n'est pas valide")
                 }
 
                 if(err.code === "auth/email-already-in-use") {
-                    setValidation("Email deja utilisé")
+                    setValidation("Votre email est deja utilisé")
                 }
             }
         }
-
+    
+        /**
+         * Fermeture de la fenêtre modale.
+         */
         const closeModal = () => {
             setValidation("")
             toggleModals("close")
@@ -71,9 +92,9 @@ export const SignUpModal = () => {
 
     return (
         <>
+            <BackToHome />
             {modalState.signUpModal && (
                 <div className="inscription-bloc">
-                    <BackToHome />
                     <div className='desktop-bloc'>
                         <div className='col-desktop-1'>
                             <div className='image-position'>

@@ -1,19 +1,35 @@
+/**
+ * Ce fichier définit le composant Footer.
+ * Il affiche un élément de pied de page contenant des liens vers des informations légales et un formulaire de contact.
+ * Le composant s'adapte dynamiquement en fonction du défilement de la page.
+ * @module Footer
+ */
+
 import "./footer.css"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 
+/**
+ * Composant Footer.
+ * @returns {JSX.Element} Élément HTML représentant le Footer.
+ */
 export const Footer = () => {
 
      const [showElement, setShowElement] = useState('')
     
+      /**
+   * Effet de montage du composant.
+   * Ajoute un écouteur d'événement de défilement pour gérer l'affichage du Footer en fonction de la position de la page.
+   */
     useEffect(() => {
+            /**
+     * Fonction de gestion du défilement de la page.
+     * Vérifie la position de défilement et affiche ou cache le Footer en conséquence.
+     */
     function handleScroll() {
-          // Check if the scroll exists and if it's not at the bottom
         if (document.documentElement.scrollHeight > (document.documentElement.scrollTop + window.innerHeight)) {
-            // Hide the element
             setShowElement('');
         } else {
-            // Show the element
             setShowElement('show-hide');
         }
         
@@ -26,7 +42,7 @@ export const Footer = () => {
     } else {
             setShowElement('show-hide footer-position');
         }
-    // Remove the event listener when the component unmounts
+    // Quand l'utilisateur remonte sur la page on recache le footer
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };

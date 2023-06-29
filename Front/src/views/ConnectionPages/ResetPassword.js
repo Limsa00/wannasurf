@@ -1,3 +1,11 @@
+
+/**
+*
+*Vue ResetPassword.
+*Cette vue permet à l'utilisateur de réinitialiser son mot de passe.
+*@returns {ResetPassword} Retourne la vue ResetPassword.
+*/
+
 import './Sign.css'
 import React, {useState, useContext} from "react";
 import { UserContext } from '../../context/UserContext';
@@ -5,6 +13,12 @@ import Button from '../../components/UI/Button';
 import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 
+/**
+*
+*Composant ResetPassword.
+*@module ResetPassword
+*@returns {JSX.Element} L'élément JSX représentant la vue ResetPassword.
+*/
 export const ResetPassword = () => {
 
     const navigate = useNavigate();
@@ -14,6 +28,12 @@ export const ResetPassword = () => {
     const [validation, setValidation] = useState("");
     const [sendReset, setSendReset] = useState("");
 
+    /**
+    *
+    *Gestion de la soumission du formulaire.
+    *Cette fonction est appelée lors de la soumission du formulaire de réinitialisation du mot de passe.
+    *@param {object} e - L'événement de soumission du formulaire.
+    */
     const handleForm = async e => {
             e.preventDefault()
 

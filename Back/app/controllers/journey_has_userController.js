@@ -1,4 +1,6 @@
 const Journey_has_user = require('../models/Journey_has_user');
+const Journey = require('../models/Journey');
+const { error } = require('../schemas/journeyHasUserSchema');
 
 
 const journeyController = {
@@ -32,9 +34,7 @@ const journeyController = {
     showOneUserOneJourney: async (req,res) =>{
         console.log("----- Controller request showOneUserOneJourney -----");
 
-        const userId = req.params.userId;
-        const journeyId = req.params.journeyId;
-
+        const { userId:userId, journeyId:journeyId } = req.params;
         const userSelected = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
 
         if (userSelected) {
@@ -47,38 +47,46 @@ const journeyController = {
     addOneUserToJourney: async (req,res) => {
         console.log("----- Controller request addOneUserToJourney -----");
 
-        const userId = req.body.user_id;
-        const journeyId = req.body.journey_id;
-      
-        // Contrôler s'il existe au moins 1 record relatif à journey_id dans Journey_has_user
-        const journeyHasPassenger = await Journey_has_user.findOneJourneyAllUsers(journeyId);
-        if(journeyHasPassenger.length>0) {
-            const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
-            // Et Vérifier si l'utilisateur est déjà inscrit 
-            if(userInJourney){
-                res.status(202).json('Vous êtes déjà inscrit à ce trajet');
-                // return
-            } else {
-                // Et vérifier s'il reste de la place disponible 
-                const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
-                if(placeLeft.nb_place_left<1){
-                    res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
-                    // return
-                }
-            }
-        } else {
-            // Si tous les contrôles précédents sont passés, on peut alors enregistrer l'utilisateur sur le trajet
-            const newUserToJourney = new Journey_has_user (req.body);
+        const { user_id: userId, journey_id: journeyId } = req.body;
+
+        // Vérifier si le driver n'essaie de s'inscrire sur son propre trajet
+        const journeyInfo = await Journey.findOneJourney(journeyId);
+        console.log("journeyInfo.driver_id : ", journeyInfo.driver_id);
+        console.log("userId : ",userId);
+
+        if (journeyInfo.driver_id === userId){
+            res.status(404).json("Vous ne pouvez pas vous inscrire à votre propre trajet");
+            return
+        }
+
+        // Vérifier si l'utilisateur n'est pas déjà inscrit sur ce trajet
+        const userInJourney = await Journey_has_user.findOneUserOneJourney(journeyId, userId);
+        if (userInJourney){
+            res.status(202).json('Vous êtes déjà inscrit à ce trajet');
+            return
+        }
+
+        // Vérifier la place restante sur ce trajet
+        const placeLeft = await Journey_has_user.checkPlaceAvailability(journeyId);
+        if(!!placeLeft && placeLeft.nb_place_left<1){
+            res.status(202).json('Il n\'y a plus de place disponible dans ce trajet');
+            return
+        }
+
+        // Si la place restante est suffisante et l'utilisateur n'est pas inscrit sur le trajet, effectuer inscription
+        if (!userInJourney) {
+        const newUserToJourney = new Journey_has_user (req.body);
             const addedUserToJourney = await newUserToJourney.saveOneUserToJourney();
             res.json(addedUserToJourney);
+        } else {
+            console.log("inscription impossible")
         }
     },
 
     deleteOneUserFromJourney: async (req,res) =>{
         console.log("----- Controller request deleteOneUserFromJourney -----");
 
-        const userId = req.params.userId;
-        const journeyId = req.params.journeyId;
+        const { userId:userId, journeyId:journeyId } = req.params;
 
         const user = await Journey_has_user.findOneUserOneJourney(journeyId,userId);
         if (user) {

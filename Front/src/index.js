@@ -1,3 +1,7 @@
+/**
+ * @file index.js
+ * @description Point d'entrée de l'application côté client.
+*/
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -10,9 +14,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import reportWebVitals from './reportWebVitals';
 import { UserContextProvider } from './context/UserContext';
 
-
+/**
+ * Rend le composant racine de l'application dans le DOM.
+ */
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  // notre composant app est entouré par le provider de react et le browser router pour nous permettre de nous en ServiceWorkerRegistration, et react toastify et integré dedans
   <BrowserRouter>
     <UserContextProvider>
       <App />

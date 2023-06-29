@@ -7,9 +7,14 @@
 }
 
 .traject-history-bloc h1 {
-    margin: 15px 0px 30px 0px;
-    font-size: 28px;
-    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    box-shadow: 0 8px 5px -2px grey;
+    padding: 30px;
+    font-weight: bolder;
+    margin-bottom: 25px;
 }
  
  @media screen and (min-width:1100px) {

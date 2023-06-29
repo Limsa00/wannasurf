@@ -1,3 +1,7 @@
+/**
+ * @file SiteContact.js
+ * @description Page de contact de l'application WannaSurf.
+*/
 import './SiteContact.css'
 import EmailIcon from '@mui/icons-material/Email';
 import HouseIcon from '@mui/icons-material/House';
@@ -5,8 +9,11 @@ import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
 
-export const SiteContact = () => {
-    
+/**
+ * Composant représentant la page de contact.
+ * @returns {JSX.Element} Élément JSX représentant la page de contact.
+ */
+export const SiteContact = () => {  
     return (
         <div className='site-contact-page'>
             <Navbar />

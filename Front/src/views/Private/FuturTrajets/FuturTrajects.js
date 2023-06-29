@@ -1,34 +1,31 @@
-import React, { useState, useContext } from 'react'
+/**
+ * Rend la vue pour afficher les trajets futurs.
+ * Récupère et affiche les trajets prévus à l'avenir pour l'utilisateur actuel.
+ */
+import React, { useContext } from 'react'
 import { UserContext } from '../../../context/UserContext'
 import axios from 'axios'
 import './FuturTrajects.css'
-import { TrajectCard } from '../../../components/TrajectCard'
+import { TrajectCard } from '../../../components/TrajectCard/TrajectCard'
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
 import { Error } from '../../../components/ErrorComponent/Error';
 import { Loader } from '../../../components/Loader/Loader';
 
+/**
+ * @returns {JSX.Element} Le composant FuturTrajects.
+ */
 export const FuturTrajects = () => {
 
-    const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     const [myTravel, setMyTravel] = React.useState(null);
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
     const uid = currentUser.uid;
 
-    //     React.useEffect(() => {
-
-    //     axios
-    //         .get(`http://localhost:5000/user/${uid}`)
-    //         .then((response) => { setUser(response.data); })
-    //         .catch(error => { setError(error); });
-    // },
-    //     [uid]);
-   
-
-
+        /**
+         * Récupère l'ID de l'utilisateur en utilisant l'UID fourni et récupère les trajets associés à cet utilisateur.
+         */
         React.useEffect(() => {
             const fetchUid = async () => {
             const dateNow = new Date()
@@ -55,9 +52,6 @@ export const FuturTrajects = () => {
  
     if (error) return (<Error />);
     if (!myTravel) return (<Loader />);
-    
-    console.log(myTravel)
-
 
     return (
 

@@ -1,8 +1,8 @@
 .title-traject {
+    text-align: center;
     font-size: 25px;
-    font-weight: bolder;
-    margin: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    padding: 30px;
+    margin-bottom: 30px;
 }

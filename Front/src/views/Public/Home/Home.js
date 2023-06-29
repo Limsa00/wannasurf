@@ -1,3 +1,10 @@
+/**
+ * Page d'accueil de l'application WannaSurf.
+ * Permet de rechercher un trajet en spécifiant le lieu de départ, le lieu de destination, la date de départ et le nombre de personnes.
+ * Affiche également des informations sur l'application et ses avantages.
+ *
+ * @returns {JSX.Element} Le composant Home.
+*/
 import './Home.css';
 import GroupIcon from '@mui/icons-material/Group';
 import SurfingIcon from '@mui/icons-material/Surfing';
@@ -13,8 +20,12 @@ import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 
+/**
+ * Composant de la page d'accueil.
+ *
+ * @returns {JSX.Element} Le composant Home.
+ */
 export const Home = () => {
-    
     const navigate = useNavigate();
     const [lieuDepart, setLieuDepart] = useState("");
     const [lieuDestination, setLieuDestination] = useState("");
@@ -27,10 +38,12 @@ export const Home = () => {
 
     React.useEffect(() => {
         axios
+            // Récupère les données des villes depuis l'API
             .get(`http://localhost:5000/city`)
             .then((response) => { setCity(response.data); })
             .catch(error => { setError(error); });
         axios
+            // Récupère les données des spots de surf depuis l'API
             .get(`http://localhost:5000/surfspot`)
             .then((response) => { setSurfspot(response.data); })
             .catch(error => { setError(error); });
@@ -41,6 +54,11 @@ export const Home = () => {
     if (!city) return (<Loader />);
     if (!surfspot) return (<Loader />);
 
+    /**
+     * Gère l'envoi du formulaire de recherche de trajet.
+     *
+     * @param {Event} evt - L'événement de soumission du formulaire.
+     */
     const envoiFormulaire = (evt) => {
         evt.preventDefault()
 
@@ -60,14 +78,14 @@ export const Home = () => {
                     <div className="home-bloc">
                         
                         <div className="intro">
-                            <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.
-                                <span>
-                                    <SurfingIcon fontSize='small' htmlColor='blue' />
-                                </span>
-                            </p>
+                            <p>WannaSurf est une application de covoiturage dedié à la communauté de surfer dans le monde.</p>
+                            <span>
+                                <SurfingIcon fontSize='small' htmlColor='white' />
+                            </span>
                         </div>
 
-                        <div className="shearch-bar-section">
+                    <div className="shearch-bar-section">
+                        <h2>RECHERCHER VOTRE TRAJET</h2>
                             <form className="search-form" onSubmit={envoiFormulaire}>
                             <div className='desk-form'>
                             <div className="flex-mobile">
@@ -77,6 +95,7 @@ export const Home = () => {
                                         name="lieuDepart"
                                         className='field-style'
                                         id="lieuDeDepart"
+                                        required
                                     >
                                         <option
                                             value=''
@@ -100,6 +119,7 @@ export const Home = () => {
                                         name="lieuArrive"
                                         id="lieuArrive"
                                         className='field-style'
+                                        required
                                     >
                                         <option
                                             value=''
@@ -125,12 +145,14 @@ export const Home = () => {
                                         placeholder="Date de depart"
                                         className="field-style"
                                         value={dateDepart}
+                                        required
                                         onChange={(e) => setDateDepart(e.target.value)} />
                                 </div>
                                 <div className="form-champs-home-slider">
                                     <GroupIcon fontSize='small' />
                                     <input
                                         type="range"
+                                        required
                                         min="1"
                                         max="8"
                                         value={nombrePersonne}
@@ -148,7 +170,8 @@ export const Home = () => {
                                 </div>
                             </form>
                         </div>
-
+                    
+                    <div className='corps-page-info'>
                         <div className="bloc-info-title">
                             <h2>WannaSurf, ton ami du quotidien !</h2>
                         </div>
@@ -166,7 +189,7 @@ export const Home = () => {
                                     <img src={ImageCarrou3} className="img-size close-footer" alt="illustration du bloc, un max de fun avec wannaSurf" />
                                 </div>
                             </div>
-
+                        </div>
                     </div>
                 <Footer />    
             </div>

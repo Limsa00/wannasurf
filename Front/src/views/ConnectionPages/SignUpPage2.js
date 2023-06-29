@@ -1,14 +1,18 @@
 import './Sign.css'
-import React, {useContext, useRef, useState} from "react";
+import React, {useContext, useState} from "react";
 import { UserContext } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button';
-import axios from 'axios';
 import PhoneInput from 'react-phone-number-input';
 import { validName, validPhone } from '../../components/Regex';
 import 'react-phone-number-input/style.css';
 const callApiModule = require('../../components/callApiModule');
 
+/**
+ * Vue représentant le formulaire d'inscription.
+ *
+ * @returns {JSX.Element} Élément JSX représentant le formulaire d'inscription.
+ */
 export const SignUpInfo = () => {
 
     const navigate = useNavigate();
@@ -30,7 +34,9 @@ export const SignUpInfo = () => {
     const [city,] = useState ("");
     const [birth, setBirth] = useState("");
     
-
+  /**
+   * Fonction de validation du formulaire.
+   */
     const validate = () => {
       
         if (!validName.test(name)) {
@@ -63,6 +69,11 @@ export const SignUpInfo = () => {
           }
         }     
 
+    /**
+     * Gestion de la soumission du formulaire.
+     *
+     * @param {Event} evt L'événement de soumission du formulaire.
+     */
     const handleForm = (evt) => {
         evt.preventDefault()
 
@@ -88,13 +99,14 @@ export const SignUpInfo = () => {
 
     return (
         <>
-                <div className="inscription-bloc">
+                <div className="bloc-insc-2">
                     <p className='title-sign-up-page-2'>WANNASURF</p>
-                    <h1 
-                        className='title'>
-                            Plus qu'une etape pour acceder à votre compte
-                    </h1>
-
+                    <div className='subtitle-p2-insc'>
+                        <h1 
+                            className='title'>
+                                Plus qu'une etape pour acceder à votre compte
+                        </h1>
+                    </div>
                     <div className='desc-inscription'>
                         <p 
                             className='intro-texte'>
@@ -130,6 +142,7 @@ export const SignUpInfo = () => {
                         <input
                             type="date"
                             placeholder=" "
+                            id="birth"
                             value={birth}
                             onChange={(e) => setBirth(e.target.value)}
                         />

@@ -1,3 +1,7 @@
+/**
+ * Rend la vue pour afficher le profil utilisateur.
+ * Affiche les informations personnelles de l'utilisateur connecté.
+ */
 import './MyProfil.css'
 import React, {useContext} from 'react';
 import { UserContext } from '../../../context/UserContext';
@@ -14,22 +18,25 @@ import { Footer } from '../../../components/Footer/Footer';
 import { Error } from '../../../components/ErrorComponent/Error';
 import { Loader } from '../../../components/Loader/Loader';
 
+/**
+ * @returns {JSX.Element} Le composant MyProfil.
+ */
 export const MyProfil = () => {
-
     const [user, setUser] = React.useState(null);
     const [error, setError] = React.useState(null);
     
     const {currentUser} = useContext(UserContext)
-    console.log("route de: ", currentUser )
     const uid = currentUser.uid;
     
+    /**
+     * Récupère les informations de l'utilisateur en utilisant l'UID fourni.
+     */
         React.useEffect(() => {
-
-        axios
-            .get(`http://localhost:5000/userUid/${uid}`)
-            .then((response) => { setUser(response.data); })
-            .catch(error => { setError(error); });
-    },
+            axios
+                .get(`http://localhost:5000/userUid/${uid}`)
+                .then((response) => { setUser(response.data); })
+                .catch(error => { setError(error); });
+            },
         [uid]);
     
     if (error) return (<Error />);

@@ -39,7 +39,7 @@ const journeyController = {
 
         // Rassemble les propriétés des objets addedJourneyId et newJourney2 dans un seul objet dans l'objectif de retourner l'enregistrement inséré avec l'id retourné par la BDD
         res.json({...addedJourneyId,...newJourney2});
-        // res.json(newJourney);   
+        //res.json(addedJourneyId);   
     },
 
     deleteOneJourney: async (req,res) => {
@@ -62,8 +62,7 @@ const journeyController = {
         const dateNow = date.getTime();
         let currentDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-        let nbPlaceWanted = req.query.place;
-        let dateWanted = req.query.date;
+        let { date:dateWanted, place:nbPlaceWanted } = req.query;
 
         (!nbPlaceWanted || isNaN(nbPlaceWanted)) ? nbPlaceWanted=0 : nbPlaceWanted; // Contrôler la valeur entrante et configurer le nombre de places minimum à 0
         (Date.parse(dateWanted)<dateNow || isNaN(Date.parse(dateWanted))) ? dateWanted=currentDate : dateWanted; // Contrôler la valeur entrante et configurer la recherche uniquement pour la date >= aujourd'hui

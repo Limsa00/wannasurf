@@ -1,14 +1,37 @@
-.intro-traject, .price, .center {
+.center {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
+    margin-bottom: 20px;
+}
+
+.left-card, .right-card {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-items:start ;
+}
+
+
+.left-card .bold {
+    padding: 15px;
+}
+
+.left-card p {
+    margin-bottom: 20px;
 }
 
 .title-detail h1 {
+    text-align: center;
     font-size: 25px;
-    font-weight: bold;
-    margin: 20px 0 20px 0;
+    color: white;
+    background-color: rgba(22, 22, 23, .8);
+    padding: 30px;
 }
 
 .margin {
@@ -24,40 +47,58 @@
     margin-top: 20px;
 }
 
-.driver {
-    text-align: center;
-    margin-top: 20px;
-    font-style: italic;
-    margin-bottom: 15px;
+.driver, .price {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
+.conducteur-style {
+    margin-top: 25px;
+}
 .position-driver-icon {
     margin-right: 20px;
 }
 
-.corps-traject {
-    margin: 5%;
+.card {
+    margin: 4%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     display: flex;
     border-radius: 25px;
     align-items: center;
     height: 300px;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
+}
+.corps-traject {
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-direction: row;
+}
+
+.detail-up-card {
+    background-color: rgba(22, 22, 23, .8);
+    width: 100%;
+    padding: 25px;
+    border-radius: 25px 25px 0 0;
+    box-sizing:border-box;
 }
 
 @media screen and (min-width:767px) {
     .driver, .price, .departure, .surfspot {
         font-size: 19px;
     }
+
+    .left-card p{
+            font-size: 19px;
+    }
+
     .title-detail h1 {
         font-size: 40px;
     }
-    .corps-traject {
+    .card {
         height: 400px;
     }
 }

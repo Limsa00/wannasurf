@@ -1,9 +1,16 @@
+/**
+ * @file LegalNotice.js
+ * @description Page de mentions légales de l'application WannaSurf.
+*/
 import './legalNotice.css'
 import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
 
+/**
+ * Composant représentant la page de mentions légales.
+ * @returns {JSX.Element} Élément JSX représentant la page de mentions légales.
+ */
 export const LegalNotice = () => {
-
     return (
         <div className='legal-notice-page'>
             <Navbar />
