@@ -16,6 +16,7 @@ import { Loader } from '../../../components/Loader/Loader';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import EuroSymbolIcon from '@mui/icons-material/EuroSymbol';
 import axios from 'axios';
+import { baseURL } from '../../../config';
 
 /**
  * Composant représentant la page des détails d'un trajet et permettant à l'utilisateur de s'inscrire.
@@ -53,7 +54,7 @@ export default function TajectScreen() {
   // On recupere les datas du user à inscrire sur le trajet 
     React.useEffect(() => {
         axios
-            .get(`http://localhost:5000/userUid/${uid}`)
+            .get(baseURL + `/userUid/${uid}`)
             .then((response) => { setUser(response.data); })
             .catch(error => { setError(error) });
     },
@@ -72,7 +73,7 @@ export default function TajectScreen() {
 
     // requete à notre serveur pour ajouter le user au trajet en tant que passager
     axios
-      .post('http://localhost:5000/journey_has_user', postTraject)
+      .post(baseURL + '/journey_has_user', postTraject)
       .then(response => {
         if (response.status === 202 || response.status === 400) {
           setMsgErr(notifyErr)

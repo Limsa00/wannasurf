@@ -11,6 +11,7 @@ import Button from '../../components/UI/Button';
 import BackToHome from '../../components/BackArrow/BackToHome';
 import { useNavigate } from 'react-router';
 import { EmailAuthProvider, reauthenticateWithCredential, deleteUser } from '@firebase/auth';
+import { baseURL } from '../../config';
 
 /**
  * Composant de la vue de suppression de compte utilisateur.
@@ -60,11 +61,11 @@ export const DeleteAccount = () => {
         .then ( async () => {
                     try {
                         await axios
-                            .get(`http://localhost:5000/userUid/${uid}`)
+                            .get(baseURL + `/userUid/${uid}`)
                             .then((response) => {
                                 //setUser(response.data.id);
                                 axios
-                                    .patch(`http://localhost:5000/user/deactivate/${response.data.id}`)
+                                    .patch(baseURL + `/user/deactivate/${response.data.id}`)
                                     .then((response) => { TimerDelete(); setSendReset("Votre compte a bien été supprimé, vous allez être redirigé sur la page d'acceuil") })
                                     .catch(error => { setError(error) });
                             })

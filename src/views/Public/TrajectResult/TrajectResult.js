@@ -15,6 +15,7 @@ import { Loader } from "../../../components/Loader/Loader";
 import Button from "../../../components/UI/Button";
 import { Link } from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
+import { baseURL } from '../../../config/index';
 
 /**
  * Composant représentant la page des résultats de recherche de trajets.
@@ -35,7 +36,7 @@ export const TrajectResult = () => {
     // On fetch les resultat de notre recherche par date et place.
     React.useEffect(() => {
         axios
-            .get(`http://localhost:5000/journeySearch?place=${place}&date=${date}`)
+            .get(baseURL + `/journeySearch?place=${place}&date=${date}`)
             .then((response) => { setTraject(response.data); console.log(traject) })
             .catch(error => { setError(error); });
     },

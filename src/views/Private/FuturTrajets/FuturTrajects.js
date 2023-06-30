@@ -11,6 +11,7 @@ import { Navbar } from '../../../components/NavBar/NavBar'
 import { Footer } from '../../../components/Footer/Footer'
 import { Error } from '../../../components/ErrorComponent/Error';
 import { Loader } from '../../../components/Loader/Loader';
+import { baseURL } from '../../../config';
 
 /**
  * @returns {JSX.Element} Le composant FuturTrajects.
@@ -31,11 +32,11 @@ export const FuturTrajects = () => {
             const dateNow = new Date()
         try {
             await axios
-                .get(`http://localhost:5000/userUid/${uid}`)
+                .get(baseURL + `/userUid/${uid}`)
                 .then((response) => {
                     //setUser(response.data.id);
                    axios
-                        .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                        .get(baseURL + `/myTravels/${response.data.id}`)
                        .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) > dateNow; }))))
                        })
                         .catch(error => { setError(error) });

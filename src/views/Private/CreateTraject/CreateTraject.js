@@ -10,7 +10,7 @@ import { Footer } from "../../../components/Footer/Footer";
 import { Loader } from "../../../components/Loader/Loader";
 import { Error } from "../../../components/ErrorComponent/Error";
 import {masks} from "dateformat";
-
+import { baseURL } from '../../../config/index'
 /**
  * Vue pour créer un trajet.
  * @returns {JSX.Element} La vue Create Traject.
@@ -54,15 +54,15 @@ export const CreateTraject = (props) => {
 
     React.useEffect(() => {
         axios
-            .get(`http://localhost:5000/city`)
+            .get(baseURL + `/city`)
             .then((response) => { setCity(response.data); })
             .catch(error => { setError(error); });
         axios
-            .get(`http://localhost:5000/surfspot`)
+            .get(baseURL + `/surfspot`)
             .then((response) => { setSurfspot(response.data); })
             .catch(error => { setError(error); });
         axios
-            .get(`http://localhost:5000/userUid/${uid}`)
+            .get(baseURL + `/userUid/${uid}`)
             .then((response) => { setUser(response.data); })
             .catch(error => { setError(error); });
     },
@@ -93,7 +93,7 @@ export const CreateTraject = (props) => {
         };
 
         axios
-            .post('http://localhost:5000/journey', newTraject)
+            .post(baseURL + '/journey', newTraject)
             .then(response => {
                 console.log(response.status)
                 if (response.status === 202) {

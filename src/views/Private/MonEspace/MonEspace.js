@@ -16,6 +16,7 @@ import Desk_illustration from '../../../images/img_mon_espace.jpg'
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
 import { toast } from 'react-toastify';
+import { baseURL } from '../../../config';
 
 /**
  * @returns {JSX.Element} Le composant MonEspace.
@@ -79,7 +80,7 @@ export const MonEspace = () => {
         React.useEffect(() => {
 
             axios
-                .get(`http://localhost:5000/userUid/${uid}`)
+                .get(baseURL + `/userUid/${uid}`)
                 .then((response) => { setUser(response.data); })
                 .catch(error => { setError(error); });
         },

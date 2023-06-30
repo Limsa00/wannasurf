@@ -19,6 +19,7 @@ import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
+import { baseURL } from '../../../config';
 
 /**
  * Composant de la page d'accueil.
@@ -39,12 +40,12 @@ export const Home = () => {
     React.useEffect(() => {
         axios
             // Récupère les données des villes depuis l'API
-            .get(`http://localhost:5000/city`)
+            .get(baseURL+`/city`)
             .then((response) => { setCity(response.data); })
             .catch(error => { setError(error); });
         axios
             // Récupère les données des spots de surf depuis l'API
-            .get(`http://localhost:5000/surfspot`)
+            .get(baseURL+`/surfspot`)
             .then((response) => { setSurfspot(response.data); })
             .catch(error => { setError(error); });
     },

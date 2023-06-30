@@ -17,6 +17,7 @@ import { Navbar } from '../../../components/NavBar/NavBar';
 import { Footer } from '../../../components/Footer/Footer';
 import { Error } from '../../../components/ErrorComponent/Error';
 import { Loader } from '../../../components/Loader/Loader';
+import { baseURL } from '../../../config';
 
 /**
  * @returns {JSX.Element} Le composant MyProfil.
@@ -33,7 +34,7 @@ export const MyProfil = () => {
      */
         React.useEffect(() => {
             axios
-                .get(`http://localhost:5000/userUid/${uid}`)
+                .get(baseURL + `/userUid/${uid}`)
                 .then((response) => { setUser(response.data); })
                 .catch(error => { setError(error); });
             },

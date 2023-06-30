@@ -17,7 +17,8 @@ import Driver from '../../images/driver.png'
 import dateFormat from 'dateformat';
 import axios from 'axios';
 import { Error } from '../ErrorComponent/Error';
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
+import { baseURL } from '../../config/index'
 
 /**
  *
@@ -77,11 +78,11 @@ export const TrajectCard = ({
             const fetchUid = async () => {
                 try {
                     await axios
-                        .get(`http://localhost:5000/userUid/${uid}`)
+                        .get(baseURL + `/userUid/${uid}`)
                         .then((response) => {
                             setUser(response.data.id);
                         axios
-                            .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                            .get(baseURL + `/myTravels/${response.data.id}`)
                             .then((response) => {
                                 setMyTravel(response.data);
                             })
@@ -103,7 +104,7 @@ export const TrajectCard = ({
         evt.preventDefault()
         if (driver_id === user) {
             axios
-                .delete(`http://localhost:5000/journey/${journey_id}`)
+                .delete(baseURL + `/journey/${journey_id}`)
                 .then(response => {
                     if (response.status === 202) {
                         setMsgErr(notifyErr)
@@ -114,7 +115,7 @@ export const TrajectCard = ({
                 })
         } else {
             axios
-                .delete(`http://localhost:5000/journey_has_user/${journey_id}/${passenger_id}`)
+                .delete(baseURL + `/journey_has_user/${journey_id}/${passenger_id}`)
                 .then(response => {
                     if (response.status === 202) {
                         setMsgErr(notifyErr)

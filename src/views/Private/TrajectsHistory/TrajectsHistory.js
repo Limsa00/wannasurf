@@ -11,6 +11,7 @@ import { TrajectCard } from '../../../components/TrajectCard/TrajectCard';
 import { Footer } from '../../../components/Footer/Footer';
 import { Loader } from '../../../components/Loader/Loader';
 import { Error } from '../../../components/ErrorComponent/Error';
+import { baseURL } from '../../../config';
 
 /**
  * @returns {JSX.Element} Le composant TrajectsHistory.
@@ -30,10 +31,10 @@ export const TrajectsHistory = () => {
             const fetchUid = async () => {
                 try {
                     await axios
-                        .get(`http://localhost:5000/userUid/${uid}`)
+                        .get(baseURL + `/userUid/${uid}`)
                         .then((response) => {
                             axios
-                                .get(`http://localhost:5000/myTravels/${response.data.id}`)
+                                .get(baseURL + `/myTravels/${response.data.id}`)
                                 .then((response) => {setMyTravel((response.data.filter((j => { return new Date(j.date) < dateNow; }))))})
                                 .catch(error => { setError(error) });
                         })
