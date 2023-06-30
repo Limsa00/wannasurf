@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'app-wannasurf-demo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CCDECB66ABBC4860B3B6DE6ADA975F30 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BCEE989A2FE643E7BB3678ED01F4248F }}
           package: .
