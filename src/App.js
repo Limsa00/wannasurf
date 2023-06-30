@@ -41,7 +41,7 @@ export const App = () => {
           {/* Route container permettant un transit de données entre Home, TrajectResult et TrajectScreen */}
             <Route path="/" element={<Container />}>
               <Route 
-                index 
+                path="/wannasurf" 
                 element={<Home />} 
               />
               <Route 
