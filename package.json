@@ -1,0 +1,27 @@
+{
+  "name": "Wannasurf",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node ./Back/index",
+    "server": "nodemon ./Back/index",
+    "client": "npm start --prefix Front",
+    "dev": "concurrently \"nodemon .\\Back\\index.js\" \"npm start --prefix Front\"",
+    "build": "npm run build --prefix Front"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Limsa00/wannasurf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Limsa00/wannasurf/issues"
+  },
+  "homepage": "https://github.com/Limsa00/wannasurf#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

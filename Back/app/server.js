@@ -7,8 +7,10 @@ const express = require('express');
 const router = require('./router');
 const bodyParser = require('body-parser');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const app = express();
+
+app.use(express.static( __dirname + '../../Front/build'));
 
 // middleware pour avoir accès à req.body
 app.use(bodyParser.urlencoded({ extended: false}));
