@@ -102,7 +102,7 @@ export const App = () => {
 
             <Route path="/wannasurf/private" element={<Private />}>
               <Route 
-                path="/wannasurf/monEspace" 
+                path="/wannasurf/private/monEspace" 
                 element= { <MonEspace /> } 
               />
             </Route>
