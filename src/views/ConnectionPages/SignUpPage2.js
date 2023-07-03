@@ -6,6 +6,7 @@ import Button from '../../components/UI/Button';
 import PhoneInput from 'react-phone-number-input';
 import { validName, validPhone } from '../../components/Regex';
 import 'react-phone-number-input/style.css';
+import { baseURL } from '../../config';
 const callApiModule = require('../../components/callApiModule');
 
 /**
@@ -90,7 +91,7 @@ export const SignUpInfo = () => {
             uid: uid
         };
 
-        const endpoint = `http://localhost:5000/user`;
+        const endpoint = baseURL + `/user`;
         if (send === true) {
         callApiModule(endpoint, "POST", newUser, currentUser);
         navigate("/wannasurf")
