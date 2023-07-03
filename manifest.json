@@ -3,12 +3,12 @@
   "name": "wannaSurf - Le covoiturage sportif",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "./logoWannaSurf.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logowannaSurf.png",
+      "src": "./logoWannaSurf.png",
       "type": "image/png",
       "sizes": "512x512"
     }
