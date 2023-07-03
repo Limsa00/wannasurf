@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "https://limsa00.github.io/static/css/main.0227d711.css",
-    "main.js": "https://limsa00.github.io/static/js/main.6fcdecc3.js",
+    "main.js": "https://limsa00.github.io/static/js/main.a95afbbd.js",
     "static/js/787.e4a70fcd.chunk.js": "https://limsa00.github.io/static/js/787.e4a70fcd.chunk.js",
     "static/media/surf-carrou-ex2.jpg": "https://limsa00.github.io/static/media/surf-carrou-ex2.8bef466c7b9c5c885cbb.jpg",
     "static/media/surf-carrou-ex1.jpg": "https://limsa00.github.io/static/media/surf-carrou-ex1.1ec7b7e00a57d9acfd6a.jpg",
@@ -14,11 +14,11 @@
     "static/media/passenger.png": "https://limsa00.github.io/static/media/passenger.6bfd2494b6cc421c3c1c.png",
     "index.html": "https://limsa00.github.io/index.html",
     "main.0227d711.css.map": "https://limsa00.github.io/static/css/main.0227d711.css.map",
-    "main.6fcdecc3.js.map": "https://limsa00.github.io/static/js/main.6fcdecc3.js.map",
+    "main.a95afbbd.js.map": "https://limsa00.github.io/static/js/main.a95afbbd.js.map",
     "787.e4a70fcd.chunk.js.map": "https://limsa00.github.io/static/js/787.e4a70fcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0227d711.css",
-    "static/js/main.6fcdecc3.js"
+    "static/js/main.a95afbbd.js"
   ]
 }
