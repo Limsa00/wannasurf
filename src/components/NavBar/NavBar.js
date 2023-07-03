@@ -11,6 +11,7 @@ import { UserContext } from "../../context/UserContext"
 import { signOut } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase.config"
+import { baseURL } from "../../config"
 import NavFrame from "../NavFrame"
 
 /**
@@ -38,7 +39,7 @@ export const Navbar = () => {
   const logOut = async () => {
     try {
       await signOut (auth)
-      navigate("/")
+      navigate("/wannasurf");
     } catch {
       alert("For some reason we can't log out, please check your internet connection and retry")
     }

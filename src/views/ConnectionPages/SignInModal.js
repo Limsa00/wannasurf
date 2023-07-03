@@ -55,7 +55,7 @@ export const SignInModal = () => {
                     formRef.current.reset();
                     setValidation("")
                     toggleModals("close")
-                    navigate("/")
+                    navigate("/wannasurf")
 
             }  catch (err) {
                     console.log(err)

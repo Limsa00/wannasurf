@@ -93,7 +93,7 @@ export const SignUpInfo = () => {
         const endpoint = `http://localhost:5000/user`;
         if (send === true) {
         callApiModule(endpoint, "POST", newUser, currentUser);
-        navigate("/")
+        navigate("/wannasurf")
         }
     }
 
