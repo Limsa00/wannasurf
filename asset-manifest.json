@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "https://limsa00.github.io/static/css/main.0227d711.css",
-    "main.js": "https://limsa00.github.io/static/js/main.e139ee77.js",
-    "static/js/787.e4a70fcd.chunk.js": "https://limsa00.github.io/static/js/787.e4a70fcd.chunk.js",
-    "static/media/surf-carrou-ex2.jpg": "https://limsa00.github.io/static/media/surf-carrou-ex2.8bef466c7b9c5c885cbb.jpg",
-    "static/media/surf-carrou-ex1.jpg": "https://limsa00.github.io/static/media/surf-carrou-ex1.1ec7b7e00a57d9acfd6a.jpg",
-    "static/media/img_mon_espace.jpg": "https://limsa00.github.io/static/media/img_mon_espace.c0e180a921ed0029a83c.jpg",
-    "static/media/surf-carrou-ex3.jpg": "https://limsa00.github.io/static/media/surf-carrou-ex3.bd0ab4bb1b37c78b696a.jpg",
-    "static/media/insc-img-surf.jpg": "https://limsa00.github.io/static/media/insc-img-surf.6547717919a04acac83f.jpg",
-    "static/media/connection-img-surf.jpg": "https://limsa00.github.io/static/media/connection-img-surf.cb3fe6ee790a2d506acf.jpg",
-    "static/media/logoWannaSurf.png": "https://limsa00.github.io/static/media/logoWannaSurf.66d814ad001bfdc166b5.png",
-    "static/media/driver.png": "https://limsa00.github.io/static/media/driver.ab196580dce08631d540.png",
-    "static/media/passenger.png": "https://limsa00.github.io/static/media/passenger.6bfd2494b6cc421c3c1c.png",
-    "index.html": "https://limsa00.github.io/index.html",
-    "main.0227d711.css.map": "https://limsa00.github.io/static/css/main.0227d711.css.map",
-    "main.e139ee77.js.map": "https://limsa00.github.io/static/js/main.e139ee77.js.map",
-    "787.e4a70fcd.chunk.js.map": "https://limsa00.github.io/static/js/787.e4a70fcd.chunk.js.map"
+    "main.css": "/wannasurf/static/css/main.592a4cd4.css",
+    "main.js": "/wannasurf/static/js/main.0f57d03f.js",
+    "static/js/787.e4a70fcd.chunk.js": "/wannasurf/static/js/787.e4a70fcd.chunk.js",
+    "static/media/surf-carrou-ex2.jpg": "/wannasurf/static/media/surf-carrou-ex2.8bef466c7b9c5c885cbb.jpg",
+    "static/media/surf-carrou-ex1.jpg": "/wannasurf/static/media/surf-carrou-ex1.1ec7b7e00a57d9acfd6a.jpg",
+    "static/media/img_mon_espace.jpg": "/wannasurf/static/media/img_mon_espace.c0e180a921ed0029a83c.jpg",
+    "static/media/surf-carrou-ex3.jpg": "/wannasurf/static/media/surf-carrou-ex3.bd0ab4bb1b37c78b696a.jpg",
+    "static/media/insc-img-surf.jpg": "/wannasurf/static/media/insc-img-surf.6547717919a04acac83f.jpg",
+    "static/media/connection-img-surf.jpg": "/wannasurf/static/media/connection-img-surf.cb3fe6ee790a2d506acf.jpg",
+    "static/media/logoWannaSurf.png": "/wannasurf/static/media/logoWannaSurf.66d814ad001bfdc166b5.png",
+    "static/media/driver.png": "/wannasurf/static/media/driver.ab196580dce08631d540.png",
+    "static/media/passenger.png": "/wannasurf/static/media/passenger.6bfd2494b6cc421c3c1c.png",
+    "index.html": "/wannasurf/index.html",
+    "main.592a4cd4.css.map": "/wannasurf/static/css/main.592a4cd4.css.map",
+    "main.0f57d03f.js.map": "/wannasurf/static/js/main.0f57d03f.js.map",
+    "787.e4a70fcd.chunk.js.map": "/wannasurf/static/js/787.e4a70fcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0227d711.css",
-    "static/js/main.e139ee77.js"
+    "static/css/main.592a4cd4.css",
+    "static/js/main.0f57d03f.js"
   ]
 }
