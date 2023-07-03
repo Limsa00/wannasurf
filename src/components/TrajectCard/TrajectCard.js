@@ -205,7 +205,7 @@ export const TrajectCard = ({
 
     if (location.pathname === '/wannasurf/trajectsList' && uid) {
         btnDetail =
-            <Link to={`/trajectsDetails/${journey_id}`} >
+            <Link to={`/wannasurf/trajectsDetails/${journey_id}`} >
                     <Button>
                             Detail du trajet
                     </Button>

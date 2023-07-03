@@ -52,14 +52,14 @@ export const Footer = () => {
         <div id="footer" className={`footer-bloc ${showElement}`}>
             <div className="left-footer">
                 <Link
-                    to="/legalNotice"
+                    to="/wannasurf/legalNotice"
                     className="link-style">
                     Informations légales
                 </Link>
             </div>
             <div className="right-footer">
                 <Link
-                    to="/siteContact"
+                    to="/wannasurf/siteContact"
                     className="link-style">
                     Nous contacter
                 </Link>
