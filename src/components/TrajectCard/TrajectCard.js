@@ -157,7 +157,7 @@ export const TrajectCard = ({
     if (!uid) {
         redirectUser = 
             <div>
-                <Link to={`/sinscrire`} className='redirect-user'>
+                <Link to={`/wannasurf/sinscrire`} className='redirect-user'>
                     <p>
                         Veuillez vous inscrire à Wannasurf pour plus de details !
                     </p>
@@ -165,7 +165,7 @@ export const TrajectCard = ({
             </div>
     }
 
-    if (location.pathname === '/mesFutursTrajets') {
+    if (location.pathname === '/wannasurf/mesFutursTrajets') {
         futurDelete =
             <div>
                 <form onSubmit={deleteTraject}>
@@ -188,7 +188,7 @@ export const TrajectCard = ({
         }
     }
     
-    if (location.pathname === '/monHistorique') {
+    if (location.pathname === '/wannasurf/monHistorique') {
         if (passenger_id === user) {
             roleJourney =
                 <div>
@@ -203,7 +203,7 @@ export const TrajectCard = ({
         }
 }
 
-    if (location.pathname === '/trajectsList' && uid) {
+    if (location.pathname === '/wannasurf/trajectsList' && uid) {
         btnDetail =
             <Link to={`/trajectsDetails/${journey_id}`} >
                     <Button>

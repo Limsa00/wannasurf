@@ -26,7 +26,7 @@ export const DeleteAccount = () => {
         console.log(TimerDelete)
         let timerIDelete = setTimeout(() => {
             clearTimeout(timerIDelete)
-            navigate('/')
+            navigate('/wannasurf')
         }, 2000);
     }
 

@@ -18,7 +18,7 @@ export default function Private () {
 
       // Vérifie si l'utilisateur est connecté, sinon redirige vers la page d'accueil
         if(!currentUser) {
-            return <Navigate to="/" />
+            return <Navigate to="/wannasurf" />
         }
 
     return (

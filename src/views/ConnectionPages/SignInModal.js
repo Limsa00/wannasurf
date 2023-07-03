@@ -138,11 +138,11 @@ export const SignInModal = () => {
                                     Se Connecter
                                 </Button>
                                                                 <div className='connection-option'>
-                                    <Link to='/resetPassword'>
+                                    <Link to='/wannasurf/resetPassword'>
                                         <button className='no-decoration center'>Mot de passe oublié ? Cliquez ici !</button>
                                     </Link>
 
-                                    <Link to='/sinscrire'>
+                                    <Link to='/wannasurf/sinscrire'>
                                         <button className='no-decoration center'>Pas encore inscrit ? Cliquez ici !</button>
                                     </Link>
                                     

@@ -44,7 +44,7 @@ export const ChangePassword = () => {
                     newPassword
                 ).then(
                     setSendReset("Votre pwd a bien été changé"))
-                navigate("/monProfil")
+                navigate("/wannasurf/monProfil")
             } catch (err) {
                 console.log(err)
                 setValidation('')

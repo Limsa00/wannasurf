@@ -58,14 +58,14 @@ const {currentUser} = useContext(UserContext)
                 </Link>
               </li>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/private/monEspace" className="navbar-link">
+                <Link to="/wannasurf/private/monEspace" className="navbar-link">
                   <button className="navbar-link">
                     Mon espace
                   </button>
                 </Link>
               </li>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/createTraject" className="navbar-link">
+                <Link to="/wannasurf/createTraject" className="navbar-link">
                 <button className="navbar-link"> 
                   Publier un trajet
                 </button>
@@ -85,14 +85,14 @@ const {currentUser} = useContext(UserContext)
     return (
         <NavFrame>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/sinscrire">
+                    <Link to="/wannasurf/sinscrire">
                     <button onClick={() => toggleModals("SignUp")} className="navbar-link">
                       S'inscrire
                     </button>
                     </Link>
                   </li>
                   <li className="navbar-item" onClick={handleShowLinks}>
-                    <Link to="/seconnecter"> 
+                    <Link to="/wannasurf/seconnecter"> 
                     <button onClick={() => toggleModals("SignIn")} className="navbar-link">
                       Se connecter
                     </button>

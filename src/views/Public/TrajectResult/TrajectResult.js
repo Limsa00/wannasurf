@@ -37,6 +37,7 @@ export const TrajectResult = () => {
     React.useEffect(() => {
         axios
             .get(baseURL + `/journeySearch?place=${place}&date=${date}`)
+            //.get(baseURL + `/journeySearch?place=1&date=2023-08-01`)
             .then((response) => { setTraject(response.data); console.log(traject) })
             .catch(error => { setError(error); });
     },
@@ -52,7 +53,7 @@ export const TrajectResult = () => {
 
                     </div>
                         <div className='home-back'>
-                            <Link to="/">
+                            <Link to="/wannasurf">
                                 <Button>
                                     Accueil
                                         <span className='icon-home'>

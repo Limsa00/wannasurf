@@ -70,7 +70,7 @@ export const SignUpModal = () => {
                     formRef.current.reset();
                     setValidation("")
                     // console.log(cred)
-                    navigate("/sinscrire/complements")
+                    navigate("/wannasurf/sinscrire/complements")
             }  catch (err) {
                 if(err.code === "auth/invalid-email") {
                     setValidation("Votre mail n'est pas valide")
@@ -164,7 +164,7 @@ export const SignUpModal = () => {
                                     S'inscrire
                                 </Button>
 
-                                <Link to='/seconnecter'>
+                                <Link to='/wannasurf/seconnecter'>
                                     <button className='no-decoration center'>Deja inscrit ? Se connecter !</button>
                                 </Link>
 
