@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logowannaSurf.png",
+      "src": "./logowannaSurf.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
+  "start_url": "https://limsa00.github.io/wannasurf/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
