@@ -51,7 +51,7 @@ const {currentUser} = useContext(UserContext)
             return (
               <NavFrame>
               <li className="navbar-item" onClick={handleShowLinks}>
-                <Link to="/" className="navbar-link">
+                <Link to="/wannasurf" className="navbar-link">
                 <button className="navbar-link">
                   Home
                 </button>
@@ -74,7 +74,7 @@ const {currentUser} = useContext(UserContext)
               <li className="navbar-item" onClick={handleShowLinks}>
                     <button  
                       onClick={logOut} 
-                      href="/" className="navbar-link">
+                      href="/wannasurf" className="navbar-link">
                       Se deconnecter
                     </button>
                   </li>
