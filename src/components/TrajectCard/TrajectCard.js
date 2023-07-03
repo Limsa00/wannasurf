@@ -70,7 +70,7 @@ export const TrajectCard = ({
     const uid = currentUser ? currentUser.uid : null;;
 
     function refreshPage() {
-        window.location.reload(false);
+         <Link to={`/wannasurf/mesFutursTrajets`} />
     }
 
 
