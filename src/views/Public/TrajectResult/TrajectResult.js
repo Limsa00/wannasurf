@@ -55,7 +55,7 @@ export const TrajectResult = () => {
                         <div className='home-back'>
                             <Link to="/wannasurf">
                                 <Button>
-                                    Accueil
+                                    Acceuil
                                         <span className='icon-home'>
                                             <HomeIcon />
                                         </span>

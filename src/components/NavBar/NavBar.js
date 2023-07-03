@@ -53,7 +53,7 @@ const {currentUser} = useContext(UserContext)
               <li className="navbar-item" onClick={handleShowLinks}>
                 <Link to="/wannasurf" className="navbar-link">
                 <button className="navbar-link">
-                  Home
+                  Acceuil
                 </button>
                 </Link>
               </li>
