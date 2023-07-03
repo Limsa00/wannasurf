@@ -20,7 +20,7 @@ import { UserContextProvider } from './context/UserContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // notre composant app est entouré par le provider de react et le browser router pour nous permettre de nous en ServiceWorkerRegistration, et react toastify et integré dedans
-  <BrowserRouter basemname="https://limsa00.github.io/">
+  <BrowserRouter>
     <UserContextProvider>
       <App />
       <ToastContainer />
