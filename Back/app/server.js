@@ -7,6 +7,9 @@ const session = require('express-session');
 const router = require('./router');
 const bodyParser = require('body-parser');
 
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+
 const port = process.env.PORT || 3000;
 const app = express();
 
@@ -35,6 +38,26 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PATCH, DELETE');
     next();
 });
+
+
+
+const swaggerDefinition = {
+    openapi: '3.0.0',
+    info: {
+        title: 'wannasurf api',
+        version: '1.1',
+        description: 'description des routes de wannasurf'    
+    },
+  };
+
+const swaggerOptions = {
+    swaggerDefinition,
+    apis: ['./router.js'] //Path to the API handle folder
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // routeur
 app.use(router);
